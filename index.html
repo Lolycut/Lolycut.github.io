@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -8,8 +9,8 @@
 
     <title>Турслёт Первокурсников Биофака БГУ | Зов Джунглей & АКДМ 2026</title>
     <meta name="title" content="Турслёт Первокурсников Биофака БГУ | Зов Джунглей & АКДМ 2026">
-    <meta name="description" content="Официальный портал Турслёта биологического факультета БГУ в стиле диких джунглей и ретро-игры. Интерактивные кубики судьбы, карта тропы от ст. Зелёное и регистрация.">
-    <meta name="keywords" content="турслет бгу, биофак бгу, академический маяк, туртропа, акдм, акдм бгу, турслет биофака, турслет первокурсников бгу, станция зеленое турслет, биологический факультет бгу, бгу минск, бгу, студорганизации бгу, маршрут зеленое турслет, выезд биофака">
+    <meta name="description" content="Интерактивная онлайн-брошюра Турслёта биологического факультета БГУ. 10 шагов тропы ст. Зелёное с Нашим Любимым и Единственным Председателем, кубики судьбы, квесты и FAQ.">
+    <meta name="keywords" content="турслет бгу, биофак бгу, академический маяк, туртропа, акдм, акдм бгу, турслет биофака, Биофак БГУ, турслет первокурсников бгу, станция зеленое турслет, биологический факультет бгу, наш любимый председатель">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="author" content="Академический Маяк БГУ">
 
@@ -20,9 +21,9 @@
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://microcosmos-bio.me/">
-    <meta property="og:title" content="🎲 Турслёт Первокурсников Биофака БГУ | Игра Началась">
-    <meta property="og:description" content="Брось кубики судьбы, узнай лор экспедиции, найди путь сквозь чащу ст. Зелёное и получи освобождение от пар">
-    <meta property="og:image" content="./mar_7.jpg">
+    <meta property="og:title" content="🎲 Турслёт Первокурсников Биофака БГУ | Интерактивный Гид">
+    <meta property="og:description" content="10 уровней тропы ст. Зелёное, кубики судьбы d6, квесты «Удиви меня» и освобождение от пар!">
+    <meta property="og:image" content="./mar_10.jpg">
     <meta property="og:site_name" content="АКДМ БИОФАК БГУ">
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -37,7 +38,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;0,800;1,700&family=Press+Start+2P&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Press+Start+2P&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -47,19 +48,15 @@
             theme: {
                 extend: {
                     colors: {
-                        'jungle-parchment': '#F4ECE1',
-                        'jungle-parchment-dark': '#1A291F',
-                        'jungle-wood': '#2C1B11',
-                        'jungle-wood-dark': '#180E09',
+                        'jungle-parchment': '#F7F2EA',
+                        'jungle-wood': '#24160E',
                         'jungle-emerald': '#00A859',
                         'jungle-deep': '#0D2818',
-                        'jungle-darker': '#07170E',
                         'jungle-gold': '#E5A910',
                         'jungle-amber': '#FF8A00',
                         'jungle-crimson': '#D92525',
-                        'jungle-mystic': '#5B21B6',
-                        'neo-black': '#121212',
-                        'nes-bg': '#000000',
+                        'jungle-mystic': '#6D28D9',
+                        'neo-black': '#141414',
                         'dark-card': '#142319',
                         'dark-surface': '#0C1811',
                     },
@@ -69,13 +66,11 @@
                         pixel: ['"Press Start 2P"', 'monospace'],
                     },
                     boxShadow: {
-                        'neo': '4px 4px 0px 0px #121212',
-                        'neo-dark': '4px 4px 0px 0px #E5A910',
-                        'neo-lg': '8px 8px 0px 0px #121212',
-                        'neo-lg-dark': '8px 8px 0px 0px #00A859',
-                        'neo-sm': '2px 2px 0px 0px #121212',
-                        'retro-wood': '0 4px 0 #180E09, inset 0 2px 0 rgba(255,255,255,0.25), inset 0 -2px 0 rgba(0,0,0,0.5)',
-                        'retro-btn': '3px 3px 0px #000000',
+                        'neo': '4px 4px 0px 0px #141414',
+                        'neo-lg': '6px 6px 0px 0px #141414',
+                        'neo-sm': '2px 2px 0px 0px #141414',
+                        'neo-gold': '4px 4px 0px 0px #E5A910',
+                        'retro-btn': '2px 2px 0px #000000',
                     }
                 }
             }
@@ -85,1011 +80,809 @@
     <style>
         body {
             font-family: 'Space Grotesk', sans-serif;
-            background-color: #F4ECE1;
-            color: #121212;
-            overflow-x: hidden;
+            background-color: #F7F2EA;
+            color: #141414;
             transition: background-color 0.25s ease, color 0.25s ease;
         }
 
         .dark body {
-            background-color: #07170E;
-            color: #F4ECE1;
+            background-color: #08140D;
+            color: #F7F2EA;
         }
 
-        .bg-topo-light {
-            background-color: #F4ECE1;
+        .bg-subtle-grid {
             background-image: 
-                radial-gradient(#121212 0.8px, transparent 0.8px),
                 linear-gradient(to right, rgba(0, 168, 89, 0.05) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(0, 168, 89, 0.05) 1px, transparent 1px);
-            background-size: 20px 20px, 40px 40px, 40px 40px;
+            background-size: 28px 28px;
         }
 
-        .dark .bg-topo-light {
-            background-color: #0B1D12;
+        .dark .bg-subtle-grid {
             background-image: 
-                radial-gradient(#E5A910 0.8px, transparent 0.8px),
-                linear-gradient(to right, rgba(0, 168, 89, 0.12) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 168, 89, 0.12) 1px, transparent 1px);
-            background-size: 20px 20px, 40px 40px, 40px 40px;
+                linear-gradient(to right, rgba(0, 168, 89, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 168, 89, 0.1) 1px, transparent 1px);
+            background-size: 28px 28px;
         }
 
-        .bg-jungle-night {
-            background-color: #0D2818;
-            background-image: 
-                radial-gradient(rgba(229, 169, 16, 0.15) 1px, transparent 1px),
-                radial-gradient(rgba(0, 168, 89, 0.2) 1.5px, transparent 1.5px);
-            background-size: 24px 24px, 48px 48px;
-            background-position: 0 0, 12px 12px;
-        }
-
-        .dark .bg-jungle-night {
-            background-color: #050E09;
-            background-image: 
-                radial-gradient(rgba(229, 169, 16, 0.22) 1px, transparent 1px),
-                radial-gradient(rgba(0, 168, 89, 0.3) 1.5px, transparent 1.5px);
-        }
-
-        .bg-game-board {
-            background-color: #163B26;
-            background-image: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.2) 0, rgba(0, 0, 0, 0.2) 10px, transparent 10px, transparent 20px);
-        }
-
-        .dark .bg-game-board {
-            background-color: #0E2518;
-            background-image: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.35) 0, rgba(0, 0, 0, 0.35) 10px, transparent 10px, transparent 20px);
-        }
-
-        .font-mono-code {
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .font-pixel {
-            font-family: 'Press Start 2P', monospace;
-        }
-        summary::-webkit-details-marker {
-            display: none;
-        }
+        .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+        .font-pixel { font-family: 'Press Start 2P', monospace; }
 
         @keyframes diceTumble {
             0% { transform: scale(1) rotate(0deg); }
-            20% { transform: scale(1.15) rotate(20deg) translate(-4px, 2px); }
-            40% { transform: scale(1.2) rotate(-25deg) translate(4px, -3px); }
-            60% { transform: scale(1.1) rotate(15deg) translate(-2px, 3px); }
-            80% { transform: scale(1.05) rotate(-10deg) translate(3px, -1px); }
+            25% { transform: scale(1.1) rotate(15deg); }
+            50% { transform: scale(1.15) rotate(-15deg); }
+            75% { transform: scale(1.05) rotate(10deg); }
             100% { transform: scale(1) rotate(0deg); }
         }
 
         .dice-animating {
-            animation: diceTumble 0.55s ease-in-out infinite;
+            animation: diceTumble 0.45s ease-in-out infinite;
         }
 
         .dice-pip {
-            width: 13px;
-            height: 13px;
-            background-color: #121212;
+            width: 10px;
+            height: 10px;
+            background-color: #141414;
             border-radius: 9999px;
             display: inline-block;
-            box-shadow: inset 1px 1px 0px rgba(0,0,0,0.5);
         }
 
-        @keyframes vineSwayLeft {
-            0%, 100% { transform: rotate(0deg); transform-origin: top left; }
-            50% { transform: rotate(2deg); transform-origin: top left; }
+        @keyframes brochurePop {
+            0% { transform: scale(0.96) translateY(12px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
         }
-        @keyframes vineSwayRight {
-            0%, 100% { transform: rotate(0deg); transform-origin: top right; }
-            50% { transform: rotate(-2.5deg); transform-origin: top right; }
-        }
-
-        .sway-left {
-            animation: vineSwayLeft 5s infinite ease-in-out;
-        }
-        .sway-right {
-            animation: vineSwayRight 6s infinite ease-in-out;
+        .animate-brochure {
+            animation: brochurePop 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        .hud-nav-btn {
-            position: relative;
-            transition: all 0.15s ease;
-        }
-        .hud-nav-btn:hover {
-            transform: translate(-1px, -1px);
-            box-shadow: 3px 3px 0px #000000;
-        }
-        .hud-nav-btn:active {
-            transform: translate(1px, 1px);
-            box-shadow: 1px 1px 0px #000000;
-        }
-
-        /* Модальное меню */
-        @keyframes menuPop {
-            0% { transform: scale(0.92); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        .animate-menu-pop {
-            animation: menuPop 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-
-        @keyframes coinBlink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-        .coin-blink {
-            animation: coinBlink 1.2s infinite steps(2, start);
-        }
-
-        @keyframes cursorBlink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-        .cursor-blink {
-            animation: cursorBlink 0.8s infinite;
-        }
+        .modal-scroll::-webkit-scrollbar { width: 6px; }
+        .modal-scroll::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); }
+        .modal-scroll::-webkit-scrollbar-thumb { background: #E5A910; border-radius: 3px; }
     </style>
 </head>
-<body class="antialiased flex flex-col min-h-screen selection:bg-jungle-gold selection:text-neo-black relative">
-
-    <!-- ЛИАНЫ И ТРОПИЧЕСКИЕ ЗАРОСЛИ ПО КРАЯМ ЭКРАНА -->
-    <div class="fixed top-0 left-0 z-40 pointer-events-none w-20 sm:w-32 md:w-44 lg:w-56 sway-left opacity-90 transition-all">
-        <svg viewBox="0 0 200 450" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto drop-shadow-md">
-            <path d="M10 -20 Q45 120 15 220 T65 390 Q40 430 20 450" stroke="#121212" stroke-width="7" stroke-linecap="round"/>
-            <path d="M10 -20 Q45 120 15 220 T65 390 Q40 430 20 450" stroke="#007A3D" stroke-width="4" stroke-linecap="round"/>
-            <path d="M22 60 C-10 70 -20 110 25 125 C50 110 55 75 22 60 Z" fill="#00A859" stroke="#121212" stroke-width="3"/>
-            <path d="M35 150 C90 130 110 180 60 220 C25 210 20 170 35 150 Z" fill="#E5A910" stroke="#121212" stroke-width="3.5"/>
-            <path d="M18 240 C-20 270 5 320 45 300 C55 265 40 245 18 240 Z" fill="#00A859" stroke="#121212" stroke-width="3"/>
-            <path d="M60 360 C110 370 95 430 45 425 C35 395 45 370 60 360 Z" fill="#007A3D" stroke="#121212" stroke-width="3"/>
-            <circle cx="48" cy="140" r="5" fill="#D92525" stroke="#121212" stroke-width="2"/>
-            <circle cx="28" cy="230" r="6" fill="#D92525" stroke="#121212" stroke-width="2"/>
-            <circle cx="55" cy="340" r="5" fill="#E5A910" stroke="#121212" stroke-width="2"/>
-        </svg>
-    </div>
-
-    <div class="fixed top-0 right-0 z-40 pointer-events-none w-20 sm:w-32 md:w-44 lg:w-56 sway-right opacity-90 transition-all">
-        <svg viewBox="0 0 200 480" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto drop-shadow-md">
-            <path d="M190 -20 Q145 110 180 230 T130 380 Q160 440 175 480" stroke="#121212" stroke-width="7" stroke-linecap="round"/>
-            <path d="M190 -20 Q145 110 180 230 T130 380 Q160 440 175 480" stroke="#007A3D" stroke-width="4" stroke-linecap="round"/>
-            <path d="M165 70 C215 75 220 120 170 135 C140 120 145 80 165 70 Z" fill="#E5A910" stroke="#121212" stroke-width="3"/>
-            <path d="M165 170 C105 150 90 210 140 245 C180 230 185 190 165 170 Z" fill="#00A859" stroke="#121212" stroke-width="3.5"/>
-            <path d="M170 270 C220 290 200 345 155 330 C140 295 155 275 170 270 Z" fill="#007A3D" stroke="#121212" stroke-width="3"/>
-            <path d="M135 365 C80 380 95 440 145 430 C160 395 150 375 135 365 Z" fill="#00A859" stroke="#121212" stroke-width="3"/>
-            <circle cx="150" cy="155" r="6" fill="#D92525" stroke="#121212" stroke-width="2"/>
-            <circle cx="160" cy="255" r="5" fill="#D92525" stroke="#121212" stroke-width="2"/>
-        </svg>
-    </div>
+<body class="antialiased flex flex-col min-h-screen bg-subtle-grid selection:bg-jungle-gold selection:text-neo-black">
 
     <!-- ================================================================= -->
-    <!-- РЕТРО-ХЕДЕР В СТИЛЕ SUPER MARIO NES & ДОСКИ ДЖУМАНДЖИ -->
+    <!-- ВЕРХ (HP, LVL 1, ОСВОБОЖДЕНИЕ, СТАТУС) -->
     <!-- ================================================================= -->
-    <header class="sticky top-0 z-50 bg-jungle-wood border-b-4 border-neo-black shadow-neo-lg text-white">
-        
-        <div class="bg-nes-bg border-b-2 border-[#3d271d] px-2 sm:px-3 py-1 font-pixel text-[8px] min-[390px]:text-[9px] sm:text-[10px] text-gray-300 select-none">
-            <div class="max-w-7xl mx-auto flex items-center justify-between gap-1 sm:gap-4 tracking-tighter sm:tracking-widest uppercase">
-                <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
-                    <span class="text-jungle-crimson">♥×3</span>
-                    <span class="hidden md:inline text-white">BIOFAC_BSU</span>
-                    <span class="text-jungle-gold flex items-center gap-0.5">
-                        <span class="coin-blink">🪙</span><span class="text-white">x26</span>
-                    </span>
+    <div class="bg-neo-black text-white border-b-2 border-neo-black text-[10px] sm:text-xs font-pixel py-1.5 px-3 sm:px-5">
+        <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-y-1.5 gap-x-4">
+            
+            <div class="flex items-center gap-3">
+                <span class="text-jungle-gold flex items-center gap-1">
+                    <span>👑</span> LVL 1: ПЕРВАШ
+                </span>
+                
+                <!-- HP Bar -->
+                <div class="flex items-center gap-1">
+                    <span class="text-red-500">HP</span>
+                    <div class="w-16 sm:w-24 h-2.5 bg-gray-800 border border-white overflow-hidden">
+                        <div class="bg-jungle-crimson h-full w-full animate-pulse"></div>
+                    </div>
                 </div>
 
-                <div class="text-center text-jungle-emerald shrink-0">
-                    <span class="hidden sm:inline">WORLD 1-1 // ST. ZELENOE</span>
-                    <span class="sm:hidden font-bold">W 1-1</span>
-                </div>
-
-                <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
-                    <span class="text-jungle-gold">
-                        <span class="hidden sm:inline">SCORE: </span><span class="sm:hidden">PTS:</span>676767
-                    </span>
-                    <span class="text-jungle-amber">TIME:2026</span>
+                <!-- MP / Освобождение Bar -->
+                <div class="hidden sm:flex items-center gap-1">
+                    <span class="text-jungle-gold">ОСВОБОЖДЕНИЕ</span>
+                    <div class="w-16 sm:w-20 h-2.5 bg-gray-800 border border-white overflow-hidden">
+                        <div class="bg-jungle-gold h-full w-full"></div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="bg-gradient-to-r from-jungle-wood via-[#3d2517] to-jungle-wood px-3 sm:px-6 py-2">
-            <div class="max-w-7xl mx-auto flex justify-between items-center gap-2">
-                
-                <a href="#" class="flex items-center gap-2 bg-[#1b100a] border-2 border-jungle-gold px-2.5 py-1.5 shadow-retro-btn hover:bg-jungle-gold hover:text-neo-black transition-all group">
-                    <span class="text-base group-hover:rotate-12 transition-transform">🎲</span>
-                    <div class="flex flex-col">
-                        <span class="font-pixel text-[10px] sm:text-xs text-jungle-gold group-hover:text-neo-black tracking-tight">BIOAKDM_2026</span>
-                        <span class="font-mono-code font-extrabold text-[8px] sm:text-[9px] text-gray-400 group-hover:text-neo-black -mt-0.5">АКДМ БИОФАК БГУ</span>
-                    </div>
+            <div class="flex items-center gap-3 font-mono-code text-[11px] font-bold">
+                <span class="text-gray-400">ЛОКАЦИЯ: <span class="text-jungle-emerald">ст. Зелёное</span></span>
+                <span class="text-jungle-amber">КВЕСТ: ДОЙТИ ДО ПОЛЯНЫ</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- РЕТРО-ХЕДЕР С НАВИГАЦИЕЙ -->
+    <header class="sticky top-0 z-40 bg-jungle-wood text-white border-b-3 border-neo-black shadow-neo-sm">
+        <div class="max-w-5xl mx-auto px-3 sm:px-5 py-2.5 flex items-center justify-between gap-2">
+            
+            <a href="#" class="flex items-center gap-2.5 group">
+                <span class="text-xl group-hover:rotate-12 transition-transform">🎲</span>
+                <div>
+                    <div class="font-pixel text-[10px] text-jungle-gold leading-none">ТУРСЛЁТ 2026</div>
+                    <div class="font-mono-code text-[9px] text-gray-300 font-bold mt-0.5">АКДМ БИОФАК БГУ</div>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-2">
+                <a href="https://t.me/bioakdm" target="_blank" class="hidden sm:inline-flex items-center gap-1.5 bg-[#229ED9] hover:bg-[#1a7eb0] text-white px-2.5 py-1 text-xs font-mono-code font-bold border-2 border-neo-black shadow-retro-btn transition-transform active:translate-y-0.5">
+                    <span>📢</span> Telegram
                 </a>
 
-                <nav class="hidden xl:flex items-center space-x-1.5 font-pixel text-[9px] text-neo-black">
-                    <a href="#dice-portal" class="hud-nav-btn bg-jungle-gold text-neo-black border-2 border-neo-black px-2.5 py-2 flex items-center gap-1 hover:bg-yellow-400">
-                        <span class="text-xs">🎲</span>
-                        <span>01_КУБИКИ</span>
-                    </a>
-                    <a href="#lore" class="hud-nav-btn bg-[#f3ebd9] text-neo-black border-2 border-neo-black px-2.5 py-2 hover:bg-jungle-emerald hover:text-white">
-                        <span>02_ЛОР</span>
-                    </a>
-                    <a href="#route" class="hud-nav-btn bg-[#f3ebd9] text-neo-black border-2 border-neo-black px-2.5 py-2 hover:bg-jungle-emerald hover:text-white">
-                        <span>03_ТРОПА</span>
-                    </a>
-                    <a href="#inventory" class="hud-nav-btn bg-[#f3ebd9] text-neo-black border-2 border-neo-black px-2.5 py-2 hover:bg-jungle-emerald hover:text-white">
-                        <span>04_ЛУТ</span>
-                    </a>
-                    <a href="#quests" class="hud-nav-btn bg-[#f3ebd9] text-neo-black border-2 border-neo-black px-2.5 py-2 hover:bg-jungle-emerald hover:text-white">
-                        <span>05_ГИЛЬДИИ</span>
-                    </a>
-                    <a href="#faq" class="hud-nav-btn bg-[#f3ebd9] text-neo-black border-2 border-neo-black px-2.5 py-2 hover:bg-jungle-emerald hover:text-white">
-                        <span>06_FAQ</span>
-                    </a>
-                </nav>
-
-                <div class="flex items-center gap-2">
-                    
-                    <!-- Кнопка ТЕМЫ (Светлая / Тёмная) -->
-                    <button id="theme-toggle-btn" class="hud-nav-btn bg-[#180E09] border-2 border-jungle-gold text-white px-2.5 py-1.5 shadow-retro-btn font-mono-code font-bold text-xs flex items-center gap-2 hover:border-white transition-all cursor-pointer" title="Переключить тему оформления">
-                        <span id="theme-icon" class="text-sm">🌙</span>
-                        <span id="theme-label" class="hidden sm:inline font-pixel text-[9px] text-jungle-gold">ТЕМА: НОЧЬ</span>
-                    </button>
-
-                    <!-- Кнопка РЕТРО-МЕНЮ -->
-                    <button id="retro-menu-toggle-btn" class="hud-nav-btn inline-flex items-center gap-1.5 bg-jungle-emerald hover:bg-green-600 text-white border-2 border-neo-black px-3 py-1.5 shadow-retro-btn font-pixel text-[9px] sm:text-[10px] uppercase transition-all cursor-pointer">
-                        <span class="text-xs">🕹️</span>
-                        <span>МЕНЮ</span>
-                    </button>
-
-                </div>
-
-            </div>
-        </div>
-    </header>
-
-    <!-- ================================================================= -->
-    <!-- ПОЛНОЭКРАННОЕ РЕТРО МОДАЛЬНОЕ МЕНЮ -->
-    <!-- ================================================================= -->
-    <div id="retro-modal-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-3 sm:p-6 transition-all duration-200">
-        <div id="retro-modal-box" class="w-full max-w-xl bg-jungle-wood border-4 border-jungle-gold shadow-neo-lg p-4 sm:p-6 text-white relative animate-menu-pop">
-
-            <div class="bg-nes-bg border-2 border-jungle-gold p-3 mb-4 flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <span class="cursor-blink text-jungle-gold font-pixel text-xs">▶</span>
-                    <span class="font-pixel text-[10px] sm:text-xs text-jungle-gold tracking-widest uppercase">SELECT STAGE // МЕНЮ ИГРЫ</span>
-                </div>
-                <button id="retro-modal-close-btn" class="bg-jungle-crimson hover:bg-red-700 text-white font-pixel text-[10px] px-2 py-1 border border-white cursor-pointer">
-                    ✕ ESC
+                <!-- Кнопка смены темы -->
+                <button id="theme-toggle-btn" class="bg-[#180E09] border-2 border-jungle-gold hover:border-white text-white px-2.5 py-1 text-xs font-mono-code font-bold shadow-retro-btn flex items-center gap-1.5 cursor-pointer transition-all" title="Сменить тему">
+                    <span id="theme-icon">🌙</span>
+                    <span id="theme-label" class="hidden md:inline text-[10px] text-jungle-gold font-pixel">ТЕМА</span>
                 </button>
             </div>
 
-            <div class="space-y-2 font-mono-code font-bold text-xs sm:text-sm">
+        </div>
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕЙНЕР БРОШЮРЫ -->
+    <main class="flex-1 max-w-4xl w-full mx-auto px-3 sm:px-6 py-6 sm:py-8 space-y-6">
+
+        <!-- ГЛАВНАЯ ОБЛОЖКА-КАРТОЧКА -->
+        <section class="bg-white dark:bg-dark-card border-3 border-neo-black dark:border-jungle-gold shadow-neo p-5 sm:p-7 relative transition-all">
+            
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="bg-jungle-emerald text-white font-mono-code font-bold px-2.5 py-0.5 text-xs uppercase border-2 border-neo-black shadow-neo-sm">
+                    🌿 Студорганизация АКДМ
+                </span>
+                <span class="bg-jungle-gold text-neo-black font-mono-code font-bold px-2.5 py-0.5 text-xs uppercase border-2 border-neo-black shadow-neo-sm">
+                    📍 ст. Зелёное
+                </span>
+            </div>
+
+            <h1 class="text-2xl sm:text-4xl font-extrabold uppercase leading-tight dark:text-white mb-2">
+                Турслёт Первокурсников: <br class="hidden sm:inline">
+                <span class="bg-jungle-gold px-2 py-0.5 border-2 border-neo-black text-neo-black inline-block mt-1">
+                    Зов Джунглей
+                </span>
+            </h1>
+
+            <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium leading-relaxed mb-5">
+                В коридорах факультета открылся древний картридж. Раздался таинственный зов — и весь биофак затянуло в неизведанную чащу станции «Зелёное». Пройди 10 уровней тропы, разгадай шифры и получи <strong class="underline decoration-jungle-gold decoration-2">священное освобождение от пар</strong>!
+            </p>
+
+            <!-- Быстрые плашки статов -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono-code text-xs">
+                <div class="bg-jungle-parchment dark:bg-dark-surface p-2 border-2 border-neo-black dark:border-gray-700">
+                    <span class="text-gray-500 text-[10px] block font-bold">ДИСТАНЦИЯ</span>
+                    <span class="font-extrabold text-jungle-emerald">10 уровней</span>
+                </div>
+                <div class="bg-jungle-parchment dark:bg-dark-surface p-2 border-2 border-neo-black dark:border-gray-700">
+                    <span class="text-gray-500 text-[10px] block font-bold">ОПАСНОСТЬ</span>
+                    <span class="font-extrabold text-jungle-crimson">10/10</span>
+                </div>
+                <div class="bg-jungle-parchment dark:bg-dark-surface p-2 border-2 border-neo-black dark:border-gray-700">
+                    <span class="text-gray-500 text-[10px] block font-bold">ГЛАВНЫЙ ЛУТ</span>
+                    <span class="font-extrabold text-jungle-mystic dark:text-purple-400">Освобождение</span>
+                </div>
+                <div class="bg-jungle-parchment dark:bg-dark-surface p-2 border-2 border-neo-black dark:border-gray-700">
+                    <span class="text-gray-500 text-[10px] block font-bold">ОРГАНИЗАТОРЫ</span>
+                    <span class="font-extrabold text-neo-black dark:text-white">АКДМ</span>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- КУБИКИ СУДЬБЫ -->
+        <section class="bg-jungle-deep text-white border-3 border-neo-black shadow-neo p-5 sm:p-6 transition-all">
+            
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-lg">🎲</span>
+                        <h2 class="font-pixel text-xs sm:text-sm text-jungle-gold uppercase tracking-tight">Кубики Судьбы: Бросок d6</h2>
+                    </div>
+                    <p class="font-mono-code text-xs text-gray-300 mt-1">Испытай удачу перед выходом на тропу Зелёного!</p>
+                </div>
+
+                <button id="roll-btn" class="bg-jungle-gold hover:bg-yellow-400 text-neo-black font-mono-code font-extrabold text-xs px-4 py-2.5 border-2 border-neo-black shadow-retro-btn active:translate-y-0.5 transition-all uppercase flex items-center justify-center gap-2 cursor-pointer self-start sm:self-auto">
+                    <span>⚡</span>
+                    <span id="btn-text">БРОСИТЬ КОСТИ</span>
+                </button>
+            </div>
+
+            <!-- Блок кубиков и предсказания -->
+            <div class="bg-[#08170e] border-2 border-[#1e4629] p-4 flex flex-col sm:flex-row items-center gap-4">
                 
-                <a href="#dice-portal" class="retro-menu-item flex items-center justify-between bg-[#1f130c] hover:bg-jungle-gold hover:text-neo-black border-2 border-[#54331d] hover:border-neo-black p-2.5 transition-all group">
-                    <span class="flex items-center gap-2 font-pixel text-[10px]">
-                        <span class="text-jungle-gold group-hover:text-neo-black">01.</span>
-                        <span>🎲 БРОСОК СУДЬБЫ (КУБИКИ)</span>
-                    </span>
-                    <span class="text-xs opacity-70 group-hover:opacity-100">GO →</span>
-                </a>
+                <div class="flex items-center gap-3 shrink-0 select-none">
+                    <div id="die-1" class="w-14 h-14 bg-jungle-parchment border-2 border-neo-black rounded-lg p-1.5 shadow-retro-btn flex items-center justify-center transition-transform">
+                        <div id="die-1-face" class="grid grid-cols-3 grid-rows-3 w-full h-full gap-0.5 items-center justify-items-center"></div>
+                    </div>
+                    <span class="font-pixel text-jungle-gold text-lg">+</span>
+                    <div id="die-2" class="w-14 h-14 bg-jungle-parchment border-2 border-neo-black rounded-lg p-1.5 shadow-retro-btn flex items-center justify-center transition-transform">
+                        <div id="die-2-face" class="grid grid-cols-3 grid-rows-3 w-full h-full gap-0.5 items-center justify-items-center"></div>
+                    </div>
+                </div>
 
-                <a href="#lore" class="retro-menu-item flex items-center justify-between bg-[#1f130c] hover:bg-jungle-gold hover:text-neo-black border-2 border-[#54331d] hover:border-neo-black p-2.5 transition-all group">
-                    <span class="flex items-center gap-2 font-pixel text-[10px]">
-                        <span class="text-jungle-gold group-hover:text-neo-black">02.</span>
-                        <span>📜 СВИТОК ЛОРА И КОДЕКС</span>
-                    </span>
-                    <span class="text-xs opacity-70 group-hover:opacity-100">GO →</span>
-                </a>
-
-                <a href="#route" class="retro-menu-item flex items-center justify-between bg-[#1f130c] hover:bg-jungle-gold hover:text-neo-black border-2 border-[#54331d] hover:border-neo-black p-2.5 transition-all group">
-                    <span class="flex items-center gap-2 font-pixel text-[10px]">
-                        <span class="text-jungle-gold group-hover:text-neo-black">03.</span>
-                        <span>🗺️ 7 УРОВНЕЙ ТРОПЫ (КАРТА)</span>
-                    </span>
-                    <span class="text-xs opacity-70 group-hover:opacity-100">GO →</span>
-                </a>
-
-                <a href="#inventory" class="retro-menu-item flex items-center justify-between bg-[#1f130c] hover:bg-jungle-gold hover:text-neo-black border-2 border-[#54331d] hover:border-neo-black p-2.5 transition-all group">
-                    <span class="flex items-center gap-2 font-pixel text-[10px]">
-                        <span class="text-jungle-gold group-hover:text-neo-black">04.</span>
-                        <span>🎒 RPG-ИНВЕНТАРЬ И ЭКИП</span>
-                    </span>
-                    <span class="text-xs opacity-70 group-hover:opacity-100">GO →</span>
-                </a>
-
-                <a href="#quests" class="retro-menu-item flex items-center justify-between bg-[#1f130c] hover:bg-jungle-gold hover:text-neo-black border-2 border-[#54331d] hover:border-neo-black p-2.5 transition-all group">
-                    <span class="flex items-center gap-2 font-pixel text-[10px]">
-                        <span class="text-jungle-gold group-hover:text-neo-black">05.</span>
-                        <span>⚔️ КВЕСТЫ ГИЛЬДИЙ & АРХИВ</span>
-                    </span>
-                    <span class="text-xs opacity-70 group-hover:opacity-100">GO →</span>
-                </a>
-
-                <a href="#faq" class="retro-menu-item flex items-center justify-between bg-[#1f130c] hover:bg-jungle-gold hover:text-neo-black border-2 border-[#54331d] hover:border-neo-black p-2.5 transition-all group">
-                    <span class="flex items-center gap-2 font-pixel text-[10px]">
-                        <span class="text-jungle-gold group-hover:text-neo-black">06.</span>
-                        <span>❓ ОРАКУЛ ВОПРОСОВ (FAQ)</span>
-                    </span>
-                    <span class="text-xs opacity-70 group-hover:opacity-100">GO →</span>
-                </a>
+                <!-- Блок оракула -->
+                <div id="prediction-box" class="w-full bg-jungle-emerald text-white p-3.5 border-2 border-neo-black shadow-retro-btn transition-all">
+                    <div class="flex items-center justify-between text-[11px] font-mono-code font-bold mb-1">
+                        <span id="prediction-badge" class="bg-white text-neo-black px-1.5 py-0.5 border border-neo-black uppercase">📜 ОРИГИНАЛЬНЫЙ ОРАКУЛ</span>
+                        <span id="prediction-score" class="font-extrabold">СУММА: 7</span>
+                    </div>
+                    <h3 id="prediction-title" class="font-extrabold text-sm uppercase leading-tight mb-1">
+                        🎲 ЗОЛОТАЯ СЕРЕДИНА // СУДЬБА (7)
+                    </h3>
+                    <p id="prediction-desc" class="text-xs font-mono-code leading-relaxed mb-1">
+                        Идеальный баланс! Ваша группа найдёт все тайные пасхалки на тропе, а справка-освобождение выпишется быстрее скорости света.
+                    </p>
+                    <div id="prediction-jumanji-quote" class="text-[10px] font-mono-code italic opacity-90">
+                        «Магическое число Зелёного. Джунгли приветствуют достойных!»
+                    </div>
+                </div>
 
             </div>
 
-            <div class="mt-4 pt-3 border-t-2 border-[#54331d] grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <a href="https://t.me/bioakdm" target="_blank" class="flex items-center justify-center gap-2 bg-[#229ED9] hover:bg-[#1a7eb0] text-white border-2 border-neo-black p-2.5 font-pixel text-[9px] sm:text-[10px] uppercase shadow-retro-btn transition-all">
-                    <span>📢</span>
-                    <span>ТЕЛЕГРАМ АКДМ</span>
-                </a>
+        </section>
+
+        <!-- МЕНЮ-ХАБ ОНЛАЙН БРОШЮРЫ -->
+        <div>
+            <div class="flex items-center justify-between mb-3">
+                <span class="font-pixel text-[11px] uppercase tracking-wider text-gray-700 dark:text-gray-300 flex items-center gap-1.5">
+                    <span>📖</span> РАЗДЕЛЫ БРОШЮРЫ (НАЖМИ ДЛЯ ПРОСМОТРА)
+                </span>
             </div>
 
-            <div class="mt-3 text-center font-pixel text-[8px] text-gray-400">
-                [ НАЖМИТЕ ESC ИЛИ КЛИКНИТЕ ВНЕ МЕНЮ ДЛЯ ВОЗВРАТА В ИГРУ ]
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                
+                <!-- ГЛАВА 1: МАРШРУТ (10 УРОВНЕЙ) -->
+                <button onclick="openModal('modal-route')" class="group text-left bg-white dark:bg-dark-card border-3 border-neo-black dark:border-gray-700 hover:border-jungle-emerald p-4 shadow-neo hover:translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-between">
+                    <div class="flex items-start gap-3">
+                        <span class="text-3xl group-hover:scale-110 transition-transform">🗺️</span>
+                        <div>
+                            <div class="text-[10px] font-pixel text-jungle-emerald">ГЛАВА 01</div>
+                            <h3 class="font-extrabold text-base uppercase dark:text-white leading-snug">Тропа: 10 Уровней</h3>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 font-mono-code">НАШ ПРЕДСЕДАТЕЛЬ ведёт на поляну</p>
+                        </div>
+                    </div>
+                    <span class="font-pixel text-xs bg-jungle-parchment dark:bg-dark-surface border border-neo-black px-2 py-1 group-hover:bg-jungle-emerald group-hover:text-white transition-colors">ОТКРЫТЬ →</span>
+                </button>
+
+                <!-- ГЛАВА 2: ИНВЕНТАРЬ (ИНТЕРАКТИВНЫЙ ЧЕКЛИСТ) -->
+                <button onclick="openModal('modal-inventory')" class="group text-left bg-white dark:bg-dark-card border-3 border-neo-black dark:border-gray-700 hover:border-jungle-gold p-4 shadow-neo hover:translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-between">
+                    <div class="flex items-start gap-3">
+                        <span class="text-3xl group-hover:scale-110 transition-transform">🎒</span>
+                        <div>
+                            <div class="text-[10px] font-pixel text-jungle-gold">ГЛАВА 02</div>
+                            <h3 class="font-extrabold text-base uppercase dark:text-white leading-snug">Рюкзак Приключенца</h3>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 font-mono-code">Интерактивный чек-лист снаряжения</p>
+                        </div>
+                    </div>
+                    <span class="font-pixel text-xs bg-jungle-parchment dark:bg-dark-surface border border-neo-black px-2 py-1 group-hover:bg-jungle-gold group-hover:text-neo-black transition-colors">ОТКРЫТЬ →</span>
+                </button>
+
+                <!-- ГЛАВА 3: ЛОР И КВЕСТЫ ГИЛЬДИЙ -->
+                <button onclick="openModal('modal-quests')" class="group text-left bg-white dark:bg-dark-card border-3 border-neo-black dark:border-gray-700 hover:border-jungle-amber p-4 shadow-neo hover:translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-between">
+                    <div class="flex items-start gap-3">
+                        <span class="text-3xl group-hover:scale-110 transition-transform">⚔️</span>
+                        <div>
+                            <div class="text-[10px] font-pixel text-jungle-amber">ГЛАВА 03</div>
+                            <h3 class="font-extrabold text-base uppercase dark:text-white leading-snug">Лор & «Удиви Меня»</h3>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 font-mono-code">4 квеста подготовки первокурсников</p>
+                        </div>
+                    </div>
+                    <span class="font-pixel text-xs bg-jungle-parchment dark:bg-dark-surface border border-neo-black px-2 py-1 group-hover:bg-jungle-amber group-hover:text-neo-black transition-colors">ОТКРЫТЬ →</span>
+                </button>
+
+                <!-- ГЛАВА 4: ЗАЛ СЛАВЫ 2025 -->
+                <button onclick="openModal('modal-hall')" class="group text-left bg-white dark:bg-dark-card border-3 border-neo-black dark:border-gray-700 hover:border-jungle-mystic p-4 shadow-neo hover:translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-between">
+                    <div class="flex items-start gap-3">
+                        <span class="text-3xl group-hover:scale-110 transition-transform">🏆</span>
+                        <div>
+                            <div class="text-[10px] font-pixel text-jungle-mystic dark:text-purple-400">ГЛАВА 04</div>
+                            <h3 class="font-extrabold text-base uppercase dark:text-white leading-snug">Зал Славы 2025</h3>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 font-mono-code">Победители и фотоархив выезда</p>
+                        </div>
+                    </div>
+                    <span class="font-pixel text-xs bg-jungle-parchment dark:bg-dark-surface border border-neo-black px-2 py-1 group-hover:bg-jungle-mystic group-hover:text-white transition-colors">ОТКРЫТЬ →</span>
+                </button>
+
+                <!-- ГЛАВА 5: FAQ -->
+                <button onclick="openModal('modal-faq')" class="group sm:col-span-2 text-left bg-white dark:bg-dark-card border-3 border-neo-black dark:border-gray-700 hover:border-jungle-crimson p-4 shadow-neo hover:translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-between">
+                    <div class="flex items-start gap-3">
+                        <span class="text-3xl group-hover:scale-110 transition-transform">❓</span>
+                        <div>
+                            <div class="text-[10px] font-pixel text-jungle-crimson">ГЛАВА 05</div>
+                            <h3 class="font-extrabold text-base uppercase dark:text-white leading-snug">Оракул Вопросов (FAQ)</h3>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 font-mono-code">Освобождения от пар, тайминг и что делать при опоздании</p>
+                        </div>
+                    </div>
+                    <span class="font-pixel text-xs bg-jungle-parchment dark:bg-dark-surface border border-neo-black px-2 py-1 group-hover:bg-jungle-crimson group-hover:text-white transition-colors">ОТКРЫТЬ →</span>
+                </button>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ================================================================= -->
+    <!-- МОДАЛЬНЫЕ РАЗВОРОТЫ БРОШЮРЫ -->
+    <!-- ================================================================= -->
+
+    <!-- МОДАЛКА 1: МАРШРУТ -->
+    <div id="modal-route" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs hidden items-center justify-center p-3 sm:p-4">
+        <div class="w-full max-w-2xl bg-white dark:bg-dark-card border-4 border-neo-black dark:border-jungle-gold shadow-neo-lg flex flex-col max-h-[92vh] animate-brochure">
+            
+            <div class="bg-jungle-wood text-white p-3 sm:p-4 border-b-3 border-neo-black flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="text-lg">🗺️</span>
+                    <span class="font-pixel text-[10px] sm:text-xs text-jungle-gold uppercase">Глава 01 // 10 Уровней Тропы</span>
+                </div>
+                <button onclick="closeModal('modal-route')" class="bg-jungle-crimson hover:bg-red-700 text-white font-pixel text-[10px] px-2.5 py-1 border border-white cursor-pointer">✕ ЗАКРЫТЬ</button>
+            </div>
+
+            <div class="p-4 sm:p-6 overflow-y-auto modal-scroll space-y-4">
+                
+                <div class="flex items-center justify-between text-xs font-mono-code font-bold">
+                    <span id="route-step-indicator" class="bg-neo-black text-white px-2.5 py-1">УРОВЕНЬ 1 ИЗ 10</span>
+                    <span id="route-step-tag" class="text-jungle-emerald font-extrabold uppercase">ТОЧКА ВЫСАДКИ</span>
+                </div>
+
+                <!-- Фото шага -->
+                <div class="aspect-[4/3] sm:aspect-video bg-gray-200 border-3 border-neo-black overflow-hidden relative shadow-neo-sm">
+                    <img id="route-img" src="./mar_1.jpg" alt="Маршрут уровень" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Текст шага -->
+                <div>
+                    <h3 id="route-title" class="text-lg sm:text-xl font-extrabold uppercase dark:text-white mb-1.5">
+                        1. Высадка и Пандус
+                    </h3>
+                    <p id="route-desc" class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
+                        Выходим из электрички на платформу. НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ торжественно указывает на пандус. Спускаемся и поворачиваем направо!
+                    </p>
+                </div>
+
+                <!-- Интерактивные номера 1-10 -->
+                <div class="flex flex-wrap justify-center gap-1.5 pt-2" id="route-dots">
+                    <!-- Заполняется JS -->
+                </div>
+
+            </div>
+
+            <!-- Нижняя панель навигации -->
+            <div class="bg-jungle-parchment dark:bg-dark-surface p-3 border-t-3 border-neo-black dark:border-gray-700 flex items-center justify-between gap-2 shrink-0">
+                <button id="route-prev-btn" class="bg-white dark:bg-dark-card border-2 border-neo-black px-3.5 py-2 font-mono-code font-bold text-xs uppercase shadow-retro-btn hover:bg-gray-100 disabled:opacity-40 cursor-pointer">
+                    ← Назад
+                </button>
+                <div class="flex items-center gap-2">
+                    <a href="https://t.me/bioakdm/36" target="_blank" class="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono-code font-bold text-blue-600 dark:text-blue-400 hover:underline">
+                        <span>🎬</span> Видео-гид
+                    </a>
+                    <a id="route-map-link" href="https://yandex.by/maps/-/CTC17I9G" target="_blank" class="bg-jungle-gold hover:bg-yellow-400 text-neo-black border-2 border-neo-black px-3 py-2 font-mono-code font-bold text-xs uppercase shadow-retro-btn">
+                        📍 Яндекс Карты
+                    </a>
+                </div>
+                <button id="route-next-btn" class="bg-jungle-emerald text-white border-2 border-neo-black px-3.5 py-2 font-mono-code font-bold text-xs uppercase shadow-retro-btn hover:bg-green-600 cursor-pointer">
+                    Вперёд →
+                </button>
             </div>
 
         </div>
     </div>
 
-    <!-- ГЛАВНЫЙ ЭКРАН -->
-    <section class="py-12 md:py-16 px-4 bg-topo-light relative">
-        <div class="max-w-6xl mx-auto">
-
-            <div class="bg-white dark:bg-dark-card dark:border-jungle-gold border-4 border-neo-black shadow-neo-lg dark:shadow-neo-dark p-6 sm:p-10 md:p-12 relative transition-all">
-
-                <div class="absolute -top-3.5 right-3 sm:right-6 bg-jungle-crimson text-white border-2 sm:border-3 border-neo-black px-2.5 sm:px-4 py-1 sm:py-1.5 font-pixel text-[8px] sm:text-[10px] md:text-xs rotate-2 shadow-neo-sm uppercase z-10">
-                    Ранг: LEVEL 01_ПЕРВАШ
+    <!-- МОДАЛКА 2: ИНВЕНТАРЬ (ИНТЕРАКТИВНЫЙ ЧЕК-ЛИСТ) -->
+    <div id="modal-inventory" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs hidden items-center justify-center p-3 sm:p-4">
+        <div class="w-full max-w-2xl bg-white dark:bg-dark-card border-4 border-neo-black dark:border-jungle-gold shadow-neo-lg flex flex-col max-h-[92vh] animate-brochure">
+            
+            <div class="bg-jungle-wood text-white p-3 sm:p-4 border-b-3 border-neo-black flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="text-lg">🎒</span>
+                    <span class="font-pixel text-[10px] sm:text-xs text-jungle-gold uppercase">Глава 02 // Интерактивный Чек-лист</span>
                 </div>
+                <button onclick="closeModal('modal-inventory')" class="bg-jungle-crimson hover:bg-red-700 text-white font-pixel text-[10px] px-2.5 py-1 border border-white cursor-pointer">✕ ЗАКРЫТЬ</button>
+            </div>
 
-                <div class="flex flex-wrap items-center gap-2 mb-6">
-                    <a href="https://t.me/bioakdm" target="_blank" class="bg-jungle-emerald hover:bg-green-600 text-white font-mono-code font-bold px-3 py-1 border-2 border-neo-black text-xs uppercase shadow-neo-sm transition-all inline-flex items-center gap-1.5">
-                        <span>🌿 СТУДОРГАНИЗАЦИЯ: АКДМ БИОФАКА</span>
-                        <span class="text-[10px]">↗</span>
-                    </a>
-                    <span class="bg-jungle-gold text-neo-black font-mono-code font-bold px-3 py-1 border-2 border-neo-black text-xs uppercase shadow-neo-sm">
-                        📍 ЛОКАЦИЯ: СТ. ЗЕЛЁНОЕ
-                    </span>
-                </div>
-
-                <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold uppercase tracking-tight leading-[0.95] mb-6 dark:text-white">
-                    Турслёт 2026: <br>
-                    <span class="bg-jungle-gold px-2.5 py-1 border-3 border-neo-black text-neo-black inline-block mt-2 shadow-neo-sm">
-                        Зов Джунглей
-                    </span>
-                </h1>
-
-                <p class="text-base sm:text-lg md:text-xl font-medium text-gray-800 dark:text-gray-200 max-w-3xl leading-relaxed mb-8">
-                    В коридорах факультета открылся древний картридж. Раздался таинственный зов — и весь биофак затянуло в неизведанную чащу станции «Зелёное». Тебе и твоей группе предстоит пройти пикеты старшекурсников, разгадать лесные шифры, выжить на тропе и завоевать <strong class="bg-jungle-gold text-neo-black px-1.5 border border-neo-black">священное освобождение от пар</strong>!
+            <div class="p-4 sm:p-6 overflow-y-auto modal-scroll space-y-4">
+                <p class="text-xs sm:text-sm font-mono-code text-gray-700 dark:text-gray-300">
+                    Отмечай собранные вещи прямо здесь — список сохранится в твоём браузере:
                 </p>
 
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                    <a href="#dice-portal" class="inline-flex items-center justify-center gap-2 bg-jungle-mystic text-white font-mono-code font-extrabold text-base md:text-lg px-8 py-4 border-4 border-neo-black shadow-neo hover:bg-jungle-amber hover:text-neo-black hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-center">
-                        <span>🎲</span>
-                        <span>БРОСИТЬ КУБИКИ СУДЬБЫ</span>
-                    </a>
-                    <a href="https://t.me/bioakdm" target="_blank" class="inline-flex items-center justify-center gap-2 bg-[#229ED9] hover:bg-[#1a7eb0] text-white font-mono-code font-extrabold text-base md:text-lg px-8 py-4 border-4 border-neo-black shadow-neo hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-center">
-                        <span>📢</span>
-                        <span>КАНАЛ АКДМ В TELEGRAM</span>
-                    </a>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono-code text-xs">
+                    <label class="flex items-center justify-between p-2.5 bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-700 cursor-pointer select-none">
+                        <span class="flex items-center gap-2">
+                            <input type="checkbox" data-item="1" class="loot-checkbox w-4 h-4 accent-jungle-emerald">
+                            <span>🧻 1. Влажные салфетки</span>
+                        </span>
+                        <span class="text-[9px] bg-gray-200 text-neo-black px-1 border border-neo-black font-bold">COMMON</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-2.5 bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-700 cursor-pointer select-none">
+                        <span class="flex items-center gap-2">
+                            <input type="checkbox" data-item="2" class="loot-checkbox w-4 h-4 accent-jungle-emerald">
+                            <span>🧥 2. Тёплое худи / куртка</span>
+                        </span>
+                        <span class="text-[9px] bg-jungle-emerald text-white px-1 border border-neo-black font-bold">RARE</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-2.5 bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-700 cursor-pointer select-none">
+                        <span class="flex items-center gap-2">
+                            <input type="checkbox" data-item="3" class="loot-checkbox w-4 h-4 accent-jungle-emerald">
+                            <span>🔋 3. Телефон + Powerbank</span>
+                        </span>
+                        <span class="text-[9px] bg-jungle-gold text-neo-black px-1 border border-neo-black font-bold">EPIC</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-2.5 bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-700 cursor-pointer select-none">
+                        <span class="flex items-center gap-2">
+                            <input type="checkbox" data-item="4" class="loot-checkbox w-4 h-4 accent-jungle-emerald">
+                            <span>🩹 4. Личная аптечка</span>
+                        </span>
+                        <span class="text-[9px] bg-jungle-emerald text-white px-1 border border-neo-black font-bold">RARE</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-2.5 bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-700 cursor-pointer select-none">
+                        <span class="flex items-center gap-2">
+                            <input type="checkbox" data-item="5" class="loot-checkbox w-4 h-4 accent-jungle-emerald">
+                            <span>🥪 5. Еда и бутерброды</span>
+                        </span>
+                        <span class="text-[9px] bg-jungle-gold text-neo-black px-1 border border-neo-black font-bold">EPIC</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-2.5 bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-700 cursor-pointer select-none">
+                        <span class="flex items-center gap-2">
+                            <input type="checkbox" data-item="6" class="loot-checkbox w-4 h-4 accent-jungle-emerald">
+                            <span>💵 6. Наличные на билет</span>
+                        </span>
+                        <span class="text-[9px] bg-gray-200 text-neo-black px-1 border border-neo-black font-bold">COMMON</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-2.5 bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-700 cursor-pointer select-none">
+                        <span class="flex items-center gap-2">
+                            <input type="checkbox" data-item="7" class="loot-checkbox w-4 h-4 accent-jungle-emerald">
+                            <span>☕ 7. Термос с чаем</span>
+                        </span>
+                        <span class="text-[9px] bg-jungle-gold text-neo-black px-1 border border-neo-black font-bold">EPIC</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-2.5 bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-700 cursor-pointer select-none">
+                        <span class="flex items-center gap-2">
+                            <input type="checkbox" data-item="8" class="loot-checkbox w-4 h-4 accent-jungle-emerald">
+                            <span>🌧️ 8. Дождевик</span>
+                        </span>
+                        <span class="text-[9px] bg-jungle-crimson text-white px-1 border border-neo-black font-bold">LEGENDARY</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-2.5 bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-700 cursor-pointer select-none sm:col-span-2">
+                        <span class="flex items-center gap-2">
+                            <input type="checkbox" data-item="9" class="loot-checkbox w-4 h-4 accent-jungle-emerald">
+                            <span>🦟 9. Репеллент от клещей</span>
+                        </span>
+                        <span class="text-[9px] bg-jungle-emerald text-white px-1 border border-neo-black font-bold">RARE</span>
+                    </label>
                 </div>
 
-                <div class="mt-10 pt-6 border-t-3 border-neo-black dark:border-gray-700 grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono-code text-xs">
-                    <div class="bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-600 p-2.5 shadow-neo-sm">
-                        <div class="text-gray-500 dark:text-gray-400 font-bold">ДИСТАНЦИЯ</div>
-                        <div class="font-extrabold text-sm text-jungle-emerald">~2.5 КМ ЧАЩИ</div>
+                <details class="bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-700 p-2.5">
+                    <summary class="font-mono-code font-bold text-xs cursor-pointer select-none text-jungle-emerald flex items-center justify-between">
+                        <span>🖼️ Показать графическую инфографику экипа</span>
+                        <span>▼</span>
+                    </summary>
+                    <div class="mt-3 border-2 border-neo-black overflow-hidden">
+                        <img src="./invent.jpg" alt="Инвентарь турслёта" class="w-full h-auto object-contain">
                     </div>
-                    <div class="bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-600 p-2.5 shadow-neo-sm">
-                        <div class="text-gray-500 dark:text-gray-400 font-bold">ОПАСНОСТЬ</div>
-                        <div class="font-extrabold text-sm text-jungle-crimson">10/10</div>
-                    </div>
-                    <div class="bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-600 p-2.5 shadow-neo-sm">
-                        <div class="text-gray-500 dark:text-gray-400 font-bold">ГЛАВНЫЙ ЛУТ</div>
-                        <div class="font-extrabold text-sm text-jungle-mystic dark:text-purple-400">ОСВОБОЖДЕНИЕ</div>
-                    </div>
-                    <div class="bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-600 p-2.5 shadow-neo-sm">
-                        <div class="text-gray-500 dark:text-gray-400 font-bold">ОРГАНИЗАТОР</div>
-                        <div class="font-extrabold text-sm text-neo-black dark:text-white">АКДМ</div>
-                    </div>
-                </div>
-
+                </details>
             </div>
 
         </div>
-    </section>
+    </div>
 
-    <!-- БЛОК 01 -->
-    <section id="dice-portal" class="py-16 px-4 bg-jungle-night text-white border-y-4 border-neo-black relative">
-        <div class="max-w-4xl mx-auto">
+    <!-- МОДАЛКА 3: ЛОР И 4 КВЕСТА ПОДГОТОВКИ -->
+    <div id="modal-quests" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs hidden items-center justify-center p-3 sm:p-4">
+        <div class="w-full max-w-2xl bg-white dark:bg-dark-card border-4 border-neo-black dark:border-jungle-gold shadow-neo-lg flex flex-col max-h-[92vh] animate-brochure">
             
-            <div class="text-center mb-10">
-                <div class="inline-flex items-center gap-2 bg-jungle-gold text-neo-black border-3 border-white px-4 py-1.5 font-pixel text-xs uppercase shadow-neo-sm mb-4">
-                    <span>⚡</span>
-                    <span>ИНТЕРАКТИВНЫЙ ОРАКУЛ</span>
+            <div class="bg-jungle-wood text-white p-3 sm:p-4 border-b-3 border-neo-black flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="text-lg">⚔️</span>
+                    <span class="font-pixel text-[10px] sm:text-xs text-jungle-amber uppercase">Глава 03 // Лор & 4 Квеста</span>
                 </div>
-                <h2 class="text-3xl sm:text-5xl font-extrabold uppercase text-white tracking-tight">
-                    Войти в Игру: Бросок Костей
-                </h2>
-                <p class="font-mono-code text-jungle-parchment text-sm mt-3 max-w-xl mx-auto opacity-90">
-                    Брось парные кости d6 перед выходом на тропу. Древние духи леса Зелёного рассчитают твои шансы и дадут персональное пророчество!
-                </p>
+                <button onclick="closeModal('modal-quests')" class="bg-jungle-crimson hover:bg-red-700 text-white font-pixel text-[10px] px-2.5 py-1 border border-white cursor-pointer">✕ ЗАКРЙТЬ</button>
             </div>
 
-            <div class="bg-game-board border-4 border-neo-black p-6 sm:p-10 shadow-neo-lg rounded-none relative">
-                
-                <div class="flex justify-center items-center gap-6 sm:gap-12 my-6">
-
-                    <div id="die-1" class="w-24 h-24 sm:w-28 sm:h-28 bg-jungle-parchment border-4 border-neo-black shadow-neo rounded-2xl flex items-center justify-center p-3 select-none transition-all">
-                        <div id="die-1-face" class="grid grid-cols-3 grid-rows-3 w-full h-full gap-1 items-center justify-items-center">
-
-                        </div>
-                    </div>
-
-                    <div class="font-pixel text-2xl sm:text-4xl text-jungle-gold drop-shadow-md">+</div>
-
-                    <!-- Die 2 -->
-                    <div id="die-2" class="w-24 h-24 sm:w-28 sm:h-28 bg-jungle-parchment border-4 border-neo-black shadow-neo rounded-2xl flex items-center justify-center p-3 select-none transition-all">
-                        <div id="die-2-face" class="grid grid-cols-3 grid-rows-3 w-full h-full gap-1 items-center justify-items-center">
-
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="text-center mt-8">
-                    <button id="roll-btn" class="bg-jungle-gold hover:bg-jungle-emerald hover:text-white text-neo-black font-pixel text-xs sm:text-sm px-8 py-5 border-4 border-neo-black shadow-neo active:translate-x-1 active:translate-y-1 active:shadow-none transition-all uppercase inline-flex items-center gap-3 cursor-pointer">
-                        <span>🎲</span>
-                        <span id="btn-text">БРОСИТЬ КУБИКИ СУДЬБЫ</span>
-                    </button>
-                </div>
-
-                <div class="mt-4 text-center font-mono-code text-xs text-emerald-300">
-                    [ Шкала исхода: 2 = Крах в болоте | 3-4 = Опасно | 5-9 = Удача | 10-12 = Легендарный Триумф ]
-                </div>
-
-            </div>
-
-            <div id="prediction-box" class="mt-8 border-4 border-neo-black p-6 sm:p-8 bg-jungle-gold text-neo-black shadow-neo-lg transition-all">
-                <div class="flex flex-wrap items-center justify-between border-b-2 border-neo-black pb-3 mb-4 font-mono-code gap-2">
-                    <span class="font-bold text-xs bg-white text-neo-black px-3 py-1 border-2 border-neo-black uppercase" id="prediction-badge">📜 СВИТОК ОРАКУЛА</span>
-                    <span class="font-extrabold text-sm bg-neo-black text-white px-3 py-1" id="prediction-score">СУММА ВЫПАДЕНИЯ: 7</span>
-                </div>
-
-                <h3 id="prediction-title" class="text-xl sm:text-3xl font-extrabold uppercase mb-3 leading-tight">
-                    🌿 ЗОВ ПРИКЛЮЧЕНИЙ: ДУХИ ЛЕСА БЛАГОСКЛОННЫ!
-                </h3>
-                
-                <p id="prediction-desc" class="font-mono-code text-sm sm:text-base leading-relaxed mb-4">
-                    Твоя тропа будет сухой, на пикетах менторы оценят харизму твоей группы, а чай в термосе сохранит идеальную температуру. Смело шагай в чащу Зелёного!
-                </p>
-
-                <div id="prediction-jumanji-quote" class="pt-3 border-t-2 border-neo-black font-mono-code text-xs sm:text-sm italic opacity-90">
-                    «Когда кости коснулись мха, игра открыла свои тайны...»
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- БЛОК 02 -->
-    <section id="lore" class="py-16 px-4 bg-topo-light border-b-4 border-neo-black">
-        <div class="max-w-6xl mx-auto">
-            
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
-                <div>
-                    <div class="inline-block bg-jungle-amber text-neo-black font-pixel text-xs px-3 py-1 border-2 border-neo-black mb-3 shadow-neo-sm">
-                        02_КОДЕКС ПРИКЛЮЧЕНИЯ
-                    </div>
-                    <h2 class="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight dark:text-white">
-                        Лор Турслёта & С Чем Его Едят
-                    </h2>
-                </div>
-                <p class="font-mono-code text-xs sm:text-sm text-gray-700 dark:text-gray-300 max-w-md">
-                    // С древнейших времён каждый биолог БГУ проходит этот обряд посвящения в лесах станции «Зелёное».
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono-code">
-                
-                <div class="bg-white dark:bg-dark-card border-4 border-neo-black dark:border-gray-700 p-6 shadow-neo flex flex-col justify-between relative overflow-hidden">
-                    <div class="absolute -top-10 -right-10 text-8xl opacity-10 select-none">🌲</div>
-                    <div>
-                        <div class="bg-jungle-emerald text-white px-3 py-1 border-2 border-neo-black text-xs font-bold inline-block mb-4 shadow-neo-sm">
-                            ЭТАП 01 // ИНИЦИАЦИЯ
-                        </div>
-                        <h3 class="font-extrabold text-xl uppercase mb-3 font-sans dark:text-white">Что Это Вообще Такое?</h3>
-                        <p class="text-xs sm:text-sm text-gray-800 dark:text-gray-300 leading-relaxed font-sans font-medium">
-                            Турслёт первокурсников — это главный тимбилдинг осени от студенческой организации <strong>«Академический Маяк» (АКДМ)</strong>. Здесь вчерашние абитуриенты превращаются в сплочённые команды, учатся понимать друг друга без слов и открывают для себя настоящий драйв студенчества биофака.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t-2 border-neo-black dark:border-gray-700 text-xs font-bold text-jungle-emerald flex items-center gap-1">
-                        <span>✓</span> <span>СТАТУС: ОБЯЗАТЕЛЬНО К ПОСЕЩЕНИЮ</span>
-                    </div>
-                </div>
-
-                <div class="bg-white dark:bg-dark-card border-4 border-neo-black dark:border-gray-700 p-6 shadow-neo flex flex-col justify-between relative overflow-hidden">
-                    <div class="absolute -top-10 -right-10 text-8xl opacity-10 select-none">🎭</div>
-                    <div>
-                        <div class="bg-jungle-gold text-neo-black px-3 py-1 border-2 border-neo-black text-xs font-bold inline-block mb-4 shadow-neo-sm">
-                            ЭТАП 02 // ИСПЫТАНИЯ
-                        </div>
-                        <h3 class="font-extrabold text-xl uppercase mb-3 font-sans dark:text-white">Пикеты и Хранители</h3>
-                        <p class="text-xs sm:text-sm text-gray-800 dark:text-gray-300 leading-relaxed font-sans font-medium">
-                            На лесной тропе спрятаны <strong>пикеты</strong> — станции старшекурсников в колоритных тематических образах. Каждая точка готовит для вас биологические загадки, проверки на слаженность, викторины, забавные челленджи и оценку боевого духа вашей группы.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t-2 border-neo-black dark:border-gray-700 text-xs font-bold text-jungle-amber flex items-center gap-1">
-                        <span>⚡</span> <span>УРОВЕНЬ: МАКСИМУМ АНТУРАЖА</span>
-                    </div>
-                </div>
-
-                <div class="bg-white dark:bg-dark-card border-4 border-neo-black dark:border-gray-700 p-6 shadow-neo flex flex-col justify-between relative overflow-hidden">
-                    <div class="absolute -top-10 -right-10 text-8xl opacity-10 select-none">🏆</div>
-                    <div>
-                        <div class="bg-jungle-crimson text-white px-3 py-1 border-2 border-neo-black text-xs font-bold inline-block mb-4 shadow-neo-sm">
-                            ЭТАП 03 // ТРИУМФ
-                        </div>
-                        <h3 class="font-extrabold text-xl uppercase mb-3 font-sans dark:text-white">Поляна и Награды</h3>
-                        <p class="text-xs sm:text-sm text-gray-800 dark:text-gray-300 leading-relaxed font-sans font-medium">
-                            Тропа завершается на <strong>Главной Поляне</strong>. Здесь разворачивается большой лагерь, звучат песни под гитару, раздаются призы победителям и вручаются памятные сертификаты. А главное — студенты получают <em class="bg-jungle-gold text-neo-black px-1 font-bold">официальное освобождение от пар</em>!
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t-2 border-neo-black dark:border-gray-700 text-xs font-bold text-jungle-crimson flex items-center gap-1">
-                        <span>★</span> <span>ТРОФЕЙ: СВЯЩЕННАЯ СПРАВКА</span>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-    <!-- БЛОК 03 -->
-    <section id="route" class="py-16 bg-white dark:bg-dark-surface border-b-4 border-neo-black px-4">
-        <div class="max-w-7xl mx-auto">
-            
-            <div class="mb-12 text-center">
-                <span class="bg-jungle-gold border-2 border-neo-black px-4 py-1.5 font-pixel text-xs uppercase shadow-neo-sm inline-block text-neo-black">
-                    03_КАРТА ПРИКЛЮЧЕНИЯ
-                </span>
-                <h2 class="text-3xl sm:text-5xl font-extrabold uppercase mt-4 dark:text-white">
-                    7 Уровней Лесной Тропы (ст. Зелёное)
-                </h2>
-                <p class="font-mono-code text-gray-700 dark:text-gray-300 text-sm mt-2 max-w-xl mx-auto">
-                    Следуйте фото-ориентирам по контрольным точкам, чтобы не сбиться с курса и благополучно дойти до Поляны
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                <div class="bg-jungle-parchment dark:bg-dark-card border-4 border-neo-black dark:border-gray-700 shadow-neo p-4 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-center mb-3">
-                            <span class="bg-neo-black text-white font-mono-code font-bold px-2 py-0.5 text-xs">LEVEL 01</span>
-                            <span class="text-xs font-mono-code font-bold text-jungle-emerald">ТОЧКА ВЫСАДКИ</span>
-                        </div>
-                        <div class="aspect-video bg-gray-200 border-2 border-neo-black overflow-hidden mb-3">
-                            <img src="./mar_1.jpg" alt="Выход из поезда станция Зеленое" class="w-full h-full object-cover">
-                        </div>
-                        <h3 class="font-extrabold text-lg mb-1.5 dark:text-white">1. Прибытие на ст. Зелёное</h3>
-                        <p class="text-xs text-gray-700 dark:text-gray-300 font-medium">Выходим из электрички на платформу. Спускаемся по пандусу и поворачиваем направо, ориентируясь на менторов АКДМ.</p>
-                    </div>
-                </div>
-
-                <div class="bg-jungle-parchment dark:bg-dark-card border-4 border-neo-black dark:border-gray-700 shadow-neo p-4 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-center mb-3">
-                            <span class="bg-neo-black text-white font-mono-code font-bold px-2 py-0.5 text-xs">LEVEL 02</span>
-                            <span class="text-xs font-mono-code font-bold text-jungle-emerald">ВДОЛЬ ПУТЕЙ</span>
-                        </div>
-                        <div class="aspect-video bg-gray-200 border-2 border-neo-black overflow-hidden mb-3">
-                            <img src="./mar_2.jpg" alt="Путь вдоль жд путей" class="w-full h-full object-cover">
-                        </div>
-                        <h3 class="font-extrabold text-lg mb-1.5 dark:text-white">2. Тропа вдоль путей</h3>
-                        <p class="text-xs text-gray-700 dark:text-gray-300 font-medium">Двигаемся стройной колонной по натоптанной тропе параллельно железной дороге.</p>
-                    </div>
-                </div>
-
-                <div class="bg-jungle-parchment dark:bg-dark-card border-4 border-neo-black dark:border-gray-700 shadow-neo p-4 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-center mb-3">
-                            <span class="bg-neo-black text-white font-mono-code font-bold px-2 py-0.5 text-xs">LEVEL 03</span>
-                            <span class="text-xs font-mono-code font-bold text-jungle-amber">ПОВОРОТ В ЧАЩУ</span>
-                        </div>
-                        <div class="aspect-video bg-gray-200 border-2 border-neo-black overflow-hidden mb-3">
-                            <img src="./mar_3.jpg" alt="Поворот с дороги в лес" class="w-full h-full object-cover">
-                        </div>
-                        <h3 class="font-extrabold text-lg mb-1.5 dark:text-white">3. Съезд с асфальта</h3>
-                        <p class="text-xs text-gray-700 dark:text-gray-300 font-medium">Возле опушки лесного массива сворачиваем с асфальтированной дороги направо на грунтовую тропинку.</p>
-                    </div>
-                </div>
-
-                <div class="bg-jungle-parchment dark:bg-dark-card border-4 border-neo-black dark:border-gray-700 shadow-neo p-4 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-center mb-3">
-                            <span class="bg-neo-black text-white font-mono-code font-bold px-2 py-0.5 text-xs">LEVEL 04</span>
-                            <span class="text-xs font-mono-code font-bold text-jungle-crimson">РАЗВИЛКА СУДЬБЫ</span>
-                        </div>
-                        <div class="aspect-video bg-gray-200 border-2 border-neo-black overflow-hidden mb-3">
-                            <img src="./mar_4.jpg" alt="Развилка в лесу" class="w-full h-full object-cover">
-                        </div>
-                        <h3 class="font-extrabold text-lg mb-1.5 dark:text-white">4. Лесная развилка</h3>
-                        <p class="text-xs text-gray-700 dark:text-gray-300 font-medium">Внимание! На развилке в хвойном лесу держимся <strong>ЛЕВОЙ</strong> тропы, как показывает ментор на фотографии.</p>
-                    </div>
-                </div>
-
-                <div class="bg-jungle-parchment dark:bg-dark-card border-4 border-neo-black dark:border-gray-700 shadow-neo p-4 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-center mb-3">
-                            <span class="bg-neo-black text-white font-mono-code font-bold px-2 py-0.5 text-xs">LEVEL 05</span>
-                            <span class="text-xs font-mono-code font-bold text-jungle-emerald">ПЕСЧАНЫЙ ТРАКТ</span>
-                        </div>
-                        <div class="aspect-video bg-gray-200 border-2 border-neo-black overflow-hidden mb-3">
-                            <img src="./mar_5.jpg" alt="Песчаная дорога возле заборов" class="w-full h-full object-cover">
-                        </div>
-                        <h3 class="font-extrabold text-lg mb-1.5 dark:text-white">5. Дачная просека</h3>
-                        <p class="text-xs text-gray-700 dark:text-gray-300 font-medium">Шагаем прямо по песчаной дороге вдоль забора и линии электропередач.</p>
-                    </div>
-                </div>
-
-                <div class="bg-jungle-parchment dark:bg-dark-card border-4 border-neo-black dark:border-gray-700 shadow-neo p-4 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-center mb-3">
-                            <span class="bg-neo-black text-white font-mono-code font-bold px-2 py-0.5 text-xs">LEVEL 06</span>
-                            <span class="text-xs font-mono-code font-bold text-jungle-amber">ВХОД В ЕЛЬНИК</span>
-                        </div>
-                        <div class="aspect-video bg-gray-200 border-2 border-neo-black overflow-hidden mb-3">
-                            <img src="./mar_6.jpg" alt="Вход в густой лес" class="w-full h-full object-cover">
-                        </div>
-                        <h3 class="font-extrabold text-lg mb-1.5 dark:text-white">6. Финишный коридор</h3>
-                        <p class="text-xs text-gray-700 dark:text-gray-300 font-medium">Заходим в густой еловый лес. Финишная прямая — осталось буквально 200 метров до лагеря!</p>
-                    </div>
-                </div>
-
-                <div class="bg-jungle-gold border-4 border-neo-black shadow-neo p-5 md:col-span-2 lg:col-span-3 text-neo-black">
-                    <div class="flex flex-col md:flex-row gap-6 items-center">
-                        <div class="w-full md:w-1/2 aspect-video bg-gray-200 border-3 border-neo-black overflow-hidden shadow-neo-sm">
-                            <img src="./mar_7.jpg" alt="Финишная поляна турслёта" class="w-full h-full object-cover">
-                        </div>
-                        <div class="w-full md:w-1/2">
-                            <div class="bg-jungle-crimson text-white font-mono-code font-bold px-3 py-1 text-xs inline-block mb-3 uppercase">
-                                ФИНИШНАЯ ЛОКАЦИЯ 🏁
-                            </div>
-                            <h3 class="font-extrabold text-2xl sm:text-3xl uppercase mb-2">7. Главная Поляна Сбора!</h3>
-                            <p class="text-sm text-gray-900 leading-relaxed font-medium mb-4">
-                                Поздравляем, уровень пройден! Здесь проходит презентация групп, финальные пикеты, песни у костра и торжественное награждение.
-                            </p>
-                            <a href="https://yandex.by/maps/-/CTC17I9G" target="_blank" class="inline-flex items-center gap-2 bg-white text-neo-black font-mono-code font-extrabold px-5 py-3 border-3 border-neo-black shadow-neo-sm hover:bg-jungle-deep hover:text-white transition-all uppercase text-sm">
-                                <span>📍</span>
-                                <span>ОТКРЫТЬ ТОЧКУ В ЯНДЕКС КАРТАХ</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="mt-10 text-center">
-                <a href="https://t.me/bioakdm/36" target="_blank" class="inline-flex items-center gap-3 bg-jungle-amber text-neo-black font-mono-code font-extrabold text-base md:text-lg px-8 py-4 border-4 border-neo-black shadow-neo hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase">
-                    <span>🎬</span>
-                    <span>СМОТРЕТЬ ВИДЕО-ГАЙД МАРШРУТА В TELEGRAM</span>
-                    <span>→</span>
-                </a>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- БЛОК 04 -->
-    <section id="inventory" class="py-16 px-4 bg-topo-light border-b-4 border-neo-black">
-        <div class="max-w-5xl mx-auto bg-white dark:bg-dark-card dark:border-gray-700 border-4 border-neo-black shadow-neo-lg p-6 sm:p-10 transition-all">
-            
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 border-b-3 border-neo-black dark:border-gray-700 pb-4">
-                <div>
-                    <span class="bg-jungle-emerald text-white font-mono-code px-3 py-1 border-2 border-neo-black text-xs uppercase font-bold">
-                        04_СНАРЯЖЕНИЕ ИСПЫТАТЕЛЯ
-                    </span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold uppercase mt-2 dark:text-white">Рюкзак Выживания: Что Взять?</h2>
-                </div>
-                <div class="font-pixel text-[11px] bg-jungle-gold text-neo-black border-2 border-neo-black p-2 font-bold uppercase self-start sm:self-auto">
-                    🎒 ЛУТ-ЛИСТ
-                </div>
-            </div>
-
-            <div class="bg-jungle-parchment dark:bg-dark-surface border-4 border-neo-black dark:border-gray-600 p-3 mb-6 shadow-neo">
-                <div class="border-2 border-neo-black overflow-hidden bg-white">
-                    <img src="./invent.jpg" alt="Что взять с собой на турслёт БГУ Биофак" class="w-full h-auto object-contain mx-auto">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 font-mono-code text-xs">
-                <div class="bg-jungle-parchment dark:bg-dark-surface dark:text-gray-200 border-2 border-neo-black dark:border-gray-600 p-3 shadow-neo-sm flex items-center justify-between">
-                    <span>🧻 1. Влажные салфетки</span>
-                    <span class="text-[10px] bg-gray-200 text-neo-black px-1.5 py-0.5 border border-neo-black font-bold">COMMON</span>
-                </div>
-                <div class="bg-jungle-parchment dark:bg-dark-surface dark:text-gray-200 border-2 border-neo-black dark:border-gray-600 p-3 shadow-neo-sm flex items-center justify-between">
-                    <span>🧥 2. Тёплое худи / куртка</span>
-                    <span class="text-[10px] bg-jungle-emerald text-white px-1.5 py-0.5 border border-neo-black font-bold">RARE</span>
-                </div>
-                <div class="bg-jungle-parchment dark:bg-dark-surface dark:text-gray-200 border-2 border-neo-black dark:border-gray-600 p-3 shadow-neo-sm flex items-center justify-between">
-                    <span>🔋 3. Телефон + Powerbank</span>
-                    <span class="text-[10px] bg-jungle-gold text-neo-black px-1.5 py-0.5 border border-neo-black font-bold">EPIC</span>
-                </div>
-                <div class="bg-jungle-parchment dark:bg-dark-surface dark:text-gray-200 border-2 border-neo-black dark:border-gray-600 p-3 shadow-neo-sm flex items-center justify-between">
-                    <span>🩹 4. Личная аптечка</span>
-                    <span class="text-[10px] bg-jungle-emerald text-white px-1.5 py-0.5 border border-neo-black font-bold">RARE</span>
-                </div>
-                <div class="bg-jungle-parchment dark:bg-dark-surface dark:text-gray-200 border-2 border-neo-black dark:border-gray-600 p-3 shadow-neo-sm flex items-center justify-between">
-                    <span>🥪 5. Еда и бутерброды</span>
-                    <span class="text-[10px] bg-jungle-gold text-neo-black px-1.5 py-0.5 border border-neo-black font-bold">EPIC</span>
-                </div>
-                <div class="bg-jungle-parchment dark:bg-dark-surface dark:text-gray-200 border-2 border-neo-black dark:border-gray-600 p-3 shadow-neo-sm flex items-center justify-between">
-                    <span>💵 6. Наличные на билет</span>
-                    <span class="text-[10px] bg-gray-200 text-neo-black px-1.5 py-0.5 border border-neo-black font-bold">COMMON</span>
-                </div>
-                <div class="bg-jungle-parchment dark:bg-dark-surface dark:text-gray-200 border-2 border-neo-black dark:border-gray-600 p-3 shadow-neo-sm flex items-center justify-between">
-                    <span>☕ 7. Термос с горячим чаем</span>
-                    <span class="text-[10px] bg-jungle-gold text-neo-black px-1.5 py-0.5 border border-neo-black font-bold">EPIC</span>
-                </div>
-                <div class="bg-jungle-parchment dark:bg-dark-surface dark:text-gray-200 border-2 border-neo-black dark:border-gray-600 p-3 shadow-neo-sm flex items-center justify-between">
-                    <span>🌧️ 8. Дождевик</span>
-                    <span class="text-[10px] bg-jungle-crimson text-white px-1.5 py-0.5 border border-neo-black font-bold">LEGENDARY</span>
-                </div>
-                <div class="bg-jungle-parchment dark:bg-dark-surface dark:text-gray-200 border-2 border-neo-black dark:border-gray-600 p-3 shadow-neo-sm flex items-center justify-between">
-                    <span>🦟 9. Репеллент от клещей</span>
-                    <span class="text-[10px] bg-jungle-emerald text-white px-1.5 py-0.5 border border-neo-black font-bold">RARE</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- БЛОК 05 -->
-    <section id="quests" class="py-16 bg-white dark:bg-dark-surface border-b-4 border-neo-black px-4">
-        <div class="max-w-6xl mx-auto">
-            
-            <div class="bg-jungle-amber border-4 border-neo-black p-6 sm:p-8 shadow-neo-lg mb-12 text-neo-black">
-                <div class="flex items-center gap-3 mb-4">
-                    <span class="text-3xl">⚔️</span>
-                    <h2 class="text-2xl sm:text-4xl font-extrabold uppercase">Квесты Подготовки для Групп</h2>
-                </div>
-                <p class="font-mono-code text-sm mb-6 font-medium">
-                    Каждая группа первокурсников — самостоятельный отряд исследователей. До выхода на тропу подготовьте 4 ключевых задания:
-                </p>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono-code">
-                    <div class="bg-white border-3 border-neo-black p-4 shadow-neo-sm text-neo-black">
-                        <div class="bg-neo-black text-white px-2 py-1 text-xs font-bold inline-block mb-2">КВЕСТ 01</div>
-                        <h3 class="font-extrabold text-base uppercase">Концепт и Стиль Команды</h3>
-                        <p class="text-xs text-gray-700 mt-1">Единый визуальный образ, атрибутика, маски или раскрас гильдии.</p>
-                    </div>
-
-                    <div class="bg-white border-3 border-neo-black p-4 shadow-neo-sm text-neo-black">
-                        <div class="bg-neo-black text-white px-2 py-1 text-xs font-bold inline-block mb-2">КВЕСТ 02</div>
-                        <h3 class="font-extrabold text-base uppercase">Название и Боевой Клич</h3>
-                        <p class="text-xs text-gray-700 mt-1">Оригинальное имя команды и громкая кричалка для запугивания духов леса.</p>
-                    </div>
-
-                    <div class="bg-white border-3 border-neo-black p-4 shadow-neo-sm text-neo-black">
-                        <div class="bg-neo-black text-white px-2 py-1 text-xs font-bold inline-block mb-2">КВЕСТ 03</div>
-                        <h3 class="font-extrabold text-base uppercase">Дипломатия и Союзы</h3>
-                        <p class="text-xs text-gray-700 mt-1">Приветствия и совместные активности с соседями по тропе.</p>
-                    </div>
-
-                    <div class="bg-white border-3 border-neo-black p-4 shadow-neo-sm text-neo-black">
-                        <div class="bg-neo-black text-white px-2 py-1 text-xs font-bold inline-block mb-2">КВЕСТ 04</div>
-                        <h3 class="font-extrabold text-base uppercase">Фишка «Удиви Ментора»</h3>
-                        <p class="text-xs text-gray-700 mt-1">Интерактивный сюрприз, мем или творческая заготовка для пикетов!</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-6">
-                <span class="bg-jungle-mystic text-white border-2 border-neo-black px-3 py-1 font-pixel text-xs uppercase shadow-neo-sm inline-block">
-                    ХРОНИКИ ЭКСПЕДИЦИЙ
-                </span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold uppercase mt-3 dark:text-white">Зал Славы Прошлых Выездов</h2>
-            </div>
-
-            <!-- АРХИВ 2025 -->
-            <details class="group border-4 border-neo-black dark:border-gray-700 bg-white dark:bg-dark-card shadow-neo mb-6 overflow-hidden" open>
-                <summary class="flex justify-between items-center p-4 sm:p-6 bg-jungle-gold border-b-0 group-open:border-b-4 border-neo-black font-mono-code font-extrabold text-base sm:text-xl cursor-pointer select-none text-neo-black">
-                    <span class="flex items-center gap-2">
-                        <span>🏆</span>
-                        <span>ТУРТРОПА 2025 — ИТОГИ И НАГРАЖДЕНИЕ</span>
-                    </span>
-                    <span class="text-2xl transition-transform group-open:rotate-180">▼</span>
-                </summary>
-                
-                <div class="p-4 sm:p-6 bg-jungle-parchment dark:bg-dark-card font-mono-code">
-                    <p class="text-sm mb-6 dark:text-gray-300">
-                        20 сентября прошла легендарная ТурТропа! Команды показали высочайший уровень антуража и сплочённости.
+            <div class="p-4 sm:p-6 overflow-y-auto modal-scroll space-y-5">
+                <div class="bg-jungle-parchment dark:bg-dark-surface p-4 border-2 border-neo-black dark:border-gray-700">
+                    <h3 class="font-extrabold text-base uppercase dark:text-white mb-2 font-mono-code">🌿 Что такое Турслёт Биофака?</h3>
+                    <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                        Это главный тимбилдинг осени от студенческой организации <strong>«Академический Маяк» (АКДМ)</strong>. Здесь вчерашние абитуриенты превращаются в сплочённые команды, проходят пикеты старшекурсников в колоритных образах и завершают день испытанием на Главной Поляне.
                     </p>
+                </div>
 
-                    <div class="mb-6">
-                        <h4 class="font-extrabold text-base uppercase mb-3 text-jungle-emerald">🥇 Пьедестал ТурТропы 2025:</h4>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <div class="bg-white dark:bg-dark-surface border-2 border-neo-black dark:border-gray-600 p-3 shadow-neo-sm dark:text-white">
-                                <span class="text-lg">🥇 1 МЕСТО</span> — <strong class="text-jungle-emerald">50 Группа</strong>
-                            </div>
-                            <div class="bg-white dark:bg-dark-surface border-2 border-neo-black dark:border-gray-600 p-3 shadow-neo-sm dark:text-white">
-                                <span class="text-lg">🥈 2 МЕСТО</span> — <strong>61 Группа</strong>
-                            </div>
-                            <div class="bg-white dark:bg-dark-surface border-2 border-neo-black dark:border-gray-600 p-3 shadow-neo-sm dark:text-white">
-                                <span class="text-lg">🥉 3 МЕСТО</span> — <strong>48 Группа</strong>
-                            </div>
+                <div>
+                    <h4 class="font-pixel text-xs text-neo-black dark:text-white uppercase mb-3">🎯 4 Квеста Подготовки для Группы:</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 font-mono-code text-xs">
+                        <div class="bg-white dark:bg-dark-surface border-2 border-neo-black p-3 shadow-neo-sm">
+                            <span class="bg-neo-black text-white px-1.5 py-0.5 text-[10px] font-bold">КВЕСТ 01</span>
+                            <div class="font-extrabold uppercase mt-1">Концепт и Стиль</div>
+                            <p class="text-gray-600 dark:text-gray-400 text-[11px] mt-0.5">Единый визуальный образ, атрибутика, маски или раскрас гильдии.</p>
+                        </div>
+                        <div class="bg-white dark:bg-dark-surface border-2 border-neo-black p-3 shadow-neo-sm">
+                            <span class="bg-neo-black text-white px-1.5 py-0.5 text-[10px] font-bold">КВЕСТ 02</span>
+                            <div class="font-extrabold uppercase mt-1">Название и Клич</div>
+                            <p class="text-gray-600 dark:text-gray-400 text-[11px] mt-0.5">Оригинальное имя команды и громкая кричалка для духов леса.</p>
+                        </div>
+                        <div class="bg-white dark:bg-dark-surface border-2 border-neo-black p-3 shadow-neo-sm">
+                            <span class="bg-neo-black text-white px-1.5 py-0.5 text-[10px] font-bold">КВЕСТ 03</span>
+                            <div class="font-extrabold uppercase mt-1">Дипломатия</div>
+                            <p class="text-gray-600 dark:text-gray-400 text-[11px] mt-0.5">Приветствия и совместные активности с соседями по тропе.</p>
+                        </div>
+                        <div class="bg-white dark:bg-dark-surface border-2 border-neo-black p-3 shadow-neo-sm border-l-4 border-l-jungle-gold">
+                            <span class="bg-jungle-gold text-neo-black px-1.5 py-0.5 text-[10px] font-extrabold">КВЕСТ 04</span>
+                            <div class="font-extrabold uppercase mt-1 text-jungle-gold">Удиви Меня</div>
+                            <p class="text-gray-600 dark:text-gray-400 text-[11px] mt-0.5">Интерактивный сюрприз, мем, сценка, что вы показываете пикетчикам!</p>
                         </div>
                     </div>
-
-                    <div class="mt-8 border-t-2 border-neo-black dark:border-gray-700 pt-6">
-                        <h4 class="font-extrabold text-base uppercase mb-4 flex items-center gap-2 dark:text-white">
-                            <span>📸</span>
-                            <span>ФОТОАРХИВ ГЕРОЕВ:</span>
-                        </h4>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                            <div class="bg-white dark:bg-dark-surface border-3 border-neo-black dark:border-gray-600 p-2 shadow-neo-sm flex flex-col justify-between">
-                                <div class="aspect-[3/4] overflow-hidden border-2 border-neo-black mb-2 bg-gray-200">
-                                    <img src="./tr_2025_poster.jpg" alt="Афиша ТурТропа 2025" class="w-full h-full object-cover">
-                                </div>
-                                <div class="text-xs font-extrabold text-center bg-jungle-gold text-neo-black border border-neo-black py-1">
-                                    🎨 Постер 2025
-                                </div>
-                            </div>
-
-                            <div class="bg-white dark:bg-dark-surface border-3 border-neo-black dark:border-gray-600 p-2 shadow-neo-sm flex flex-col justify-between">
-                                <div class="aspect-[3/4] overflow-hidden border-2 border-neo-black mb-2 bg-gray-200">
-                                    <img src="./tr_2025_1st.jpg" alt="1 место ТурТропа 2025 - 50 группа" class="w-full h-full object-cover">
-                                </div>
-                                <div class="text-xs font-extrabold text-center bg-jungle-gold border border-neo-black py-1 text-jungle-emerald">
-                                    🥇 1 место — 50 Группа
-                                </div>
-                            </div>
-
-                            <div class="bg-white dark:bg-dark-surface border-3 border-neo-black dark:border-gray-600 p-2 shadow-neo-sm flex flex-col justify-between">
-                                <div class="aspect-[3/4] overflow-hidden border-2 border-neo-black mb-2 bg-gray-200">
-                                    <img src="./tr_2025_2nd.jpg" alt="2 место ТурТропа 2025 - 61 группа" class="w-full h-full object-cover">
-                                </div>
-                                <div class="text-xs font-extrabold text-center bg-jungle-gold text-neo-black border border-neo-black py-1">
-                                    🥈 2 место — 61 Группа
-                                </div>
-                            </div>
-
-                            <div class="bg-white dark:bg-dark-surface border-3 border-neo-black dark:border-gray-600 p-2 shadow-neo-sm flex flex-col justify-between">
-                                <div class="aspect-[3/4] overflow-hidden border-2 border-neo-black mb-2 bg-gray-200">
-                                    <img src="./tr_2025_3rd.jpg" alt="3 место ТурТропа 2025 - 48 группа" class="w-full h-full object-cover">
-                                </div>
-                                <div class="text-xs font-extrabold text-center bg-jungle-gold text-neo-black border border-neo-black py-1">
-                                    🥉 3 место — 48 Группа
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </details>
-
-        </div>
-    </section>
-
-    <!-- БЛОК 06 -->
-    <section id="faq" class="py-16 bg-topo-light px-4">
-        <div class="max-w-4xl mx-auto">
-            
-            <div class="text-center mb-10">
-                <span class="bg-jungle-gold border-2 border-neo-black px-4 py-1 font-pixel text-xs uppercase shadow-neo-sm inline-block text-neo-black">
-                    06_ОРАКУЛ ВОПРОСОВ
-                </span>
-                <h2 class="text-3xl sm:text-5xl font-extrabold uppercase mt-3 dark:text-white">Часто Задаваемые Вопросы</h2>
-            </div>
-            
-            <div class="space-y-4 font-mono-code">
-                <div class="bg-white dark:bg-dark-card border-4 border-neo-black dark:border-gray-700 p-5 shadow-neo">
-                    <h3 class="font-extrabold text-base sm:text-lg mb-2 text-jungle-emerald">❓ Как получить официальное освобождение от пар?</h3>
-                    <p class="text-xs sm:text-sm leading-relaxed text-gray-800 dark:text-gray-300">Освобождения предоставляются после игры <strong>ТОЛЬКО</strong> для тех студентов, чьё присутствие на поляне подтвердит ментор группы в конце испытаний.</p>
-                </div>
-
-                <div class="bg-white dark:bg-dark-card border-4 border-neo-black dark:border-gray-700 p-5 shadow-neo">
-                    <h3 class="font-extrabold text-base sm:text-lg mb-2 text-jungle-mystic dark:text-purple-400">❓ Сколько по времени длится экспедиция?</h3>
-                    <p class="text-xs sm:text-sm leading-relaxed text-gray-800 dark:text-gray-300">Турслёт занимает несколько часов: общий сбор, переход по маршруту, прохождение пикетов, конкурсы на поляне и подведение итогов.</p>
-                </div>
-
-                <div class="bg-white dark:bg-dark-card border-4 border-neo-black dark:border-gray-700 p-5 shadow-neo">
-                    <h3 class="font-extrabold text-base sm:text-lg mb-2 text-jungle-amber">❓ Что делать, если опоздал на общую электричку?</h3>
-                    <p class="text-xs sm:text-sm leading-relaxed text-gray-800 dark:text-gray-300">Без паники! Открывай раздел №03 «Карта приключения» на этом сайте и следуй по фото-ориентирам со ст. Зелёное прямо к лагерю. Менторы всегда на связи в чатах.</p>
                 </div>
             </div>
 
         </div>
-    </section>
+    </div>
 
-    <!-- ФУТЕР -->
-    <footer class="bg-neo-black text-white py-12 border-t-4 border-neo-black dark:border-gray-700 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 text-center font-mono-code text-xs sm:text-sm">
-            <div class="font-pixel text-jungle-gold text-sm sm:text-base mb-4 tracking-wider">
-                ★ JUMANJI BIOFAC 2026 // LEVEL COMPLETED ★
+    <!-- МОДАЛКА 4: ЗАЛ СЛАВЫ 2025 -->
+    <div id="modal-hall" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs hidden items-center justify-center p-3 sm:p-4">
+        <div class="w-full max-w-2xl bg-white dark:bg-dark-card border-4 border-neo-black dark:border-jungle-gold shadow-neo-lg flex flex-col max-h-[92vh] animate-brochure">
+            
+            <div class="bg-jungle-wood text-white p-3 sm:p-4 border-b-3 border-neo-black flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="text-lg">🏆</span>
+                    <span class="font-pixel text-[10px] sm:text-xs text-jungle-mystic dark:text-purple-400 uppercase">Глава 04 // Зал Славы 2025</span>
+                </div>
+                <button onclick="closeModal('modal-hall')" class="bg-jungle-crimson hover:bg-red-700 text-white font-pixel text-[10px] px-2.5 py-1 border border-white cursor-pointer">✕ ЗАКРЫТЬ</button>
             </div>
-            <p class="mb-2">© 2026 ТУРСЛЁТ БИОФАКА БГУ | АКАДЕМИЧЕСКИЙ МАЯК (АКДМ)</p>
-            <div class="flex justify-center items-center gap-4 my-4">
-                <a href="https://t.me/bioakdm" target="_blank" class="text-jungle-gold hover:underline font-bold">📢 Telegram АКДМ</a>
+
+            <div class="p-4 sm:p-6 overflow-y-auto modal-scroll space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 font-mono-code text-xs text-center">
+                    <div class="bg-jungle-gold border-2 border-neo-black p-2 font-bold text-neo-black">
+                        🥇 1 МЕСТО<br><span class="text-sm font-extrabold">50 Группа</span>
+                    </div>
+                    <div class="bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-700 p-2 font-bold dark:text-white">
+                        🥈 2 МЕСТО<br><span class="text-sm font-extrabold">61 Группа</span>
+                    </div>
+                    <div class="bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-700 p-2 font-bold dark:text-white">
+                        🥉 3 МЕСТО<br><span class="text-sm font-extrabold">48 Группа</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2">
+                    <div class="border-2 border-neo-black bg-gray-100 overflow-hidden aspect-[3/4]">
+                        <img src="./tr_2025_poster.jpg" alt="Постер 2025" class="w-full h-full object-cover">
+                    </div>
+                    <div class="border-2 border-neo-black bg-gray-100 overflow-hidden aspect-[3/4]">
+                        <img src="./tr_2025_1st.jpg" alt="1 место 50 группа" class="w-full h-full object-cover">
+                    </div>
+                    <div class="border-2 border-neo-black bg-gray-100 overflow-hidden aspect-[3/4]">
+                        <img src="./tr_2025_2nd.jpg" alt="2 место 61 группа" class="w-full h-full object-cover">
+                    </div>
+                    <div class="border-2 border-neo-black bg-gray-100 overflow-hidden aspect-[3/4]">
+                        <img src="./tr_2025_3rd.jpg" alt="3 место 48 группа" class="w-full h-full object-cover">
+                    </div>
+                </div>
             </div>
-            <p class="text-gray-400 max-w-lg mx-auto text-xs">
-                Игра завершится лишь тогда, когда последний первокурсник доберётся до финишной поляны и получит своё освобождение.
+
+        </div>
+    </div>
+
+    <!-- МОДАЛКА 5: FAQ -->
+    <div id="modal-faq" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs hidden items-center justify-center p-3 sm:p-4">
+        <div class="w-full max-w-2xl bg-white dark:bg-dark-card border-4 border-neo-black dark:border-jungle-gold shadow-neo-lg flex flex-col max-h-[92vh] animate-brochure">
+            
+            <div class="bg-jungle-wood text-white p-3 sm:p-4 border-b-3 border-neo-black flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="text-lg">❓</span>
+                    <span class="font-pixel text-[10px] sm:text-xs text-jungle-crimson uppercase">Глава 05 // Оракул Вопросов</span>
+                </div>
+                <button onclick="closeModal('modal-faq')" class="bg-jungle-crimson hover:bg-red-700 text-white font-pixel text-[10px] px-2.5 py-1 border border-white cursor-pointer">✕ ЗАКРЫТЬ</button>
+            </div>
+
+            <div class="p-4 sm:p-6 overflow-y-auto modal-scroll space-y-3 font-mono-code">
+                <div class="bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-700 p-3.5">
+                    <h3 class="font-extrabold text-xs sm:text-sm text-jungle-emerald mb-1">
+                        ❓ Как получить официальное освобождение от пар?
+                    </h3>
+                    <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+                        Освобождения предоставляются после игры <strong>ТОЛЬКО</strong> для тех студентов, чьё присутствие на поляне подтвердит НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ и менторы группы в конце испытаний.
+                    </p>
+                </div>
+
+                <div class="bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-700 p-3.5">
+                    <h3 class="font-extrabold text-xs sm:text-sm text-jungle-mystic dark:text-purple-400 mb-1">
+                        ❓ Сколько по времени длится экспедиция?
+                    </h3>
+                    <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+                        Турслёт занимает несколько часов: общий сбор, переход по 10 уровням маршрута, прохождение пикетов, конкурсы на поляне и награждение.
+                    </p>
+                </div>
+
+                <div class="bg-jungle-parchment dark:bg-dark-surface border-2 border-neo-black dark:border-gray-700 p-3.5">
+                    <h3 class="font-extrabold text-xs sm:text-sm text-jungle-amber mb-1">
+                        ❓ Что делать, если опоздал на общую электричку?
+                    </h3>
+                    <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+                        Без паники! Открывай Главу №01 «Тропа: 10 Уровней» в этой брошюре и следуй за НАШИМ ЛЮБИМЫМ И ЕДИНСТВЕННЫМ ПРЕДСЕДАТЕЛЕМ со ст. Зелёное прямо к лагерю.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- ФУТЕР (С ПРАВИЛОМ ПОСЛЕДНЕГО ПЕРВОКУРСНИКА ДЖУМАНДЖИ) -->
+    <!-- ================================================================= -->
+    <footer class="bg-neo-black text-white py-6 border-t-3 border-neo-black dark:border-gray-700 mt-auto">
+        <div class="max-w-4xl mx-auto px-4 text-center font-mono-code text-xs space-y-2">
+            <div class="font-pixel text-jungle-gold text-xs">★ JUMANJI BIOFAC 2026 ★</div>
+            
+            <!-- Восстановленное культовое правило Джуманджи -->
+            <p class="text-jungle-amber font-extrabold text-xs sm:text-sm max-w-xl mx-auto border-2 border-jungle-amber/40 bg-[#161208] p-2.5 shadow-retro-btn">
+                ⚡ «Игра завершится лишь тогда, когда ПОСЛЕДНИЙ ПЕРВОКУРСНИК дойдёт до финиша и коснётся травы Главной Поляны!»
             </p>
+
+            <p class="text-gray-400 text-[11px] pt-1">© 2026 ТУРСЛЁТ БИОФАКА БГУ | АКАДЕМИЧЕСКИЙ МАЯК (АКДМ)</p>
+            <a href="https://t.me/bioakdm" target="_blank" class="text-jungle-gold hover:underline font-bold inline-flex items-center gap-1">
+                <span>📢</span> Официальный Telegram-канал АКДМ
+            </a>
         </div>
     </footer>
 
+    <!-- ================================================================= -->
+    <!-- СКРИПТЫ: 10 ШАГОВ МАРШРУТА + ОРИГИНАЛЬНЫЕ КУБИКИ + ЧЕК-ЛИСТ -->
+    <!-- ================================================================= -->
     <script>
-        // ----------------------------------------------------
-        // 1. УПРАВЛЕНИЕ ТЕМОЙ (ДЕНЬ / НОЧЬ)
-        // ----------------------------------------------------
+        // 1. ТЕМА
         const themeBtn = document.getElementById('theme-toggle-btn');
         const themeIcon = document.getElementById('theme-icon');
-        const themeLabel = document.getElementById('theme-label');
 
         function updateThemeUI() {
             const isDark = document.documentElement.classList.contains('dark');
-            if (isDark) {
-                themeIcon.textContent = '☀️';
-                themeLabel.textContent = 'ТЕМА: ДЕНЬ';
-                themeBtn.classList.replace('border-jungle-gold', 'border-yellow-400');
-            } else {
-                themeIcon.textContent = '🌙';
-                themeLabel.textContent = 'ТЕМА: НОЧЬ';
-                themeBtn.classList.replace('border-yellow-400', 'border-jungle-gold');
-            }
+            themeIcon.textContent = isDark ? '☀️' : '🌙';
         }
-
         updateThemeUI();
 
         themeBtn.addEventListener('click', () => {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            }
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
             updateThemeUI();
         });
 
-        // ----------------------------------------------------
-        // 2. РЕТРО МОДАЛЬНОЕ МЕНЮ 
-        // ----------------------------------------------------
-        const menuToggleBtn = document.getElementById('retro-menu-toggle-btn');
-        const modalOverlay = document.getElementById('retro-modal-overlay');
-        const modalCloseBtn = document.getElementById('retro-modal-close-btn');
-        const menuItems = document.querySelectorAll('.retro-menu-item');
-
-        function openMenu() {
-            modalOverlay.classList.remove('hidden');
-            modalOverlay.classList.add('flex');
+        // 2. МОДАЛКИ
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeMenu() {
-            modalOverlay.classList.add('hidden');
-            modalOverlay.classList.remove('flex');
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
             document.body.style.overflow = '';
         }
 
-        menuToggleBtn.addEventListener('click', openMenu);
-        modalCloseBtn.addEventListener('click', closeMenu);
-
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) {
-                closeMenu();
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('fixed') && e.target.classList.contains('inset-0')) {
+                closeModal(e.target.id);
             }
         });
 
         window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !modalOverlay.classList.contains('hidden')) {
-                closeMenu();
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.fixed.inset-0:not(.hidden)').forEach(modal => {
+                    closeModal(modal.id);
+                });
             }
         });
 
-        menuItems.forEach(item => {
-            item.addEventListener('click', () => {
-                closeMenu();
+        // 3. МАРШРУТ (10 ШАГОВ СИНХРОНИЗИРОВАННЫХ С ИМЕНАМИ mar_1..mar_10)
+        const routeSteps = [
+            {
+                tag: "УРОВЕНЬ 1 // СТАНЦИЯ ЗЕЛЁНОЕ",
+                img: "./mar_1.jpg",
+                title: "1. Высадка и Пандус",
+                desc: "Выходим из электрички на платформу. НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ торжественно указывает на пандус. Спускаемся и поворачиваем направо!"
+            },
+            {
+                tag: "УРОВЕНЬ 2 // СТАРТ МАРША",
+                img: "./mar_2.jpg",
+                title: "2. Тропа вдоль рельсов",
+                desc: "Двигаемся колонной по натоптанной тропе в высокой траве параллельно путям. НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ задаёт бодрый темп и напоминает пить воду!"
+            },
+            {
+                tag: "УРОВЕНЬ 3 // Ж/Д НАСЫПЬ",
+                img: "./mar_3.jpg",
+                title: "3. Вдоль железной дороги",
+                desc: "Продолжаем уверенный марш вдоль контактной сети. НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ жестом подтверждает верность курса — рельсы остаются справа."
+            },
+            {
+                tag: "УРОВЕНЬ 4 // ПЕСЧАНЫЙ ТРАКТ",
+                img: "./mar_4.jpg",
+                title: "4. Тракт вдоль ЛЭП",
+                desc: "Шагаем прямо по песчаной колее вдоль деревянных столбов. НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ демонстрирует несгибаемый бицепс победы биофака!"
+            },
+            {
+                tag: "УРОВЕНЬ 5 // ВЫХОД НА АСФАЛЬТ",
+                img: "./mar_5.jpg",
+                title: "5. Асфальтовый переход",
+                desc: "Выходим на асфальтовую дорогу. НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ бутылкой указывает вектор движения строго прямо к лесной опушке."
+            },
+            {
+                tag: "УРОВЕНЬ 6 // СЪЕЗД В ЧАЩУ",
+                img: "./mar_6.jpg",
+                title: "6. Поворот на грунтовку",
+                desc: "Внимание: развилка у опушки! НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ перекрывает неверный путь и направляет колонну по синей стрелке направо в лес."
+            },
+            {
+                tag: "УРОВЕНЬ 7 // ХВОЙНЫЙ ПЕРЕКРЁСТОК",
+                img: "./mar_7.jpg",
+                title: "7. Еловая развилка",
+                desc: "Входим в густой хвойный лес. НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ и проводники синхронно показывают: идём строго прямо в чащу!"
+            },
+            {
+                tag: "УРОВЕНЬ 8 // ЛЕСНАЯ РАЗВИЛКА",
+                img: "./mar_8.jpg",
+                title: "8. Развилка с кустом",
+                desc: "Развилка троп посреди леса. НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ и проводники держат ориентир: идём по стрелке прямо по левой колее."
+            },
+            {
+                tag: "УРОВЕНЬ 9 // ХОЛМИСТЫЙ ВИРАЖ",
+                img: "./mar_9.jpg",
+                title: "9. Поворот налево на холме",
+                desc: "Выходим к сосновой просеке. НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ указывает крутой вираж налево через травянистый склон в сторону лагеря!"
+            },
+            {
+                tag: "УРОВЕНЬ 10 // ТРИУМФ 🏁",
+                img: "./mar_10.jpg",
+                title: "10. Главная Поляна Сбора!",
+                desc: "ФИНИШ! НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ встречает героев в сиянии звёзд. Вы дошли до лагеря и готовы зажигать!"
+            }
+        ];
+
+        let currentStep = 0;
+        const stepInd = document.getElementById('route-step-indicator');
+        const stepTag = document.getElementById('route-step-tag');
+        const stepImg = document.getElementById('route-img');
+        const stepTitle = document.getElementById('route-title');
+        const stepDesc = document.getElementById('route-desc');
+        const prevBtn = document.getElementById('route-prev-btn');
+        const nextBtn = document.getElementById('route-next-btn');
+        const dotsContainer = document.getElementById('route-dots');
+
+        function renderRouteDots() {
+            dotsContainer.innerHTML = '';
+            routeSteps.forEach((_, idx) => {
+                const dot = document.createElement('button');
+                dot.className = `px-2 py-0.5 text-[10px] font-mono-code font-bold border border-neo-black cursor-pointer transition-all ${idx === currentStep ? 'bg-jungle-gold text-neo-black scale-110 shadow-retro-btn' : 'bg-gray-200 text-gray-700 dark:bg-dark-surface dark:text-gray-300'}`;
+                dot.textContent = idx + 1;
+                dot.onclick = () => { currentStep = idx; updateRouteUI(); };
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function updateRouteUI() {
+            const step = routeSteps[currentStep];
+            stepInd.textContent = `УРОВЕНЬ ${currentStep + 1} ИЗ ${routeSteps.length}`;
+            stepTag.textContent = step.tag;
+            stepImg.src = step.img;
+            stepTitle.textContent = step.title;
+            stepDesc.textContent = step.desc;
+
+            prevBtn.disabled = currentStep === 0;
+            nextBtn.textContent = currentStep === routeSteps.length - 1 ? 'ФИНИШ 🏁' : 'Вперёд →';
+            renderRouteDots();
+        }
+
+        prevBtn.onclick = () => { if (currentStep > 0) { currentStep--; updateRouteUI(); } };
+        nextBtn.onclick = () => { if (currentStep < routeSteps.length - 1) { currentStep++; updateRouteUI(); } };
+        updateRouteUI();
+
+        // 4. ЧЕК-ЛИСТ
+        const savedLoot = JSON.parse(localStorage.getItem('bioLoot') || '{}');
+        document.querySelectorAll('.loot-checkbox').forEach(cb => {
+            const itemId = cb.dataset.item;
+            if (savedLoot[itemId]) cb.checked = true;
+
+            cb.addEventListener('change', () => {
+                savedLoot[itemId] = cb.checked;
+                localStorage.setItem('bioLoot', JSON.stringify(savedLoot));
             });
         });
 
-        // ----------------------------------------------------
-        // 3. ЛОГИКА ИГРАЛЬНЫХ КОСТЕЙ & ПРЕДСКАЗАНИЙ
-        // ----------------------------------------------------
-        const die1El = document.getElementById('die-1');
-        const die2El = document.getElementById('die-2');
+        // 5. КУБИКИ И ОРИГИНАЛЬНЫЕ ПРЕДСКАЗАНИЯ
         const die1Face = document.getElementById('die-1-face');
         const die2Face = document.getElementById('die-2-face');
+        const die1El = document.getElementById('die-1');
+        const die2El = document.getElementById('die-2');
         const rollBtn = document.getElementById('roll-btn');
         const btnText = document.getElementById('btn-text');
 
@@ -1108,13 +901,13 @@
             6: [1, 3, 4, 6, 7, 9]
         };
 
-        function renderDieFace(container, value) {
+        function renderDie(container, value) {
             container.innerHTML = '';
-            const activePips = pipPatterns[value] || [5];
+            const active = pipPatterns[value] || [5];
             for (let i = 1; i <= 9; i++) {
                 const cell = document.createElement('div');
                 cell.className = 'w-full h-full flex items-center justify-center';
-                if (activePips.includes(i)) {
+                if (active.includes(i)) {
                     const pip = document.createElement('span');
                     pip.className = 'dice-pip';
                     cell.appendChild(pip);
@@ -1123,138 +916,114 @@
             }
         }
 
-        const oracleOutcomes = {
+        const outcomes = {
             2: {
                 title: "💀 КРИТИЧЕСКИЙ ПРОВАЛ // (2)",
-                desc: "Опасность! В чаще пробудился дух незачёта по ботанике. Ваши бутерброды могут промокнуть, а чайник забудут в электричке. Спастись можно, только если обнять ближайшую ель и трижды прокричать девиз группы!",
+                desc: "Опасность! В чаще пробудился дух незачёта по ботанике. Спастись можно, только если обнять ель и трижды прокричать девиз группы!",
                 quote: "«Не смотри в чащу долго, иначе чаща спросит Цикл Кребса...»",
-                bg: "bg-jungle-crimson text-white",
-                scoreText: "СУММА: 2 [ КРИТИЧЕСКИЙ ПРОВАЛ ]"
+                bg: "bg-jungle-crimson text-white"
             },
             3: {
-                title: "🌧️ ТРЕВОЖНЫЙ ТУМАН В ЛЕСУ (3)",
-                desc: "Вроде норм, но держитесь ближе к старшекурам. Лесные комары захотят списать вашу лабораторную, а кроссовки проверят минскую грязь на прочность.",
+                title: "🌧️ ЗАСАДА В КУСТАХ // (3)",
+                desc: "Держитесь ближе к НАШЕМУ ЛЮБИМОМУ ПРЕДСЕДАТЕЛЮ! Лесные комары захотят списать лабу, а обувь проверит минскую грязь",
                 quote: "«Один неверный шаг на развилке — и ты поёшь гимн биофака на чужом пикете»",
-                bg: "bg-jungle-amber text-neo-black",
-                scoreText: "СУММА: 3 [ ЗОНА РИСКА ]"
+                bg: "bg-jungle-amber text-neo-black"
             },
             4: {
-                title: "⚠️ ЛЕСНОЙ ЛАБИРИНТ (4)",
-                desc: "День пройдёт терпимо, если не забудешь дождевик. Кто-то из группы уронит печеньку во мох, но менторы проявят снисхождение за хорошую песню.",
+                title: "⚠️ ГРЯЗЕВОЙ КАПКАН // (4)",
+                desc: "День пройдёт терпимо, если не забыть дождевик. За хорошую песню менторы обязательно проявят снисхождение",
                 quote: "«Шорох в ветвях шепчет: запасись сухими носками и салфетками»",
-                bg: "bg-jungle-gold text-neo-black",
-                scoreText: "СУММА: 4 [ ТЕРПИМО ]"
+                bg: "bg-jungle-gold text-neo-black"
             },
             5: {
-                title: "🌿 ДУХИ ЛЕСА БЛАГОСКЛОННЫ (5)",
-                desc: "Хороший жребий! Тропа будет чистой, ветки не хлещут по лицу, а на первом же пикете ваша группа наберёт уверенные победные баллы.",
+                title: "🌿 СПОКОЙНЫЙ ТЕМП // (5)",
+                desc: "Хороший жребий! Тропа будет чистой, ветки не хлещут по лицу, а на первом же пикете группа наберёт уверенные баллы",
                 quote: "«Лес раскрывает свои объятия тем, кто пришёл с горячим чаем»",
-                bg: "bg-jungle-gold text-neo-black",
-                scoreText: "СУММА: 5 [ УДАЧНО ]"
+                bg: "bg-jungle-gold text-neo-black"
             },
             6: {
-                title: "✨ ТРОПА ГЕРОЕВ (6)",
-                desc: "Лесные духи на вашей стороне! Менторы пикетов услышат ваш клич издалека, а в лагере вас угостят самым сочным маршмеллоу.",
+                title: "🧭 ЛЕСНОЙ КОМПАС // (6)",
+                desc: "Лесные духи на вашей стороне! Менторы услышат ваш клич издалека, а в лагере вас угостят (возможно)",
                 quote: "«Каждый шаг приближает к легенде. Ты на верном пути»",
-                bg: "bg-jungle-emerald text-white",
-                scoreText: "СУММА: 6 [ ХОРОШО ]"
+                bg: "bg-jungle-emerald text-white"
             },
             7: {
-                title: "🎲 ВЕЛИКОЛЕПНАЯ СЕМЁРКА (7)",
-                desc: "Идеальный баланс! Ваша группа найдёт все тайные пасхалки на тропе, а справка-освобождение выпишется быстрее скорости света.",
+                title: "🎲 ЗОЛОТАЯ СЕРЕДИНА // СУДЬБА (7)",
+                desc: "Идеальный баланс! Ваша группа найдёт все тайные пасхалки на тропе, а справка-освобождение выпишется быстрее скорости света",
                 quote: "«Магическое число Зелёного. Джунгли приветствуют достойных!»",
-                bg: "bg-jungle-emerald text-white",
-                scoreText: "СУММА: 7 [ ОТЛИЧНО ]"
+                bg: "bg-jungle-emerald text-white"
             },
             8: {
-                title: "🔥 ОГНЕННЫЙ ЗАПАЛ (8)",
-                desc: "Высокая энергия! Ваши кричалки разорвут тишину леса, а соперники на пикетах будут аплодировать вашей слаженности. День запомнится на все 5 лет!",
+                title: "🔥 ВТОРОЕ ДЫХАНИЕ // (8)",
+                desc: "Высокая энергия! Ваши кричалки разорвут тишину леса, а соперники на пикетах будут аплодировать вашей слаженности",
                 quote: "«Энергия бьёт в унисон с твоим пульсом. Вперёд!»",
-                bg: "bg-jungle-emerald text-white",
-                scoreText: "СУММА: 8 [ ОЧЕНЬ ХОРОШО ]"
+                bg: "bg-jungle-emerald text-white"
             },
             9: {
-                title: "🦊 ПОКРОВИТЕЛЬСТВО ХИТРОГО ЛИСА (9)",
-                desc: "Любые каверзные загадки старшекуров будут щелкаться как орешки. Ваша группа пройдёт испытания на максимальной скорости и стиле.",
-                quote: "«Хитрость и биологический ум побеждают любые препятствия»",
-                bg: "bg-jungle-mystic text-white",
-                scoreText: "СУММА: 9 [ ВЕЛИКОЛЕПНО ]"
+                title: "🦊 БОНУС МЕНТОРА // (9)",
+                desc: "Любые каверзные загадки старшекуров будут щелкаться как орешки. Ваша группа пройдёт испытания на максимальном стиле",
+                quote: "«Хитрость и биологический ум пораждают хайп»",
+                bg: "bg-jungle-mystic text-white"
             },
             10: {
-                title: "👑 ДЖУМАНДЖИ-ТРИУМФ // ВЫСШИЙ РАНГ (10)",
-                desc: "Вспышка золотого света! Вы обречены на триумф. Ваша группа заберёт призовые кубки, шашлык сам прыгнет в тарелку, а декан лично похвалит за антураж!",
+                title: "👑 БЕРСЕРК БИОФАКА // (10)",
+                desc: "Вспышка золотого света! Ваша группа заберёт призовые кубки, а НАШ ЛЮБИМЫЙ ПРЕДСЕДАТЕЛЬ лично похвалит за антураж!",
                 quote: "«Джунгли склоняются перед будущими светилами науки!»",
-                bg: "bg-jungle-gold text-neo-black ring-4 ring-jungle-amber",
-                scoreText: "СУММА: 10 [ БОЖЕСТВЕННО ]"
+                bg: "bg-jungle-gold text-neo-black ring-3 ring-jungle-amber"
             },
             11: {
-                title: "⚡ АБСОЛЮТНОЕ БЛАГОСЛОВЕНИЕ (11)",
-                desc: "Колоссальная фортуна! Все испытания будут пройдены с первого раза без штрафов, погода будет идеальной, а фото с поляны взорвут соцсети.",
+                title: "⚡ КРИТИЧЕСКИЙ УСПЕХ // (11)",
+                desc: "Колоссальная фортуна! Все испытания будут пройдены с первого раза без штрафов, а фото взорвут соцсети",
                 quote: "«Ты чувствуешь эту силу? Это мощь первокурсника на кураже!»",
-                bg: "bg-jungle-gold text-neo-black ring-4 ring-jungle-emerald",
-                scoreText: "СУММА: 11 [ ДЖЕКПОТ ]"
+                bg: "bg-jungle-gold text-neo-black ring-3 ring-jungle-emerald"
             },
             12: {
-                title: "🌟 ЛЕГЕНДА БИОФАКА // СВЯЩЕННЫЙ ДУБЛЬ 6:6 (12)",
-                desc: "МАКСИМАЛЬНЫЙ БРОСОК! Вы взломали эту реальность. Все пикеты сдаются без боя, кубок победителей уже гравируется под вашу группу, а хорошее настроение становиться вечным!",
+                title: "🌟 ДЖУМАНДЖИ-АБСОЛЮТ // ЛЕГЕНДА АКДМ (12)",
+                desc: "МАКСИМАЛЬНЫЙ БРОСОК! Все пикеты сдаются без боя, кубок уже гравируется под вашу группу!",
                 quote: "«ДЖУМАНДЖИ! ИГРА ПРИЗНАЁТ ТВОЁ АБСОЛЮТНОЕ ВЕЛИЧИЕ!»",
-                bg: "bg-jungle-gold text-neo-black ring-4 ring-jungle-crimson",
-                scoreText: "СУММА: 12 [ КРИТИЧЕСКИЙ ТРИУМФ 6:6 ]"
+                bg: "bg-jungle-gold text-neo-black ring-3 ring-jungle-crimson"
             }
         };
 
-        renderDieFace(die1Face, 3);
-        renderDieFace(die2Face, 4);
+        renderDie(die1Face, 3);
+        renderDie(die2Face, 4);
 
         let isRolling = false;
-
         rollBtn.addEventListener('click', () => {
             if (isRolling) return;
             isRolling = true;
 
-            btnText.textContent = "КОСТИ КАТЯТСЯ ПО МХУ...";
+            btnText.textContent = "КОСТИ КАТЯТСЯ...";
             die1El.classList.add('dice-animating');
             die2El.classList.add('dice-animating');
 
             let counter = 0;
             const interval = setInterval(() => {
-                const temp1 = Math.floor(Math.random() * 6) + 1;
-                const temp2 = Math.floor(Math.random() * 6) + 1;
-                renderDieFace(die1Face, temp1);
-                renderDieFace(die2Face, temp2);
-
+                renderDie(die1Face, Math.floor(Math.random() * 6) + 1);
+                renderDie(die2Face, Math.floor(Math.random() * 6) + 1);
                 counter++;
-                if (counter > 8) {
+                if (counter > 7) {
                     clearInterval(interval);
-                    finalizeRoll();
+                    const f1 = Math.floor(Math.random() * 6) + 1;
+                    const f2 = Math.floor(Math.random() * 6) + 1;
+                    const sum = f1 + f2;
+                    renderDie(die1Face, f1);
+                    renderDie(die2Face, f2);
+
+                    die1El.classList.remove('dice-animating');
+                    die2El.classList.remove('dice-animating');
+                    btnText.textContent = "БРОСИТЬ ЕЩЁ РАЗ";
+                    isRolling = false;
+
+                    const res = outcomes[sum] || outcomes[7];
+                    predBox.className = `w-full p-3.5 border-2 border-neo-black shadow-retro-btn transition-all ${res.bg}`;
+                    predScore.textContent = `СУММА: ${sum}`;
+                    predTitle.textContent = res.title;
+                    predDesc.textContent = res.desc;
+                    predQuote.textContent = res.quote;
                 }
             }, 60);
         });
-
-        function finalizeRoll() {
-            const final1 = Math.floor(Math.random() * 6) + 1;
-            const final2 = Math.floor(Math.random() * 6) + 1;
-            const total = final1 + final2;
-
-            renderDieFace(die1Face, final1);
-            renderDieFace(die2Face, final2);
-
-            die1El.classList.remove('dice-animating');
-            die2El.classList.remove('dice-animating');
-            btnText.textContent = "БРОСИТЬ ЕЩЁ РАЗ 🎲";
-            isRolling = false;
-
-            const result = oracleOutcomes[total] || oracleOutcomes[7];
-
-            predBox.className = `mt-8 border-4 border-neo-black p-6 sm:p-8 shadow-neo-lg transition-all ${result.bg}`;
-            predScore.textContent = result.scoreText;
-            predTitle.textContent = result.title;
-            predDesc.textContent = result.desc;
-            predQuote.textContent = result.quote;
-
-            predBox.classList.add('scale-[1.02]');
-            setTimeout(() => predBox.classList.remove('scale-[1.02]'), 180);
-        }
     </script>
 </body>
 </html>
