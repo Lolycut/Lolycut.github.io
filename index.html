@@ -9,8 +9,8 @@
 
     <title>Турслёт Первокурсников Биофака БГУ | Зов Джунглей & АКДМ 2026</title>
     <meta name="title" content="Турслёт Первокурсников Биофака БГУ | Зов Джунглей & АКДМ 2026">
-    <meta name="description" content="Интерактивная онлайн-брошюра Турслёта биологического факультета БГУ. 10 шагов тропы ст. Зелёное с Нашим Любимым и Единственным Председателем, кубики судьбы, квесты и FAQ.">
-    <meta name="keywords" content="турслет бгу, биофак бгу, академический маяк, туртропа, акдм, акдм бгу, турслет биофака, турслет первокурсников бгу, станция зеленое турслет, биологический факультет бгу, наш любимый председатель">
+    <meta name="description" content="Интерактивная онлайн-брошюра Турслёта биологического факультета БГУ. 10 уровней тропы ст. Зелёное, кубики судьбы, квесты и FAQ.">
+    <meta name="keywords" content="турслет бгу, биофак бгу, академический маяк, туртропа, акдм, акдм бгу, турслет биофака, турслет первокурсников бгу, станция зеленое турслет, биологический факультет бгу">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="author" content="Академический Маяк БГУ">
 
@@ -109,34 +109,18 @@
 
         /* ================= ПИКСЕЛЬНЫЙ АРТЕФАКТ И ЗОЛОТОЕ СИЯНИЕ ================= */
         @keyframes floatPixelCube {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-7px);
-            }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-7px); }
         }
 
         @keyframes shadowScale {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 0.45;
-            }
-            50% {
-                transform: scale(0.82);
-                opacity: 0.25;
-            }
+            0%, 100% { transform: scale(1); opacity: 0.45; }
+            50% { transform: scale(0.82); opacity: 0.25; }
         }
 
         @keyframes auraBreath {
-            0%, 100% {
-                transform: scale(0.95);
-                opacity: 0.55;
-            }
-            50% {
-                transform: scale(1.2);
-                opacity: 0.85;
-            }
+            0%, 100% { transform: scale(0.95); opacity: 0.55; }
+            50% { transform: scale(1.2); opacity: 0.85; }
         }
 
         @keyframes floatSpark1 {
@@ -148,23 +132,212 @@
             50% { transform: translate(8px, -8px) scale(0.8); opacity: 1; }
         }
 
-        .animate-pixel-float {
-            animation: floatPixelCube 3s ease-in-out infinite;
-        }
-        .animate-shadow-breath {
-            animation: shadowScale 3s ease-in-out infinite;
-        }
-        .animate-aura-breath {
-            animation: auraBreath 2.8s ease-in-out infinite;
-        }
-        .animate-spark-1 {
-            animation: floatSpark1 2.2s ease-in-out infinite;
-        }
-        .animate-spark-2 {
-            animation: floatSpark2 2.6s ease-in-out infinite;
+        .animate-pixel-float { animation: floatPixelCube 3s ease-in-out infinite; }
+        .animate-shadow-breath { animation: shadowScale 3s ease-in-out infinite; }
+        .animate-aura-breath { animation: auraBreath 2.8s ease-in-out infinite; }
+        .animate-spark-1 { animation: floatSpark1 2.2s ease-in-out infinite; }
+        .animate-spark-2 { animation: floatSpark2 2.6s ease-in-out infinite; }
+
+        /* ================= 2D АРКАДНЫЙ РАННЕР (ГЛАВА 01) ================= */
+        .arcade-scanlines {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background-size: 100% 3px;
         }
 
-        /* ================= ЗУБОДРАБИТЕЛЬНЫЙ 3D РОЛЛ ================= */
+        /* 1. Скаут-лидер: дугообразный прыжок с креном */
+        @keyframes heroJumpLead {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            35% { transform: translateY(-16px) rotate(-3deg); }
+            65% { transform: translateY(-16px) rotate(2deg); }
+            85% { transform: translateY(-2px) rotate(0deg); }
+        }
+        .animate-hero-lead {
+            animation: heroJumpLead 0.85s cubic-bezier(0.28, 0.5, 0.4, 0.95) infinite;
+            transform-box: fill-box;
+            transform-origin: center bottom;
+        }
+
+        /* Тень лидера: остаётся на платформе, сжимаясь в фазе прыжка */
+        @keyframes heroLeadShadow {
+            0%, 100% { transform: scale(1); opacity: 0.35; }
+            45%, 55% { transform: scale(0.65); opacity: 0.15; }
+        }
+        .animate-hero-shadow {
+            animation: heroLeadShadow 0.85s cubic-bezier(0.28, 0.5, 0.4, 0.95) infinite;
+            transform-box: fill-box;
+            transform-origin: center center;
+        }
+
+        /* 2. Напарник-навигатор: ритмичный бег с пружинящим шагом */
+        @keyframes heroRunTrail {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-4px) rotate(-2deg); }
+            50% { transform: translateY(0px) rotate(0deg); }
+            75% { transform: translateY(-4px) rotate(2deg); }
+        }
+        .animate-hero-trail {
+            animation: heroRunTrail 0.5s ease-in-out infinite;
+            transform-box: fill-box;
+            transform-origin: center bottom;
+        }
+
+        /* Тень напарника */
+        @keyframes heroFollowerShadow {
+            0%, 50%, 100% { transform: scale(1); opacity: 0.3; }
+            25%, 75% { transform: scale(0.85); opacity: 0.2; }
+        }
+        .animate-follower-shadow {
+            animation: heroFollowerShadow 0.5s ease-in-out infinite;
+            transform-box: fill-box;
+            transform-origin: center center;
+        }
+
+        /* 3. Развевающийся флажок гильдии АКДМ */
+        @keyframes flagFlutter {
+            0%, 100% { transform: skewY(0deg) scaleX(1); }
+            50% { transform: skewY(-6deg) scaleX(0.92); }
+        }
+        .animate-flag-wave {
+            animation: flagFlutter 0.6s ease-in-out infinite;
+            transform-box: fill-box;
+            transform-origin: left center;
+        }
+
+        /* 4. Монетка/Звезда XP: вращение в 3D и парение */
+        @keyframes coinSpinFloat {
+            0%, 100% { transform: translateY(0px) scaleX(1); }
+            25% { transform: translateY(-4px) scaleX(0.2); }
+            50% { transform: translateY(-7px) scaleX(-1); }
+            75% { transform: translateY(-3px) scaleX(-0.2); }
+        }
+        .animate-arcade-coin {
+            animation: coinSpinFloat 1.2s ease-in-out infinite;
+            transform-box: fill-box;
+            transform-origin: center center;
+        }
+
+        @keyframes coinShadowPulse {
+            0%, 100% { transform: scale(1); opacity: 0.25; }
+            50% { transform: scale(0.65); opacity: 0.12; }
+        }
+        .animate-coin-shadow {
+            animation: coinShadowPulse 1.2s ease-in-out infinite;
+            transform-box: fill-box;
+            transform-origin: center center;
+        }
+
+        /* 5. Пиксельный костёр: пламя зафиксировано на брёвнах */
+        @keyframes flameDanceMain {
+            0%, 100% { transform: scaleY(1) scaleX(1); }
+            25% { transform: scaleY(1.18) scaleX(0.92); }
+            50% { transform: scaleY(0.92) scaleX(1.08); }
+            75% { transform: scaleY(1.15) scaleX(0.95); }
+        }
+        .animate-flame {
+            animation: flameDanceMain 0.4s ease-in-out infinite;
+            transform-box: fill-box;
+            transform-origin: 50% 100%;
+        }
+
+        @keyframes flameDanceInner {
+            0%, 100% { transform: scaleY(1) scaleX(1); }
+            50% { transform: scaleY(1.25) scaleX(0.88); }
+        }
+        .animate-flame-inner {
+            animation: flameDanceInner 0.28s ease-in-out infinite;
+            transform-box: fill-box;
+            transform-origin: 50% 100%;
+        }
+
+        @keyframes emberRise1 {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(-5px, -18px) scale(0.3); opacity: 0; }
+        }
+        @keyframes emberRise2 {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(6px, -22px) scale(0.2); opacity: 0; }
+        }
+        .animate-ember-1 { animation: emberRise1 0.9s linear infinite; }
+        .animate-ember-2 { animation: emberRise2 1.1s 0.4s linear infinite; }
+
+        /* 6. Стрелки-указатели маршрута */
+        @keyframes arrowSlideRight {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(6px); }
+        }
+        .animate-arrow-right {
+            animation: arrowSlideRight 0.8s ease-in-out infinite;
+            transform-box: fill-box;
+            transform-origin: center center;
+        }
+
+        @keyframes arrowSlideLeft {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(-6px); }
+        }
+        .animate-arrow-left {
+            animation: arrowSlideLeft 0.8s ease-in-out infinite;
+            transform-box: fill-box;
+            transform-origin: center center;
+        }
+
+        @keyframes arrowSlideUp {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        .animate-arrow-up {
+            animation: arrowSlideUp 0.8s ease-in-out infinite;
+            transform-box: fill-box;
+            transform-origin: center center;
+        }
+
+        @keyframes arrowSlideDiag {
+            0%, 100% { transform: translate(0px, 0px); }
+            50% { transform: translate(-4px, -4px); }
+        }
+        .animate-arrow-diag {
+            animation: arrowSlideDiag 0.8s ease-in-out infinite;
+            transform-box: fill-box;
+            transform-origin: center center;
+        }
+
+        /* 7. Кубок победителя и неон */
+        @keyframes trophyGleam {
+            0%, 100% { transform: translateY(0px) scale(1); filter: drop-shadow(0 0 3px rgba(245, 158, 11, 0.4)); }
+            50% { transform: translateY(-4px) scale(1.04); filter: drop-shadow(0 0 8px rgba(253, 224, 71, 0.85)); }
+        }
+        .animate-trophy-shine {
+            animation: trophyGleam 2s ease-in-out infinite;
+            transform-box: fill-box;
+            transform-origin: center center;
+        }
+
+        @keyframes blockPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+        .animate-block-bump {
+            animation: blockPulse 1s ease-in-out infinite;
+            transform-box: fill-box;
+            transform-origin: center center;
+        }
+
+        @keyframes neonGlow {
+            0%, 100% { opacity: 0.65; }
+            50% { opacity: 1; }
+        }
+        .animate-neon-boost { animation: neonGlow 0.6s ease-in-out infinite; }
+
+        /* 8. Переход между уровнями */
+        @keyframes leapTransition {
+            0% { transform: scale(0.96) translateX(12px); opacity: 0.25; filter: blur(1px); }
+            100% { transform: scale(1) translateX(0); opacity: 1; filter: blur(0px); }
+        }
+        .animate-stage-leap {
+            animation: leapTransition 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* ================= 3D РОЛЛ КУБИКОВ ================= */
         .perspective-dice-stage {
             perspective: 1000px;
             perspective-origin: 50% 50%;
@@ -192,7 +365,6 @@
             box-sizing: border-box;
         }
 
-        /* 6 граней 3D кубика */
         .face-1 { transform: rotateY(0deg) translateZ(36px); }
         .face-6 { transform: rotateY(180deg) translateZ(36px); }
         .face-2 { transform: rotateX(90deg) translateZ(36px); }
@@ -208,7 +380,6 @@
             box-shadow: 0 0 2px rgba(0,0,0,0.4);
         }
 
-        /* Сумасшедшие траектории вращения */
         @keyframes insaneRoll1 {
             0% { transform: translateY(-70px) scale(0.65) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
             20% { transform: translateY(24px) scale(1.18) rotateX(460deg) rotateY(260deg) rotateZ(90deg); }
@@ -227,22 +398,15 @@
             100% { transform: translateY(0) scale(1) rotateX(-1800deg) rotateY(-1440deg) rotateZ(-540deg); }
         }
 
-        .die-rolling-1 {
-            animation: insaneRoll1 0.95s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
-        }
-        .die-rolling-2 {
-            animation: insaneRoll2 0.95s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
-        }
+        .die-rolling-1 { animation: insaneRoll1 0.95s cubic-bezier(0.2, 0.8, 0.3, 1) infinite; }
+        .die-rolling-2 { animation: insaneRoll2 0.95s cubic-bezier(0.2, 0.8, 0.3, 1) infinite; }
 
-        /* Ударная волна и тряска */
         @keyframes shockwaveExpand {
             0% { transform: scale(0.2); opacity: 1; }
             80% { transform: scale(2.4); opacity: 0.6; }
             100% { transform: scale(3); opacity: 0; }
         }
-        .shockwave-burst {
-            animation: shockwaveExpand 0.65s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
-        }
+        .shockwave-burst { animation: shockwaveExpand 0.65s cubic-bezier(0.1, 0.8, 0.3, 1) forwards; }
 
         @keyframes earthRumble {
             0%, 100% { transform: translate(0, 0) rotate(0deg); }
@@ -253,17 +417,13 @@
             75% { transform: translate(-2px, 2px) rotate(-0.3deg); }
             90% { transform: translate(2px, -1px) rotate(0.2deg); }
         }
-        .animate-rumble {
-            animation: earthRumble 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-        }
+        .animate-rumble { animation: earthRumble 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
 
         @keyframes brochurePop {
             0% { transform: scale(0.96) translateY(12px); opacity: 0; }
             100% { transform: scale(1) translateY(0); opacity: 1; }
         }
-        .animate-brochure {
-            animation: brochurePop 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
+        .animate-brochure { animation: brochurePop 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
         .modal-scroll::-webkit-scrollbar { width: 6px; }
         .modal-scroll::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); }
@@ -273,7 +433,7 @@
 <body class="antialiased flex flex-col min-h-screen bg-subtle-grid selection:bg-jungle-gold selection:text-neo-black">
 
     <!-- ================================================================= -->
-    <!-- ВЕРХ (HP, LVL 1, ОСВОБОЖДЕНИЕ, СТАТУС) -->
+    <!-- ВЕРХНИЙ СТАТУС-БАР -->
     <!-- ================================================================= -->
     <div class="bg-neo-black text-white border-b-2 border-neo-black text-[10px] sm:text-xs font-pixel py-1.5 px-3 sm:px-5">
         <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-y-1.5 gap-x-4">
@@ -283,7 +443,6 @@
                     <span>👑</span> LVL 1: ПЕРВАШ
                 </span>
                 
-                <!-- HP Bar -->
                 <div class="flex items-center gap-1">
                     <span class="text-red-500">HP</span>
                     <div class="w-16 sm:w-24 h-2.5 bg-gray-800 border border-white overflow-hidden">
@@ -291,7 +450,6 @@
                     </div>
                 </div>
 
-                <!-- MP / Освобождение Bar -->
                 <div class="hidden sm:flex items-center gap-1">
                     <span class="text-jungle-gold">ОСВОБОЖДЕНИЕ</span>
                     <div class="w-16 sm:w-20 h-2.5 bg-gray-800 border border-white overflow-hidden">
@@ -308,7 +466,7 @@
         </div>
     </div>
 
-    <!-- РЕТРО-ХЕДЕР С НАВИГАЦИЕЙ -->
+    <!-- РЕТРО-ХЕДЕР -->
     <header class="sticky top-0 z-40 bg-jungle-wood text-white border-b-3 border-neo-black shadow-neo-sm">
         <div class="max-w-5xl mx-auto px-3 sm:px-5 py-2.5 flex items-center justify-between gap-2">
             
@@ -325,7 +483,6 @@
                     <span>📢</span> Telegram
                 </a>
 
-                <!-- Кнопка смены темы -->
                 <button id="theme-toggle-btn" class="bg-[#180E09] border-2 border-jungle-gold hover:border-white text-white px-2.5 py-1 text-xs font-mono-code font-bold shadow-retro-btn flex items-center gap-1.5 cursor-pointer transition-all" title="Сменить тему">
                     <span id="theme-icon">🌙</span>
                     <span id="theme-label" class="hidden md:inline text-[10px] text-jungle-gold font-pixel">ТЕМА</span>
@@ -338,7 +495,7 @@
     <!-- ОСНОВНОЙ КОНТЕЙНЕР БРОШЮРЫ -->
     <main class="flex-1 max-w-4xl w-full mx-auto px-3 sm:px-6 py-6 sm:py-8 space-y-6">
 
-        <!-- ГЛАВНАЯ ОБЛОЖКА-КАРТОЧКА -->
+        <!-- ГЛАВНАЯ ОБЛОЖКА -->
         <section class="bg-white dark:bg-dark-card border-3 border-neo-black dark:border-jungle-gold shadow-neo p-5 sm:p-7 relative transition-all">
             
             <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
@@ -361,7 +518,6 @@
                 В коридорах факультета открылся древний картридж. Раздался таинственный зов — и весь биофак затянуло в неизведанную чащу станции «Зелёное». Пройди 10 уровней тропы, разгадай шифры и получи <strong class="underline decoration-jungle-gold decoration-2">священное освобождение от пар</strong>!
             </p>
 
-            <!-- Быстрые плашки статов -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono-code text-xs">
                 <div class="bg-jungle-parchment dark:bg-dark-surface p-2 border-2 border-neo-black dark:border-gray-700">
                     <span class="text-gray-500 text-[10px] block font-bold">ДИСТАНЦИЯ</span>
@@ -383,60 +539,36 @@
 
         </section>
 
-        <!-- ================================================================= -->
-        <!-- МИСТИЧЕСКИЙ ПИКСЕЛЬНЫЙ ПСЕВДО-3D АРТЕФАКТ СУДЬБЫ (БЕЗ ТЕКСТА) -->
-        <!-- ================================================================= -->
+        <!-- МИСТИЧЕСКИЙ КУБИК -->
         <section class="relative bg-[#07130B] border-3 border-neo-black dark:border-jungle-gold shadow-neo py-4 px-4 overflow-hidden transition-all flex items-center justify-center select-none">
             
-            <!-- Фоновая мистическая микросетка -->
             <div class="absolute inset-0 bg-[radial-gradient(#00A859_1px,transparent_1px)] [background-size:16px_16px] opacity-15 pointer-events-none"></div>
 
-            <!-- Интерактивный загадочный кубик с пульсирующим золотым ореолом -->
             <div id="mystery-cube-trigger" class="relative group cursor-pointer flex flex-col items-center justify-center py-2" role="button" aria-label="Испытать судьбу" title="Испытать судьбу">
                 
-                <!-- Мягкое золотистое сияние (многослойное и глубокое) -->
                 <div class="absolute w-28 h-28 rounded-full bg-jungle-gold/25 blur-xl pointer-events-none animate-aura-breath group-hover:bg-yellow-300/40 transition-all duration-500"></div>
                 <div class="absolute w-16 h-16 rounded-full bg-yellow-300/35 blur-md pointer-events-none"></div>
 
-                <!-- Парящие микро-искры -->
                 <span class="absolute -top-1 left-2 text-[11px] text-jungle-gold pointer-events-none animate-spark-1 select-none">✦</span>
                 <span class="absolute -bottom-1 right-2 text-[13px] text-yellow-300 pointer-events-none animate-spark-2 select-none">★</span>
                 <span class="absolute top-2.5 -right-3 text-[8px] text-jungle-amber pointer-events-none opacity-80 select-none">◆</span>
 
-                <!-- Парящий псевдо-3D кубик с чистой геометрией -->
                 <div class="relative z-10 animate-pixel-float group-hover:scale-110 group-active:scale-95 transition-transform duration-200">
                     <svg width="68" height="68" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="overflow-visible">
-                        
-                        <!-- ВЕРХНЯЯ ГРАНЬ (Светлое теплое золото) -->
                         <polygon points="32,8 56,20 32,32 8,20" fill="#FFEAA0" stroke="#141414" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-                        
-                        <!-- ЛЕВАЯ ГРАНЬ (Золотой полутон) -->
                         <polygon points="8,20 32,32 32,54 8,42" fill="#E5A910" stroke="#141414" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-                        
-                        <!-- ПРАВАЯ ГРАНЬ (Теневое теплое золото) -->
                         <polygon points="32,32 56,20 56,42 32,54" fill="#996300" stroke="#141414" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-
-                        <!-- Внутреннее ребро разделения -->
                         <line x1="32" y1="32" x2="32" y2="54" stroke="#141414" stroke-width="2.5" stroke-linecap="round"/>
-
-                        <!-- БЛИК ПО ВЕРХНЕЙ КРОМКЕ -->
                         <polyline points="9.5,20 32,8.8 54.5,20" stroke="#FFF9DE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
-
-                        <!-- АККУРАТНАЯ ТОЧКА НА ВЕРХНЕЙ ГРАНИ (Центр = 1) -->
                         <polygon points="32,16.5 37,20 32,23.5 27,20" fill="#141414"/>
-
-                        <!-- 2 ТОЧКИ НА ЛЕВОЙ ГРАНИ (Чистые изометрические параллелограммы) -->
                         <polygon points="12,27 18,30 18,35 12,32" fill="#141414"/>
                         <polygon points="22,39 28,42 28,47 22,44" fill="#141414"/>
-
-                        <!-- 3 ТОЧКИ НА ПРАВОЙ ГРАНИ (Чистые изометрические параллелограммы) -->
                         <polygon points="47,29 53,26 53,31 47,34" fill="#141414"/>
                         <polygon points="41,36 47,33 47,38 41,41" fill="#141414"/>
                         <polygon points="35,43 41,40 41,45 35,48" fill="#141414"/>
                     </svg>
                 </div>
 
-                <!-- Естественная мягкая тень под парящим кубиком -->
                 <div class="w-10 h-2 bg-black/50 rounded-full blur-[2px] mt-1 pointer-events-none animate-shadow-breath group-hover:scale-90 group-hover:opacity-30 transition-all duration-300"></div>
 
             </div>
@@ -456,17 +588,17 @@
                 <!-- ГЛАВА 1: МАРШРУТ (10 УРОВНЕЙ) -->
                 <button onclick="openModal('modal-route')" class="group text-left bg-white dark:bg-dark-card border-3 border-neo-black dark:border-gray-700 hover:border-jungle-emerald p-4 shadow-neo hover:translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-between">
                     <div class="flex items-start gap-3">
-                        <span class="text-3xl group-hover:scale-110 transition-transform">🗺️</span>
+                        <span class="text-3xl group-hover:scale-110 transition-transform">🕹️</span>
                         <div>
                             <div class="text-[10px] font-pixel text-jungle-emerald">ГЛАВА 01</div>
                             <h3 class="font-extrabold text-base uppercase dark:text-white leading-snug">Тропа: 10 Уровней</h3>
-                            <p class="text-xs text-gray-600 dark:text-gray-400 font-mono-code">НАШ ПРЕДСЕДАТЕЛЬ ведёт на поляну</p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 font-mono-code">2D-платформер сквозь уровни Зелёного</p>
                         </div>
                     </div>
                     <span class="font-pixel text-xs bg-jungle-parchment dark:bg-dark-surface border border-neo-black px-2 py-1 group-hover:bg-jungle-emerald group-hover:text-white transition-colors">ОТКРЫТЬ →</span>
                 </button>
 
-                <!-- ГЛАВА 2: ИНВЕНТАРЬ (ИНТЕРАКТИВНЫЙ ЧЕКЛИСТ) -->
+                <!-- ГЛАВА 2: ИНВЕНТАРЬ -->
                 <button onclick="openModal('modal-inventory')" class="group text-left bg-white dark:bg-dark-card border-3 border-neo-black dark:border-gray-700 hover:border-jungle-gold p-4 shadow-neo hover:translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-between">
                     <div class="flex items-start gap-3">
                         <span class="text-3xl group-hover:scale-110 transition-transform">🎒</span>
@@ -479,7 +611,7 @@
                     <span class="font-pixel text-xs bg-jungle-parchment dark:bg-dark-surface border border-neo-black px-2 py-1 group-hover:bg-jungle-gold group-hover:text-neo-black transition-colors">ОТКРЫТЬ →</span>
                 </button>
 
-                <!-- ГЛАВА 3: ЛОР И КВЕСТЫ ГИЛЬДИЙ -->
+                <!-- ГЛАВА 3: ЛОР И КВЕСТЫ -->
                 <button onclick="openModal('modal-quests')" class="group text-left bg-white dark:bg-dark-card border-3 border-neo-black dark:border-gray-700 hover:border-jungle-amber p-4 shadow-neo hover:translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-between">
                     <div class="flex items-start gap-3">
                         <span class="text-3xl group-hover:scale-110 transition-transform">⚔️</span>
@@ -492,7 +624,7 @@
                     <span class="font-pixel text-xs bg-jungle-parchment dark:bg-dark-surface border border-neo-black px-2 py-1 group-hover:bg-jungle-amber group-hover:text-neo-black transition-colors">ОТКРЫТЬ →</span>
                 </button>
 
-                <!-- ГЛАВА 4: ЗАЛ СЛАВЫ 2025 -->
+                <!-- ГЛАВА 4: ЗАЛ СЛАВЫ -->
                 <button onclick="openModal('modal-hall')" class="group text-left bg-white dark:bg-dark-card border-3 border-neo-black dark:border-gray-700 hover:border-jungle-mystic p-4 shadow-neo hover:translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-between">
                     <div class="flex items-start gap-3">
                         <span class="text-3xl group-hover:scale-110 transition-transform">🏆</span>
@@ -523,13 +655,10 @@
 
     </main>
 
-    <!-- ================================================================= -->
-    <!-- МОДАЛЬНАЯ АРЕНА: ЗУБОДРАБИТЕЛЬНЫЙ БРОСОК ДВУХ КУБИКОВ 3D -->
-    <!-- ================================================================= -->
+    <!-- МОДАЛКА КУБИКОВ 3D -->
     <div id="modal-dice" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4">
         <div id="dice-modal-card" class="w-full max-w-xl bg-jungle-deep border-4 border-neo-black dark:border-jungle-gold shadow-neo-lg flex flex-col max-h-[94vh] animate-brochure overflow-hidden">
             
-            <!-- Хедер арены -->
             <div class="bg-neo-black text-white p-3 sm:p-3.5 border-b-3 border-neo-black flex items-center justify-between shrink-0">
                 <div class="flex items-center gap-2">
                     <span class="text-base sm:text-lg animate-pulse">⚡</span>
@@ -538,25 +667,16 @@
                 <button onclick="closeModal('modal-dice')" class="bg-jungle-crimson hover:bg-red-700 text-white font-pixel text-[10px] px-2.5 py-1 border border-white cursor-pointer transition-transform active:translate-y-0.5">✕ ЗАКРЫТЬ</button>
             </div>
 
-            <!-- 3D Арена броска -->
             <div class="p-4 sm:p-6 overflow-y-auto modal-scroll space-y-4 text-center">
                 
                 <div class="relative py-7 sm:py-9 flex items-center justify-center overflow-hidden bg-[#061209] border-2 border-[#194025] shadow-inner">
-                    
-                    <!-- Шоковая волна при приземлении -->
                     <div id="shockwave-ring" class="absolute w-24 h-24 rounded-full border-4 border-jungle-gold pointer-events-none opacity-0"></div>
-
-                    <!-- Рунический круг на полу арены -->
                     <div class="absolute w-56 h-56 rounded-full border border-dashed border-jungle-gold/25 pointer-events-none animate-spin" style="animation-duration: 25s;"></div>
 
-                    <!-- Сцена с двумя 3D кубиками -->
                     <div class="perspective-dice-stage flex items-center justify-center gap-8 sm:gap-12 z-10 select-none">
                         
-                        <!-- 3D Кубик 1 -->
                         <div id="die-3d-1" class="dice-3d">
-                            <div class="dice-face face-1">
-                                <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center"><div class="col-start-2 row-start-2 dice-pip-3d bg-jungle-crimson"></div></div>
-                            </div>
+                            <div class="dice-face face-1"><div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center"><div class="col-start-2 row-start-2 dice-pip-3d bg-jungle-crimson"></div></div></div>
                             <div class="dice-face face-6">
                                 <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center">
                                     <div class="col-start-1 row-start-1 dice-pip-3d"></div><div class="col-start-1 row-start-2 dice-pip-3d"></div><div class="col-start-1 row-start-3 dice-pip-3d"></div>
@@ -565,8 +685,7 @@
                             </div>
                             <div class="dice-face face-2">
                                 <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center">
-                                    <div class="col-start-1 row-start-1 dice-pip-3d"></div>
-                                    <div class="col-start-3 row-start-3 dice-pip-3d"></div>
+                                    <div class="col-start-1 row-start-1 dice-pip-3d"></div><div class="col-start-3 row-start-3 dice-pip-3d"></div>
                                 </div>
                             </div>
                             <div class="dice-face face-5">
@@ -578,9 +697,7 @@
                             </div>
                             <div class="dice-face face-3">
                                 <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center">
-                                    <div class="col-start-1 row-start-1 dice-pip-3d"></div>
-                                    <div class="col-start-2 row-start-2 dice-pip-3d"></div>
-                                    <div class="col-start-3 row-start-3 dice-pip-3d"></div>
+                                    <div class="col-start-1 row-start-1 dice-pip-3d"></div><div class="col-start-2 row-start-2 dice-pip-3d"></div><div class="col-start-3 row-start-3 dice-pip-3d"></div>
                                 </div>
                             </div>
                             <div class="dice-face face-4">
@@ -593,11 +710,8 @@
 
                         <span class="font-pixel text-jungle-gold text-2xl drop-shadow-[0_2px_0_#000]">+</span>
 
-                        <!-- 3D Кубик 2 -->
                         <div id="die-3d-2" class="dice-3d">
-                            <div class="dice-face face-1">
-                                <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center"><div class="col-start-2 row-start-2 dice-pip-3d bg-jungle-crimson"></div></div>
-                            </div>
+                            <div class="dice-face face-1"><div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center"><div class="col-start-2 row-start-2 dice-pip-3d bg-jungle-crimson"></div></div></div>
                             <div class="dice-face face-6">
                                 <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center">
                                     <div class="col-start-1 row-start-1 dice-pip-3d"></div><div class="col-start-1 row-start-2 dice-pip-3d"></div><div class="col-start-1 row-start-3 dice-pip-3d"></div>
@@ -606,8 +720,7 @@
                             </div>
                             <div class="dice-face face-2">
                                 <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center">
-                                    <div class="col-start-1 row-start-1 dice-pip-3d"></div>
-                                    <div class="col-start-3 row-start-3 dice-pip-3d"></div>
+                                    <div class="col-start-1 row-start-1 dice-pip-3d"></div><div class="col-start-3 row-start-3 dice-pip-3d"></div>
                                 </div>
                             </div>
                             <div class="dice-face face-5">
@@ -619,9 +732,7 @@
                             </div>
                             <div class="dice-face face-3">
                                 <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center">
-                                    <div class="col-start-1 row-start-1 dice-pip-3d"></div>
-                                    <div class="col-start-2 row-start-2 dice-pip-3d"></div>
-                                    <div class="col-start-3 row-start-3 dice-pip-3d"></div>
+                                    <div class="col-start-1 row-start-1 dice-pip-3d"></div><div class="col-start-2 row-start-2 dice-pip-3d"></div><div class="col-start-3 row-start-3 dice-pip-3d"></div>
                                 </div>
                             </div>
                             <div class="dice-face face-4">
@@ -635,7 +746,6 @@
                     </div>
                 </div>
 
-                <!-- Блок оракула с оригинальными текстами -->
                 <div id="prediction-box" class="w-full text-left bg-jungle-emerald text-white p-3.5 border-2 border-neo-black shadow-retro-btn transition-all">
                     <div class="flex items-center justify-between text-[11px] font-mono-code font-bold mb-1">
                         <span id="prediction-badge" class="bg-white text-neo-black px-1.5 py-0.5 border border-neo-black uppercase">📜 ОРИГИНАЛЬНЫЙ ОРАКУЛ</span>
@@ -654,7 +764,6 @@
 
             </div>
 
-            <!-- Нижняя панель действий -->
             <div class="bg-jungle-parchment dark:bg-dark-surface p-3 border-t-3 border-neo-black dark:border-gray-700 flex items-center justify-between gap-3 shrink-0">
                 <p class="font-mono-code text-[11px] text-gray-700 dark:text-gray-300 font-bold hidden sm:block">
                     ⚡ Испытай удачу перед выходом на тропу Зелёного!
@@ -668,61 +777,109 @@
         </div>
     </div>
 
-    <!-- МОДАЛКА 1: МАРШРУТ -->
+    <!-- ================================================================= -->
+    <!-- МОДАЛКА 1: МАРШРУТ (2D ПИКСЕЛЬНЫЙ АРКАДНЫЙ ПЛАТФОРМЕР) -->
+    <!-- ================================================================= -->
     <div id="modal-route" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs hidden items-center justify-center p-3 sm:p-4">
         <div class="w-full max-w-2xl bg-white dark:bg-dark-card border-4 border-neo-black dark:border-jungle-gold shadow-neo-lg flex flex-col max-h-[92vh] animate-brochure">
             
             <div class="bg-jungle-wood text-white p-3 sm:p-4 border-b-3 border-neo-black flex items-center justify-between shrink-0">
                 <div class="flex items-center gap-2">
-                    <span class="text-lg">🗺️</span>
-                    <span class="font-pixel text-[10px] sm:text-xs text-jungle-gold uppercase">Глава 01 // 10 Уровней Тропы</span>
+                    <span class="text-lg animate-pulse">🕹️</span>
+                    <span class="font-pixel text-[10px] sm:text-xs text-jungle-gold uppercase">Глава 01 // 2D Аркада: 10 Уровней Тропы</span>
                 </div>
-                <button onclick="closeModal('modal-route')" class="bg-jungle-crimson hover:bg-red-700 text-white font-pixel text-[10px] px-2.5 py-1 border border-white cursor-pointer">✕ ЗАКРЫТЬ</button>
+                <button onclick="closeModal('modal-route')" class="bg-jungle-crimson hover:bg-red-700 text-white font-pixel text-[10px] px-2.5 py-1 border border-white cursor-pointer transition-transform active:translate-y-0.5">✕ ЗАКРЫТЬ</button>
             </div>
 
-            <div class="p-4 sm:p-6 overflow-y-auto modal-scroll space-y-4">
+            <div class="p-3 sm:p-5 overflow-y-auto modal-scroll space-y-3.5">
                 
-                <div class="flex items-center justify-between text-xs font-mono-code font-bold">
-                    <span id="route-step-indicator" class="bg-neo-black text-white px-2.5 py-1">УРОВЕНЬ 1 ИЗ 10</span>
-                    <span id="route-step-tag" class="text-jungle-emerald font-extrabold uppercase">ТОЧКА ВЫСАДКИ</span>
+                <!-- Верхний игровой HUD -->
+                <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-mono-code font-bold">
+                    <div class="flex items-center gap-2">
+                        <span id="route-step-indicator" class="bg-neo-black text-white px-2.5 py-1 font-pixel text-[9px] sm:text-[10px]">STAGE 1/10</span>
+                        <span id="route-biome-tag" class="bg-jungle-parchment dark:bg-dark-surface border border-neo-black px-2 py-0.5 text-[10px] text-gray-700 dark:text-gray-300 font-bold uppercase">БИОМ: ПЕРРОН</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-[11px] text-jungle-amber">СЛОЖНОСТЬ:</span>
+                        <span id="route-diff-stars" class="text-jungle-gold font-pixel text-[10px]">★☆☆☆☆</span>
+                    </div>
                 </div>
 
-                <!-- Фото шага -->
-                <div class="aspect-[4/3] sm:aspect-video bg-gray-200 border-3 border-neo-black overflow-hidden relative shadow-neo-sm">
-                    <img id="route-img" src="./mar_1.jpg" alt="Маршрут уровень" class="w-full h-full object-cover">
+                <!-- 2D Аркадный пиксельный экран сцены -->
+                <div class="w-full bg-[#0a150e] border-3 border-neo-black relative overflow-hidden shadow-neo select-none">
+                    
+                    <!-- Scanline ретро-эффект -->
+                    <div class="absolute inset-0 arcade-scanlines pointer-events-none z-20 opacity-30"></div>
+                    
+                    <!-- Ретро-монитор: HUD внутри игры -->
+                    <div class="w-full bg-black/85 px-3 py-1.5 flex items-center justify-between font-pixel text-[8px] sm:text-[9px] text-white border-b-2 border-neo-black shrink-0 relative z-10">
+                        <div class="flex items-center gap-2">
+                            <span class="text-jungle-gold flex items-center gap-1"><span>🏃</span> PERVASH_PARTY</span>
+                            <span class="text-gray-400 hidden sm:inline">|</span>
+                            <span class="text-yellow-300 hidden sm:inline">COINS: ★x10</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <span id="arcade-hud-stage" class="text-jungle-emerald">WORLD 1-1</span>
+                            <span class="text-red-400">HP: 100%</span>
+                        </div>
+                    </div>
+
+                    <!-- Контейнер пиксельного мира 16:9 -->
+                    <div id="arcade-stage-viewport" class="w-full aspect-[16/9] relative flex items-center justify-center">
+                        <div id="arcade-canvas" class="w-full h-full">
+                            <!-- Отрисовывается динамически в JS -->
+                        </div>
+                    </div>
+
+                    <!-- Нижняя пиксельная мини-карта островков пути (1..10) -->
+                    <div class="w-full bg-[#061009] px-2.5 py-1.5 border-t-2 border-neo-black flex items-center justify-between relative z-10 font-pixel text-[7px] sm:text-[8px]">
+                        <span class="text-gray-400 uppercase hidden sm:inline">МАРШРУТ:</span>
+                        <div class="flex items-center justify-center gap-1 sm:gap-1.5 flex-1 mx-1" id="route-minimap">
+                            <!-- Заполняется в JS мини-островками -->
+                        </div>
+                        <span class="text-jungle-gold hidden sm:inline">🏁 ФИНИШ</span>
+                    </div>
                 </div>
 
-                <!-- Текст шага -->
-                <div>
-                    <h3 id="route-title" class="text-lg sm:text-xl font-extrabold uppercase dark:text-white mb-1.5">
+                <!-- Текст уровня в стиле аркады -->
+                <div class="space-y-1">
+                    <div class="flex items-center gap-2">
+                        <span id="route-step-tag" class="font-pixel text-[10px] text-jungle-emerald uppercase">ТОЧКА СПАВНА</span>
+                    </div>
+                    <h3 id="route-title" class="text-base sm:text-lg font-extrabold uppercase dark:text-white leading-tight">
                         1. Высадка и Пандус
                     </h3>
-                    <p id="route-desc" class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
-                        Выходим из электрички на платформу. НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ торжественно указывает на пандус. Спускаемся и поворачиваем направо!
+                    <p id="route-desc" class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-mono-code leading-relaxed">
+                        Высаживаемся на перрон станции...
                     </p>
                 </div>
 
-                <!-- Интерактивные номера 1-10 -->
-                <div class="flex flex-wrap justify-center gap-1.5 pt-2" id="route-dots">
-                    <!-- Заполняется JS -->
+                <!-- Селектор уровней 1-10 с ретро-кнопками -->
+                <div class="pt-0.5">
+                    <div class="text-[9px] font-pixel text-gray-500 mb-1 flex items-center gap-1">
+                        <span>🎮</span> ВЫБОР УРОВНЯ (1-10):
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-1.5" id="route-dots">
+                        <!-- Заполняется JS -->
+                    </div>
                 </div>
 
             </div>
 
             <!-- Нижняя панель навигации -->
             <div class="bg-jungle-parchment dark:bg-dark-surface p-3 border-t-3 border-neo-black dark:border-gray-700 flex items-center justify-between gap-2 shrink-0">
-                <button id="route-prev-btn" class="bg-white dark:bg-dark-card border-2 border-neo-black px-3.5 py-2 font-mono-code font-bold text-xs uppercase shadow-retro-btn hover:bg-gray-100 disabled:opacity-40 cursor-pointer">
+                <button id="route-prev-btn" class="bg-white dark:bg-dark-card border-2 border-neo-black px-3 py-1.5 font-mono-code font-bold text-xs uppercase shadow-retro-btn hover:bg-gray-100 disabled:opacity-40 cursor-pointer transition-transform active:translate-y-0.5">
                     ← Назад
                 </button>
                 <div class="flex items-center gap-2">
                     <a href="https://t.me/bioakdm/36" target="_blank" class="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono-code font-bold text-blue-600 dark:text-blue-400 hover:underline">
                         <span>🎬</span> Видео-гид
                     </a>
-                    <a id="route-map-link" href="https://yandex.by/maps/-/CTC17I9G" target="_blank" class="bg-jungle-gold hover:bg-yellow-400 text-neo-black border-2 border-neo-black px-3 py-2 font-mono-code font-bold text-xs uppercase shadow-retro-btn">
+                    <a id="route-map-link" href="https://yandex.by/maps/-/CTC17I9G" target="_blank" class="bg-jungle-gold hover:bg-yellow-400 text-neo-black border-2 border-neo-black px-3 py-1.5 font-mono-code font-bold text-xs uppercase shadow-retro-btn transition-transform active:translate-y-0.5">
                         📍 Яндекс Карты
                     </a>
                 </div>
-                <button id="route-next-btn" class="bg-jungle-emerald text-white border-2 border-neo-black px-3.5 py-2 font-mono-code font-bold text-xs uppercase shadow-retro-btn hover:bg-green-600 cursor-pointer">
+                <button id="route-next-btn" class="bg-jungle-emerald text-white border-2 border-neo-black px-3.5 py-1.5 font-mono-code font-bold text-xs uppercase shadow-retro-btn hover:bg-green-600 cursor-pointer transition-transform active:translate-y-0.5">
                     Вперёд →
                 </button>
             </div>
@@ -730,7 +887,7 @@
         </div>
     </div>
 
-    <!-- МОДАЛКА 2: ИНВЕНТАРЬ (ИНТЕРАКТИВНЫЙ ЧЕК-ЛИСТ) -->
+    <!-- МОДАЛКА 2: ИНВЕНТАРЬ -->
     <div id="modal-inventory" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs hidden items-center justify-center p-3 sm:p-4">
         <div class="w-full max-w-2xl bg-white dark:bg-dark-card border-4 border-neo-black dark:border-jungle-gold shadow-neo-lg flex flex-col max-h-[92vh] animate-brochure">
             
@@ -835,7 +992,7 @@
         </div>
     </div>
 
-    <!-- МОДАЛКА 3: ЛОР И 4 КВЕСТА ПОДГОТОВКИ -->
+    <!-- МОДАЛКА 3: ЛОР И 4 КВЕСТА -->
     <div id="modal-quests" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs hidden items-center justify-center p-3 sm:p-4">
         <div class="w-full max-w-2xl bg-white dark:bg-dark-card border-4 border-neo-black dark:border-jungle-gold shadow-neo-lg flex flex-col max-h-[92vh] animate-brochure">
             
@@ -885,7 +1042,7 @@
         </div>
     </div>
 
-    <!-- МОДАЛКА 4: ЗАЛ СЛАВЫ 2025 -->
+    <!-- МОДАЛКА 4: ЗАЛ СЛАВЫ -->
     <div id="modal-hall" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs hidden items-center justify-center p-3 sm:p-4">
         <div class="w-full max-w-2xl bg-white dark:bg-dark-card border-4 border-neo-black dark:border-jungle-gold shadow-neo-lg flex flex-col max-h-[92vh] animate-brochure">
             
@@ -947,7 +1104,7 @@
                         ❓ Как получить официальное освобождение от пар?
                     </h3>
                     <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
-                        Освобождения предоставляются после игры <strong>ТОЛЬКО</strong> для тех студентов, чьё присутствие на поляне подтвердит НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ и менторы группы в конце испытаний.
+                        Освобождения предоставляются после игры <strong>ТОЛЬКО</strong> для тех студентов, чьё присутствие на поляне подтвердят менторы группы и организаторы в конце испытаний.
                     </p>
                 </div>
 
@@ -965,7 +1122,7 @@
                         ❓ Что делать, если опоздал на общую электричку?
                     </h3>
                     <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
-                        Без паники! Открывай Главу №01 «Тропа: 10 Уровней» в этой брошюре и следуй за НАШИМ ЛЮБИМЫМ И ЕДИНСТВЕННЫМ ПРЕДСЕДАТЕЛЕМ со ст. Зелёное прямо к лагерю.
+                        Без паники! Открывай Главу №01 «Тропа: 10 Уровней» в этой брошюре и следуй 2D-гидом по ключевым чекпоинтам со ст. Зелёное прямо к лагерю.
                     </p>
                 </div>
             </div>
@@ -974,13 +1131,12 @@
     </div>
 
     <!-- ================================================================= -->
-    <!-- ФУТЕР (С ПРАВИЛОМ ПОСЛЕДНЕГО ПЕРВОКУРСНИКА ДЖУМАНДЖИ) -->
+    <!-- ФУТЕР -->
     <!-- ================================================================= -->
     <footer class="bg-neo-black text-white py-6 border-t-3 border-neo-black dark:border-gray-700 mt-auto">
         <div class="max-w-4xl mx-auto px-4 text-center font-mono-code text-xs space-y-2">
             <div class="font-pixel text-jungle-gold text-xs">★ JUMANJI BIOFAC 2026 ★</div>
             
-            <!-- Восстановленное культовое правило Джуманджи -->
             <p class="text-jungle-amber font-extrabold text-xs sm:text-sm max-w-xl mx-auto border-2 border-jungle-amber/40 bg-[#161208] p-2.5 shadow-retro-btn">
                 ⚡ «Игра завершится лишь тогда, когда ПОСЛЕДНИЙ ПЕРВОКУРСНИК дойдёт до финиша и коснётся травы Главной Поляны!»
             </p>
@@ -993,7 +1149,7 @@
     </footer>
 
     <!-- ================================================================= -->
-    <!-- СКРИПТЫ: 3D АРЕНА КУБИКОВ + 10 ШАГОВ + ЧЕК-ЛИСТ -->
+    <!-- СКРИПТЫ -->
     <!-- ================================================================= -->
     <script>
         // 1. ТЕМА
@@ -1043,80 +1199,525 @@
             }
         });
 
-        // 3. МАРШРУТ (10 ШАГОВ)
+        // =================================================================
+        // 3. 2D АРКАДНЫЙ МАРШРУТ (10 УРОВНЕЙ-ПЛАТФОРМ 320x180)
+        // =================================================================
         const routeSteps = [
             {
-                tag: "УРОВЕНЬ 1 // СТАНЦИЯ ЗЕЛЁНОЕ",
-                img: "./mar_1.jpg",
-                title: "1. Высадка и Пандус",
-                desc: "Выходим из электрички на платформу. НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ торжественно указывает на пандус. Спускаемся и поворачиваем направо!"
+                world: "WORLD 1-1",
+                tag: "STAGE 01 // ТОЧКА СПАВНА",
+                biome: "ПЕРРОН СТ. ЗЕЛЁНОЕ",
+                diff: "★☆☆☆☆",
+                title: "1. Точка спавна: Перрон и Пандус",
+                desc: "Точка высадки гильдии! Персонажи выпрыгивают из вагонов электрички, активируют командный спринт вправо и плавно скатываются по наклонному пандусу. Остерегайся зазора между платформой и поездом — стартовый рубеж пройден без потери HP!",
+                artType: "station"
             },
             {
-                tag: "УРОВЕНЬ 2 // СТАРТ МАРША",
-                img: "./mar_2.jpg",
-                title: "2. Тропа вдоль рельсов",
-                desc: "Двигаемся колонной по натоптанной тропе в высокой траве параллельно путям. НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ задаёт бодрый темп и напоминает пить воду!"
+                world: "WORLD 1-2",
+                tag: "STAGE 02 // РЕЛЬСОВЫЙ РАННЕР",
+                biome: "ТРОПА В ТРАВЕ",
+                diff: "★☆☆☆☆",
+                title: "2. Спринт по тропе вдоль рельсов",
+                desc: "Включается скоростной 2D-раннер! Пати первокурсников несётся по травянистой колее параллельно шпалам. Прыгаем по земляным блокам, собираем монетки бодрости и не растягиваем хвост колонны!",
+                artType: "rails"
             },
             {
-                tag: "УРОВЕНЬ 3 // Ж/Д НАСЫПЬ",
-                img: "./mar_3.jpg",
-                title: "3. Вдоль железной дороги",
-                desc: "Продолжаем уверенный марш вдоль контактной сети. НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ жестом подтверждает верность курса — рельсы остаются справа."
+                world: "WORLD 1-3",
+                tag: "STAGE 03 // ГРАВИЙНЫЙ ПАРКУР",
+                biome: "НАСЫПЬ Ж/Д",
+                diff: "★★☆☆☆",
+                title: "3. Платформинг вдоль контактной сети",
+                desc: "Секция паркура по гравийным уступам. Вверху гудят провода контактной сети, пути остаются строго по правую руку. Прожимаем двойной прыжок через неровности и держим боевой строй!",
+                artType: "wires"
             },
             {
-                tag: "УРОВЕНЬ 4 // ПЕСЧАНЫЙ ТРАКТ",
-                img: "./mar_4.jpg",
-                title: "4. Тракт вдоль ЛЭП",
-                desc: "Шагаем прямо по песчаной колее вдоль деревянных столбов. НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ демонстрирует несгибаемый бицепс победы биофака!"
+                world: "WORLD 1-4",
+                tag: "STAGE 04 // ПЕСЧАНЫЙ БИОМ",
+                biome: "ТРАКТ ВДОЛЬ ЛЭП",
+                diff: "★★☆☆☆",
+                title: "4. Песчаный тракт и мачты ЛЭП",
+                desc: "Песчаный открытый биом! Деревянные мачты электропередач служат высокими вехами чекпоинтов. Рыхлый песок немного снижает скорость — активируем командный бафф выносливости и шагаем прямо",
+                artType: "sand"
             },
             {
-                tag: "УРОВЕНЬ 5 // ВЫХОД НА АСФАЛЬТ",
-                img: "./mar_5.jpg",
-                title: "5. Асфальтовый переход",
-                desc: "Выходим на асфальтовую дорогу. НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ бутылкой указывает вектор движения строго прямо к лесной опушке."
+                world: "WORLD 1-5",
+                tag: "STAGE 05 // АСФАЛЬТОВЫЙ ТРАНЗИТ",
+                biome: "ДОРОЖНЫЙ ПЕРЕХОД",
+                diff: "★☆☆☆☆",
+                title: "5. Скоростной асфальтовый отрезок",
+                desc: "Выход на ровное твердое покрытие дороги! Асфальт даёт временный бонус к скорости передвижения. Главное — не задерживаться на открытой местности и устремиться прямо к стене леса",
+                artType: "road"
             },
             {
-                tag: "УРОВЕНЬ 6 // СЪЕЗД В ЧАЩУ",
-                img: "./mar_6.jpg",
-                title: "6. Поворот на грунтовку",
-                desc: "Внимание: развилка у опушки! НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ перекрывает неверный путь и направляет колонну по синей стрелке направо в лес."
+                world: "WORLD 1-6",
+                tag: "STAGE 06 // РАЗВИЛКА ОПУШКИ",
+                biome: "ВХОД В ЛЕС",
+                diff: "★★★☆☆",
+                title: "6. Развилка опушки (Поворот вправо)",
+                desc: "Внимание: развилка-ловушка! Прямой тупиковый путь блокирует невидимая стена. Жмём стрелку «ВПРАВО» по синему маркеру и ныряем на лесную грунтовку прямо под кроны елей!",
+                artType: "fork_right"
             },
             {
-                tag: "УРОВЕНЬ 7 // ХВОЙНЫЙ ПЕРЕКРЁСТОК",
-                img: "./mar_7.jpg",
-                title: "7. Еловая развилка",
-                desc: "Входим в густой хвойный лес. НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ и проводники синхронно показывают: идём строго прямо в чащу!"
+                world: "WORLD 1-7",
+                tag: "STAGE 07 // ХВОЙНЫЙ ДАНЖ",
+                biome: "ЕЛЬНИК ЗЕЛЁНОГО",
+                diff: "★★★☆☆",
+                title: "7. Еловый коридор (Строго прямо)",
+                desc: "Входим в густой лесной данж. Лапы вековых елей образуют сплошной зеленый свод над головой, солнечные лучи пробиваются сквозь хвою. Игнорируем боковые ответвления — держим курс строго прямо через чащу!",
+                artType: "forest_straight"
             },
             {
-                tag: "УРОВЕНЬ 8 // ЛЕСНАЯ РАЗВИЛКА",
-                img: "./mar_8.jpg",
-                title: "8. Развилка с кустом",
-                desc: "Развилка троп посреди леса. НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ и проводники держат ориентир: идём по стрелке прямо по левой колее."
+                world: "WORLD 1-8",
+                tag: "STAGE 08 // РАЗВИЛКА СУДЬБЫ",
+                biome: "ЛЕСНОЙ ПЕРЕКРЁСТОК",
+                diff: "★★★☆☆",
+                title: "8. Развилка троп (Левая колея)",
+                desc: "Лесной перекрёсток с кустарником-препятствием по центру. Сканируем локацию мини-картой: выбираем ЛЕВУЮ колею тропы и технично перепрыгиваем сплетения выступающих корней",
+                artType: "fork_left"
             },
             {
-                tag: "УРОВЕНЬ 9 // ХОЛМИСТЫЙ ВИРАЖ",
-                img: "./mar_9.jpg",
-                title: "9. Поворот налево на холме",
-                desc: "Выходим к сосновой просеке. НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ указывает крутой вираж налево через травянистый склон в сторону лагеря!"
+                world: "WORLD 1-9",
+                tag: "STAGE 09 // ХОЛМИСТЫЙ АПХИЛЛ",
+                biome: "СОСНОВЫЙ СКЛОН",
+                diff: "★★★★☆",
+                title: "9. Подъем на холм (Поворот влево)",
+                desc: "Финальный крутой апхилл! Тропа выводит к сосновой просеке и резко взбирается на склон. Закладываем крутой вираж ВЛЕВО через холм — саундтрек ускоряется!",
+                artType: "hill_left"
             },
             {
-                tag: "УРОВЕНЬ 10 // ТРИУМФ 🏁",
-                img: "./mar_10.jpg",
-                title: "10. Главная Поляна Сбора!",
-                desc: "ФИНИШ! НАШ ЛЮБИМЫЙ И ЕДИНСТВЕННЫЙ ПРЕДСЕДАТЕЛЬ встречает героев в сиянии звёзд. Вы дошли до лагеря и готовы зажигать!"
+                world: "WORLD 1-10",
+                tag: "STAGE 10 // ПОБЕДНЫЙ ФИНИШ 🏁",
+                biome: "ГЛАВНАЯ ПОЛЯНА",
+                diff: "НАГРАДА: 100%",
+                title: "10. Главная Поляна — Босс-Локация Сбора!",
+                desc: "ПОБЕДА! Все 10 уровней тропы ст. Зелёное успешно пройдены! Пати касается мягкой травы Главной Поляны, чекпоинт активирован. Добро пожаловать на Турслёт!",
+                artType: "finish"
             }
         ];
 
         let currentStep = 0;
         const stepInd = document.getElementById('route-step-indicator');
         const stepTag = document.getElementById('route-step-tag');
-        const stepImg = document.getElementById('route-img');
+        const stepBiome = document.getElementById('route-biome-tag');
+        const stepDiff = document.getElementById('route-diff-stars');
+        const stepHudStage = document.getElementById('arcade-hud-stage');
         const stepTitle = document.getElementById('route-title');
         const stepDesc = document.getElementById('route-desc');
         const prevBtn = document.getElementById('route-prev-btn');
         const nextBtn = document.getElementById('route-next-btn');
         const dotsContainer = document.getElementById('route-dots');
+        const minimapContainer = document.getElementById('route-minimap');
+        const arcadeCanvas = document.getElementById('arcade-canvas');
 
+        // Отрисовка 2D-сцены платформера в точном разрешении 320x180
+        function renderPixelArcadeStage(type) {
+            // Координаты персонажей адаптируются под ландшафт уровня
+            let leadX = 145, leadY = 86;
+            let follX = 85, follY = 92;
+
+            if (type === 'hill_left') {
+                leadX = 145; leadY = 74;
+                follX = 75; follY = 64;
+            } else if (type === 'wires') {
+                leadX = 150; leadY = 72;
+                follX = 75; follY = 88;
+            } else if (type === 'finish') {
+                leadX = 125; leadY = 86;
+                follX = 70; follY = 92;
+            }
+
+            // Герой 1 (Скаутер-ведущий в прыжке) с независимой тенью на земле
+            const heroLeader = `
+                <g transform="translate(${leadX}, ${leadY})">
+                    <ellipse cx="7" cy="35.5" rx="8" ry="2.5" fill="#000" class="animate-hero-shadow"/>
+                    <g class="animate-hero-lead">
+                        <!-- Рюкзак -->
+                        <rect x="-7" y="11" width="7" height="13" fill="#E5A910" stroke="#141414" stroke-width="1.5"/>
+                        <!-- Тело -->
+                        <rect x="0" y="8" width="14" height="15" fill="#00A859" stroke="#141414" stroke-width="1.5"/>
+                        <!-- Голова -->
+                        <rect x="2" y="-4" width="12" height="12" fill="#FFCC80" stroke="#141414" stroke-width="1.5"/>
+                        <!-- Кепка -->
+                        <rect x="0" y="-7" width="15" height="5" fill="#D92525" stroke="#141414" stroke-width="1.5"/>
+                        <rect x="13" y="-5" width="4" height="2.5" fill="#D92525"/>
+                        <!-- Глаз -->
+                        <rect x="10" y="-1" width="2.5" height="2.5" fill="#141414"/>
+                        <!-- Ноги в полете прыжка -->
+                        <rect x="1" y="23" width="4.5" height="9" fill="#1E3A8A" stroke="#141414" stroke-width="1.5"/>
+                        <rect x="8" y="21" width="5.5" height="7" fill="#1E3A8A" stroke="#141414" stroke-width="1.5"/>
+                        <!-- Обувь -->
+                        <rect x="-1" y="32" width="6.5" height="3.5" fill="#24160E"/>
+                        <rect x="9" y="27" width="6" height="3.5" fill="#24160E"/>
+                    </g>
+                </g>
+            `;
+
+            // Герой 2 (Напарник-навигатор) с развевающимся флагом гильдии
+            const heroFollower = `
+                <g transform="translate(${follX}, ${follY})">
+                    <ellipse cx="6" cy="29" rx="7" ry="2.5" fill="#000" class="animate-follower-shadow"/>
+                    <g class="animate-hero-trail">
+                        <rect x="-6" y="7" width="6" height="11" fill="#229ED9" stroke="#141414" stroke-width="1.5"/>
+                        <rect x="0" y="5" width="12" height="13" fill="#FF8A00" stroke="#141414" stroke-width="1.5"/>
+                        <rect x="2" y="-5" width="10" height="10" fill="#FFCC80" stroke="#141414" stroke-width="1.5"/>
+                        <rect x="0" y="-7" width="13" height="4" fill="#6D28D9" stroke="#141414" stroke-width="1.5"/>
+                        <rect x="8" y="-3" width="2" height="2" fill="#141414"/>
+                        <rect x="1" y="18" width="4" height="8" fill="#374151" stroke="#141414" stroke-width="1.5"/>
+                        <rect x="7" y="18" width="4" height="8" fill="#374151" stroke="#141414" stroke-width="1.5"/>
+                        <rect x="0" y="26" width="5.5" height="3" fill="#24160E"/>
+                        <rect x="6" y="26" width="5.5" height="3" fill="#24160E"/>
+                        <!-- Флажок гильдии в руке -->
+                        <line x1="12" y1="8" x2="19" y2="-2" stroke="#FFF" stroke-width="1.5"/>
+                        <g class="animate-flag-wave">
+                            <polygon points="19,-2 28,2 19,6" fill="#E5A910" stroke="#141414" stroke-width="1"/>
+                        </g>
+                    </g>
+                </g>
+            `;
+
+            // Монетка / звезда опыта (3D-спин + парящая тень)
+            const coinXP = `
+                <g transform="translate(195, 75)">
+                    <ellipse cx="5.5" cy="46" rx="5" ry="1.5" fill="#000" class="animate-coin-shadow"/>
+                    <g class="animate-arcade-coin">
+                        <rect x="0" y="0" width="11" height="13" fill="#FFE57F" stroke="#B78103" stroke-width="1.5" rx="1.5"/>
+                        <rect x="2.5" y="2.5" width="6" height="8" fill="#FFD54F"/>
+                        <text x="5.5" y="9" font-family="'Press Start 2P', monospace" font-size="5" fill="#7A4F01" text-anchor="middle">★</text>
+                    </g>
+                </g>
+            `;
+
+            let stageWorld = '';
+
+            switch (type) {
+                case 'station':
+                    stageWorld = `
+                        <!-- Небо -->
+                        <rect width="320" height="180" fill="#0A2234"/>
+                        <!-- Облака -->
+                        <rect x="25" y="25" width="45" height="7" fill="#FFFFFF" opacity="0.15"/>
+                        <rect x="190" y="20" width="55" height="8" fill="#FFFFFF" opacity="0.15"/>
+
+                        <!-- Вагон пригородной электрички -->
+                        <rect x="0" y="45" width="70" height="95" fill="#1E3A8A" stroke="#141414" stroke-width="2.5"/>
+                        <rect x="0" y="52" width="70" height="10" fill="#3B82F6"/>
+                        <rect x="10" y="68" width="18" height="22" fill="#93C5FD" stroke="#141414" stroke-width="2"/>
+                        <rect x="36" y="68" width="22" height="45" fill="#FDE047" stroke="#141414" stroke-width="2"/>
+                        <!-- Колеса -->
+                        <circle cx="20" cy="144" r="8" fill="#374151" stroke="#141414" stroke-width="2"/>
+                        <circle cx="55" cy="144" r="8" fill="#374151" stroke="#141414" stroke-width="2"/>
+
+                        <!-- Платформа перрона -->
+                        <rect x="70" y="125" width="115" height="45" fill="#4B5563" stroke="#141414" stroke-width="2.5"/>
+                        <line x1="70" y1="129" x2="185" y2="129" stroke="#E5A910" stroke-width="3.5" stroke-dasharray="7,5"/>
+
+                        <!-- Наклонный пандус вправо -->
+                        <polygon points="185,125 295,152 295,180 185,180" fill="#6B7280" stroke="#141414" stroke-width="2.5"/>
+                        <line x1="185" y1="129" x2="295" y2="156" stroke="#E5A910" stroke-width="2" stroke-dasharray="6,4"/>
+
+                        <!-- Указатель пандуса -->
+                        <g transform="translate(205, 98)">
+                            <rect x="0" y="0" width="75" height="18" fill="#141414" stroke="#E5A910" stroke-width="1.5"/>
+                            <text x="37" y="12" font-family="'Press Start 2P', monospace" font-size="6.5" fill="#FFEAA0" text-anchor="middle">ПАНДУС ↘</text>
+                        </g>
+                    `;
+                    break;
+
+                case 'rails':
+                    stageWorld = `
+                        <!-- Небо -->
+                        <rect width="320" height="180" fill="#0C2618"/>
+                        <rect x="40" y="25" width="40" height="6" fill="#FFF" opacity="0.12"/>
+                        <rect x="210" y="20" width="60" height="7" fill="#FFF" opacity="0.12"/>
+
+                        <!-- Железнодорожное полотно внизу -->
+                        <rect x="0" y="148" width="320" height="32" fill="#374151"/>
+                        <line x1="0" y1="154" x2="320" y2="154" stroke="#9CA3AF" stroke-width="3"/>
+                        <line x1="0" y1="168" x2="320" y2="168" stroke="#9CA3AF" stroke-width="3"/>
+                        <!-- Шпалы -->
+                        ${[15,55,95,135,175,215,255,295].map(x => `<line x1="${x}" y1="150" x2="${x}" y2="172" stroke="#78350F" stroke-width="4.5"/>`).join('')}
+
+                        <!-- Платформа-тропа в траве -->
+                        <rect x="50" y="124" width="115" height="24" fill="#065F46" stroke="#141414" stroke-width="2"/>
+                        <rect x="50" y="120" width="115" height="6" fill="#00A859"/>
+                        <rect x="190" y="112" width="110" height="36" fill="#065F46" stroke="#141414" stroke-width="2"/>
+                        <rect x="190" y="108" width="110" height="6" fill="#00A859"/>
+
+                        <!-- Парящий блок [?] -->
+                        <g transform="translate(170, 72)" class="animate-block-bump">
+                            <rect x="0" y="0" width="14" height="14" fill="#E5A910" stroke="#141414" stroke-width="1.5"/>
+                            <text x="7" y="10.5" font-family="'Press Start 2P', monospace" font-size="7" fill="#141414" text-anchor="middle">?</text>
+                        </g>
+
+                        <text x="160" y="38" font-family="'Press Start 2P', monospace" font-size="7" fill="#34D399" text-anchor="middle">СПРИНТ ВДОЛЬ ПУТЕЙ ▸▸</text>
+                    `;
+                    break;
+
+                case 'wires':
+                    stageWorld = `
+                        <!-- Небо -->
+                        <rect width="320" height="180" fill="#141C24"/>
+                        <!-- Опоры контактной сети -->
+                        <line x1="35" y1="20" x2="35" y2="155" stroke="#4B5563" stroke-width="6"/>
+                        <line x1="285" y1="20" x2="285" y2="155" stroke="#4B5563" stroke-width="6"/>
+                        <line x1="25" y1="40" x2="295" y2="40" stroke="#9CA3AF" stroke-width="2.5"/>
+                        <line x1="25" y1="52" x2="295" y2="52" stroke="#E5A910" stroke-width="1.5" stroke-dasharray="10,4"/>
+
+                        <!-- Опасная яма/грязь внизу -->
+                        <rect x="0" y="152" width="320" height="28" fill="#1E293B"/>
+                        <text x="160" y="168" font-family="'Press Start 2P', monospace" font-size="6" fill="#EF4444" text-anchor="middle">⚠ ОПАСНОСТЬ: ГРЯЗЬ ⚠</text>
+
+                        <!-- Каменные платформы паркура -->
+                        <rect x="45" y="125" width="75" height="35" fill="#4B5563" stroke="#141414" stroke-width="2.5"/>
+                        <rect x="45" y="122" width="75" height="4" fill="#9CA3AF"/>
+                        <rect x="145" y="112" width="70" height="48" fill="#6B7280" stroke="#141414" stroke-width="2.5"/>
+                        <rect x="145" y="108" width="70" height="5" fill="#CBD5E1"/>
+                        <rect x="240" y="120" width="65" height="40" fill="#4B5563" stroke="#141414" stroke-width="2.5"/>
+                        <rect x="240" y="116" width="65" height="5" fill="#9CA3AF"/>
+
+                        <text x="160" y="32" font-family="'Press Start 2P', monospace" font-size="7" fill="#FBBF24" text-anchor="middle">▲ ДВОЙНОЙ ПРЫЖОК ПО НАСЫПИ</text>
+                    `;
+                    break;
+
+                case 'sand':
+                    stageWorld = `
+                        <!-- Небо -->
+                        <rect width="320" height="180" fill="#241B08"/>
+                        <!-- Солнце -->
+                        <circle cx="275" cy="35" r="16" fill="#F59E0B" opacity="0.8"/>
+                        <!-- Мачты ЛЭП -->
+                        <line x1="240" y1="18" x2="240" y2="150" stroke="#78350F" stroke-width="7"/>
+                        <line x1="215" y1="35" x2="265" y2="35" stroke="#78350F" stroke-width="5"/>
+                        <rect x="212" y="30" width="5" height="6" fill="#E5E7EB"/>
+                        <rect x="263" y="30" width="5" height="6" fill="#E5E7EB"/>
+                        <line x1="0" y1="32" x2="320" y2="32" stroke="#D97706" stroke-width="1.5" opacity="0.6"/>
+
+                        <!-- Песчаные дюны -->
+                        <polygon points="0,132 100,124 195,130 320,122 320,180 0,180" fill="#D97706" stroke="#141414" stroke-width="2.5"/>
+                        <polygon points="0,128 100,120 195,126 320,118 320,132 0,140" fill="#F59E0B"/>
+
+                        <!-- Островок чекпоинта -->
+                        <rect x="135" y="114" width="60" height="16" fill="#B45309" stroke="#141414" stroke-width="2"/>
+                        <text x="165" y="125" font-family="'Press Start 2P', monospace" font-size="6" fill="#FFF" text-anchor="middle">ТРАКТ ЛЭП</text>
+
+                        <text x="130" y="35" font-family="'Press Start 2P', monospace" font-size="7" fill="#FDE68A">ПЕСЧАНЫЙ БИОМ ЛЭП</text>
+                    `;
+                    break;
+
+                case 'road':
+                    stageWorld = `
+                        <!-- Небо -->
+                        <rect width="320" height="180" fill="#0F172A"/>
+                        <!-- Дорога асфальта -->
+                        <rect x="0" y="122" width="320" height="58" fill="#1F2937" stroke="#141414" stroke-width="2.5"/>
+                        <line x1="0" y1="148" x2="320" y2="148" stroke="#FFFFFF" stroke-width="3.5" stroke-dasharray="16,10"/>
+                        
+                        <!-- Бордюр -->
+                        <rect x="0" y="118" width="320" height="4" fill="#9CA3AF"/>
+
+                        <!-- Дорожный указатель -->
+                        <g transform="translate(235, 60)">
+                            <rect x="8" y="24" width="5" height="40" fill="#9CA3AF" stroke="#141414" stroke-width="1.5"/>
+                            <rect x="-15" y="0" width="50" height="24" fill="#2563EB" stroke="#141414" stroke-width="2"/>
+                            <text x="10" y="10" font-family="'Press Start 2P', monospace" font-size="5" fill="#FFF" text-anchor="middle">ЛЕС ➔</text>
+                            <text x="10" y="18" font-family="'Press Start 2P', monospace" font-size="5" fill="#FFEAA0" text-anchor="middle">100M</text>
+                        </g>
+
+                        <!-- Стрелки ускорения на асфальте -->
+                        <text x="160" y="138" font-family="'Press Start 2P', monospace" font-size="8" fill="#F59E0B" class="animate-neon-boost">>>> BOOST >>></text>
+                        <text x="140" y="38" font-family="'Press Start 2P', monospace" font-size="7" fill="#60A5FA">АСФАЛЬТОВЫЙ ТРАНЗИТ ⚡</text>
+                    `;
+                    break;
+
+                case 'fork_right':
+                    stageWorld = `
+                        <!-- Небо -->
+                        <rect width="320" height="180" fill="#082016"/>
+                        <!-- Лес слева (тупик) -->
+                        <rect x="0" y="30" width="90" height="150" fill="#064E3B"/>
+                        <polygon points="45,15 80,50 10,50" fill="#047857"/>
+                        <polygon points="45,40 80,80 10,80" fill="#059669"/>
+                        
+                        <!-- Знак ТУПИК/СТОП -->
+                        <rect x="25" y="70" width="40" height="18" fill="#991B1B" stroke="#141414" stroke-width="2"/>
+                        <text x="45" y="82" font-family="'Press Start 2P', monospace" font-size="6" fill="#FFF" text-anchor="middle">ТУПИК</text>
+
+                        <!-- Дорога вправо -->
+                        <rect x="90" y="125" width="230" height="55" fill="#451A03" stroke="#141414" stroke-width="2"/>
+                        <rect x="90" y="121" width="230" height="5" fill="#00A859"/>
+
+                        <!-- Огромная неоновая стрелка ВПРАВО -->
+                        <g transform="translate(180, 58)">
+                            <g class="animate-arrow-right">
+                                <polygon points="0,15 40,15 40,5 65,22 40,39 40,29 0,29" fill="#3B82F6" stroke="#141414" stroke-width="2.5"/>
+                            </g>
+                            <text x="25" y="48" font-family="'Press Start 2P', monospace" font-size="6.5" fill="#93C5FD">ПОВОРОТ ВПРАВО</text>
+                        </g>
+                    `;
+                    break;
+
+                case 'forest_straight':
+                    stageWorld = `
+                        <!-- Глубокий лес -->
+                        <rect width="320" height="180" fill="#041E11"/>
+                        <!-- Сосны слева и справа -->
+                        <polygon points="25,15 55,65 -5,65" fill="#064E3B"/>
+                        <polygon points="25,45 60,95 -10,95" fill="#047857"/>
+                        <polygon points="295,15 325,65 265,65" fill="#064E3B"/>
+                        <polygon points="295,45 330,95 260,95" fill="#047857"/>
+
+                        <!-- Центральная прямая тропа-платформа -->
+                        <rect x="55" y="124" width="210" height="56" fill="#3B2514" stroke="#141414" stroke-width="2.5"/>
+                        <rect x="55" y="120" width="210" height="5" fill="#00A859"/>
+
+                        <!-- Грибы-мухоморы на тропе -->
+                        <g transform="translate(230, 110)">
+                            <rect x="3" y="5" width="4" height="6" fill="#FFF"/>
+                            <polygon points="5,0 12,5 -2,5" fill="#EF4444"/>
+                            <circle cx="5" cy="3" r="1" fill="#FFF"/>
+                        </g>
+
+                        <!-- Указатель ПРЯМО -->
+                        <g transform="translate(145, 45)" class="animate-arrow-up">
+                            <polygon points="15,0 27,15 19,15 19,32 11,32 11,15 3,15" fill="#22C55E" stroke="#141414" stroke-width="2"/>
+                        </g>
+                        <text x="160" y="32" font-family="'Press Start 2P', monospace" font-size="7" fill="#34D399" text-anchor="middle">КУРС: ТОЛЬКО ПРЯМО ▲</text>
+                    `;
+                    break;
+
+                case 'fork_left':
+                    stageWorld = `
+                        <!-- Небо -->
+                        <rect width="320" height="180" fill="#0A2417"/>
+                        
+                        <!-- Тропа основания -->
+                        <rect x="0" y="125" width="320" height="55" fill="#3D2817" stroke="#141414" stroke-width="2"/>
+                        <rect x="0" y="121" width="320" height="5" fill="#00A859"/>
+
+                        <!-- Большой куст-препятствие посреди развилки -->
+                        <g transform="translate(195, 100)">
+                            <circle cx="20" cy="20" r="22" fill="#14532D" stroke="#141414" stroke-width="2"/>
+                            <circle cx="10" cy="14" r="14" fill="#15803D"/>
+                            <circle cx="28" cy="14" r="14" fill="#16A34A"/>
+                            <circle cx="20" cy="8" r="10" fill="#22C55E"/>
+                        </g>
+
+                        <!-- Стрелка на ЛЕВУЮ колею -->
+                        <g transform="translate(115, 60)">
+                            <g class="animate-arrow-left">
+                                <polygon points="25,20 65,20 65,30 25,30 25,40 0,25 25,10" fill="#22C55E" stroke="#141414" stroke-width="2.5"/>
+                            </g>
+                            <text x="35" y="8" font-family="'Press Start 2P', monospace" font-size="6.5" fill="#86EFAC">ЛЕВАЯ КОЛЕЯ ✔</text>
+                        </g>
+                    `;
+                    break;
+
+                case 'hill_left':
+                    stageWorld = `
+                        <!-- Небо -->
+                        <rect width="320" height="180" fill="#17260C"/>
+                        
+                        <!-- Подъем на холм ступенчатыми террасами -->
+                        <polygon points="0,75 110,105 210,130 320,145 320,180 0,180" fill="#2E1B0E" stroke="#141414" stroke-width="2.5"/>
+                        <polygon points="0,71 110,101 210,126 320,141 320,147 0,77" fill="#00A859"/>
+
+                        <!-- Сосны под наклоном холма -->
+                        <g transform="translate(45, 30)">
+                            <line x1="15" y1="50" x2="5" y2="10" stroke="#78350F" stroke-width="5"/>
+                            <polygon points="5,0 25,30 -15,30" fill="#047857"/>
+                        </g>
+
+                        <!-- Указатель ВИРАЖ ВЛЕВО -->
+                        <g transform="translate(180, 50)">
+                            <g class="animate-arrow-diag">
+                                <polygon points="20,0 0,20 12,20 8,36 18,36 22,20 34,20" fill="#F59E0B" stroke="#141414" stroke-width="2"/>
+                            </g>
+                            <text x="42" y="22" font-family="'Press Start 2P', monospace" font-size="6.5" fill="#FDE047">ВИРАЖ ВЛЕВО ↖</text>
+                        </g>
+                    `;
+                    break;
+
+                case 'finish':
+                    stageWorld = `
+                        <!-- Небо финишной поляны -->
+                        <rect width="320" height="180" fill="#06381E"/>
+                        
+                        <!-- Праздничная поляна -->
+                        <rect x="0" y="122" width="320" height="58" fill="#055B2F" stroke="#141414" stroke-width="2.5"/>
+                        <rect x="0" y="117" width="320" height="6" fill="#22C55E"/>
+
+                        <!-- Палатка гильдии -->
+                        <polygon points="265,75 305,122 225,122" fill="#D92525" stroke="#141414" stroke-width="2.5"/>
+                        <polygon points="265,75 285,122 245,122" fill="#FFEAA0"/>
+
+                        <!-- Пиксельный победный костер -->
+                        <g transform="translate(185, 105)">
+                            <line x1="-5" y1="18" x2="25" y2="18" stroke="#78350F" stroke-width="4"/>
+                            <!-- Искры -->
+                            <rect x="8" y="8" width="2" height="2" fill="#FFEAA0" class="animate-ember-1"/>
+                            <rect x="12" y="5" width="2" height="2" fill="#FF8A00" class="animate-ember-2"/>
+                            <!-- Языки пламени -->
+                            <g class="animate-flame">
+                                <polygon points="10,-6 19,16 1,16" fill="#FF8A00"/>
+                            </g>
+                            <g class="animate-flame-inner">
+                                <polygon points="10,2 16,16 4,16" fill="#FFEAA0"/>
+                            </g>
+                        </g>
+
+                        <!-- Золотой кубок победителя -->
+                        <g transform="translate(255, 25)" class="animate-trophy-shine">
+                            <path d="M 0 0 L 22 0 L 17 15 L 5 15 Z" fill="#F59E0B" stroke="#141414" stroke-width="2"/>
+                            <rect x="9" y="15" width="4" height="7" fill="#D97706"/>
+                            <rect x="4" y="22" width="14" height="4" fill="#B45309" stroke="#141414" stroke-width="1.5"/>
+                            <text x="11" y="9" font-family="'Press Start 2P', monospace" font-size="6" fill="#FFF" text-anchor="middle">★</text>
+                        </g>
+
+                        <!-- Финишный флаг -->
+                        <g transform="translate(35, 45)">
+                            <line x1="0" y1="0" x2="0" y2="75" stroke="#FFF" stroke-width="3"/>
+                            <g class="animate-flag-wave">
+                                <polygon points="0,0 35,12 0,24" fill="#E5A910" stroke="#141414" stroke-width="2"/>
+                                <text x="7" y="15" font-family="'Press Start 2P', monospace" font-size="6" fill="#141414">АКДМ</text>
+                            </g>
+                        </g>
+
+                        <text x="160" y="32" font-family="'Press Start 2P', monospace" font-size="7.5" fill="#FDE047" text-anchor="middle">🏆 ГЛАВНАЯ ПОЛЯНА: ФИНИШ!</text>
+                    `;
+                    break;
+            }
+
+            return `
+                <svg viewBox="0 0 320 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" class="w-full h-full block select-none">
+                    <!-- Задний план уровня -->
+                    ${stageWorld}
+
+                    <!-- Собираемый бонус XP -->
+                    ${type !== 'finish' ? coinXP : ''}
+
+                    <!-- Персонаж-напарник (бежит следом) -->
+                    ${heroFollower}
+
+                    <!-- Персонаж-скаутер (совершает прыжок) -->
+                    ${heroLeader}
+                </svg>
+            `;
+        }
+
+        // Рендер мини-карты маршрута (10 островков)
+        function renderMinimap() {
+            minimapContainer.innerHTML = '';
+            routeSteps.forEach((_, idx) => {
+                const node = document.createElement('div');
+                const isCurrent = idx === currentStep;
+                node.className = `flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 border border-neo-black text-[7px] font-pixel transition-transform ${isCurrent ? 'bg-jungle-gold text-neo-black scale-110 shadow-retro-btn font-bold' : (idx < currentStep ? 'bg-jungle-emerald text-white' : 'bg-gray-800 text-gray-400')}`;
+                node.textContent = isCurrent ? '🏃' : (idx + 1);
+                node.title = `Уровень ${idx + 1}`;
+                minimapContainer.appendChild(node);
+            });
+        }
+
+        // Рендер кнопок 1..10
         function renderRouteDots() {
             dotsContainer.innerHTML = '';
             routeSteps.forEach((_, idx) => {
@@ -1130,15 +1731,26 @@
 
         function updateRouteUI() {
             const step = routeSteps[currentStep];
-            stepInd.textContent = `УРОВЕНЬ ${currentStep + 1} ИЗ ${routeSteps.length}`;
+            stepInd.textContent = `STAGE ${currentStep + 1}/10`;
             stepTag.textContent = step.tag;
-            stepImg.src = step.img;
+            stepBiome.textContent = `БИОМ: ${step.biome}`;
+            stepDiff.textContent = step.diff;
+            stepHudStage.textContent = step.world;
             stepTitle.textContent = step.title;
             stepDesc.textContent = step.desc;
+
+            // Отрисовка точной 2D-аркады
+            arcadeCanvas.innerHTML = renderPixelArcadeStage(step.artType);
+            
+            // Анимация рывка/прыжка при смене уровня
+            arcadeCanvas.classList.remove('animate-stage-leap');
+            void arcadeCanvas.offsetWidth;
+            arcadeCanvas.classList.add('animate-stage-leap');
 
             prevBtn.disabled = currentStep === 0;
             nextBtn.textContent = currentStep === routeSteps.length - 1 ? 'ФИНИШ 🏁' : 'Вперёд →';
             renderRouteDots();
+            renderMinimap();
         }
 
         prevBtn.onclick = () => { if (currentStep > 0) { currentStep--; updateRouteUI(); } };
@@ -1157,7 +1769,7 @@
             });
         });
 
-        // 5. ОРИГИНАЛЬНЫЕ ПРЕДСКАЗАНИЯ ОРАКУЛА (СОХРАНЕНЫ ПОЛНОСТЬЮ)
+        // 5. ОРИГИНАЛЬНЫЙ ОРАКУЛ
         const outcomes = {
             2: {
                 title: "💀 КРИТИЧЕСКИЙ ПРОВАЛ // (2)",
@@ -1167,7 +1779,7 @@
             },
             3: {
                 title: "🌧️ ЗАСАДА В КУСТАХ // (3)",
-                desc: "Держитесь ближе к НАШЕМУ ЛЮБИМОМУ ПРЕДСЕДАТЕЛЮ! Лесные комары захотят списать лабу, а обувь проверит минскую грязь",
+                desc: "Держитесь плотной группой! Лесные комары захотят списать лабу, а обувь проверит минскую грязь",
                 quote: "«Один неверный шаг на развилке — и ты поёшь гимн биофака на чужом пикете»",
                 bg: "bg-jungle-amber text-neo-black"
             },
@@ -1209,7 +1821,7 @@
             },
             10: {
                 title: "👑 БЕРСЕРК БИОФАКА // (10)",
-                desc: "Вспышка золотого света! Ваша группа заберёт призовые кубки, а НАШ ЛЮБИМЫЙ ПРЕДСЕДАТЕЛЬ лично похвалит за антураж!",
+                desc: "Вспышка золотого света! Ваша группа заберёт призовые кубки, а менторы лично похвалят за антураж!",
                 quote: "«Джунгли склоняются перед будущими светилами науки!»",
                 bg: "bg-jungle-gold text-neo-black ring-3 ring-jungle-amber"
             },
@@ -1227,7 +1839,7 @@
             }
         };
 
-        // 6. ЗУБОДРАБИТЕЛЬНАЯ 3D АНИМАЦИЯ КУБИКОВ
+        // 6. 3D АНИМАЦИЯ КУБИКОВ
         const triggerCube = document.getElementById('mystery-cube-trigger');
         const modalDice = document.getElementById('modal-dice');
         const cardDice = document.getElementById('dice-modal-card');
@@ -1243,7 +1855,6 @@
         const predDesc = document.getElementById('prediction-desc');
         const predQuote = document.getElementById('prediction-jumanji-quote');
 
-        // Углы поворота CSS для граней 1..6
         const faceAngles = {
             1: { x: 0, y: 0 },
             6: { x: 0, y: 180 },
@@ -1262,18 +1873,15 @@
             btnRollText.textContent = "КОСТИ КАТЯТСЯ...";
             rerollBtn.disabled = true;
 
-            // Запуск бешеного кульбита
             die3d1.style.transform = '';
             die3d2.style.transform = '';
             die3d1.classList.add('die-rolling-1');
             die3d2.classList.add('die-rolling-2');
 
-            // Сброс эффектов
             shockwave.classList.remove('shockwave-burst');
             cardDice.classList.remove('animate-rumble');
 
             setTimeout(() => {
-                // Генерация результата
                 const val1 = Math.floor(Math.random() * 6) + 1;
                 const val2 = Math.floor(Math.random() * 6) + 1;
                 const sum = val1 + val2;
@@ -1281,18 +1889,15 @@
                 die3d1.classList.remove('die-rolling-1');
                 die3d2.classList.remove('die-rolling-2');
 
-                // Плавная и резкая доводка до выпавшей грани
                 const rot1 = faceAngles[val1];
                 const rot2 = faceAngles[val2];
                 die3d1.style.transform = `rotateX(${rot1.x + 720}deg) rotateY(${rot1.y + 720}deg)`;
                 die3d2.style.transform = `rotateX(${rot2.x - 720}deg) rotateY(${rot2.y - 720}deg)`;
 
-                // Тряска арены и ударная волна
                 void shockwave.offsetWidth;
                 shockwave.classList.add('shockwave-burst');
                 cardDice.classList.add('animate-rumble');
 
-                // Обновление оракула
                 const res = outcomes[sum] || outcomes[7];
                 predBox.className = `w-full text-left p-3.5 border-2 border-neo-black shadow-retro-btn transition-all ${res.bg} animate-brochure`;
                 predScore.textContent = `СУММА: ${sum}`;
@@ -1306,13 +1911,11 @@
             }, 900);
         }
 
-        // Клик по таинственному пиксельному кубику
         triggerCube.addEventListener('click', () => {
             openModal('modal-dice');
             playEpic3DRoll();
         });
 
-        // Кнопка реролла внутри арены
         rerollBtn.addEventListener('click', () => {
             playEpic3DRoll();
         });
