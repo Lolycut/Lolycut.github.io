@@ -10,7 +10,7 @@
     <title>Турслёт Первокурсников Биофака БГУ | Зов Джунглей & АКДМ 2026</title>
     <meta name="title" content="Турслёт Первокурсников Биофака БГУ | Зов Джунглей & АКДМ 2026">
     <meta name="description" content="Интерактивная онлайн-брошюра Турслёта биологического факультета БГУ. 10 шагов тропы ст. Зелёное с Нашим Любимым и Единственным Председателем, кубики судьбы, квесты и FAQ.">
-    <meta name="keywords" content="турслет бгу, биофак бгу, академический маяк, туртропа, акдм, акдм бгу, турслет биофака, Биофак БГУ, турслет первокурсников бгу, станция зеленое турслет, биологический факультет бгу, наш любимый председатель">
+    <meta name="keywords" content="турслет бгу, биофак бгу, академический маяк, туртропа, акдм, акдм бгу, турслет биофака, турслет первокурсников бгу, станция зеленое турслет, биологический факультет бгу, наш любимый председатель">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="author" content="Академический Маяк БГУ">
 
@@ -107,24 +107,154 @@
         .font-mono-code { font-family: 'JetBrains Mono', monospace; }
         .font-pixel { font-family: 'Press Start 2P', monospace; }
 
-        @keyframes diceTumble {
-            0% { transform: scale(1) rotate(0deg); }
-            25% { transform: scale(1.1) rotate(15deg); }
-            50% { transform: scale(1.15) rotate(-15deg); }
-            75% { transform: scale(1.05) rotate(10deg); }
-            100% { transform: scale(1) rotate(0deg); }
+        /* ================= ПИКСЕЛЬНЫЙ АРТЕФАКТ И ЗОЛОТОЕ СИЯНИЕ ================= */
+        @keyframes floatPixelCube {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-7px);
+            }
         }
 
-        .dice-animating {
-            animation: diceTumble 0.45s ease-in-out infinite;
+        @keyframes shadowScale {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.45;
+            }
+            50% {
+                transform: scale(0.82);
+                opacity: 0.25;
+            }
         }
 
-        .dice-pip {
-            width: 10px;
-            height: 10px;
+        @keyframes auraBreath {
+            0%, 100% {
+                transform: scale(0.95);
+                opacity: 0.55;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.85;
+            }
+        }
+
+        @keyframes floatSpark1 {
+            0%, 100% { transform: translate(0, 0) scale(0.8); opacity: 0.4; }
+            50% { transform: translate(-6px, -10px) scale(1.2); opacity: 1; }
+        }
+        @keyframes floatSpark2 {
+            0%, 100% { transform: translate(0, 0) scale(1.1); opacity: 0.5; }
+            50% { transform: translate(8px, -8px) scale(0.8); opacity: 1; }
+        }
+
+        .animate-pixel-float {
+            animation: floatPixelCube 3s ease-in-out infinite;
+        }
+        .animate-shadow-breath {
+            animation: shadowScale 3s ease-in-out infinite;
+        }
+        .animate-aura-breath {
+            animation: auraBreath 2.8s ease-in-out infinite;
+        }
+        .animate-spark-1 {
+            animation: floatSpark1 2.2s ease-in-out infinite;
+        }
+        .animate-spark-2 {
+            animation: floatSpark2 2.6s ease-in-out infinite;
+        }
+
+        /* ================= ЗУБОДРАБИТЕЛЬНЫЙ 3D РОЛЛ ================= */
+        .perspective-dice-stage {
+            perspective: 1000px;
+            perspective-origin: 50% 50%;
+        }
+
+        .dice-3d {
+            width: 72px;
+            height: 72px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.65s cubic-bezier(0.12, 1.25, 0.28, 1);
+        }
+
+        .dice-face {
+            position: absolute;
+            width: 72px;
+            height: 72px;
+            background-color: #F7F2EA;
+            border: 3px solid #141414;
+            box-shadow: inset 0 0 0 2px rgba(229, 169, 16, 0.2), 3px 3px 0 #141414;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backface-visibility: hidden;
+            box-sizing: border-box;
+        }
+
+        /* 6 граней 3D кубика */
+        .face-1 { transform: rotateY(0deg) translateZ(36px); }
+        .face-6 { transform: rotateY(180deg) translateZ(36px); }
+        .face-2 { transform: rotateX(90deg) translateZ(36px); }
+        .face-5 { transform: rotateX(-90deg) translateZ(36px); }
+        .face-3 { transform: rotateY(90deg) translateZ(36px); }
+        .face-4 { transform: rotateY(-90deg) translateZ(36px); }
+
+        .dice-pip-3d {
+            width: 9px;
+            height: 9px;
             background-color: #141414;
-            border-radius: 9999px;
-            display: inline-block;
+            border-radius: 2px;
+            box-shadow: 0 0 2px rgba(0,0,0,0.4);
+        }
+
+        /* Сумасшедшие траектории вращения */
+        @keyframes insaneRoll1 {
+            0% { transform: translateY(-70px) scale(0.65) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            20% { transform: translateY(24px) scale(1.18) rotateX(460deg) rotateY(260deg) rotateZ(90deg); }
+            40% { transform: translateY(-45px) scale(0.9) rotateX(880deg) rotateY(620deg) rotateZ(210deg); }
+            65% { transform: translateY(18px) scale(1.08) rotateX(1240deg) rotateY(990deg) rotateZ(310deg); }
+            85% { transform: translateY(-12px) scale(0.98) rotateX(1520deg) rotateY(1280deg) rotateZ(410deg); }
+            100% { transform: translateY(0) scale(1) rotateX(1800deg) rotateY(1440deg) rotateZ(540deg); }
+        }
+
+        @keyframes insaneRoll2 {
+            0% { transform: translateY(-85px) scale(0.6) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            25% { transform: translateY(28px) scale(1.22) rotateX(-480deg) rotateY(320deg) rotateZ(-120deg); }
+            50% { transform: translateY(-38px) scale(0.92) rotateX(-940deg) rotateY(700deg) rotateZ(-240deg); }
+            70% { transform: translateY(15px) scale(1.1) rotateX(-1320deg) rotateY(1050deg) rotateZ(-330deg); }
+            88% { transform: translateY(-8px) scale(0.97) rotateX(-1600deg) rotateY(1320deg) rotateZ(-420deg); }
+            100% { transform: translateY(0) scale(1) rotateX(-1800deg) rotateY(-1440deg) rotateZ(-540deg); }
+        }
+
+        .die-rolling-1 {
+            animation: insaneRoll1 0.95s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
+        }
+        .die-rolling-2 {
+            animation: insaneRoll2 0.95s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
+        }
+
+        /* Ударная волна и тряска */
+        @keyframes shockwaveExpand {
+            0% { transform: scale(0.2); opacity: 1; }
+            80% { transform: scale(2.4); opacity: 0.6; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+        .shockwave-burst {
+            animation: shockwaveExpand 0.65s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+        }
+
+        @keyframes earthRumble {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            15% { transform: translate(-5px, 4px) rotate(-1deg); }
+            30% { transform: translate(6px, -5px) rotate(1.2deg); }
+            45% { transform: translate(-4px, 3px) rotate(-0.8deg); }
+            60% { transform: translate(5px, -3px) rotate(0.6deg); }
+            75% { transform: translate(-2px, 2px) rotate(-0.3deg); }
+            90% { transform: translate(2px, -1px) rotate(0.2deg); }
+        }
+        .animate-rumble {
+            animation: earthRumble 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
         }
 
         @keyframes brochurePop {
@@ -253,53 +383,61 @@
 
         </section>
 
-        <!-- КУБИКИ СУДЬБЫ -->
-        <section class="bg-jungle-deep text-white border-3 border-neo-black shadow-neo p-5 sm:p-6 transition-all">
+        <!-- ================================================================= -->
+        <!-- МИСТИЧЕСКИЙ ПИКСЕЛЬНЫЙ ПСЕВДО-3D АРТЕФАКТ СУДЬБЫ (БЕЗ ТЕКСТА) -->
+        <!-- ================================================================= -->
+        <section class="relative bg-[#07130B] border-3 border-neo-black dark:border-jungle-gold shadow-neo py-4 px-4 overflow-hidden transition-all flex items-center justify-center select-none">
             
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-                <div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-lg">🎲</span>
-                        <h2 class="font-pixel text-xs sm:text-sm text-jungle-gold uppercase tracking-tight">Кубики Судьбы: Бросок d6</h2>
-                    </div>
-                    <p class="font-mono-code text-xs text-gray-300 mt-1">Испытай удачу перед выходом на тропу Зелёного!</p>
-                </div>
+            <!-- Фоновая мистическая микросетка -->
+            <div class="absolute inset-0 bg-[radial-gradient(#00A859_1px,transparent_1px)] [background-size:16px_16px] opacity-15 pointer-events-none"></div>
 
-                <button id="roll-btn" class="bg-jungle-gold hover:bg-yellow-400 text-neo-black font-mono-code font-extrabold text-xs px-4 py-2.5 border-2 border-neo-black shadow-retro-btn active:translate-y-0.5 transition-all uppercase flex items-center justify-center gap-2 cursor-pointer self-start sm:self-auto">
-                    <span>⚡</span>
-                    <span id="btn-text">БРОСИТЬ КОСТИ</span>
-                </button>
-            </div>
-
-            <!-- Блок кубиков и предсказания -->
-            <div class="bg-[#08170e] border-2 border-[#1e4629] p-4 flex flex-col sm:flex-row items-center gap-4">
+            <!-- Интерактивный загадочный кубик с пульсирующим золотым ореолом -->
+            <div id="mystery-cube-trigger" class="relative group cursor-pointer flex flex-col items-center justify-center py-2" role="button" aria-label="Испытать судьбу" title="Испытать судьбу">
                 
-                <div class="flex items-center gap-3 shrink-0 select-none">
-                    <div id="die-1" class="w-14 h-14 bg-jungle-parchment border-2 border-neo-black rounded-lg p-1.5 shadow-retro-btn flex items-center justify-center transition-transform">
-                        <div id="die-1-face" class="grid grid-cols-3 grid-rows-3 w-full h-full gap-0.5 items-center justify-items-center"></div>
-                    </div>
-                    <span class="font-pixel text-jungle-gold text-lg">+</span>
-                    <div id="die-2" class="w-14 h-14 bg-jungle-parchment border-2 border-neo-black rounded-lg p-1.5 shadow-retro-btn flex items-center justify-center transition-transform">
-                        <div id="die-2-face" class="grid grid-cols-3 grid-rows-3 w-full h-full gap-0.5 items-center justify-items-center"></div>
-                    </div>
+                <!-- Мягкое золотистое сияние (многослойное и глубокое) -->
+                <div class="absolute w-28 h-28 rounded-full bg-jungle-gold/25 blur-xl pointer-events-none animate-aura-breath group-hover:bg-yellow-300/40 transition-all duration-500"></div>
+                <div class="absolute w-16 h-16 rounded-full bg-yellow-300/35 blur-md pointer-events-none"></div>
+
+                <!-- Парящие микро-искры -->
+                <span class="absolute -top-1 left-2 text-[11px] text-jungle-gold pointer-events-none animate-spark-1 select-none">✦</span>
+                <span class="absolute -bottom-1 right-2 text-[13px] text-yellow-300 pointer-events-none animate-spark-2 select-none">★</span>
+                <span class="absolute top-2.5 -right-3 text-[8px] text-jungle-amber pointer-events-none opacity-80 select-none">◆</span>
+
+                <!-- Парящий псевдо-3D кубик с чистой геометрией -->
+                <div class="relative z-10 animate-pixel-float group-hover:scale-110 group-active:scale-95 transition-transform duration-200">
+                    <svg width="68" height="68" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="overflow-visible">
+                        
+                        <!-- ВЕРХНЯЯ ГРАНЬ (Светлое теплое золото) -->
+                        <polygon points="32,8 56,20 32,32 8,20" fill="#FFEAA0" stroke="#141414" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+                        
+                        <!-- ЛЕВАЯ ГРАНЬ (Золотой полутон) -->
+                        <polygon points="8,20 32,32 32,54 8,42" fill="#E5A910" stroke="#141414" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+                        
+                        <!-- ПРАВАЯ ГРАНЬ (Теневое теплое золото) -->
+                        <polygon points="32,32 56,20 56,42 32,54" fill="#996300" stroke="#141414" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+
+                        <!-- Внутреннее ребро разделения -->
+                        <line x1="32" y1="32" x2="32" y2="54" stroke="#141414" stroke-width="2.5" stroke-linecap="round"/>
+
+                        <!-- БЛИК ПО ВЕРХНЕЙ КРОМКЕ -->
+                        <polyline points="9.5,20 32,8.8 54.5,20" stroke="#FFF9DE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+
+                        <!-- АККУРАТНАЯ ТОЧКА НА ВЕРХНЕЙ ГРАНИ (Центр = 1) -->
+                        <polygon points="32,16.5 37,20 32,23.5 27,20" fill="#141414"/>
+
+                        <!-- 2 ТОЧКИ НА ЛЕВОЙ ГРАНИ (Чистые изометрические параллелограммы) -->
+                        <polygon points="12,27 18,30 18,35 12,32" fill="#141414"/>
+                        <polygon points="22,39 28,42 28,47 22,44" fill="#141414"/>
+
+                        <!-- 3 ТОЧКИ НА ПРАВОЙ ГРАНИ (Чистые изометрические параллелограммы) -->
+                        <polygon points="47,29 53,26 53,31 47,34" fill="#141414"/>
+                        <polygon points="41,36 47,33 47,38 41,41" fill="#141414"/>
+                        <polygon points="35,43 41,40 41,45 35,48" fill="#141414"/>
+                    </svg>
                 </div>
 
-                <!-- Блок оракула -->
-                <div id="prediction-box" class="w-full bg-jungle-emerald text-white p-3.5 border-2 border-neo-black shadow-retro-btn transition-all">
-                    <div class="flex items-center justify-between text-[11px] font-mono-code font-bold mb-1">
-                        <span id="prediction-badge" class="bg-white text-neo-black px-1.5 py-0.5 border border-neo-black uppercase">📜 ОРИГИНАЛЬНЫЙ ОРАКУЛ</span>
-                        <span id="prediction-score" class="font-extrabold">СУММА: 7</span>
-                    </div>
-                    <h3 id="prediction-title" class="font-extrabold text-sm uppercase leading-tight mb-1">
-                        🎲 ЗОЛОТАЯ СЕРЕДИНА // СУДЬБА (7)
-                    </h3>
-                    <p id="prediction-desc" class="text-xs font-mono-code leading-relaxed mb-1">
-                        Идеальный баланс! Ваша группа найдёт все тайные пасхалки на тропе, а справка-освобождение выпишется быстрее скорости света.
-                    </p>
-                    <div id="prediction-jumanji-quote" class="text-[10px] font-mono-code italic opacity-90">
-                        «Магическое число Зелёного. Джунгли приветствуют достойных!»
-                    </div>
-                </div>
+                <!-- Естественная мягкая тень под парящим кубиком -->
+                <div class="w-10 h-2 bg-black/50 rounded-full blur-[2px] mt-1 pointer-events-none animate-shadow-breath group-hover:scale-90 group-hover:opacity-30 transition-all duration-300"></div>
 
             </div>
 
@@ -386,8 +524,149 @@
     </main>
 
     <!-- ================================================================= -->
-    <!-- МОДАЛЬНЫЕ РАЗВОРОТЫ БРОШЮРЫ -->
+    <!-- МОДАЛЬНАЯ АРЕНА: ЗУБОДРАБИТЕЛЬНЫЙ БРОСОК ДВУХ КУБИКОВ 3D -->
     <!-- ================================================================= -->
+    <div id="modal-dice" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4">
+        <div id="dice-modal-card" class="w-full max-w-xl bg-jungle-deep border-4 border-neo-black dark:border-jungle-gold shadow-neo-lg flex flex-col max-h-[94vh] animate-brochure overflow-hidden">
+            
+            <!-- Хедер арены -->
+            <div class="bg-neo-black text-white p-3 sm:p-3.5 border-b-3 border-neo-black flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="text-base sm:text-lg animate-pulse">⚡</span>
+                    <span class="font-pixel text-[10px] sm:text-xs text-jungle-gold uppercase tracking-wider">Кубики Судьбы: Бросок d6</span>
+                </div>
+                <button onclick="closeModal('modal-dice')" class="bg-jungle-crimson hover:bg-red-700 text-white font-pixel text-[10px] px-2.5 py-1 border border-white cursor-pointer transition-transform active:translate-y-0.5">✕ ЗАКРЫТЬ</button>
+            </div>
+
+            <!-- 3D Арена броска -->
+            <div class="p-4 sm:p-6 overflow-y-auto modal-scroll space-y-4 text-center">
+                
+                <div class="relative py-7 sm:py-9 flex items-center justify-center overflow-hidden bg-[#061209] border-2 border-[#194025] shadow-inner">
+                    
+                    <!-- Шоковая волна при приземлении -->
+                    <div id="shockwave-ring" class="absolute w-24 h-24 rounded-full border-4 border-jungle-gold pointer-events-none opacity-0"></div>
+
+                    <!-- Рунический круг на полу арены -->
+                    <div class="absolute w-56 h-56 rounded-full border border-dashed border-jungle-gold/25 pointer-events-none animate-spin" style="animation-duration: 25s;"></div>
+
+                    <!-- Сцена с двумя 3D кубиками -->
+                    <div class="perspective-dice-stage flex items-center justify-center gap-8 sm:gap-12 z-10 select-none">
+                        
+                        <!-- 3D Кубик 1 -->
+                        <div id="die-3d-1" class="dice-3d">
+                            <div class="dice-face face-1">
+                                <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center"><div class="col-start-2 row-start-2 dice-pip-3d bg-jungle-crimson"></div></div>
+                            </div>
+                            <div class="dice-face face-6">
+                                <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center">
+                                    <div class="col-start-1 row-start-1 dice-pip-3d"></div><div class="col-start-1 row-start-2 dice-pip-3d"></div><div class="col-start-1 row-start-3 dice-pip-3d"></div>
+                                    <div class="col-start-3 row-start-1 dice-pip-3d"></div><div class="col-start-3 row-start-2 dice-pip-3d"></div><div class="col-start-3 row-start-3 dice-pip-3d"></div>
+                                </div>
+                            </div>
+                            <div class="dice-face face-2">
+                                <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center">
+                                    <div class="col-start-1 row-start-1 dice-pip-3d"></div>
+                                    <div class="col-start-3 row-start-3 dice-pip-3d"></div>
+                                </div>
+                            </div>
+                            <div class="dice-face face-5">
+                                <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center">
+                                    <div class="col-start-1 row-start-1 dice-pip-3d"></div><div class="col-start-3 row-start-1 dice-pip-3d"></div>
+                                    <div class="col-start-2 row-start-2 dice-pip-3d"></div>
+                                    <div class="col-start-1 row-start-3 dice-pip-3d"></div><div class="col-start-3 row-start-3 dice-pip-3d"></div>
+                                </div>
+                            </div>
+                            <div class="dice-face face-3">
+                                <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center">
+                                    <div class="col-start-1 row-start-1 dice-pip-3d"></div>
+                                    <div class="col-start-2 row-start-2 dice-pip-3d"></div>
+                                    <div class="col-start-3 row-start-3 dice-pip-3d"></div>
+                                </div>
+                            </div>
+                            <div class="dice-face face-4">
+                                <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center">
+                                    <div class="col-start-1 row-start-1 dice-pip-3d"></div><div class="col-start-3 row-start-1 dice-pip-3d"></div>
+                                    <div class="col-start-1 row-start-3 dice-pip-3d"></div><div class="col-start-3 row-start-3 dice-pip-3d"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="font-pixel text-jungle-gold text-2xl drop-shadow-[0_2px_0_#000]">+</span>
+
+                        <!-- 3D Кубик 2 -->
+                        <div id="die-3d-2" class="dice-3d">
+                            <div class="dice-face face-1">
+                                <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center"><div class="col-start-2 row-start-2 dice-pip-3d bg-jungle-crimson"></div></div>
+                            </div>
+                            <div class="dice-face face-6">
+                                <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center">
+                                    <div class="col-start-1 row-start-1 dice-pip-3d"></div><div class="col-start-1 row-start-2 dice-pip-3d"></div><div class="col-start-1 row-start-3 dice-pip-3d"></div>
+                                    <div class="col-start-3 row-start-1 dice-pip-3d"></div><div class="col-start-3 row-start-2 dice-pip-3d"></div><div class="col-start-3 row-start-3 dice-pip-3d"></div>
+                                </div>
+                            </div>
+                            <div class="dice-face face-2">
+                                <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center">
+                                    <div class="col-start-1 row-start-1 dice-pip-3d"></div>
+                                    <div class="col-start-3 row-start-3 dice-pip-3d"></div>
+                                </div>
+                            </div>
+                            <div class="dice-face face-5">
+                                <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center">
+                                    <div class="col-start-1 row-start-1 dice-pip-3d"></div><div class="col-start-3 row-start-1 dice-pip-3d"></div>
+                                    <div class="col-start-2 row-start-2 dice-pip-3d"></div>
+                                    <div class="col-start-1 row-start-3 dice-pip-3d"></div><div class="col-start-3 row-start-3 dice-pip-3d"></div>
+                                </div>
+                            </div>
+                            <div class="dice-face face-3">
+                                <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center">
+                                    <div class="col-start-1 row-start-1 dice-pip-3d"></div>
+                                    <div class="col-start-2 row-start-2 dice-pip-3d"></div>
+                                    <div class="col-start-3 row-start-3 dice-pip-3d"></div>
+                                </div>
+                            </div>
+                            <div class="dice-face face-4">
+                                <div class="grid grid-cols-3 grid-rows-3 w-12 h-12 items-center justify-items-center">
+                                    <div class="col-start-1 row-start-1 dice-pip-3d"></div><div class="col-start-3 row-start-1 dice-pip-3d"></div>
+                                    <div class="col-start-1 row-start-3 dice-pip-3d"></div><div class="col-start-3 row-start-3 dice-pip-3d"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Блок оракула с оригинальными текстами -->
+                <div id="prediction-box" class="w-full text-left bg-jungle-emerald text-white p-3.5 border-2 border-neo-black shadow-retro-btn transition-all">
+                    <div class="flex items-center justify-between text-[11px] font-mono-code font-bold mb-1">
+                        <span id="prediction-badge" class="bg-white text-neo-black px-1.5 py-0.5 border border-neo-black uppercase">📜 ОРИГИНАЛЬНЫЙ ОРАКУЛ</span>
+                        <span id="prediction-score" class="font-extrabold">СУММА: 7</span>
+                    </div>
+                    <h3 id="prediction-title" class="font-extrabold text-sm uppercase leading-tight mb-1">
+                        🎲 ЗОЛОТАЯ СЕРЕДИНА // СУДЬБА (7)
+                    </h3>
+                    <p id="prediction-desc" class="text-xs font-mono-code leading-relaxed mb-1">
+                        Идеальный баланс! Ваша группа найдёт все тайные пасхалки на тропе, а справка-освобождение выпишется быстрее скорости света.
+                    </p>
+                    <div id="prediction-jumanji-quote" class="text-[10px] font-mono-code italic opacity-90">
+                        «Магическое число Зелёного. Джунгли приветствуют достойных!»
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Нижняя панель действий -->
+            <div class="bg-jungle-parchment dark:bg-dark-surface p-3 border-t-3 border-neo-black dark:border-gray-700 flex items-center justify-between gap-3 shrink-0">
+                <p class="font-mono-code text-[11px] text-gray-700 dark:text-gray-300 font-bold hidden sm:block">
+                    ⚡ Испытай удачу перед выходом на тропу Зелёного!
+                </p>
+                <button id="modal-reroll-btn" class="w-full sm:w-auto ml-auto bg-jungle-gold hover:bg-yellow-400 text-neo-black font-mono-code font-extrabold text-xs px-5 py-2.5 border-2 border-neo-black shadow-retro-btn active:translate-y-0.5 transition-all uppercase flex items-center justify-center gap-2 cursor-pointer">
+                    <span>⚡</span>
+                    <span id="modal-btn-text">БРОСИТЬ СНОВА</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
 
     <!-- МОДАЛКА 1: МАРШРУТ -->
     <div id="modal-route" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs hidden items-center justify-center p-3 sm:p-4">
@@ -565,7 +844,7 @@
                     <span class="text-lg">⚔️</span>
                     <span class="font-pixel text-[10px] sm:text-xs text-jungle-amber uppercase">Глава 03 // Лор & 4 Квеста</span>
                 </div>
-                <button onclick="closeModal('modal-quests')" class="bg-jungle-crimson hover:bg-red-700 text-white font-pixel text-[10px] px-2.5 py-1 border border-white cursor-pointer">✕ ЗАКРЙТЬ</button>
+                <button onclick="closeModal('modal-quests')" class="bg-jungle-crimson hover:bg-red-700 text-white font-pixel text-[10px] px-2.5 py-1 border border-white cursor-pointer">✕ ЗАКРЫТЬ</button>
             </div>
 
             <div class="p-4 sm:p-6 overflow-y-auto modal-scroll space-y-5">
@@ -714,7 +993,7 @@
     </footer>
 
     <!-- ================================================================= -->
-    <!-- СКРИПТЫ: 10 ШАГОВ МАРШРУТА + ОРИГИНАЛЬНЫЕ КУБИКИ + ЧЕК-ЛИСТ -->
+    <!-- СКРИПТЫ: 3D АРЕНА КУБИКОВ + 10 ШАГОВ + ЧЕК-ЛИСТ -->
     <!-- ================================================================= -->
     <script>
         // 1. ТЕМА
@@ -764,7 +1043,7 @@
             }
         });
 
-        // 3. МАРШРУТ (10 ШАГОВ СИНХРОНИЗИРОВАННЫХ С ИМЕНАМИ mar_1..mar_10)
+        // 3. МАРШРУТ (10 ШАГОВ)
         const routeSteps = [
             {
                 tag: "УРОВЕНЬ 1 // СТАНЦИЯ ЗЕЛЁНОЕ",
@@ -878,44 +1157,7 @@
             });
         });
 
-        // 5. КУБИКИ И ОРИГИНАЛЬНЫЕ ПРЕДСКАЗАНИЯ
-        const die1Face = document.getElementById('die-1-face');
-        const die2Face = document.getElementById('die-2-face');
-        const die1El = document.getElementById('die-1');
-        const die2El = document.getElementById('die-2');
-        const rollBtn = document.getElementById('roll-btn');
-        const btnText = document.getElementById('btn-text');
-
-        const predBox = document.getElementById('prediction-box');
-        const predScore = document.getElementById('prediction-score');
-        const predTitle = document.getElementById('prediction-title');
-        const predDesc = document.getElementById('prediction-desc');
-        const predQuote = document.getElementById('prediction-jumanji-quote');
-
-        const pipPatterns = {
-            1: [5],
-            2: [1, 9],
-            3: [1, 5, 9],
-            4: [1, 3, 7, 9],
-            5: [1, 3, 5, 7, 9],
-            6: [1, 3, 4, 6, 7, 9]
-        };
-
-        function renderDie(container, value) {
-            container.innerHTML = '';
-            const active = pipPatterns[value] || [5];
-            for (let i = 1; i <= 9; i++) {
-                const cell = document.createElement('div');
-                cell.className = 'w-full h-full flex items-center justify-center';
-                if (active.includes(i)) {
-                    const pip = document.createElement('span');
-                    pip.className = 'dice-pip';
-                    cell.appendChild(pip);
-                }
-                container.appendChild(cell);
-            }
-        }
-
+        // 5. ОРИГИНАЛЬНЫЕ ПРЕДСКАЗАНИЯ ОРАКУЛА (СОХРАНЕНЫ ПОЛНОСТЬЮ)
         const outcomes = {
             2: {
                 title: "💀 КРИТИЧЕСКИЙ ПРОВАЛ // (2)",
@@ -985,44 +1227,94 @@
             }
         };
 
-        renderDie(die1Face, 3);
-        renderDie(die2Face, 4);
+        // 6. ЗУБОДРАБИТЕЛЬНАЯ 3D АНИМАЦИЯ КУБИКОВ
+        const triggerCube = document.getElementById('mystery-cube-trigger');
+        const modalDice = document.getElementById('modal-dice');
+        const cardDice = document.getElementById('dice-modal-card');
+        const die3d1 = document.getElementById('die-3d-1');
+        const die3d2 = document.getElementById('die-3d-2');
+        const rerollBtn = document.getElementById('modal-reroll-btn');
+        const btnRollText = document.getElementById('modal-btn-text');
+        const shockwave = document.getElementById('shockwave-ring');
 
-        let isRolling = false;
-        rollBtn.addEventListener('click', () => {
-            if (isRolling) return;
-            isRolling = true;
+        const predBox = document.getElementById('prediction-box');
+        const predScore = document.getElementById('prediction-score');
+        const predTitle = document.getElementById('prediction-title');
+        const predDesc = document.getElementById('prediction-desc');
+        const predQuote = document.getElementById('prediction-jumanji-quote');
 
-            btnText.textContent = "КОСТИ КАТЯТСЯ...";
-            die1El.classList.add('dice-animating');
-            die2El.classList.add('dice-animating');
+        // Углы поворота CSS для граней 1..6
+        const faceAngles = {
+            1: { x: 0, y: 0 },
+            6: { x: 0, y: 180 },
+            2: { x: -90, y: 0 },
+            5: { x: 90, y: 0 },
+            3: { x: 0, y: -90 },
+            4: { x: 0, y: 90 }
+        };
 
-            let counter = 0;
-            const interval = setInterval(() => {
-                renderDie(die1Face, Math.floor(Math.random() * 6) + 1);
-                renderDie(die2Face, Math.floor(Math.random() * 6) + 1);
-                counter++;
-                if (counter > 7) {
-                    clearInterval(interval);
-                    const f1 = Math.floor(Math.random() * 6) + 1;
-                    const f2 = Math.floor(Math.random() * 6) + 1;
-                    const sum = f1 + f2;
-                    renderDie(die1Face, f1);
-                    renderDie(die2Face, f2);
+        let isRolling3D = false;
 
-                    die1El.classList.remove('dice-animating');
-                    die2El.classList.remove('dice-animating');
-                    btnText.textContent = "БРОСИТЬ ЕЩЁ РАЗ";
-                    isRolling = false;
+        function playEpic3DRoll() {
+            if (isRolling3D) return;
+            isRolling3D = true;
 
-                    const res = outcomes[sum] || outcomes[7];
-                    predBox.className = `w-full p-3.5 border-2 border-neo-black shadow-retro-btn transition-all ${res.bg}`;
-                    predScore.textContent = `СУММА: ${sum}`;
-                    predTitle.textContent = res.title;
-                    predDesc.textContent = res.desc;
-                    predQuote.textContent = res.quote;
-                }
-            }, 60);
+            btnRollText.textContent = "КОСТИ КАТЯТСЯ...";
+            rerollBtn.disabled = true;
+
+            // Запуск бешеного кульбита
+            die3d1.style.transform = '';
+            die3d2.style.transform = '';
+            die3d1.classList.add('die-rolling-1');
+            die3d2.classList.add('die-rolling-2');
+
+            // Сброс эффектов
+            shockwave.classList.remove('shockwave-burst');
+            cardDice.classList.remove('animate-rumble');
+
+            setTimeout(() => {
+                // Генерация результата
+                const val1 = Math.floor(Math.random() * 6) + 1;
+                const val2 = Math.floor(Math.random() * 6) + 1;
+                const sum = val1 + val2;
+
+                die3d1.classList.remove('die-rolling-1');
+                die3d2.classList.remove('die-rolling-2');
+
+                // Плавная и резкая доводка до выпавшей грани
+                const rot1 = faceAngles[val1];
+                const rot2 = faceAngles[val2];
+                die3d1.style.transform = `rotateX(${rot1.x + 720}deg) rotateY(${rot1.y + 720}deg)`;
+                die3d2.style.transform = `rotateX(${rot2.x - 720}deg) rotateY(${rot2.y - 720}deg)`;
+
+                // Тряска арены и ударная волна
+                void shockwave.offsetWidth;
+                shockwave.classList.add('shockwave-burst');
+                cardDice.classList.add('animate-rumble');
+
+                // Обновление оракула
+                const res = outcomes[sum] || outcomes[7];
+                predBox.className = `w-full text-left p-3.5 border-2 border-neo-black shadow-retro-btn transition-all ${res.bg} animate-brochure`;
+                predScore.textContent = `СУММА: ${sum}`;
+                predTitle.textContent = res.title;
+                predDesc.textContent = res.desc;
+                predQuote.textContent = res.quote;
+
+                btnRollText.textContent = "БРОСИТЬ СНОВА";
+                rerollBtn.disabled = false;
+                isRolling3D = false;
+            }, 900);
+        }
+
+        // Клик по таинственному пиксельному кубику
+        triggerCube.addEventListener('click', () => {
+            openModal('modal-dice');
+            playEpic3DRoll();
+        });
+
+        // Кнопка реролла внутри арены
+        rerollBtn.addEventListener('click', () => {
+            playEpic3DRoll();
         });
     </script>
 </body>
