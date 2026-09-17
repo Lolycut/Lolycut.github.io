@@ -10,7 +10,7 @@
     <title>Туртропа Первокурсников Биофака БГУ 2026 | JUMANJI & АКДМ Биофак</title>
     <meta name="title" content="Туртропа Первокурсников Биофака БГУ 2026 | JUMANJI & АКДМ Биофак">
     <meta name="description" content="Официальная интерактивная брошюра Туртропы биологического факультета БГУ от студенческой организации АКДМ (Академический Маяк). Jumanji: Зов Джунглей на ст. Зелёное, 19 сентября, кубики d6, инвентарь первокурсника и квесты биофака.">
-    <meta name="keywords" content="туртропа бгу, туртропа биофака, туртропа первокурсников бгу, акдм бгу, биофак бгу, биологический факультет бгу, академический маяк бгу, станция зеленое туртропа, первокурсники биофака, биофак jumanji, туртропа зеленое">
+    <meta name="keywords" content="туртропа бгу, туртропа биофака, туртропа первокурсников бгу, акдм бгу, академический маяк, биофак бгу, биологический факультет бгу, академический маяк бгу, станция зеленое туртропа, первокурсники биофака, биофак jumanji, туртропа зеленое">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="author" content="Академический Маяк Биофака БГУ (АКДМ)">
 
@@ -267,12 +267,34 @@
         }
         .animate-brochure { animation: brochurePop 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
+        /* ================= ЯЩИК ДЖУМАНДЖИ И ШЁПОТ ================= */
+        @keyframes jumanjiBoardPulse {
+            0%, 100% { transform: translateY(0) rotate(-6deg) scale(1); filter: drop-shadow(0 4px 8px rgba(15, 169, 104, 0.35)); }
+            50% { transform: translateY(-3px) rotate(-4.5deg) scale(1.03); filter: drop-shadow(0 7px 16px rgba(44, 217, 143, 0.75)); }
+        }
+        .animate-jumanji-board {
+            animation: jumanjiBoardPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes whisperFade {
+            0% { opacity: 0; transform: translateY(5px) scale(0.94); }
+            16% { opacity: 1; transform: translateY(0) scale(1); }
+            84% { opacity: 1; transform: translateY(-2px) scale(1); }
+            100% { opacity: 0; transform: translateY(-8px) scale(0.94); }
+        }
+        .animate-whisper-bubble {
+            animation: whisperFade 4.4s ease-in-out forwards;
+        }
+
         .modal-scroll::-webkit-scrollbar { width: 6px; }
         .modal-scroll::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); }
         .modal-scroll::-webkit-scrollbar-thumb { background: #0FA968; border-radius: 3px; }
     </style>
 </head>
 <body class="antialiased flex flex-col min-h-screen bg-subtle-grid selection:bg-poster-emerald selection:text-white">
+
+    <!-- АУДИО БАРАБАНОВ ДЖУМАНДЖИ -->
+    <audio id="jumanji-drums" src="./bambam.mp3" preload="auto" loop></audio>
 
     <!-- ================================================================= -->
     <!-- ВЕРХНИЙ СТАТУС-БАР -->
@@ -323,6 +345,13 @@
                     <span>📢</span> <span class="hidden xs:inline">BIO.AKDM</span><span class="xs:hidden">TG</span>
                 </a>
 
+                <!-- КНОПКА ЗВУКА БАРАБАНОВ ДЖУМАНДЖИ (РЯДОМ С ТЕМОЙ) -->
+                <button id="drums-toggle-btn" onclick="toggleDrumsSound(event)" class="bg-poster-dark border-2 border-poster-emerald hover:border-white text-white px-2.5 py-1 text-xs font-mono-code font-bold shadow-retro-btn flex items-center gap-1.5 cursor-pointer transition-all" title="Включить / выключить барабаны">
+                    <span id="drums-icon">🔇</span>
+                    <span id="drums-label" class="hidden sm:inline text-[10px] text-poster-mint font-pixel">ЗВУК</span>
+                </button>
+
+                <!-- КНОПКА СМЕНЫ ТЕМЫ -->
                 <button id="theme-toggle-btn" class="bg-poster-dark border-2 border-poster-emerald hover:border-white text-white px-2.5 py-1 text-xs font-mono-code font-bold shadow-retro-btn flex items-center gap-1.5 cursor-pointer transition-all" title="Сменить тему">
                     <span id="theme-icon">🌙</span>
                     <span id="theme-label" class="hidden md:inline text-[10px] text-poster-mint font-pixel">ТЕМА</span>
@@ -405,7 +434,6 @@
                 <span class="absolute -bottom-1 right-2 text-[13px] text-poster-parchment pointer-events-none animate-spark-2 select-none">★</span>
                 <span class="absolute top-2.5 -right-3 text-[8px] text-jungle-gold pointer-events-none opacity-80 select-none">◆</span>
 
-                <!-- Кубик в тропических оттенках постера -->
                 <div class="relative z-10 animate-pixel-float group-hover:scale-110 group-active:scale-95 transition-transform duration-200">
                     <svg width="68" height="68" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="overflow-visible">
                         <polygon points="32,8 56,20 32,32 8,20" fill="#2CD98F" stroke="#121212" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
@@ -413,7 +441,6 @@
                         <polygon points="32,32 56,20 56,42 32,54" fill="#096E42" stroke="#121212" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
                         <line x1="32" y1="32" x2="32" y2="54" stroke="#121212" stroke-width="2.5" stroke-linecap="round"/>
                         <polyline points="9.5,20 32,8.8 54.5,20" stroke="#F5EEDB" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
-                        <!-- Точки кубика -->
                         <circle cx="32" cy="20" r="3.5" fill="#121212"/>
                         <circle cx="15" cy="31" r="3" fill="#121212"/>
                         <circle cx="25" cy="43" r="3" fill="#121212"/>
@@ -430,35 +457,111 @@
         </section>
 
         <!-- МЕНЮ-ХАБ ОНЛАЙН БРОШЮРЫ -->
-        <div>
-            <div class="flex items-center justify-between mb-3">
+        <div class="mt-10 sm:mt-12 relative" id="chapters-section">
+
+            <!-- Верхняя строка заголовка глав с увеличенным зазором (mb-5 sm:mb-6) -->
+            <div class="flex items-center justify-between mb-5 sm:mb-6">
                 <span class="font-pixel text-[11px] uppercase tracking-wider text-gray-700 dark:text-gray-300 flex items-center gap-1.5">
                     <span>📖</span> СВИТКИ ТУРТРОПЫ (НАЖМИ ДЛЯ ПРОСМОТРА)
                 </span>
-                <span class="text-[10px] font-mono-code bg-poster-blue text-poster-parchment px-2 py-0.5 font-bold border border-neo-black">
+                <span class="text-[10px] font-mono-code bg-poster-blue text-poster-parchment px-2.5 py-0.5 font-bold border border-neo-black">
                     BIO.AKDM
                 </span>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 
-                <!-- ГЛАВА 1: ИНИЦИАЛИЗАЦИЯ ИГРЫ (ПОСТЕР JUMANJI) -->
-                <button onclick="openModal('modal-route')" class="group text-left bg-gradient-to-br from-white to-poster-parchment/40 dark:from-dark-card dark:to-poster-navy/50 border-3 border-neo-black dark:border-poster-emerald hover:border-poster-emerald p-4 shadow-neo hover:translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-between relative overflow-hidden">
-                    <div class="flex items-start gap-3 relative z-10">
-                        <span class="text-3xl group-hover:scale-110 transition-transform">🌀</span>
-                        <div>
-                            <div class="flex items-center gap-1.5">
-                                <span class="text-[10px] font-pixel text-poster-emerald">ГЛАВА 01</span>
-                                <span class="text-[9px] font-pixel bg-poster-blue text-poster-parchment px-1.5 py-0.2 border border-neo-black animate-pulse">ИНИЦИАЛИЗАЦИЯ...</span>
-                            </div>
-                            <h3 class="font-extrabold text-base uppercase dark:text-white leading-snug">Запуск Игры: Туртропа</h3>
-                            <p class="text-xs text-gray-600 dark:text-gray-400 font-mono-code">Скрижали Джуманджи пробуждаются... Скоро уровни будут открыты!</p>
+                <!-- ГЛАВА 1: ИНИЦИАЛИЗАЦИЯ ИГРЫ + ЯЩИК ДЖУМАНДЖИ СВЕРХУ ПОД НАКЛОНОМ -->
+                <div class="relative">
+                    
+                    <!-- РЕЗНОЙ ДЕРЕВЯННЫЙ ЯЩИК ДЖУМАНДЖИ (ИДЕАЛЬНО ВПИСАН СВЕРХУ) -->
+                    <div id="jumanji-board-wrapper" class="absolute -top-7 sm:-top-8 right-2 sm:right-4 z-20 select-none">
+                        
+                        <!-- Всплывающий шёпот (аккуратно выровнен по правому краю) -->
+                        <div id="whisper-bubble" onclick="openPromoVideo(event)" class="hidden absolute -top-7 right-0 z-30 bg-poster-dark/95 text-poster-mint border-2 border-poster-emerald px-2 py-0.5 font-pixel text-[8px] sm:text-[9px] shadow-neo-sm whitespace-nowrap cursor-pointer select-none tracking-wider">
+                            <span id="whisper-content">«Открой меня...»</span>
+                            <div class="w-1.5 h-1.5 bg-poster-dark border-r-2 border-b-2 border-poster-emerald rotate-45 absolute -bottom-1 right-6"></div>
+                        </div>
+
+                        <!-- Сам ящик игры JUMANJI (компактный и четкий на смартфонах) -->
+                        <div id="jumanji-box-tilted" onclick="openPromoVideo(event)" class="w-28 sm:w-36 cursor-pointer animate-jumanji-board group/box hover:scale-105 transition-transform" title="Открыть ящик Jumanji и посмотреть промо">
+                            <svg viewBox="0 0 160 92" width="100%" height="100%" class="block overflow-visible filter drop-shadow-[2px_3px_0px_#121212]">
+                                <defs>
+                                    <linearGradient id="woodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#3D2210"/>
+                                        <stop offset="50%" stop-color="#281508"/>
+                                        <stop offset="100%" stop-color="#1B0C04"/>
+                                    </linearGradient>
+                                    <linearGradient id="panelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#241206"/>
+                                        <stop offset="100%" stop-color="#341A0A"/>
+                                    </linearGradient>
+                                    <linearGradient id="goldBrass" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#F2AF13"/>
+                                        <stop offset="100%" stop-color="#9E6B03"/>
+                                    </linearGradient>
+                                </defs>
+
+                                <!-- Корпус ящика -->
+                                <rect x="2" y="2" width="156" height="88" rx="4" fill="url(#woodGrad)" stroke="#121212" stroke-width="2.5"/>
+                                
+                                <!-- Створки футляра -->
+                                <rect x="6" y="6" width="71" height="80" rx="2" fill="url(#panelGrad)" stroke="#121212" stroke-width="1.2"/>
+                                <rect x="83" y="6" width="71" height="80" rx="2" fill="url(#panelGrad)" stroke="#121212" stroke-width="1.2"/>
+
+                                <!-- Резные лианы -->
+                                <path d="M 10 12 Q 22 25 15 45 Q 26 30 35 32" stroke="#120803" stroke-width="1.8" fill="none" opacity="0.8"/>
+                                <path d="M 150 12 Q 138 25 145 45 Q 134 30 125 32" stroke="#120803" stroke-width="1.8" fill="none" opacity="0.8"/>
+                                <path d="M 10 80 Q 25 68 18 52" stroke="#120803" stroke-width="1.8" fill="none" opacity="0.8"/>
+                                <path d="M 150 80 Q 135 68 142 52" stroke="#120803" stroke-width="1.8" fill="none" opacity="0.8"/>
+
+                                <!-- Латунные уголки -->
+                                <polygon points="4,4 20,4 4,20" fill="url(#goldBrass)" stroke="#121212" stroke-width="1"/>
+                                <circle cx="8" cy="8" r="1.2" fill="#121212"/>
+                                <polygon points="156,4 140,4 156,20" fill="url(#goldBrass)" stroke="#121212" stroke-width="1"/>
+                                <circle cx="152" cy="8" r="1.2" fill="#121212"/>
+                                <polygon points="4,88 20,88 4,72" fill="url(#goldBrass)" stroke="#121212" stroke-width="1"/>
+                                <circle cx="8" cy="84" r="1.2" fill="#121212"/>
+                                <polygon points="156,88 140,88 156,72" fill="url(#goldBrass)" stroke="#121212" stroke-width="1"/>
+                                <circle cx="152" cy="84" r="1.2" fill="#121212"/>
+
+                                <!-- Центральный замок -->
+                                <rect x="76" y="38" width="8" height="16" rx="2" fill="url(#goldBrass)" stroke="#121212" stroke-width="1"/>
+                                <circle cx="80" cy="46" r="1.8" fill="#121212"/>
+                                <line x1="80" y1="6" x2="80" y2="38" stroke="#121212" stroke-width="1.4"/>
+                                <line x1="80" y1="54" x2="80" y2="86" stroke="#121212" stroke-width="1.4"/>
+
+                                <!-- Плашка надписи JUMANJI -->
+                                <rect x="18" y="24" width="124" height="28" rx="3" fill="#100702" stroke="#0FA968" stroke-width="1.5" opacity="0.95"/>
+
+                                <!-- Резная надпись JUMANJI -->
+                                <text x="81" y="44" font-family="'Space Grotesk', Impact, serif" font-weight="900" font-size="18" fill="#042614" text-anchor="middle" letter-spacing="3.5">JUMANJI</text>
+                                <text x="80" y="43" font-family="'Space Grotesk', Impact, serif" font-weight="900" font-size="18" fill="#2CD98F" stroke="#095B33" stroke-width="0.7" text-anchor="middle" letter-spacing="3.5">JUMANJI</text>
+
+                                <!-- Зеленая подпись -->
+                                <text x="80" y="70" font-family="'JetBrains Mono', monospace" font-weight="800" font-size="7.5" fill="#2CD98F" text-anchor="middle" letter-spacing="1">▶ ПРОМО ВИДЕО</text>
+                            </svg>
                         </div>
                     </div>
-                    <span class="font-pixel text-xs bg-poster-emerald text-white border border-neo-black px-2 py-1 shadow-retro-btn group-hover:bg-poster-mint group-hover:text-neo-black transition-colors shrink-0">
-                        СМОТРЕТЬ →
-                    </span>
-                </button>
+
+                    <!-- Основная кнопка Первой Главы -->
+                    <button onclick="openModal('modal-route')" class="w-full text-left bg-gradient-to-br from-white to-poster-parchment/40 dark:from-dark-card dark:to-poster-navy/50 border-3 border-neo-black dark:border-poster-emerald hover:border-poster-emerald p-4 shadow-neo hover:translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-between relative overflow-hidden group">
+                        <div class="flex items-start gap-3 relative z-10">
+                            <span class="text-3xl group-hover:scale-110 transition-transform">🌀</span>
+                            <div>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="text-[10px] font-pixel text-poster-emerald">ГЛАВА 01</span>
+                                    <span class="text-[9px] font-pixel bg-poster-blue text-poster-parchment px-1.5 py-0.2 border border-neo-black animate-pulse">ИНИЦИАЛИЗАЦИЯ...</span>
+                                </div>
+                                <h3 class="font-extrabold text-base uppercase dark:text-white leading-snug">Запуск Игры: Туртропа</h3>
+                                <p class="text-xs text-gray-600 dark:text-gray-400 font-mono-code">Скрижали Джуманджи пробуждаются... Скоро уровни будут открыты!</p>
+                            </div>
+                        </div>
+                        <span class="font-pixel text-xs bg-poster-emerald text-white border border-neo-black px-2 py-1 shadow-retro-btn group-hover:bg-poster-mint group-hover:text-neo-black transition-colors shrink-0">
+                            СМОТРЕТЬ →
+                        </span>
+                    </button>
+                </div>
 
                 <!-- ГЛАВА 2: ИНВЕНТАРЬ -->
                 <button onclick="openModal('modal-inventory')" class="group text-left bg-white dark:bg-dark-card border-3 border-neo-black dark:border-gray-700 hover:border-jungle-gold p-4 shadow-neo hover:translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-between">
@@ -516,6 +619,41 @@
         </div>
 
     </main>
+
+    <!-- ================================================================= -->
+    <!-- МОДАЛКА ВИДЕО ПРОМО (promo.mp4) -->
+    <!-- ================================================================= -->
+    <div id="modal-promo" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4">
+        <div class="w-full max-w-3xl bg-poster-navy border-4 border-neo-black dark:border-poster-emerald shadow-neo-lg flex flex-col max-h-[94vh] animate-brochure overflow-hidden">
+            
+            <div class="bg-neo-black text-white p-3 border-b-3 border-neo-black flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="text-base animate-pulse">📼</span>
+                    <span class="font-pixel text-[10px] sm:text-xs text-poster-mint uppercase tracking-wider">
+                        Промо Туртропы // Jumanji 2026
+                    </span>
+                </div>
+                <button onclick="closePromoVideo()" class="bg-jungle-crimson hover:bg-red-700 text-white font-pixel text-[10px] px-2.5 py-1 border border-white cursor-pointer transition-transform active:translate-y-0.5">✕ ЗАКРЫТЬ</button>
+            </div>
+
+            <div class="p-2 sm:p-4 bg-black flex items-center justify-center overflow-hidden">
+                <video id="promo-video" class="w-full max-h-[70vh] rounded-sm bg-black" controls playsinline preload="metadata">
+                    <source src="./promo.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает формат воспроизведения видео.
+                </video>
+            </div>
+
+            <div class="bg-poster-dark p-3 border-t-2 border-neo-black flex items-center justify-between gap-2 shrink-0">
+                <span class="font-mono-code text-xs text-poster-mint font-bold hidden sm:inline">
+                    🌿 Биофак БГУ • АКДМ • 19 Сентября
+                </span>
+                <button onclick="closePromoVideo()" class="w-full sm:w-auto ml-auto bg-poster-emerald hover:bg-poster-mint text-neo-black font-pixel text-xs px-4 py-2 border-2 border-neo-black shadow-retro-btn cursor-pointer active:translate-y-0.5">
+                    ВЕРНУТЬСЯ В ИГРУ
+                </button>
+            </div>
+
+        </div>
+    </div>
 
     <!-- ================================================================= -->
     <!-- МОДАЛКА КУБИКОВ 3D -->
@@ -682,17 +820,14 @@
                                     <stop offset="100%" stop-color="#080E1A" stop-opacity="1"/>
                                 </radialGradient>
 
-                                <!-- Фильтр тени для объемных плашек кубиков -->
                                 <filter id="posterDropShadow" x="-15%" y="-15%" width="135%" height="135%">
                                     <feDropShadow dx="4" dy="6" stdDeviation="5" flood-color="#030710" flood-opacity="0.75"/>
                                 </filter>
                             </defs>
 
-                            <!-- 1. ФОН: ГЛУБОКИЙ ТЕМНО-СИНИЙ С ВИНТАЖНЫМ ЗЕРНОМ -->
                             <rect width="460" height="580" fill="#0E1729"/>
                             <rect width="460" height="580" fill="url(#skyCenterGlow)"/>
 
-                            <!-- Тонкие звезды/пыльца джунглей -->
                             <circle cx="35" cy="45" r="1.2" fill="#F5EEDB" opacity="0.4"/>
                             <circle cx="95" cy="80" r="0.9" fill="#F5EEDB" opacity="0.3"/>
                             <circle cx="410" cy="55" r="1.4" fill="#F5EEDB" opacity="0.45"/>
@@ -701,57 +836,38 @@
                             <circle cx="45" cy="470" r="1" fill="#F5EEDB" opacity="0.4"/>
                             <circle cx="420" cy="490" r="1.2" fill="#F5EEDB" opacity="0.4"/>
 
-                            <!-- 2. ДУГА ИЗ КАМЕННЫХ ПЛИТОК НАСТОЛЬНОЙ ИГРЫ (КАК В ПОСТЕРЕ) -->
-                            <!-- Центр дуги в точке (360, 370), радиус 145..215 -->
                             <g id="jumanji-track-tiles">
-                                <!-- Подложка трека -->
                                 <path d="M 30 440 A 215 215 0 0 0 450 210" fill="none" stroke="#16254A" stroke-width="66" stroke-linecap="round"/>
                                 
-                                <!-- Плитка 1 (слева внизу) -->
                                 <path d="M 12 430 L 72 418 L 84 478 L 24 492 Z" fill="#243A73" stroke="#0E1729" stroke-width="2.5"/>
-                                <!-- Плитка 2 -->
                                 <path d="M 76 416 L 134 402 L 148 460 L 88 476 Z" fill="#2C448A" stroke="#0E1729" stroke-width="2.5"/>
-                                <!-- Плитка 3 -->
                                 <path d="M 138 400 L 194 384 L 210 442 L 152 458 Z" fill="#243A73" stroke="#0E1729" stroke-width="2.5"/>
-                                <!-- Плитка 4 -->
                                 <path d="M 198 382 L 254 366 L 270 424 L 214 440 Z" fill="#314E99" stroke="#0E1729" stroke-width="2.5"/>
-                                <!-- Плитка 5 -->
                                 <path d="M 258 364 L 312 346 L 330 404 L 274 422 Z" fill="#243A73" stroke="#0E1729" stroke-width="2.5"/>
-                                <!-- Плитка 6 -->
                                 <path d="M 316 344 L 366 322 L 388 380 L 334 402 Z" fill="#2C448A" stroke="#0E1729" stroke-width="2.5"/>
-                                <!-- Плитка 7 -->
                                 <path d="M 370 320 L 414 294 L 440 350 L 392 378 Z" fill="#243A73" stroke="#0E1729" stroke-width="2.5"/>
-                                <!-- Плитка 8 -->
                                 <path d="M 418 290 L 452 258 L 480 312 L 444 346 Z" fill="#314E99" stroke="#0E1729" stroke-width="2.5"/>
-                                <!-- Плитка 9 (сверху справа) -->
                                 <path d="M 454 254 L 476 216 L 508 266 L 484 308 Z" fill="#243A73" stroke="#0E1729" stroke-width="2.5"/>
                                 
-                                <!-- Ободки трека -->
                                 <path d="M 20 428 A 215 215 0 0 0 460 212" fill="none" stroke="#0E1729" stroke-width="3"/>
                                 <path d="M 80 482 A 155 155 0 0 0 395 385" fill="none" stroke="#0E1729" stroke-width="3"/>
 
-                                <!-- Светящиеся мистические точки на плитках -->
                                 <circle cx="110" cy="438" r="3.5" fill="#2CD98F" class="animate-track-pulse"/>
                                 <circle cx="235" cy="412" r="3" fill="#F2AF13"/>
                                 <circle cx="360" cy="362" r="4" fill="#2CD98F" class="animate-track-pulse" style="animation-delay: 1.2s;"/>
                             </g>
 
-                            <!-- 3. ЛЕВЫЙ КУБИК (НАКЛОНЕН ВЛЕВО ~ -14°) -->
                             <g class="animate-poster-dice-1" filter="url(#posterDropShadow)">
                                 <g transform="translate(100, 275) rotate(-14)">
-                                    <!-- Тело кубика -->
                                     <rect x="-70" y="-70" width="140" height="140" rx="20" fill="#0FA968" stroke="#0E1729" stroke-width="3.5"/>
                                     
-                                    <!-- Тропическая листва монстеры -->
                                     <path d="M -50 50 Q -10 -20 55 -30 Q 30 20 -10 55 Z" fill="#2CD98F" opacity="0.8"/>
                                     <path d="M -60 10 Q -20 0 0 45 Q -35 45 -60 10 Z" fill="#087847"/>
                                     <path d="M 10 -60 Q 40 -30 25 20 Q 0 -15 10 -60 Z" fill="#087847"/>
 
-                                    <!-- Яркий оранжевый цветок из постера -->
                                     <polygon points="35,15 48,0 44,22 58,16 46,30" fill="#FF8A00"/>
                                     <polygon points="46,30 38,36 34,22" fill="#E5A910"/>
 
-                                    <!-- Точки кубика (5 pips) -->
                                     <circle cx="-38" cy="-38" r="12" fill="#0E1729"/>
                                     <circle cx="38" cy="-38" r="12" fill="#0E1729"/>
                                     <circle cx="0" cy="0" r="12" fill="#0E1729"/>
@@ -760,41 +876,31 @@
                                 </g>
                             </g>
 
-                            <!-- 4. ПРАВЫЙ КУБИК (НАКЛОНЕН ВПРАВО ~ +16°) -->
                             <g class="animate-poster-dice-2" filter="url(#posterDropShadow)">
                                 <g transform="translate(325, 345) rotate(16)">
-                                    <!-- Тело кубика -->
                                     <rect x="-68" y="-68" width="136" height="136" rx="20" fill="#18BA77" stroke="#0E1729" stroke-width="3.5"/>
                                     
-                                    <!-- Папоротник и листья -->
                                     <path d="M -55 -40 Q 20 -30 50 35 Q 0 40 -55 -40 Z" fill="#44E8A3" opacity="0.85"/>
                                     <path d="M -30 50 Q 20 20 45 -45 Q 40 10 -30 50 Z" fill="#097E4B"/>
                                     
-                                    <!-- Точки кубика (3 пипсы по диагонали) -->
                                     <circle cx="-36" cy="-36" r="12" fill="#0E1729"/>
                                     <circle cx="0" cy="0" r="12" fill="#0E1729"/>
                                     <circle cx="36" cy="36" r="12" fill="#0E1729"/>
                                 </g>
                             </g>
 
-                            <!-- 5. ТИПОГРАФИКА: JUMANJI В СТИЛЕ ПОСТЕРА (помогите...) -->
                             <g transform="translate(230, 85)">
-                                <!-- Тень заголовка -->
                                 <text x="2" y="3" font-family="'Space Grotesk', Impact, sans-serif" font-weight="900" font-size="46" fill="#050912" text-anchor="middle" letter-spacing="4">
                                     JUMANJI
                                 </text>
-                                <!-- Основной текст JUMANJI -->
                                 <text x="0" y="0" font-family="'Space Grotesk', Impact, sans-serif" font-weight="900" font-size="46" fill="#F5EEDB" stroke="#0E1729" stroke-width="2" text-anchor="middle" letter-spacing="4">
                                     JUMANJI
                                 </text>
-                                
-                                <!-- Подзаголовок постера -->
                                 <text x="0" y="24" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="11.5" fill="#F5EEDB" text-anchor="middle" letter-spacing="2.5">
                                     ТУРТРОПА УЖЕ ЖДЕТ ТЕБЯ
                                 </text>
                             </g>
 
-                            <!-- 6. НИЖНЯЯ СТРОКА: 19 СЕНТЯБРЯ & BIO.AKDM -->
                             <g transform="translate(0, 545)">
                                 <text x="35" y="0" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="14" fill="#F5EEDB" letter-spacing="1">
                                     19 СЕНТЯБРЯ
@@ -806,7 +912,6 @@
                         </svg>
                     </div>
 
-                    <!-- Интерактивная консоль инициализации -->
                     <div class="bg-poster-dark/95 border-t-2 border-neo-black p-2.5 font-mono-code text-xs">
                         <div class="flex items-center justify-between text-[11px] mb-1">
                             <span id="loading-task-name" class="text-poster-mint font-bold flex items-center gap-1.5">
@@ -815,7 +920,6 @@
                             <span id="loading-pct-val" class="font-pixel text-[10px] text-poster-parchment">94%</span>
                         </div>
                         
-                        <!-- Полоса загрузки -->
                         <div class="w-full h-2.5 bg-gray-900 border-2 border-neo-black overflow-hidden p-0.5">
                             <div id="loading-bar-fill" class="bg-gradient-to-r from-poster-blue via-poster-emerald to-poster-mint h-full w-[94%] transition-all duration-300"></div>
                         </div>
@@ -828,7 +932,6 @@
 
                 </div>
 
-                <!-- Карточка оповещения -->
                 <div class="bg-poster-blue/30 border-2 border-poster-blue p-2.5 text-xs font-mono-code leading-relaxed">
                     <span class="text-poster-mint font-extrabold uppercase block mb-0.5">📢 Свиток Организаторов АКДМ:</span>
                     «Барабаны Джуманджи уже разносятся по станции Зелёное. Все 10 уровней тропы готовятся старшекурсниками биофака. Собирай рюкзак, проверяй инвентарь во 2-й главе и готовь квесты своей группы!»
@@ -836,7 +939,6 @@
 
             </div>
 
-            <!-- Нижняя панель закрытия -->
             <div class="bg-poster-dark p-2.5 sm:p-3 border-t-3 border-neo-black flex items-center justify-between gap-2 shrink-0">
                 <a href="https://t.me/bioakdm" target="_blank" class="bg-poster-blue hover:bg-poster-cobalt text-poster-parchment border-2 border-neo-black px-3 py-1.5 font-mono-code font-bold text-xs uppercase shadow-retro-btn transition-transform active:translate-y-0.5 flex items-center gap-1.5">
                     <span>📢</span> Официальный канал BIO.AKDM
@@ -1359,6 +1461,122 @@
         rerollBtn.addEventListener('click', () => {
             playEpic3DRoll();
         });
+
+        // =================================================================
+        // 7. ЛОГИКА БАРАБАНОВ ДЖУМАНДЖИ, ЯЩИКА И ПРОМО-ВИДЕО
+        // =================================================================
+        const drumsAudio = document.getElementById('jumanji-drums');
+        const drumsIcon = document.getElementById('drums-icon');
+        const drumsLabel = document.getElementById('drums-label');
+        const promoVideo = document.getElementById('promo-video');
+        const whisperBubble = document.getElementById('whisper-bubble');
+        const whisperContent = document.getElementById('whisper-content');
+
+        let isDrumsActive = false;
+        let fadeTimer = null;
+
+        // Плавное нарастание звука (fade-in) до комфортных ~30%
+        function startGentleDrums() {
+            if (!drumsAudio || isDrumsActive) return;
+            drumsAudio.volume = 0.02;
+            drumsAudio.play().then(() => {
+                isDrumsActive = true;
+                if (drumsIcon) drumsIcon.textContent = '🔊';
+                if (drumsLabel) drumsLabel.textContent = 'БАРАБАНЫ';
+
+                clearInterval(fadeTimer);
+                fadeTimer = setInterval(() => {
+                    if (drumsAudio.volume < 0.30) {
+                        drumsAudio.volume = Math.min(0.32, drumsAudio.volume + 0.03);
+                    } else {
+                        clearInterval(fadeTimer);
+                    }
+                }, 450);
+            }).catch(() => {
+                if (drumsIcon) drumsIcon.textContent = '🔇';
+                if (drumsLabel) drumsLabel.textContent = 'ЗВУК';
+            });
+        }
+
+        // Запуск при первом клике или тапе в любом месте страницы
+        function triggerAudioOnInteraction() {
+            if (!isDrumsActive) {
+                startGentleDrums();
+            }
+            window.removeEventListener('click', triggerAudioOnInteraction);
+            window.removeEventListener('touchstart', triggerAudioOnInteraction);
+        }
+        window.addEventListener('click', triggerAudioOnInteraction);
+        window.addEventListener('touchstart', triggerAudioOnInteraction);
+
+        // Ручной переключатель звука (в шапке рядом с темой)
+        function toggleDrumsSound(e) {
+            if (e) e.stopPropagation();
+            if (!drumsAudio) return;
+
+            if (drumsAudio.paused) {
+                drumsAudio.play();
+                drumsAudio.volume = 0.32;
+                isDrumsActive = true;
+                if (drumsIcon) drumsIcon.textContent = '🔊';
+                if (drumsLabel) drumsLabel.textContent = 'БАРАБАНЫ';
+            } else {
+                drumsAudio.pause();
+                isDrumsActive = false;
+                if (drumsIcon) drumsIcon.textContent = '🔇';
+                if (drumsLabel) drumsLabel.textContent = 'ЗВУК';
+            }
+        }
+
+        // Всплывающий тихий шёпот прямо над ящиком
+        const secretWhispers = [
+            "«Открой меня...»",
+            "«Слышишь барабаны Джуманджи?..»",
+            "«Войди в игру...»",
+            "«Поляна ст. Зелёное ждёт тебя...»",
+            "«Ящик вибрирует...»"
+        ];
+
+        function triggerSecretWhisper() {
+            if (!whisperBubble || !whisperContent) return;
+            const chosen = secretWhispers[Math.floor(Math.random() * secretWhispers.length)];
+            whisperContent.textContent = chosen;
+
+            whisperBubble.classList.remove('hidden');
+            whisperBubble.classList.remove('animate-whisper-bubble');
+            void whisperBubble.offsetWidth;
+            whisperBubble.classList.add('animate-whisper-bubble');
+
+            setTimeout(() => {
+                whisperBubble.classList.add('hidden');
+            }, 4400);
+        }
+        setInterval(triggerSecretWhisper, 9500);
+
+        // Открытие видео-промо
+        function openPromoVideo(e) {
+            if (e) e.stopPropagation();
+            if (drumsAudio && !drumsAudio.paused) {
+                drumsAudio.pause();
+            }
+
+            openModal('modal-promo');
+            if (promoVideo) {
+                promoVideo.currentTime = 0;
+                promoVideo.play().catch(() => {});
+            }
+        }
+
+        function closePromoVideo() {
+            if (promoVideo) {
+                promoVideo.pause();
+            }
+            closeModal('modal-promo');
+
+            if (isDrumsActive && drumsAudio) {
+                drumsAudio.play().catch(() => {});
+            }
+        }
     </script>
 </body>
 </html>
