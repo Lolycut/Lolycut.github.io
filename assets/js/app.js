@@ -265,8 +265,7 @@
   /* ───────────── вкладка «Поиск» ───────────── */
   function renderSearch() {
     setHead({ title: "Поиск", sub: C.faculties[S.faculty].title });
-    const tag = S.user.group.tag;
-    const hints = ["Свободные аудитории сейчас", "Свободные поточки завтра", `Что у ${tag} в пятницу`, `${tag} на неделю`];
+    const hints = (S.meta && S.meta.search_hints) || ["Свободные аудитории сейчас", "Что у меня в пятницу", "На неделю"];
     view.innerHTML = `<div class="search">
         <form id="sform" role="search">
           <label class="visually-hidden" for="q">Что найти</label>
