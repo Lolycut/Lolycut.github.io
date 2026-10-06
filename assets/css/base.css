@@ -1,0 +1,161 @@
+/* Aves — общие токены. День: белая бумага и чёрная тушь, как линии птиц.
+   Ночь: тёмно-синее небо, линии становятся светлыми. */
+
+:root {
+  --paper: #ffffff;
+  --paper-2: #f5f6f8;
+  --ink: #000000;
+  --text: #24272c;
+  --muted: #676d76;
+  --rule: #e3e5e9;
+  --focus: #2f5bd3;
+
+  --bio: #2c7a4b;
+  --flow: #0b767c;
+  --study: #a86d12;
+  --work: #7d838c;
+  --live: #2c7a4b;
+
+  --ff-display: "Cormorant", "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --ff-body: "Onest", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+
+  --step--1: 0.875rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.625rem;
+  --step-3: 2.25rem;
+  --step-4: clamp(2.5rem, 6vw, 4.5rem);
+  --step-5: clamp(3rem, 8.5vw, 6.75rem);
+
+  --radius-s: 6px;
+  --radius-m: 14px;
+  --radius-pill: 999px;
+
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+:root[data-theme="dark"] {
+  --paper: #0b1022;
+  --paper-2: #121933;
+  --ink: #f3f5f9;
+  --text: #d6dbe5;
+  --muted: #8d97ab;
+  --rule: #222b47;
+  --focus: #8fb0ff;
+
+  --bio: #63c48d;
+  --flow: #45c3c9;
+  --study: #e3ad4c;
+  --work: #98a0ae;
+  --live: #63c48d;
+
+  color-scheme: dark;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); -webkit-text-size-adjust: 100%; }
+*, *::before, *::after { box-sizing: inherit; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--ff-body);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color .5s ease, color .5s ease;
+}
+
+img, svg { max-width: 100%; display: block; }
+a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+button { font: inherit; color: inherit; }
+
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+
+[hidden] { display: none !important; }
+
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* Птица — PNG-маска, цвет берётся из currentColor, поэтому сама меняется с темой */
+.bird {
+  display: inline-block;
+  background-color: currentColor;
+  -webkit-mask: var(--src) center / contain no-repeat;
+  mask: var(--src) center / contain no-repeat;
+  color: var(--ink);
+}
+.bird--dove { --src: url("../img/dove.png"); }
+.bird--owl  { --src: url("../img/owl.png"); }
+
+/* Переключатель темы — сама птица */
+.theme-bird {
+  appearance: none; border: 0; background: none; padding: 0; cursor: pointer;
+  display: inline-grid; place-items: center;
+  border-radius: 50%;
+}
+.theme-bird .bird { transition: transform .45s cubic-bezier(.3, 1.4, .5, 1); }
+.theme-bird:hover .bird { transform: translateY(-2px) rotate(-6deg); }
+.theme-bird.is-flapping .bird { animation: flap .6s ease; }
+
+@keyframes flap {
+  0% { transform: none; }
+  35% { transform: translate(4px, -7px) rotate(-14deg) scaleY(.86); }
+  70% { transform: translate(1px, -3px) rotate(4deg); }
+  100% { transform: none; }
+}
+
+/* Кнопки */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .55em;
+  min-height: 48px; padding: 0 1.4em;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--ink);
+  font-weight: 500; font-size: var(--step-0);
+  text-decoration: none; cursor: pointer;
+  transition: background-color .2s, color .2s, transform .15s;
+}
+.btn:active { transform: scale(.98); }
+.btn--solid { background: var(--ink); color: var(--paper); }
+.btn--solid:hover { background: transparent; color: var(--ink); }
+.btn--line { background: transparent; color: var(--ink); }
+.btn--line:hover { background: var(--ink); color: var(--paper); }
+.btn[disabled] { opacity: .5; pointer-events: none; }
+.btn .tg-icon { width: 1.15em; height: 1.15em; }
+
+/* Ночное небо: редкие звёзды, видны только в тёмной теме */
+.night-sky {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  opacity: 0; transition: opacity .8s ease;
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 78% 9%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 64% 32%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 33% 41%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 89% 54%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 7% 72%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 52% 83%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 23% 93%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 95% 88%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 44% 6%, #fff 50%, transparent 51%);
+}
+:root[data-theme="dark"] .night-sky { opacity: .55; }
+
+/* Плавная смена темы кругом от птицы (View Transitions) */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-new(root) { animation: night-reveal .7s cubic-bezier(.6, 0, .3, 1); }
+@keyframes night-reveal {
+  from { clip-path: circle(0 at var(--vt-x, 50%) var(--vt-y, 0%)); }
+  to   { clip-path: circle(var(--vt-r, 150%) at var(--vt-x, 50%) var(--vt-y, 0%)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  ::view-transition-new(root) { animation: none; }
+}

@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Aves — расписание БГУ в Telegram, бесплатно и без рекламы</title>
+  <meta name="description" content="Aves — стая Telegram-ботов для студентов БГУ: расписание групп, преподавателей и аудиторий, свободные кабинеты, утренние сводки и уведомления о заменах. Бесплатно навсегда.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://microcosmos-bio.me/">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Aves — расписание, которое прилетает само">
+  <meta property="og:description" content="Боты расписания для студентов БГУ. Бесплатно и без рекламы.">
+  <meta property="og:url" content="https://microcosmos-bio.me/">
+  <meta property="og:image" content="https://microcosmos-bio.me/assets/img/og.png">
+  <meta property="og:locale" content="ru_RU">
+  <script>(function(){try{var t=localStorage.getItem('aves.theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Onest:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"Aves","url":"https://microcosmos-bio.me/","inLanguage":"ru",
+   "description":"Боты расписания для студентов БГУ: биофак (AvesBio), ФСК (AvesFlow), конспекты (AvesStudy)."}
+  </script>
+</head>
+<body>
+  <div class="night-sky" aria-hidden="true"></div>
+
+  <header class="site-head" id="top">
+    <div class="wrap site-head__row">
+      <div class="brand">
+        <button class="theme-bird" type="button" data-theme-toggle aria-label="Включить ночную тему" aria-pressed="false">
+          <span class="bird bird--dove"></span>
+        </button>
+        <a class="brand__name" href="/">Aves</a>
+      </div>
+      <nav class="site-nav" aria-label="Разделы">
+        <a href="#flock">Стая</a>
+        <a href="#start">Как начать</a>
+        <a href="#rules">Правила</a>
+        <a href="#plans">Планы</a>
+        <a href="#author">Автор</a>
+      </nav>
+      <a class="btn btn--solid" href="/app/" data-open-app>Открыть расписание</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <div>
+        <h1>Расписание, которое прилетает само</h1>
+        <p class="hero__lead">Aves — стая Telegram-ботов для студентов БГУ. Пары, аудитории, преподаватели и замены — в Telegram и на этом сайте. Бесплатно и без рекламы.</p>
+        <div class="hero__actions">
+          <button class="btn btn--solid" type="button" data-login></button>
+          <a class="btn btn--line" href="#flock">Найти бота своего факультета</a>
+        </div>
+        <p class="hero__note">В стае уже <strong>1600+ студентов</strong>, около <strong>500</strong> заглядывают в расписание каждый день.</p>
+      </div>
+      <div class="hero__bird">
+        <button class="theme-bird" type="button" data-theme-toggle aria-label="Включить ночную тему" aria-pressed="false">
+          <span class="bird bird--dove"></span>
+        </button>
+        <p class="hero__hint">Нажмите на птицу — наступит ночь</p>
+      </div>
+    </section>
+
+    <section class="section" id="flock">
+      <div class="wrap">
+        <h2 class="section__title">Стая</h2>
+        <p class="section__lead">Каждая птица — отдельный бот со своей задачей. Один аккаунт Telegram, никаких паролей и анкет.</p>
+
+        <article class="species" data-bird="bio">
+          <div>
+            <h3 class="species__name">Aves bio</h3>
+            <p class="species__habitat">Биологический факультет БГУ</p>
+            <span class="status status--live" style="--c: var(--bio)">Летает</span>
+          </div>
+          <div class="species__body">
+            <p>Первая птица стаи. Знает расписание всего биофака: дневное, заочное и магистратуру. Понимает обычные фразы вроде «что у 1-41 в чт» или «где сейчас Иванов».</p>
+            <ul>
+              <li>Расписание группы на день и на неделю, дни листаются без новых запросов</li>
+              <li>Поиск по преподавателю, аудитории или предмету — на неделю или на конкретный день</li>
+              <li>Свободные аудитории и поточки на нужную пару</li>
+              <li>Несколько групп разных курсов рядом — удобно сравнить окна</li>
+              <li>«Халат 2 курс» — бот подскажет, у каких групп его можно попросить на лабу</li>
+              <li>Утренняя сводка в 7:45 и уведомления, если в расписании что-то поменялось</li>
+              <li>Работает и в беседе группы — достаточно начать сообщение со слова «Бот»</li>
+            </ul>
+            <div class="species__links">
+              <a class="btn btn--line" href="https://t.me/schedulebiobot" target="_blank" rel="noopener">Открыть в Telegram</a>
+              <span class="species__handle">@schedulebiobot</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="species" data-bird="flow">
+          <div>
+            <h3 class="species__name">Aves flow</h3>
+            <p class="species__habitat">Факультет социокультурных коммуникаций БГУ</p>
+            <span class="status status--live" style="--c: var(--flow)">Летает, свежая</span>
+          </div>
+          <div class="species__body">
+            <p>Младший брат бота биофака. Всё, что умеет AvesBio по расписанию, плюс то, о чём попросили студенты ФСК.</p>
+            <ul>
+              <li>Расписание на день и неделю с листанием дней</li>
+              <li>Свои примечания к парам: замены, отмены и переезды по кабинетам</li>
+              <li>Карта дня — а если пар больше трёх, птица подумает о высоком и поддержит</li>
+            </ul>
+            <div class="species__links">
+              <a class="btn btn--line" href="https://t.me/schedulefskbot" target="_blank" rel="noopener">Открыть в Telegram</a>
+              <span class="species__handle">@schedulefskbot</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="species" data-bird="study">
+          <div>
+            <h3 class="species__name">Aves study</h3>
+            <p class="species__habitat">Пока только биофак</p>
+            <span class="status" style="--c: var(--study)">Бета</span>
+            <span class="bird bird--owl species__owl" role="img" aria-label="Сова в академической шапочке"></span>
+          </div>
+          <div class="species__body">
+            <p>Дайвинчик для конспектов. Место, где студенты делятся материалами, которые помогли им подготовиться, и находят нужное за минуту.</p>
+            <ul>
+              <li>Загрузить свой конспект и получить огоньки за качество</li>
+              <li>Листать материалы лентой или искать по тегам</li>
+              <li>Узнаёт вас сразу, если вы уже зарегистрированы в боте биофака; есть гостевой режим</li>
+            </ul>
+            <p class="species__handle">Уважайте чужой труд: указывайте автора, если конспект не ваш. Материалы с жалобами модерация скрывает.</p>
+            <div class="species__links">
+              <a class="btn btn--line" href="https://t.me/Aves_Studybot" target="_blank" rel="noopener">Открыть в Telegram</a>
+              <span class="species__handle">@Aves_Studybot</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="species" data-bird="work">
+          <div>
+            <h3 class="species__name">Aves work</h3>
+            <p class="species__habitat">Ещё в гнезде</p>
+            <span class="status" style="--c: var(--work)">Секрет</span>
+          </div>
+          <div class="species__body">
+            <p>Эта птица пока не вылупилась. Когда она полетит, первым об этом узнает канал проекта.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="start">
+      <div class="wrap">
+        <h2 class="section__title">Как начать</h2>
+        <p class="section__lead">Полминуты, и расписание всегда под рукой: в боте, в кнопке «Расписание» внутри Telegram и здесь, на сайте.</p>
+        <ol class="steps">
+          <li>
+            <h3>Откройте бота факультета</h3>
+            <p>Биофак — <a href="https://t.me/schedulebiobot" target="_blank" rel="noopener">@schedulebiobot</a>, ФСК — <a href="https://t.me/schedulefskbot" target="_blank" rel="noopener">@schedulefskbot</a>. Нажмите «Старт».</p>
+          </li>
+          <li>
+            <h3>Выберите группу</h3>
+            <p>Специальность, курс, группа и подгруппа. Имя для карточек можно оставить из Telegram.</p>
+          </li>
+          <li>
+            <h3>Пользуйтесь где удобно</h3>
+            <p>Пишите боту, открывайте кнопку «Расписание» слева от поля ввода или заходите на сайт с компьютера.</p>
+          </li>
+        </ol>
+        <div class="web-start">
+          <button class="btn btn--line" type="button" data-login></button>
+          <p>Удобнее с компьютера? Войдите через Telegram и выберите группу прямо на сайте — бот подхватит настройки.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rules">
+      <div class="wrap">
+        <h2 class="section__title">Правила стаи</h2>
+        <p class="section__lead">Три обещания, которые не меняются.</p>
+        <div class="rules">
+          <div class="rule">
+            <h3>Бесплатно навсегда</h3>
+            <p>Никаких подписок, платных функций и «премиума». Ни сейчас, ни потом.</p>
+          </div>
+          <div class="rule">
+            <h3>Без рекламы внутри ботов</h3>
+            <p>Боты пишут только по делу: изменения в расписании, утренние сводки и важные рассылки проекта.</p>
+          </div>
+          <div class="rule">
+            <h3>Беречь нервы</h3>
+            <p>Меньше беготни по чатам и кабинетам, больше хорошего настроения. Ради этого всё и затевалось.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="plans">
+      <div class="wrap">
+        <h2 class="section__title">Что строится</h2>
+        <p class="section__lead">Расписание — только начало. Здесь будет всё, что упрощает студенческую жизнь, в одном месте.</p>
+        <div class="plans">
+          <div class="plan">
+            <h3>Новые факультеты <span class="status status--live" style="--c: var(--live)">В работе</span></h3>
+            <p>Цель на осень и зиму — подключить ещё несколько факультетов БГУ. Есть друзья с других факультетов? Покажите им ботов и спросите: «А хотите так же?»</p>
+          </div>
+          <div class="plan">
+            <h3>Конспекты <span class="status" style="--c: var(--study)">Бета</span></h3>
+            <p>AvesStudy уже работает в Telegram. Скоро раздел появится и в приложении на сайте.</p>
+          </div>
+          <div class="plan">
+            <h3>Скидки для студентов <span class="status" style="--c: var(--work)">В планах</span></h3>
+            <p>Подборка предложений рядом с корпусами — без рекламы в ботах, только отдельным разделом.</p>
+          </div>
+          <div class="plan">
+            <h3>Подработки <span class="status" style="--c: var(--work)">В планах</span></h3>
+            <p>Гибкая работа, которую можно совмещать с парами.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="author">
+      <div class="wrap author">
+        <blockquote>
+          <p>Всегда мечтал создать что-то удобное, интересное и по-настоящему полезное.</p>
+        </blockquote>
+        <div class="author__side">
+          <p>Aves делает один студент второго курса биофака БГУ. Иногда что-то чинится не мгновенно — но обязательно чинится, и в лучшем виде.</p>
+          <p>Нашли баг, придумали фичу или хотите Aves на своём факультете — напишите в личные сообщения канала. Автор читает всё.</p>
+          <a class="btn btn--solid" data-channel href="#" target="_blank" rel="noopener">Написать в канал</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap site-foot__row">
+      <span>Aves, 2026. Сделано на биофаке БГУ.</span>
+      <nav aria-label="Ссылки">
+        <a href="/app/">Приложение</a>
+        <a data-channel href="#" target="_blank" rel="noopener">Канал проекта</a>
+        <a href="/privacy/">Конфиденциальность</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/aves.js"></script>
+  <script>
+    (function () {
+      var logged = Aves.isLoggedIn();
+      document.querySelectorAll("[data-login]").forEach(function (b) {
+        if (logged) {
+          b.textContent = "Открыть моё расписание";
+          b.addEventListener("click", function () { location.href = "/app/"; });
+        } else {
+          b.innerHTML = Aves.tgIcon + "<span>Войти через Telegram</span>";
+          b.addEventListener("click", function () { b.disabled = true; Aves.startLogin("/app/"); });
+        }
+      });
+      document.querySelectorAll("[data-channel]").forEach(function (a) { a.href = Aves.config.channelUrl; });
+      var head = document.querySelector(".site-head");
+      addEventListener("scroll", function () { head.classList.toggle("is-scrolled", scrollY > 8); }, { passive: true });
+    })();
+  </script>
+</body>
+</html>

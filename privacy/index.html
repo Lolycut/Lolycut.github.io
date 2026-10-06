@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <script>(function(){try{var t=localStorage.getItem("aves.theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Onest:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <title>Конфиденциальность — Aves</title>
+  <meta name="description" content="Какие данные хранят боты Aves и сайт microcosmos-bio.me и как их удалить.">
+</head>
+<body>
+  <div class="night-sky" aria-hidden="true"></div>
+  <header class="site-head">
+    <div class="wrap site-head__row">
+      <div class="brand">
+        <button class="theme-bird" type="button" data-theme-toggle aria-label="Включить ночную тему"><span class="bird bird--dove"></span></button>
+        <a class="brand__name" href="/">Aves</a>
+      </div>
+      <a class="btn btn--solid" href="/app/" style="margin-left:auto">Открыть расписание</a>
+    </div>
+  </header>
+  <main class="wrap prose">
+    <h1>Конфиденциальность</h1>
+    <p class="meta">Обновлено 6 октября 2026</p>
+    <p>Aves — некоммерческий студенческий проект. Данные нужны только для того, чтобы показывать вам расписание вашей группы и присылать уведомления.</p>
+    <h2>Что хранится</h2>
+    <p>Telegram ID, имя пользователя в Telegram, имя для карточек расписания, выбранные факультет, группа, подгруппа и специализация, настройки уведомлений и дата регистрации.</p>
+    <h2>Что не хранится</h2>
+    <p>Номер телефона, переписка, контакты и пароли. Вход на сайт идёт через Telegram — сайт не видит ничего, кроме имени, ника и фото профиля, которые вы разрешили передать.</p>
+    <h2>Кому передаётся</h2>
+    <p>Никому. Данные не продаются и не используются для рекламы. Хранятся в базе данных проекта (Supabase) и обрабатываются серверами ботов (Render).</p>
+    <h2>Сообщения от ботов</h2>
+    <p>Боты пишут только об изменениях в расписании, утренние сводки (если включены) и редкие важные новости проекта. Уведомления выключаются в настройках бота или приложения.</p>
+    <h2>Как удалить данные</h2>
+    <p>Напишите в личные сообщения <a data-channel href="#" target="_blank" rel="noopener">канала проекта</a> — данные удалят. Отозвать доступ сайта можно в Telegram: Настройки → Конфиденциальность → Активные сеансы / Сайты.</p>
+  </main>
+  <footer class="site-foot"><div class="wrap site-foot__row"><a href="/">На главную</a></div></footer>
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/theme.js"></script>
+  <script>document.querySelectorAll("[data-channel]").forEach(function(a){a.href=AVES_CONFIG.channelUrl;});</script>
+</body>
+</html>

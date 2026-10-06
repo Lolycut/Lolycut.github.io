@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Расписание — Aves</title>
+  <meta name="description" content="Расписание вашей группы БГУ: пары на день и неделю, поиск преподавателей и аудиторий, сравнение групп.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <script>(function(){try{var t=localStorage.getItem("aves.theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Onest:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+<body class="app">
+  <div class="night-sky" aria-hidden="true"></div>
+
+  <div class="shell shell--bare">
+    <header class="app-head" id="head" hidden></header>
+    <main id="view"></main>
+  </div>
+
+  <nav class="tabbar" id="tabbar" aria-label="Разделы" hidden>
+    <div class="tabbar__in">
+      <button class="tab" type="button" data-act="tab" data-tab="day">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
+        Пары
+      </button>
+      <button class="tab" type="button" data-act="tab" data-tab="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+        Поиск
+      </button>
+      <button class="tab" type="button" data-act="tab" data-tab="compare">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="4" width="7" height="16" rx="2"/><rect x="13.5" y="4" width="7" height="16" rx="2"/></svg>
+        Сравнить
+      </button>
+      <button class="tab" type="button" data-act="tab" data-tab="profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20c1.3-3.6 4.2-5.3 7.5-5.3s6.2 1.7 7.5 5.3"/></svg>
+        Профиль
+      </button>
+    </div>
+  </nav>
+
+  <div class="sheet-back" id="sheet-back" hidden></div>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Выбор группы" hidden></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <noscript><p style="padding:2rem">Для расписания нужен включённый JavaScript.</p></noscript>
+
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/aves.js"></script>
+  <script src="/assets/js/app.js"></script>
+</body>
+</html>
