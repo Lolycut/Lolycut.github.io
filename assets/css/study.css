@@ -1,0 +1,117 @@
+/* Вкладка «Конспекты»: лента карточек с превью (как в дейтингах) и фото дня. */
+
+/* Пять вкладок вместо четырёх: колонки по числу видимых кнопок */
+.tabbar__in { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 1fr; }
+
+.st-top { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; padding: .9rem 1rem .4rem; }
+.st-top .seg { flex: none; }
+.st-top .chip { margin-left: auto; }
+.st-search { flex: 1 0 100%; min-width: 0; order: 3; }
+.st-search .field { width: 100%; min-height: 40px; font-size: .92rem; }
+
+/* ---------- карточка конспекта ---------- */
+.deck { position: relative; padding: .6rem 1rem 0; }
+.card {
+  position: relative; background: var(--paper); border: 1px solid var(--rule);
+  border-radius: 20px; overflow: hidden;
+  touch-action: pan-y; user-select: none; -webkit-user-select: none;
+  transition: transform .32s cubic-bezier(.2, .8, .2, 1), opacity .32s;
+  will-change: transform;
+}
+.card.is-dragging { transition: none; }
+.card.fly-left { transform: translateX(-120%) rotate(-10deg); opacity: 0; }
+.card.fly-right { transform: translateX(120%) rotate(10deg); opacity: 0; }
+.card.enter { animation: card-in .35s cubic-bezier(.2, .8, .2, 1); }
+@keyframes card-in { from { transform: translateY(18px) scale(.98); opacity: 0; } to { transform: none; opacity: 1; } }
+
+.card__media {
+  position: relative; height: clamp(200px, 33vh, 380px); width: 100%;
+  background: var(--paper-2); display: block; overflow: hidden;
+}
+.card__media img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; -webkit-user-drag: none; pointer-events: none; }
+:root[data-theme="dark"] .card__media img.is-doc { filter: brightness(.88); }
+.card__media .media-wait {
+  position: absolute; inset: 0; display: grid; place-items: center; text-align: center;
+  color: var(--muted); font-size: .9rem; padding: 2rem;
+}
+.card__media .media-wait .bird { width: 56px; height: 56px; margin: 0 auto .75rem; opacity: .7; }
+.card__badge {
+  position: absolute; left: .75rem; bottom: .75rem;
+  background: color-mix(in srgb, var(--paper) 90%, transparent); backdrop-filter: blur(6px);
+  border: 1px solid var(--rule); border-radius: var(--radius-pill);
+  padding: .25rem .7rem; font-size: .8rem; color: var(--text);
+}
+
+.card__body { padding: 1rem 1.1rem 1.1rem; }
+.card__meta { margin: 0; font-size: .82rem; color: var(--muted); }
+.card__title { margin: .2rem 0 .4rem; font-family: var(--ff-display); font-weight: 500; font-size: 1.85rem; line-height: 1.05; color: var(--ink); }
+.card__desc {
+  margin: 0 0 .6rem; color: var(--text); font-size: .93rem;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card__author {
+  appearance: none; border: 0; background: none; padding: 0; cursor: pointer;
+  color: var(--ink); font-size: .9rem; text-decoration: underline; text-underline-offset: 3px;
+}
+.card__author[disabled] { cursor: default; text-decoration: none; color: var(--muted); }
+
+/* Реакции и действия */
+.acts { display: flex; align-items: center; justify-content: center; gap: .7rem; padding: .8rem 1rem .3rem; }
+.round {
+  appearance: none; cursor: pointer; flex: none;
+  min-width: 56px; height: 56px; padding: 0 .9rem; border-radius: 28px;
+  border: 1.5px solid var(--rule); background: var(--paper); color: var(--ink);
+  display: inline-flex; align-items: center; justify-content: center; gap: .35rem;
+  font-size: 1rem; font-weight: 600; font-variant-numeric: tabular-nums;
+  transition: transform .15s, border-color .2s, background-color .2s;
+}
+.round:active { transform: scale(.94); }
+.round .emo { font-size: 1.35rem; line-height: 1; }
+.round[aria-pressed="true"] { border-color: var(--ink); background: var(--paper-2); }
+.round--big { height: 64px; min-width: 64px; border-radius: 32px; }
+.round.pop .emo { animation: pop .4s ease; }
+@keyframes pop { 40% { transform: scale(1.45); } }
+
+.cta { display: grid; grid-template-columns: 1fr auto; gap: .6rem; padding: .5rem 1rem 1.4rem; }
+.cta .btn { min-height: 50px; }
+.st-hint { text-align: center; font-size: .78rem; color: var(--muted); margin: 0 0 1rem; }
+
+/* ---------- лист «получить файлы» и автор ---------- */
+.files { list-style: none; margin: 0 0 1rem; padding: 0; }
+.files li { display: flex; align-items: center; gap: .8rem; padding: .75rem 0; border-top: 1px dashed var(--rule); }
+.files li:first-child { border-top: 0; }
+.files .f-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink); }
+.files .f-size { color: var(--muted); font-size: .82rem; flex: none; }
+.sheet .stack .btn { width: 100%; }
+.author-head { display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap; margin-bottom: .2rem; }
+.author-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: 1rem 0; }
+.author-stats div { border: 1px solid var(--rule); border-radius: var(--radius-m); padding: .6rem .7rem; }
+.author-stats b { display: block; font-family: var(--ff-display); font-size: 1.7rem; line-height: 1; color: var(--ink); }
+.author-stats span { font-size: .78rem; color: var(--muted); }
+
+/* ---------- список (поиск, избранное, материалы автора) ---------- */
+.mlist { list-style: none; margin: 0; padding: .4rem 1rem 1.2rem; }
+.mlist li + li { border-top: 1px solid var(--rule); }
+.mitem {
+  appearance: none; width: 100%; border: 0; background: none; cursor: pointer; text-align: left; color: inherit;
+  display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: .8rem; align-items: center; padding: .75rem 0;
+}
+.mitem img, .mitem .ph { width: 56px; height: 72px; border-radius: 8px; object-fit: cover; object-position: top; background: var(--paper-2); border: 1px solid var(--rule); }
+.mitem b { display: block; color: var(--ink); font-weight: 600; line-height: 1.25; }
+.mitem small { color: var(--muted); font-size: .8rem; }
+.back-row { padding: .6rem 1rem 0; }
+
+/* ---------- фото дня ---------- */
+.pod { margin: .6rem 1rem 0; border-radius: 20px; overflow: hidden; border: 1px solid var(--rule); background: var(--paper); }
+.pod__label { display: flex; align-items: center; gap: .5rem; padding: .8rem 1rem; font-family: var(--ff-display); font-size: 1.5rem; color: var(--ink); }
+.photo { display: block; width: 100%; max-height: 68vh; object-fit: contain; background: var(--paper-2); }
+.photo-cap { padding: .8rem 1rem 0; margin: 0; color: var(--text); }
+.photo-by { padding: .25rem 1rem 0; margin: 0; color: var(--muted); font-size: .85rem; }
+.section-label { margin: 1.4rem 1rem .2rem; font-size: .8rem; font-weight: 600; color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .card.enter, .round.pop .emo { animation: none; transition: none; }
+}
+
+/* Пока открыт нижний лист, подсказки всплывают сверху и не закрывают его кнопки */
+.sheet.is-open ~ .toast { bottom: auto; top: calc(16px + env(safe-area-inset-top, 0px)); }

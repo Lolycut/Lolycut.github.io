@@ -124,8 +124,10 @@
   function go(tab) {
     S.tab = tab;
     tabbar.querySelectorAll(".tab").forEach((b) => { if (b.dataset.tab === tab) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current"); });
+    tabbar.querySelectorAll("[data-only]").forEach((b) => { b.hidden = b.dataset.only !== S.faculty; });
     window.scrollTo(0, 0);
-    ({ day: renderDay, search: renderSearch, compare: renderCompare, profile: renderProfile })[tab]();
+    const own = { day: renderDay, search: renderSearch, compare: renderCompare, profile: renderProfile };
+    (own[tab] || (window.AvesTabs || {})[tab] || renderDay)();
   }
 
   /* ───────────── подготовка пар ───────────── */
@@ -415,8 +417,10 @@
         ${specs}
       </section>
       <section class="panel"><h3>Уведомления от бота</h3>
-        <div class="row"><label class="row__label" for="n1"><span>Утренняя сводка</span><small>Пары на день в 7:45</small></label>
+        <div class="row"><label class="row__label" for="n1"><span>Расписание от бота</span><small>${u.notify_mode === "evening" ? "Вечером в 20:00 — пары на завтра" : u.notify_mode === "both" ? "В 7:45 на сегодня и в 20:00 на завтра" : "Утром в 7:45 — пары на сегодня"}</small></label>
           <input class="switch" id="n1" type="checkbox" data-pref="notifications" ${u.notifications ? "checked" : ""}></div>
+        ${u.notify_mode != null && u.notifications ? `<div class="row"><div class="row__label"><span>Когда присылать</span><small>Вечером удобно заранее собраться</small></div>
+          <div class="seg">${[["morning", "Утро"], ["evening", "Вечер"], ["both", "Оба"]].map(([v, l]) => `<button type="button" data-act="set-nmode" data-v="${v}" aria-pressed="${u.notify_mode === v}">${l}</button>`).join("")}</div></div>` : ""}
         <div class="row"><label class="row__label" for="n2"><span>Изменения в расписании</span><small>Замены, переносы, новые пары</small></label>
           <input class="switch" id="n2" type="checkbox" data-pref="change_notifications" ${u.change_notifications ? "checked" : ""}></div>
       </section>
@@ -440,7 +444,7 @@
       </section>`;
 
     view.querySelectorAll("[data-pref]").forEach((el) => el.addEventListener("change", () =>
-      patchMe({ [el.dataset.pref]: el.checked }, el.checked ? "Включено" : "Выключено").then((ok) => { if (!ok) el.checked = !el.checked; })));
+      patchMe({ [el.dataset.pref]: el.checked }, el.checked ? "Включено" : "Выключено").then((ok) => { if (!ok) el.checked = !el.checked; else if (el.dataset.pref === "notifications") renderProfile(); })));
     const sp = $("#spec");
     if (sp) sp.addEventListener("change", () => patchMe({ specialization: sp.value ? +sp.value : null }, "Специализация сохранена").then(resetWeek));
     $("#nform").addEventListener("submit", (e) => { e.preventDefault(); patchMe({ name: $("#nm").value.trim() }, "Имя сохранено").then(() => go("profile")); });
@@ -640,6 +644,10 @@
     "full-week"() { S.search.fullWeek = true; paintSearch(); },
     "cmp-add"() { openGroupPicker("Добавить к сравнению", (g) => { if (!S.compare.ids.includes(g.id)) S.compare.ids.push(g.id); renderCompare(); }); },
     "cmp-remove"(el) { S.compare.ids = S.compare.ids.filter((x) => x !== +el.dataset.id); renderCompare(); },
+    "set-nmode"(el) {
+      patchMe({ notify_mode: el.dataset.v }, { morning: "Буду присылать утром", evening: "Буду присылать вечером", both: "Утром и вечером" }[el.dataset.v])
+        .then((ok) => { if (ok) renderProfile(); });
+    },
     "set-sub"(el) {
       const n = +el.dataset.sub;
       patchMe({ subgroup: n }, n ? `${n} подгруппа` : "Вся группа").then((ok) => { if (ok) { S.viewSub = n; renderProfile(); } });
@@ -708,6 +716,19 @@
       syncTgColors();
     } catch (_) {}
   }
+
+  // Для подключаемых вкладок (assets/js/study.js)
+  window.AvesApp = {
+    S, A, C, $, view, esc, inTg, tg, actions, go, setHead, toast, haptic, openExt,
+    emptyHTML, loadingHTML, slowMsg, handleError, closeSheet, plural,
+    openSheet(html) {
+      const sh = $("#sheet"), bk = $("#sheet-back");
+      sh.innerHTML = html; S.picker = { custom: true };
+      bk.hidden = false; sh.hidden = false;
+      requestAnimationFrame(() => { bk.classList.add("is-open"); sh.classList.add("is-open"); });
+      if (tg && tg.BackButton) { tg.BackButton.show(); tg.BackButton.onClick(closeSheet); }
+    },
+  };
 
   boot();
 })();

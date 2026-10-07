@@ -28,6 +28,12 @@ window.AVES_CONFIG = {
   telegramClientId: "8380079376",
   // Разрешения: профиль + право боту писать в личку (нужно для утренней рассылки)
   telegramScope: "openid profile telegram:bot_access",
+  
+  study: {
+     api: "https://avesst.onrender.com",
+     faculty: "bio",
+     bot: "Aves_Studybot",
+   },
 
   channelUrl: "https://t.me/AvesBY",
   studyBot: "Aves_Studybot",
