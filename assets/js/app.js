@@ -17,6 +17,7 @@
     compare: { ids: [], data: null, key: "" },
     search: { q: "", res: null, fullWeek: false },
     ob: null, picker: null, regResults: null,
+    viewAll: false,          // ФМО: показать все языковые подгруппы, а не только свои
   };
 
   /* ───────────── даты и время (всё по Минску) ───────────── */
@@ -48,6 +49,17 @@
     const [a, b] = raw.split(" - ");
     return { start: a, end: b, s: a.includes("-") ? 0 : toMin(a), e: b.includes("-") ? 0 : toMin(b) };
   }
+  // У ФМО у пары своё время (9.30, 12.30, 16.30…) — берём его, если API его прислал
+  function timeOf(it) {
+    if (it.time_start && it.time_end) return { start: it.time_start, end: it.time_end, s: toMin(it.time_start), e: toMin(it.time_end) };
+    return slotTime(it.slot);
+  }
+  const keyOf = (it) => it.time_start || "s" + it.slot;
+  // Языковые подгруппы и ДВС (ФМО): API отдаёт у студента tracks/choices
+  const hasLangs = () => !!(S.user && S.user.tracks != null);
+  const TRACK_TITLES = { lang1: "1-й иностранный язык", lang2: "2-й иностранный язык", east: "Восточный язык", west: "Западный язык", lang: "Иностранный язык" };
+  function weekKeyNow() { return mondayOf(S.date) + ":" + currentGroup().id + (S.viewAll ? ":all" : ""); }
+
   function plural(n, one, few, many) {
     const m10 = n % 10, m100 = n % 100;
     if (m10 === 1 && m100 !== 11) return one;
@@ -134,21 +146,33 @@
   function prepare(lessons, sub, spec) {
     let ls = lessons.filter((l) => !l.subgroup || !sub || l.subgroup === sub);
     if (spec) ls = ls.filter((l) => l.spec_order == null || l.spec_order === spec);
-    const bySlot = {};
-    ls.forEach((l) => (bySlot[l.slot] = bySlot[l.slot] || []).push(l));
+    const byKey = {};
+    ls.forEach((l) => (byKey[keyOf(l)] = byKey[keyOf(l)] || []).push(l));
     const out = [];
-    Object.keys(bySlot).map(Number).sort((a, b) => a - b).forEach((slot) => {
-      const arr = bySlot[slot];
+    Object.keys(byKey).sort((a, b) => timeOf(byKey[a][0]).s - timeOf(byKey[b][0]).s || byKey[a][0].slot - byKey[b][0].slot).forEach((k) => {
+      const arr = byKey[k];
+      const slot = arr[0].slot;
+      const base = { slot, time_start: arr[0].time_start, time_end: arr[0].time_end };
       const specs = arr.filter((l) => l.spec_order != null);
       if (specs.length > 1) {
         out.push({
-          slot, collapsed: true, variants: specs,
+          ...base, collapsed: true, kind: "specs", variants: specs,
           subject: (specs.find((x) => x.spec_title) || {}).spec_title || "Спецпрактикум",
           type: specs[0].type,
           comment: specs.some((x) => x.comment) ? "Есть примечания — раскройте варианты" : null,
         });
         arr.filter((l) => l.spec_order == null).forEach((l) => out.push({ slot, ...l }));
-      } else arr.forEach((l) => out.push({ slot, ...l }));
+        return;
+      }
+      // ФМО: больше двух языковых подгрупп одного занятия — одна строка «N подгрупп» с раскрытием
+      const bySubj = {};
+      arr.filter((l) => l.label).forEach((l) => (bySubj[l.subject] = bySubj[l.subject] || []).push(l));
+      const folded = new Set(Object.keys(bySubj).filter((x) => bySubj[x].length > 2));
+      folded.forEach((subj) => out.push({
+        ...base, collapsed: true, kind: "labels", variants: bySubj[subj], subject: subj, type: bySubj[subj][0].type,
+        comment: bySubj[subj].some((x) => x.comment) ? "Есть примечания — раскройте подгруппы" : null,
+      }));
+      arr.filter((l) => !(l.label && folded.has(l.subject))).forEach((l) => out.push({ slot, ...l }));
     });
     return out;
   }
@@ -156,27 +180,37 @@
   function normSlot(s) {
     return {
       slot: s.slot, subject: s.subject || s.subject_name, type: s.lesson_type, room: s.room,
-      address: s.address, offcampus: !!(s.address && !/курчатова/i.test(s.address)),
+      address: s.address, offcampus: S.faculty === "fsk" && !!(s.address && !/курчатова/i.test(s.address)),
       teacher_short: s.teacher_short, subgroup: s.subgroup, comment: s.comment, groups: s.groups_display,
+      time_start: s.time_start, time_end: s.time_end, label: s.label, online_url: s.online_url,
     };
   }
 
   function lessonHTML(it, state, label, same) {
-    const t = slotTime(it.slot);
+    const t = timeOf(it);
     const cls = (state === "past" ? " is-past" : state === "now" ? " is-now" : "") + (same ? " is-same" : "");
     let meta = "";
     if (it.type) meta += `<span class="tag">${esc(it.type)}</span>`;
     if (it.collapsed) {
-      meta += `<span>${it.variants.length} ${plural(it.variants.length, "вариант", "варианта", "вариантов")} по кафедрам</span>`;
+      meta += it.kind === "labels"
+        ? `<span>${it.variants.length} ${plural(it.variants.length, "подгруппа", "подгруппы", "подгрупп")}</span>`
+        : `<span>${it.variants.length} ${plural(it.variants.length, "вариант", "варианта", "вариантов")} по кафедрам</span>`;
     } else {
-      if (it.room) meta += `<span class="room">ауд. ${esc(it.room)}</span>`;
+      if (it.label) meta += `<span class="tag">${esc(it.label)}</span>`;
+      if (it.room) meta += `<span class="room">ауд. ${esc(it.room)}${it.floor ? `, ${it.floor} эт.` : ""}</span>`;
+      else if (it.online_url) meta += `<span class="room">дистант</span>`;
       if (it.teacher_short && it.teacher_short !== "—") meta += `<span>${esc(it.teacher_short)}</span>`;
       if (it.subgroup) meta += `<span class="tag">${it.subgroup} п/г</span>`;
+      if (it.choice) meta += `<span class="tag">по выбору</span>`;
+      if (it.optional) meta += `<span class="tag">факультатив</span>`;
+      if (it.usr) meta += `<span class="tag">УСР</span>`;
     }
     const variants = it.collapsed
-      ? `<details class="lesson__more"><summary>Показать варианты</summary><ul class="variants">${it.variants.map((v) =>
-          `<li><b>${esc(v.subject)}</b><br><span>${[v.room && "ауд. " + v.room, v.teacher_short].filter(Boolean).map(esc).join(", ")}</span>${v.comment ? `<br>✏️ ${esc(v.comment)}` : ""}</li>`).join("")}</ul></details>`
+      ? `<details class="lesson__more"><summary>${it.kind === "labels" ? "Показать подгруппы" : "Показать варианты"}</summary><ul class="variants">${it.variants.map((v) =>
+          `<li><b>${esc(v.label || v.subject)}</b><br><span>${[v.room && "ауд. " + v.room, v.teacher_short].filter(Boolean).map(esc).join(", ")}</span>${v.comment ? `<br>✏️ ${esc(v.comment)}` : ""}</li>`).join("")}</ul></details>`
       : "";
+    const online = !it.collapsed && it.online_url
+      ? `<p class="lesson__note">💻 <button class="link-btn" type="button" data-act="open" data-url="${esc(it.online_url)}">Подключиться к дистанту</button></p>` : "";
     return `<li class="lesson${cls}">
       <div class="lesson__time"><b>${it.slot}</b><span>${t.start}<br>${t.end}</span></div>
       <div>
@@ -184,7 +218,8 @@
         <p class="lesson__subject">${esc(it.subject)}</p>
         <div class="lesson__meta">${meta}</div>
         ${it.groups ? `<p class="lesson__groups">Группы: ${esc(it.groups)}</p>` : ""}
-        ${it.comment && !it.collapsed ? `<p class="lesson__note">✏️ ${esc(it.comment)}</p>` : ""}
+        ${it.comment && !it.collapsed ? `<p class="lesson__note">✏️ ${esc(it.comment)}${it.comment_author ? ` <small>— ${esc(it.comment_author)}</small>` : ""}</p>` : ""}
+        ${online}
         ${it.offcampus ? `<p class="lesson__warn">Не в главном корпусе: ${esc(it.address)}</p>` : ""}
         ${variants}
       </div>
@@ -196,13 +231,13 @@
     const isToday = dateIso === now.date;
     let nextSlot = null;
     return `<ul class="lessons">${items.map((it, i) => {
-      const same = i > 0 && items[i - 1].slot === it.slot;
+      const same = i > 0 && keyOf(items[i - 1]) === keyOf(it);
       if (!isToday) return lessonHTML(it, null, null, same);
-      const t = slotTime(it.slot);
+      const t = timeOf(it);
       if (now.minutes > t.e) return lessonHTML(it, "past", null, same);
       if (now.minutes >= t.s) return lessonHTML(it, "now", same ? null : `Идёт, до ${t.end}`, same);
-      if (nextSlot === null || nextSlot === it.slot) {
-        const first = nextSlot === null; nextSlot = it.slot; const d = t.s - now.minutes;
+      if (nextSlot === null || nextSlot === keyOf(it)) {
+        const first = nextSlot === null; nextSlot = keyOf(it); const d = t.s - now.minutes;
         return lessonHTML(it, null, first && d <= 180 ? `Через ${inMinutes(d)}` : null, same);
       }
       return lessonHTML(it, null, null, same);
@@ -229,12 +264,15 @@
 
   async function renderDay() {
     const g = currentGroup();
-    setHead({ title: g.tag, sub: g.name, pick: true, chip: { act: "sub-cycle", label: subLabel(S.viewSub) } });
-    const key = mondayOf(S.date) + ":" + g.id;
+    const chip = hasLangs()
+      ? (S.viewGroup ? null : { act: "langs-toggle", label: S.viewAll ? "Все подгруппы" : "Мои языки" })
+      : { act: "sub-cycle", label: subLabel(S.viewSub) };
+    setHead({ title: g.tag, sub: g.name, pick: true, chip });
+    const key = weekKeyNow();
     if (S.weekKey !== key) {
       showLoading();
       try {
-        S.week = await A.api(S.faculty, `/api/schedule?date=${mondayOf(S.date)}${S.viewGroup ? "&group_id=" + g.id : ""}`, { onSlow: slowMsg });
+        S.week = await A.api(S.faculty, `/api/schedule?date=${mondayOf(S.date)}${S.viewGroup ? "&group_id=" + g.id : ""}${S.viewAll ? "&all=1" : ""}`, { onSlow: slowMsg });
         S.weekKey = key;
       } catch (e) { return handleError(e, renderDay); }
     }
@@ -246,7 +284,7 @@
     const spec = S.viewGroup ? null : S.user.specialization;
     const perDay = S.week.days.map((d) => prepare(d.lessons, S.viewSub, spec));
     const items = perDay[di] || [];
-    const slots = new Set(items.map((x) => x.slot)).size;
+    const slots = new Set(items.map(keyOf)).size;
     const weekEmpty = perDay.every((d) => !d.length);
 
     let notes = "";
@@ -373,6 +411,7 @@
 
     const cols = weeks.map((w) => prepare(w.days[di].lessons, 0, null));
     const slots = [...new Set(cols.flat().map((x) => x.slot))].sort((a, b) => a - b);
+    const timeIn = (s) => { const t = cols.flat().find((x) => x.slot === s && x.time_start); return t ? t.time_start : slotTime(s).start; };
 
     let grid;
     if (!slots.length) grid = emptyHTML("Ни у кого нет пар", "Выберите другой день или добавьте группу.");
@@ -381,11 +420,11 @@
       let cells = `<div class="cgrid__head"></div>` + weeks.map((w) => `<div class="cgrid__head">${esc(w.group.tag)}<small>${esc(w.group.name)}</small></div>`).join("");
       slots.forEach((s) => {
         const t = slotTime(s);
-        cells += `<div class="cgrid__slot"><b>${s}</b><span>${t.start}</span></div>`;
+        cells += `<div class="cgrid__slot"><b>${s}</b><span>${timeIn(s) || t.start}</span></div>`;
         cols.forEach((items) => {
           const here = items.filter((x) => x.slot === s);
           cells += here.length
-            ? `<div class="cgrid__cell">${here.map((x) => `<div class="one"><b>${esc(x.subject)}</b><span>${[x.type, x.room && "ауд. " + x.room, x.subgroup && x.subgroup + " п/г"].filter(Boolean).map(esc).join(", ")}</span></div>`).join("")}</div>`
+            ? `<div class="cgrid__cell">${here.map((x) => `<div class="one"><b>${esc(x.subject)}</b><span>${[x.type, x.collapsed && x.kind === "labels" ? x.variants.length + " подгр." : x.label, x.room && "ауд. " + x.room, x.subgroup && x.subgroup + " п/г"].filter(Boolean).map(esc).join(", ")}</span></div>`).join("")}</div>`
             : `<div class="cgrid__cell is-free">окно</div>`;
         });
       });
@@ -413,7 +452,10 @@
       <section class="panel"><h3>Учёба</h3>
         <div class="row"><div class="row__label"><span>Группа ${esc(u.group.tag)}</span><small>${esc(f.short)}, ${u.group.course} курс</small></div>
           <button class="link-btn" type="button" data-act="change-group">Сменить</button></div>
-        <div class="row"><div class="row__label"><span>Подгруппа</span><small>Пары другой подгруппы скрываются</small></div><div class="seg">${subSeg}</div></div>
+        ${hasLangs()
+          ? `<div class="row"><div class="row__label"><span>Языки и ДВС</span><small>${esc(langsSummary(u))}</small></div>
+              <button class="link-btn" type="button" data-act="langs-edit">Настроить</button></div>`
+          : `<div class="row"><div class="row__label"><span>Подгруппа</span><small>Пары другой подгруппы скрываются</small></div><div class="seg">${subSeg}</div></div>`}
         ${specs}
       </section>
       <section class="panel"><h3>Уведомления от бота</h3>
@@ -429,7 +471,7 @@
           <input class="field" id="nm" maxlength="32" value="${esc(u.name)}"><button class="btn btn--line" type="submit">Сохранить</button></form>
       </section>
       <section class="panel"><h3>Ещё в стае</h3>
-        <div class="row"><div class="row__label"><span>Конспекты</span><small>AvesStudy, бета для биофака</small></div>
+        <div class="row"><div class="row__label"><span>Конспекты</span><small>AvesStudy — лента вашего факультета</small></div>
           <button class="link-btn" type="button" data-act="open" data-url="https://t.me/${esc(C.studyBot)}">Открыть</button></div>
         <div class="row"><div class="row__label"><span>Скидки для студентов</span><small>Раздел готовится</small></div><span class="soon">Скоро</span></div>
         <div class="row"><div class="row__label"><span>Подработки</span><small>Раздел готовится</small></div><span class="soon">Скоро</span></div>
@@ -462,6 +504,54 @@
     }
   }
   function resetWeek() { S.weekKey = ""; S.compare.key = ""; }
+
+  /* ───────────── языки и ДВС (ФМО) ───────────── */
+  function langsSummary(u) {
+    const keys = Object.values(u.tracks || {}).flat();
+    const ch = u.choices || [];
+    if (!keys.length && !ch.length) return "Не выбраны — видны все подгруппы";
+    return [keys.join(", "), ch.length ? `ДВС: ${ch.length}` : ""].filter(Boolean).join("; ");
+  }
+
+  function langsFormHTML(opts, u) {
+    const tracks = (opts.tracks || []).map((t) => {
+      const mine = ((u && u.tracks) || {})[t.track] || [];
+      const options = t.options.map((o) =>
+        `<option value="${esc(o.key)}" ${mine.includes(o.key) ? "selected" : ""}>${esc(o.key)}${o.teachers.length && !o.key.includes("·") ? " — " + esc(o.teachers[0]) : ""}${o.here ? " · ваша группа" : ""}</option>`).join("");
+      return `<label class="lang-field"><span>${esc(TRACK_TITLES[t.track] || "Иностранный язык")}</span>
+        <select class="field" data-track="${esc(t.track)}"><option value="">Все подгруппы</option>${options}</select></label>`;
+    }).join("");
+    const choices = (opts.choices || []).map((set, i) => {
+      const picked = set.find((x) => ((u && u.choices) || []).includes(x)) || "";
+      return `<label class="lang-field"><span>Дисциплина по выбору${opts.choices.length > 1 ? " " + (i + 1) : ""}</span>
+        <select class="field" data-choice="${i}"><option value="">Не знаю / все</option>${set.map((x) => `<option ${x === picked ? "selected" : ""}>${esc(x)}</option>`).join("")}</select></label>`;
+    }).join("");
+    if (!tracks && !choices) return `<p>У вашей группы нет языковых подгрупп и дисциплин по выбору — видно всё расписание.</p>`;
+    return `<div class="stack lang-form">${tracks}${choices}</div>`;
+  }
+
+  function readLangsForm(root) {
+    const tracks = {}, choices = [];
+    root.querySelectorAll("select[data-track]").forEach((el) => { if (el.value) tracks[el.dataset.track] = [el.value]; });
+    root.querySelectorAll("select[data-choice]").forEach((el) => { if (el.value) choices.push(el.value); });
+    return { tracks, choices };
+  }
+
+  async function loadOptions(groupId) {
+    return A.api(S.faculty, "/api/options" + (groupId ? "?group_id=" + groupId : ""), { onSlow: slowMsg });
+  }
+
+  async function openLangsSheet() {
+    window.AvesApp.openSheet(`<div class="sheet__body">${loadingHTML("Загружаем подгруппы…")}</div>`);
+    try {
+      const opts = await loadOptions();
+      $("#sheet").innerHTML = `<div class="sheet__head"><h3>Языки и ДВС</h3>
+          <button class="icon-btn" type="button" data-act="sheet-close" aria-label="Закрыть">${ICONS.close}</button></div>
+        <div class="sheet__body"><p style="margin-top:0;color:var(--muted)">Расписание, уведомления и заметки будут только по вашим подгруппам. Не уверены — оставьте «Все подгруппы».</p>
+          ${langsFormHTML(opts, S.user)}
+          <div class="stack" style="margin-top:1rem"><button class="btn btn--solid" type="button" data-act="langs-save">Сохранить</button></div></div>`;
+    } catch (e) { closeSheet(); toast(e.message); }
+  }
 
   /* ───────────── выбор группы (лист снизу) ───────────── */
   function courseKey(g) { return (g.study_mode === "Дневная" ? "d" : g.study_mode === "Магистратура" ? "m" : "z") + g.course; }
@@ -540,6 +630,9 @@
       step = 2; title = "Ваша группа"; text = courseName(ob.key);
       list = S.meta.groups.filter((g) => courseKey(g) === ob.key)
         .map((g) => `<button class="choice" type="button" data-act="ob-group" data-id="${g.id}"><b>${esc(g.tag)}</b><small>${esc(g.name)}</small></button>`).join("");
+    } else if (ob.step === "langs") {
+      step = 3; title = "Языки и ДВС"; text = "Выберите свои подгруппы — в расписании останутся только ваши пары. Поменять можно в профиле.";
+      list = ob.opts ? langsFormHTML(ob.opts, null) + `<button class="btn btn--solid" type="button" data-act="ob-langs">Готово</button>` : loadingHTML("Загружаем подгруппы…");
     } else {
       step = 3; title = "Подгруппа"; text = "Не знаете — выберите «Вся группа». Поменять можно в профиле.";
       list = [[0, "Вся группа"], [1, "1 подгруппа"], [2, "2 подгруппа"]]
@@ -584,6 +677,7 @@
     S.date = defaultDate();
     S.viewSub = S.user.subgroup || 0;
     S.viewGroup = null;
+    S.viewAll = false;
     S.compare.ids = [S.user.group.id];
     resetWeek();
     chrome(true);
@@ -638,6 +732,20 @@
     day(el) { haptic("select"); S.date = el.dataset.date; S.tab === "compare" ? renderCompare() : renderDay(); },
     week(el) { haptic("select"); S.date = addDays(S.date, 7 * +el.dataset.dir); S.tab === "compare" ? renderCompare() : renderDay(); },
     "sub-cycle"() { haptic("select"); S.viewSub = (S.viewSub + 1) % 3; renderDay(); },
+    "langs-toggle"() { haptic("select"); S.viewAll = !S.viewAll; renderDay(); },
+    "langs-edit"() { openLangsSheet(); },
+    async "langs-save"() {
+      const ok = await patchMe(readLangsForm($("#sheet")), "Языки сохранены");
+      if (ok) { closeSheet(); S.viewAll = false; resetWeek(); renderProfile(); }
+    },
+    async "ob-langs"() {
+      const picked = readLangsForm(view);   // до showLoading: он перерисует экран
+      showLoading("Сохраняем…");
+      const ok = await patchMe(picked);
+      if (!ok) return paintOnboarding();
+      toast("Готово! Бот тоже знает вашу группу и языки");
+      try { await enter(); } catch (e) { handleError(e, boot); }
+    },
     "view-group"() { openGroupPicker("Чьё расписание смотрим?", (g) => { S.viewGroup = g.id === S.user.group.id ? null : g; S.viewSub = S.viewGroup ? 0 : S.user.subgroup || 0; renderDay(); }); },
     "back-own"() { S.viewGroup = null; S.viewSub = S.user.subgroup || 0; renderDay(); },
     hint(el) { const q = el.dataset.q; const inp = $("#q"); if (inp) inp.value = q; runSearch(q); },
@@ -670,8 +778,20 @@
       try { await enter(); } catch (e) { handleError(e, boot); }
     },
     "ob-course"(el) { S.ob.key = el.dataset.key; S.ob.step = "group"; paintOnboarding(); },
-    "ob-group"(el) { S.ob.groupId = +el.dataset.id; S.ob.step = "sub"; paintOnboarding(); },
-    "ob-back"() { S.ob.step = S.ob.step === "sub" ? "group" : "course"; paintOnboarding(); },
+    async "ob-group"(el) {
+      S.ob.groupId = +el.dataset.id;
+      if (S.meta && S.meta.faculty === "fmo") {
+        // ФМО: сразу сохраняем группу и спрашиваем языки (у ФМО нет подгрупп 1/2, есть языковые)
+        showLoading("Сохраняем…");
+        if (!(await patchMe({ group_id: S.ob.groupId }))) return paintOnboarding();
+        S.ob.step = "langs"; S.ob.opts = null; paintOnboarding();
+        try { S.ob.opts = await loadOptions(S.ob.groupId); } catch (e) { S.ob.opts = { tracks: [], choices: [] }; }
+        if (S.ob.step === "langs") paintOnboarding();
+        return;
+      }
+      S.ob.step = "sub"; paintOnboarding();
+    },
+    "ob-back"() { S.ob.step = S.ob.step === "sub" || S.ob.step === "langs" ? "group" : "course"; paintOnboarding(); },
     async "ob-sub"(el) {
       showLoading("Сохраняем…");
       const ok = await patchMe({ group_id: S.ob.groupId, subgroup: +el.dataset.sub });
@@ -704,7 +824,7 @@
   }, { passive: true });
 
   // Раз в минуту обновляем «идёт сейчас»
-  setInterval(() => { if (S.tab === "day" && S.week && S.user && S.weekKey === mondayOf(S.date) + ":" + currentGroup().id && !S.picker && !document.hidden && !view.querySelector("details[open]")) paintDay(); }, 60000);
+  setInterval(() => { if (S.tab === "day" && S.week && S.user && S.weekKey === weekKeyNow() && !S.picker && !document.hidden && !view.querySelector("details[open]")) paintDay(); }, 60000);
 
   document.addEventListener("aves:theme", syncTgColors);
 

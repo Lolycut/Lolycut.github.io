@@ -77,10 +77,13 @@
     return ext ? ext.toUpperCase() : "Файл";
   }
 
+  const feedSub = () => (ST.me ? `Лента: ${ST.me.feed_label}` : "AvesStudy");
+  const canSwitch = () => !!ST.me && (ST.me.feeds.length > 1 || !ST.me.is_member);
+
   function render() {
     App.setHead({
       title: "Конспекты",
-      sub: ST.me ? `Лента: ${ST.me.course_label.toLowerCase()}` : "AvesStudy",
+      sub: feedSub(),
       chip: { act: "st-upload", label: "Загрузить" },
     });
     const seg = `<div class="seg" role="group" aria-label="Раздел">
@@ -90,7 +93,8 @@
     const tools = ST.mode === "notes"
       ? `<form class="st-search" id="st-sform" role="search"><label class="visually-hidden" for="st-q">Найти конспект</label>
            <input class="field" id="st-q" type="search" enterkeyhint="search" autocomplete="off" placeholder="Найти: «микра 3 курс»"></form>
-         <button class="chip" type="button" data-act="st-favs">★ Избранное</button>`
+         <button class="chip" type="button" data-act="st-favs">★ Избранное</button>
+         ${canSwitch() ? `<button class="chip" type="button" data-act="st-feed">${esc(ST.me.faculty_short)} ▾</button>` : ""}`
       : "";
     App.view.innerHTML = `<div class="st-top">${seg}${tools}</div><div id="st-body"></div>`;
     const f = $("#st-sform");
@@ -101,7 +105,39 @@
   async function ensureMe() {
     if (ST.me) return;
     ST.me = await api("/api/study/me");
-    App.setHead({ title: "Конспекты", sub: `Лента: ${ST.me.course_label.toLowerCase()}`, chip: { act: "st-upload", label: "Загрузить" } });
+    App.setHead({ title: "Конспекты", sub: feedSub(), chip: { act: "st-upload", label: "Загрузить" } });
+    // Студент нескольких ботов Aves ещё не выбрал ленту — спрашиваем один раз
+    if (ST.me.needs_choice && !ST.asked) { ST.asked = true; setTimeout(openFeedSheet, 0); }
+    if (canSwitch() && !$('[data-act="st-feed"]')) render();
+  }
+
+  /* ───────────── выбор ленты факультета ───────────── */
+  function openFeedSheet() {
+    const me = ST.me; if (!me) return;
+    const close = `<button class="icon-btn" type="button" data-act="sheet-close" aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>`;
+    let bodyHTML;
+    if (me.feeds.length) {
+      bodyHTML = `<p style="margin-top:0;color:var(--muted)">Вы есть в нескольких ботах расписания Aves. Ленты факультетов раздельные, «Фото дня» — общее.</p>
+        <div class="stack">${me.feeds.map((f) => `<button class="choice" type="button" data-act="st-feed-pick" data-f="${esc(f.faculty)}">
+          <b>${f.current ? "✓ " : ""}${esc(f.title)}</b><small>${esc(f.label)}</small></button>`).join("")}</div>`;
+    } else {
+      bodyHTML = `<p style="margin-top:0;color:var(--muted)">Выберите факультет и курс. Если зарегистрируетесь в боте расписания факультета, курс подтянется сам.</p>
+        ${me.faculties.map((f) => `<p class="section-label">${esc(f.title)}</p><div class="hints">${[...f.courses, 0].map((c) =>
+          `<button class="chip ${me.faculty === f.faculty && me.course === c ? "is-on" : ""}" type="button" data-act="st-feed-pick" data-f="${esc(f.faculty)}" data-c="${c}">${c === 6 ? "Магистратура" : c ? c + " курс" : "Все курсы"}</button>`).join("")}</div>`).join("")}`;
+    }
+    App.openSheet(`<div class="sheet__head"><h3>Лента конспектов</h3>${close}</div><div class="sheet__body">${bodyHTML}</div>`);
+  }
+
+  async function pickFeed(faculty, course) {
+    try {
+      const body = { faculty };
+      if (course !== undefined && course !== "") body.course = +course;
+      const r = await api("/api/study/feed-faculty", { method: "POST", body });
+      ST.me = Object.assign({}, ST.me, r);
+      Object.assign(ST, { queue: [], cur: null, done: false, list: null, single: null });
+      App.closeSheet(); App.haptic("success"); App.toast(`Лента: ${r.feed_label}`);
+      render();
+    } catch (e) { if (!fatal(e)) App.toast(e.message); }
   }
 
   /* ───────────── лента конспектов ───────────── */
@@ -179,10 +215,10 @@
   }
 
   function paintEmpty() {
-    const scope = ST.me ? ST.me.course_label.toLowerCase() : "вашего курса";
+    const scope = ST.me ? ST.me.feed_label : "вашего курса";
     body().innerHTML = `<div class="empty"><span class="bird bird--dove"></span>
       <h3>Вы посмотрели всё</h3>
-      <p>Лента показывает конспекты только для: ${esc(scope)} и общие. Другие курсы — через поиск.</p>
+      <p>Лента показывает конспекты только для: ${esc(scope)} и общие для всех курсов. Другие курсы — через поиск.</p>
       <div class="stack" style="max-width:320px;margin:1.25rem auto 0">
         <button class="btn btn--solid" type="button" data-act="st-upload">Загрузить свой конспект</button>
         <button class="btn btn--line" type="button" data-act="st-restart">Смотреть сначала</button>
@@ -383,9 +419,12 @@
   }
 
   function photoBlock(p) {
+    // Фото дня общее для всех факультетов: видно факультет и курс автора, а с его согласия — можно написать
+    const contact = p.contact
+      ? `<p class="photo-by"><button class="link-btn" type="button" data-act="st-open-url" data-url="https://t.me/${esc(p.contact)}">👋 Написать @${esc(p.contact)}</button></p>` : "";
     return `<img class="photo" src="${esc(img(p.image))}" alt="${esc(p.caption || "Фото студента")}">
       ${p.caption ? `<p class="photo-cap">${esc(p.caption)}</p>` : ""}
-      <p class="photo-by">${esc(p.author)}</p>${reactBar(p)}`;
+      <p class="photo-by">${esc(p.author)}</p>${contact}${reactBar(p)}`;
   }
 
   function paintPhotos() {
@@ -414,6 +453,8 @@
   /* ───────────── действия ───────────── */
   Object.assign(actions, {
     "st-mode"(el) { ST.mode = el.dataset.m; App.haptic("select"); render(); },
+    "st-feed"() { openFeedSheet(); },
+    "st-feed-pick"(el) { pickFeed(el.dataset.f, el.dataset.c); },
     "st-retry"() { render(); },
     "st-upload"() { App.openExt(`https://t.me/${CFG.bot}`); },
     "st-upload-photo"() { App.openExt(`https://t.me/${CFG.bot}`); App.toast("В боте нажмите «📸 Фото дня» → «Загрузить»"); },
@@ -524,7 +565,7 @@
     const uid = S.user && S.user.telegram_id;
     if (uid !== lastUser) {
       lastUser = uid;
-      Object.assign(ST, { me: null, queue: [], cur: null, done: false, list: null, single: null,
+      Object.assign(ST, { me: null, asked: false, queue: [], cur: null, done: false, list: null, single: null,
         ph: { day: undefined, queue: [], cur: null, done: false, fetching: null } });
     }
   }, true);

@@ -20,6 +20,13 @@ window.AVES_CONFIG = {
       bot: "schedulefskbot",
       api: "https://mambafsk.onrender.com",
     },
+    fmo: {
+      bird: "AvesGlobe",
+      title: "Факультет международных отношений",
+      short: "ФМО",
+      bot: "schedulefirbot",              // REPLACE: username бота ФМО без @
+      api: "https://mambafmo.onrender.com", // REPLACE, если сервис на Render называется иначе
+    },
   },
 
   // Бот, через которого идёт вход на сайте (у него в BotFather настроен Login Widget)
@@ -29,11 +36,11 @@ window.AVES_CONFIG = {
   // Разрешения: профиль + право боту писать в личку (нужно для утренней рассылки)
   telegramScope: "openid profile telegram:bot_access",
   
+  // Конспекты и фото дня — один бот на все факультеты, лента у каждого факультета своя
   study: {
-     api: "https://avesst.onrender.com",
-     faculty: "bio",
-     bot: "Aves_Studybot",
-   },
+    api: "https://avesst.onrender.com",
+    bot: "Aves_Studybot",
+  },
 
   channelUrl: "https://t.me/AvesBY",
   studyBot: "Aves_Studybot",

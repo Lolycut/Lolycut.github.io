@@ -1,0 +1,8 @@
+/* Дополнения для ФМО и многофакультетной ленты конспектов */
+.lang-form { gap: .9rem; }
+.lang-field { display: grid; gap: .35rem; text-align: left; }
+.lang-field > span { font-size: .85rem; color: var(--muted); }
+.lang-field .field { width: 100%; }
+.lesson__note small { color: var(--muted); }
+.lesson__note .link-btn { padding: 0; }
+.sheet__body .hints { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .4rem; }
