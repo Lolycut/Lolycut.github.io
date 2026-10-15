@@ -1,0 +1,120 @@
+/* Вкладка «Смены»: окна недели, лента подработок, карточка смены, «Мои часы». */
+
+.wk-top { display: flex; align-items: center; gap: .6rem; padding: .9rem 1rem .3rem; }
+.wk-badge {
+  margin-left: auto; font-size: .75rem; font-weight: 600; color: var(--study);
+  border: 1px solid currentColor; border-radius: var(--radius-pill); padding: .1rem .6rem;
+}
+
+/* ---------- окна недели: семь строк-шкал 8:00–22:00 ---------- */
+.wk-week { padding: .6rem 1rem .2rem; }
+.wk-week__ticks, .wk-row { display: grid; grid-template-columns: 3.1rem minmax(0, 1fr) 1.4rem; gap: .55rem; align-items: center; }
+.wk-week__axis { position: relative; height: 1rem; font-size: .68rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.wk-week__axis span { position: absolute; transform: translateX(-50%); }
+.wk-week__axis span:first-child { transform: none; }
+
+.wk-row {
+  appearance: none; width: 100%; border: 0; background: none; cursor: pointer; color: inherit; text-align: left;
+  padding: .28rem 0; border-radius: var(--radius-s);
+}
+.wk-row__d { font-size: .82rem; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.wk-row__d b { color: var(--ink); font-weight: 600; }
+.wk-row__n { font-size: .8rem; font-weight: 600; color: var(--live); text-align: right; font-variant-numeric: tabular-nums; }
+.wk-row__t { position: relative; height: 14px; border-radius: 4px; background: var(--paper-2); overflow: hidden; }
+.wk-row__t .b { position: absolute; top: 0; bottom: 0; }
+.wk-row[aria-pressed="true"] .wk-row__d b, .wk-row[aria-pressed="true"] .wk-row__d { color: var(--ink); }
+.wk-row[aria-pressed="true"] .wk-row__t { outline: 1.5px solid var(--ink); outline-offset: 2px; }
+.wk-row:hover .wk-row__t { outline: 1px solid var(--rule); outline-offset: 2px; }
+
+.b--free { background: color-mix(in srgb, var(--live) 16%, transparent); }
+.b--lesson { background: var(--ink); opacity: .82; }
+.b--busy { background: repeating-linear-gradient(135deg, var(--muted) 0 2px, transparent 2px 5px); }
+.b--shift { top: 3px !important; bottom: 3px !important; border-radius: 3px; background: var(--live); box-shadow: 0 0 0 1.5px var(--paper); }
+.b--shift.is-off { background: var(--paper); box-shadow: inset 0 0 0 1.5px var(--muted); }
+.wk-row__t .now { position: absolute; top: -2px; bottom: -2px; width: 2px; background: var(--study); }
+
+.wk-legend { display: flex; flex-wrap: wrap; gap: .3rem 1rem; margin: .45rem 0 0; padding-left: 3.65rem; font-size: .74rem; color: var(--muted); }
+.wk-legend span { display: inline-flex; align-items: center; gap: .35rem; }
+.wk-legend i { display: inline-block; width: 14px; height: 8px; border-radius: 2px; }
+.wk-legend .b--shift { box-shadow: none; }
+
+/* ---------- плашки и фильтр ---------- */
+.wk-note {
+  display: flex; align-items: center; justify-content: space-between; gap: .8rem;
+  margin: .9rem 1rem .2rem; padding: .65rem .9rem; border: 1px dashed var(--rule); border-radius: var(--radius-m);
+  font-size: .86rem; color: var(--muted);
+}
+.wk-note .link-btn { flex: none; font-size: .86rem; }
+.wk-note.is-warn { border-style: solid; border-color: var(--study); color: var(--text); }
+.wk-filter { margin: .8rem 1.25rem 0; font-size: .86rem; color: var(--ink); display: flex; gap: .6rem; align-items: baseline; flex-wrap: wrap; }
+.wk-center { text-align: center; margin-top: -1.5rem; padding-bottom: 2rem; }
+
+/* ---------- карточка в ленте ---------- */
+.wk-list { list-style: none; margin: 0; padding: 0 0 .4rem; }
+.wk-card {
+  appearance: none; width: 100%; border: 0; background: none; cursor: pointer; text-align: left; color: inherit;
+  display: grid; grid-template-columns: 3.6rem minmax(0, 1fr); gap: .9rem;
+  padding: .95rem 1.25rem; border-top: 1px solid var(--rule);
+}
+.wk-list li:first-child .wk-card { border-top: 0; }
+.wk-card:hover { background: color-mix(in srgb, var(--paper-2) 60%, transparent); }
+.wk-card__time { display: grid; align-content: start; gap: .05rem; font-variant-numeric: tabular-nums; }
+.wk-card__time b { font-family: var(--ff-display); font-weight: 600; font-size: 1.45rem; line-height: 1; color: var(--ink); }
+.wk-card__time span { font-size: .8rem; color: var(--muted); }
+.wk-card__time small { font-size: .72rem; color: var(--muted); margin-top: .2rem; }
+.wk-card__main { display: grid; gap: .25rem; min-width: 0; }
+.wk-card__title { font-size: 1.04rem; font-weight: 600; color: var(--ink); line-height: 1.25; }
+.wk-card__meta { font-size: .86rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wk-card__tags { display: flex; flex-wrap: wrap; gap: .35rem .5rem; align-items: center; margin-top: .1rem; }
+.wk-pay { font-weight: 600; color: var(--ink); font-size: .92rem; font-variant-numeric: tabular-nums; }
+.tag--new { border-color: var(--live); color: var(--live); }
+.tag.is-on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.wk-card.is-off .wk-card__title, .wk-card.is-off .wk-card__time b, .wk-card.is-off .wk-pay { color: var(--muted); }
+
+.wk-fit { margin: .1rem 0 0; font-size: .82rem; display: flex; gap: .4rem; align-items: baseline; }
+.wk-fit::before { content: ""; flex: none; width: 7px; height: 7px; border-radius: 50%; transform: translateY(-1px); }
+.wk-fit.is-ok { color: var(--live); }
+.wk-fit.is-ok::before { background: var(--live); }
+.wk-fit.is-off { color: var(--muted); }
+.wk-fit.is-off::before { border: 1.5px solid var(--muted); width: 5px; height: 5px; }
+.wk-fit.is-applied { color: var(--ink); font-weight: 600; }
+.wk-fit.is-applied::before { display: none; }
+
+/* ---------- лист смены ---------- */
+.wk-sheet .wk-when { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.wk-sheet .wk-when b { color: var(--ink); font-size: 1.05rem; }
+.wk-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; margin: 0 0 1rem; }
+.wk-facts div { border: 1px solid var(--rule); border-radius: var(--radius-m); padding: .55rem .75rem; min-width: 0; }
+.wk-facts dt { font-size: .74rem; color: var(--muted); }
+.wk-facts dd { margin: 0; color: var(--ink); font-weight: 500; overflow-wrap: anywhere; }
+.wk-dates { margin: 0 0 .8rem; font-size: .86rem; color: var(--muted); line-height: 2; }
+.wk-text {
+  white-space: pre-line; margin: .9rem 0 1.2rem; padding: .8rem .9rem;
+  background: var(--paper-2); border-radius: var(--radius-m); color: var(--text); font-size: .93rem;
+}
+.wk-done { margin: 0 0 .7rem; color: var(--ink); font-weight: 500; }
+
+/* ---------- «Мои часы» ---------- */
+.wk-busy { list-style: none; margin: 0 0 .8rem; padding: 0; }
+.wk-busy li { display: flex; align-items: center; justify-content: space-between; gap: .6rem; padding: .45rem 0; border-top: 1px dashed var(--rule); }
+.wk-busy li:first-child { border-top: 0; }
+.wk-busy li span { display: grid; }
+.wk-busy b { color: var(--ink); font-weight: 600; }
+.wk-busy small { color: var(--muted); font-size: .82rem; }
+.wk-busy .is-empty { color: var(--muted); font-size: .88rem; border: 0; }
+.wk-busy .icon-btn { width: 36px; height: 36px; }
+.wk-busy .icon-btn svg { width: 18px; height: 18px; }
+.wk-add { display: grid; gap: .6rem; padding: .9rem; border: 1px solid var(--rule); border-radius: var(--radius-m); }
+.wk-daypick { display: grid; grid-template-columns: repeat(7, 1fr); gap: .3rem; }
+.wk-daypick .chip { padding: 0; min-width: 0; border-width: 1px; border-color: var(--rule); }
+.wk-daypick .chip.is-on { border-color: var(--ink); }
+.wk-times { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+.wk-times label { display: flex; align-items: center; gap: .45rem; font-size: .88rem; color: var(--muted); }
+.wk-times .field, .wk-add > .field { min-height: 44px; font-variant-numeric: tabular-nums; }
+.wk-add .btn { width: 100%; }
+
+@media (max-width: 380px) {
+  .wk-week__ticks, .wk-row { grid-template-columns: 2.7rem minmax(0, 1fr) 1.1rem; gap: .4rem; }
+  .wk-legend { padding-left: 0; }
+  .wk-facts { grid-template-columns: 1fr; }
+}

@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Aves — расписание БГУ в Telegram, бесплатно и без рекламы</title>
-  <meta name="description" content="Aves — стая Telegram-ботов для студентов БГУ: расписание групп, преподавателей и аудиторий, свободные кабинеты, утренние сводки и уведомления о заменах. Бесплатно навсегда.">
+  <meta name="description" content="Aves — стая Telegram-ботов для студентов БГУ: расписание биофака, ФСК и ФМО, преподаватели и аудитории, свободные кабинеты, утренние сводки и уведомления о заменах. Бесплатно навсегда.">
   <meta name="theme-color" content="#ffffff">
   <link rel="canonical" href="https://microcosmos-bio.me/">
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Aves — расписание, которое прилетает само">
-  <meta property="og:description" content="Боты расписания для студентов БГУ. Бесплатно и без рекламы.">
+  <meta property="og:description" content="Боты расписания для студентов БГУ: биофак, ФСК и ФМО. Бесплатно и без рекламы.">
   <meta property="og:url" content="https://microcosmos-bio.me/">
   <meta property="og:image" content="https://microcosmos-bio.me/assets/img/og.png">
   <meta property="og:locale" content="ru_RU">
@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="/assets/css/site.css">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebSite","name":"Aves","url":"https://microcosmos-bio.me/","inLanguage":"ru",
-   "description":"Боты расписания для студентов БГУ: биофак (AvesBio), ФСК (AvesFlow), конспекты (AvesStudy)."}
+   "description":"Боты расписания для студентов БГУ: биофак (AvesBio), ФСК (AvesFlow), ФМО (AvesGlobe), конспекты (AvesStudy)."}
   </script>
 </head>
 <body>
@@ -100,7 +100,7 @@
           <div>
             <h3 class="species__name">Aves flow</h3>
             <p class="species__habitat">Факультет социокультурных коммуникаций БГУ</p>
-            <span class="status status--live" style="--c: var(--flow)">Летает, свежая</span>
+            <span class="status status--live" style="--c: var(--flow)">Летает</span>
           </div>
           <div class="species__body">
             <p>Младший брат бота биофака. Всё, что умеет AvesBio по расписанию, плюс то, о чём попросили студенты ФСК.</p>
@@ -116,10 +116,33 @@
           </div>
         </article>
 
+        <article class="species" data-bird="globe">
+          <div>
+            <h3 class="species__name">Aves globe</h3>
+            <p class="species__habitat">Факультет международных отношений БГУ</p>
+            <span class="status status--live" style="--c: var(--focus)">Летает, свежая</span>
+          </div>
+          <div class="species__body">
+            <p>Самая молодая птица стаи. Читает расписание ФМО прямо из таблиц факультета и каждый вечер сверяет его с сайтом — если что-то поменялось, напишет.</p>
+            <ul>
+              <li>Точное время каждой пары, а не номер слота</li>
+              <li>Свои языковые подгруппы и дисциплины по выбору — чужие пары не мешают</li>
+              <li>Поиск по преподавателю, аудитории и предмету, этаж аудитории подсказывается сам</li>
+              <li>Ссылка на дистант прямо под парой, если занятие онлайн</li>
+              <li>Заметки к парам от одногруппников: перенос, замена, что взять с собой</li>
+              <li>Для англоязычного потока Global Trends — интерфейс на английском</li>
+            </ul>
+            <div class="species__links" data-bot-links="fmo">
+              <a class="btn btn--line" href="#" target="_blank" rel="noopener" data-bot-link>Открыть в Telegram</a>
+              <span class="species__handle" data-bot-handle></span>
+            </div>
+          </div>
+        </article>
+
         <article class="species" data-bird="study">
           <div>
             <h3 class="species__name">Aves study</h3>
-            <p class="species__habitat">Пока только биофак</p>
+            <p class="species__habitat">Биофак, ФСК и ФМО</p>
             <span class="status" style="--c: var(--study)">Бета</span>
             <span class="bird bird--owl species__owl" role="img" aria-label="Сова в академической шапочке"></span>
           </div>
@@ -127,8 +150,9 @@
             <p>Дайвинчик для конспектов. Место, где студенты делятся материалами, которые помогли им подготовиться, и находят нужное за минуту.</p>
             <ul>
               <li>Загрузить свой конспект и получить огоньки за качество</li>
-              <li>Листать материалы лентой или искать по тегам</li>
-              <li>Узнаёт вас сразу, если вы уже зарегистрированы в боте биофака; есть гостевой режим</li>
+              <li>Листать материалы лентой или искать по тегам — у каждого факультета своя лента</li>
+              <li>Фото дня общее для всей стаи: можно разрешить написать вам и познакомиться с соседним факультетом</li>
+              <li>Узнаёт вас сразу, если вы уже есть в боте расписания своего факультета; есть гостевой режим</li>
             </ul>
             <p class="species__handle">Уважайте чужой труд: указывайте автора, если конспект не ваш. Материалы с жалобами модерация скрывает.</p>
             <div class="species__links">
@@ -158,11 +182,11 @@
         <ol class="steps">
           <li>
             <h3>Откройте бота факультета</h3>
-            <p>Биофак — <a href="https://t.me/schedulebiobot" target="_blank" rel="noopener">@schedulebiobot</a>, ФСК — <a href="https://t.me/schedulefskbot" target="_blank" rel="noopener">@schedulefskbot</a>. Нажмите «Старт».</p>
+            <p>Биофак — <a href="https://t.me/schedulebiobot" target="_blank" rel="noopener">@schedulebiobot</a>, ФСК — <a href="https://t.me/schedulefskbot" target="_blank" rel="noopener">@schedulefskbot</a><span data-bot-inline="fmo">, ФМО — <a href="#" target="_blank" rel="noopener" data-bot-link></a></span>. Нажмите «Старт».</p>
           </li>
           <li>
             <h3>Выберите группу</h3>
-            <p>Специальность, курс, группа и подгруппа. Имя для карточек можно оставить из Telegram.</p>
+            <p>Специальность, курс, группа и подгруппа (на ФМО — языки и дисциплины по выбору). Имя для карточек можно оставить из Telegram.</p>
           </li>
           <li>
             <h3>Пользуйтесь где удобно</h3>
@@ -204,11 +228,11 @@
         <div class="plans">
           <div class="plan">
             <h3>Новые факультеты <span class="status status--live" style="--c: var(--live)">В работе</span></h3>
-            <p>Цель на осень и зиму — подключить ещё несколько факультетов БГУ. Есть друзья с других факультетов? Покажите им ботов и спросите: «А хотите так же?»</p>
+            <p>ФМО уже в стае. Дальше — ещё несколько факультетов БГУ. Есть друзья с других факультетов? Покажите им ботов и спросите: «А хотите так же?»</p>
           </div>
           <div class="plan">
             <h3>Конспекты <span class="status" style="--c: var(--study)">Бета</span></h3>
-            <p>AvesStudy уже работает в Telegram. Скоро раздел появится и в приложении на сайте.</p>
+            <p>AvesStudy работает в Telegram и во вкладке «Конспекты» в приложении на сайте — для всех трёх факультетов.</p>
           </div>
           <div class="plan">
             <h3>Скидки для студентов <span class="status" style="--c: var(--work)">В планах</span></h3>
@@ -263,6 +287,24 @@
         }
       });
       document.querySelectorAll("[data-channel]").forEach(function (a) { a.href = Aves.config.channelUrl; });
+
+      // Username ботов, которых нет в разметке (ФМО), берём из config.js — там он уже вписан
+      document.querySelectorAll("[data-bot-links], [data-bot-inline]").forEach(function (box) {
+        var key = box.getAttribute("data-bot-links") || box.getAttribute("data-bot-inline");
+        var f = (Aves.config.faculties || {})[key];
+        var bot = f && f.bot && !/^REPLACE/.test(f.bot) ? f.bot : null;
+        if (!bot) {
+          if (box.hasAttribute("data-bot-inline")) box.hidden = true;
+          else box.innerHTML = '<span class="species__handle">Ссылка на бота появится здесь совсем скоро</span>';
+          return;
+        }
+        box.querySelectorAll("[data-bot-link]").forEach(function (a) {
+          a.href = "https://t.me/" + bot;
+          if (!a.textContent.trim()) a.textContent = "@" + bot;
+        });
+        box.querySelectorAll("[data-bot-handle]").forEach(function (s) { s.textContent = "@" + bot; });
+      });
+
       var head = document.querySelector(".site-head");
       addEventListener("scroll", function () { head.classList.toggle("is-scrolled", scrollY > 8); }, { passive: true });
     })();
