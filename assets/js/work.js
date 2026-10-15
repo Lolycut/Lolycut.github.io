@@ -484,6 +484,11 @@
     document.head.appendChild(css);
   }
 
+  // Конспекты общие для всех факультетов (AvesStudy) — снимаем старое «только биофак»,
+  // если на сайте остался index.html из версии до ФМО
+  const studyTab = document.querySelector('#tabbar [data-tab="study"][data-only]');
+  if (studyTab) { studyTab.removeAttribute("data-only"); studyTab.hidden = false; }
+
   // Кнопка «Смены» в нижней панели — перед «Профилем»
   const tabbarIn = document.querySelector("#tabbar .tabbar__in");
   if (tabbarIn && !tabbarIn.querySelector('[data-tab="work"]')) {
