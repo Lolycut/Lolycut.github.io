@@ -20,12 +20,12 @@ window.AVES_CONFIG = {
       bot: "schedulefskbot",
       api: "https://mambafsk.onrender.com",
     },
-	fmo: {
+    fmo: {
       bird: "AvesGlobe",
       title: "Факультет международных отношений",
       short: "ФМО",
-      bot: "schedulefirbot",              // REPLACE: username бота ФМО без @
-      api: "https://mambafmo.onrender.com", // REPLACE, если сервис на Render называется иначе
+      bot: "schedulefirbot",
+      api: "https://mambafmo.onrender.com",
     },
   },
 
@@ -35,17 +35,15 @@ window.AVES_CONFIG = {
   telegramClientId: "8380079376",
   // Разрешения: профиль + право боту писать в личку (нужно для утренней рассылки)
   telegramScope: "openid profile telegram:bot_access",
-
+  
+  // Конспекты и фото дня — один бот на все факультеты, лента у каждого факультета своя
   study: {
-     api: "https://avesst.onrender.com",
-     faculty: "bio",
-     bot: "Aves_Studybot",
-   },
-
-  // Раздел «Смены» (AvesWork). Убрать блок — вкладка покажет «Раздел не настроен».
-  work: {
-    api: "https://aveswork.onrender.com",
+    api: "https://avesst.onrender.com",
+    bot: "Aves_Studybot",
   },
+
+  // Смены (AvesWork): лента подработок и «Мои часы»
+  work: { api: "https://aveswork.onrender.com" },
 
   channelUrl: "https://t.me/AvesBY",
   studyBot: "Aves_Studybot",
