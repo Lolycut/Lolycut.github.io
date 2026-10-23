@@ -3,18 +3,40 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Aves — расписание БГУ в Telegram, бесплатно и без рекламы</title>
-  <meta name="description" content="Aves — стая Telegram-ботов для студентов БГУ: расписание биофака, ФСК и ФМО, преподаватели и аудитории, свободные кабинеты, утренние сводки и уведомления о заменах. Бесплатно навсегда.">
-  <meta name="theme-color" content="#ffffff">
+  <title>Aves — расписание БГУ в Telegram и на сайте (Биофак, ФСК, ФМО) · Минск</title>
+  <meta name="description" content="Aves — стая бесплатных Telegram-ботов и веб-приложение для студентов БГУ в Минске: расписание пар биофака, ФСК и ФМО, поиск преподавателей и свободных аудиторий, звонки БГУ, конспекты AvesStudy и уведомления о заменах.">
+  <meta name="keywords" content="расписание БГУ, биофак БГУ расписание, ФМО БГУ расписание, ФСК БГУ расписание, расписание занятий БГУ Минск, бот расписания БГУ, свободные аудитории БГУ, звонки БГУ, конспекты БГУ, Белорусский государственный университет, Курчатова 10, Ленинградская 20, Aves, AvesBio, AvesFlow, AvesGlobe, AvesStudy, schedulebiobot, schedulefskbot, schedulefirbot">
+  <meta name="author" content="Aves БГУ">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="geo.region" content="BY-HM">
+  <meta name="geo.placename" content="Минск, Беларусь">
+  <meta name="geo.position" content="53.8385;27.4764">
+  <meta name="ICBM" content="53.8385, 27.4764">
+  <meta name="theme-color" content="#f4faf7">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Aves БГУ">
   <link rel="canonical" href="https://microcosmos-bio.me/">
-  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/icon-192.png">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <meta name="format-detection" content="telephone=no">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Aves — расписание, которое прилетает само">
-  <meta property="og:description" content="Боты расписания для студентов БГУ: биофак, ФСК и ФМО. Бесплатно и без рекламы.">
+  <meta property="og:site_name" content="Aves — экосистема для студентов БГУ">
+  <meta property="og:title" content="Aves — расписание БГУ, которое прилетает само (Биофак, ФСК, ФМО)">
+  <meta property="og:description" content="Бесплатные Telegram-боты и сайт расписания для студентов БГУ в Минске: пары, свободные аудитории, звонки, конспекты и смены без рекламы.">
   <meta property="og:url" content="https://microcosmos-bio.me/">
   <meta property="og:image" content="https://microcosmos-bio.me/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Aves — стая ботов расписания и конспектов для студентов БГУ">
   <meta property="og:locale" content="ru_RU">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Aves — расписание БГУ в Telegram и на сайте">
+  <meta name="twitter:description" content="Расписание биофака, ФСК и ФМО БГУ, поиск преподавателей и свободных кабинетов, утренние сводки и конспекты. Бесплатно навсегда.">
+  <meta name="twitter:image" content="https://microcosmos-bio.me/assets/img/og.png">
+  <meta name="twitter:image:alt" content="Aves — стая ботов расписания и конспектов для студентов БГУ">
   <script>(function(){try{var t=localStorage.getItem('aves.theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,8 +44,123 @@
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/site.css">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebSite","name":"Aves","url":"https://microcosmos-bio.me/","inLanguage":"ru",
-   "description":"Боты расписания для студентов БГУ: биофак (AvesBio), ФСК (AvesFlow), ФМО (AvesGlobe), конспекты (AvesStudy)."}
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://microcosmos-bio.me/#website",
+        "name": "Aves — расписание и конспекты БГУ",
+        "alternateName": ["Aves БГУ", "AvesBio", "AvesFlow", "AvesGlobe", "AvesStudy"],
+        "url": "https://microcosmos-bio.me/",
+        "inLanguage": "ru",
+        "description": "Стая Telegram-ботов и веб-приложение расписания для студентов Белорусского государственного университета (БГУ, Минск): биофак, ФСК, ФМО и база конспектов.",
+        "publisher": { "@id": "https://microcosmos-bio.me/#organization" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://microcosmos-bio.me/#organization",
+        "name": "Aves",
+        "alternateName": "Aves БГУ",
+        "url": "https://microcosmos-bio.me/",
+        "description": "Некоммерческий студенческий проект: бесплатные Telegram-боты расписания и конспектов для студентов БГУ.",
+        "slogan": "Расписание, которое прилетает само",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://microcosmos-bio.me/assets/img/icon-512.png",
+          "width": 512,
+          "height": 512
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Минск",
+          "containedInPlace": { "@type": "Country", "name": "Беларусь" }
+        },
+        "sameAs": [
+          "https://t.me/AvesBY",
+          "https://t.me/schedulebiobot",
+          "https://t.me/schedulefskbot",
+          "https://t.me/schedulefirbot",
+          "https://t.me/Aves_Studybot"
+        ]
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://microcosmos-bio.me/app/#app",
+        "name": "Aves Расписание БГУ",
+        "url": "https://microcosmos-bio.me/app/",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web, Telegram Mini App, iOS, Android",
+        "inLanguage": "ru",
+        "isAccessibleForFree": true,
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "BYN"
+        },
+        "featureList": [
+          "Расписание групп Биофака, ФСК и ФМО БГУ на день и неделю",
+          "Поиск преподавателей, предметов и свободных аудиторий",
+          "Сравнение расписания нескольких групп для поиска общих окон",
+          "Обмен конспектами AvesStudy и подбор подработок под пары"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://microcosmos-bio.me/#faq-schema",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Где посмотреть расписание биофака, ФСК и ФМО БГУ без скачивания таблиц Excel и PDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Достаточно открыть бота своего факультета в Telegram (@schedulebiobot, @schedulefskbot или @schedulefirbot) либо войти в веб-приложение Aves. Бот сам разбирает факультетские таблицы, фильтрует вашу подгруппу или языковые треки и присылает уведомление, если в расписании появилась замена."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Как быстро найти свободную аудиторию в корпусе на Курчатова или Ленинградской?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Напишите боту фразу «Свободные аудитории сейчас» или откройте вкладку «Поиск» в приложении на сайте. Aves сверит расписание всех курсов и покажет список свободных кабинетов и поточных аудиторий на текущую пару или до конца дня."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Понимает ли бот сообщения в общей беседе учебной группы в Telegram?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Да! Добавьте бота факультета в чат вашей группы и начните сообщение со слова «Бот» — например: «Бот что завтра» или «Бот где химия». Он ответит всей группе и не будет реагировать на обычную переписку."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Можно ли установить расписание Aves как иконку приложения на телефон или компьютер?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Да, сайт поддерживает установку как веб-приложение (PWA): откройте страницу /app/ в Safari на iPhone («Поделиться → На экран Домой») или в Chrome на Android и компьютере («Установить приложение») — расписание будет открываться в один тап на весь экран."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Во сколько начинаются пары в БГУ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "На биологическом факультете первая пара начинается в 9:00, на ФСК и ФМО — в 8:30. Полная сетка звонков всех трёх факультетов — на странице «Звонки БГУ»: microcosmos-bio.me/zvonki/."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Сколько стоит Aves и есть ли реклама в ботах?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Aves бесплатен для всех студентов БГУ. Это некоммерческий студенческий проект: внутри ботов нет рекламы и платных функций — приходят только сводки и уведомления об изменениях в расписании. Подробнее — на странице «О проекте»."
+            }
+          }
+        ]
+      }
+    ]
+  }
   </script>
 </head>
 <body>
@@ -36,13 +173,15 @@
           <span class="bird bird--dove"></span>
         </button>
         <a class="brand__name" href="/">Aves</a>
+        <span class="brand__tag" title="Белорусский государственный университет, Минск">БГУ · Минск</span>
       </div>
       <nav class="site-nav" aria-label="Разделы">
         <a href="#flock">Стая</a>
+        <a href="#bsu-live">Звонки БГУ</a>
+        <a href="#try-bot">Демо-чат</a>
         <a href="#start">Как начать</a>
         <a href="#rules">Правила</a>
-        <a href="#plans">Планы</a>
-        <a href="#author">Автор</a>
+        <a href="#faq">Вопросы</a>
       </nav>
       <a class="btn btn--solid" href="/app/" data-open-app>Открыть расписание</a>
     </div>
@@ -70,12 +209,12 @@
     <section class="section" id="flock">
       <div class="wrap">
         <h2 class="section__title">Стая</h2>
-        <p class="section__lead">Каждая птица — отдельный бот со своей задачей. Один аккаунт Telegram, никаких паролей и анкет.</p>
+        <p class="section__lead">Каждая птица — отдельный бот со своей задачей. Один аккаунт Telegram, никаких паролей и анкет. Нажмите на `@никнейм`, чтобы скопировать его.</p>
 
         <article class="species" data-bird="bio">
           <div>
             <h3 class="species__name">Aves bio</h3>
-            <p class="species__habitat">Биологический факультет БГУ</p>
+            <p class="species__habitat">Биологический факультет БГУ · ул. Курчатова, 10</p>
             <span class="status status--live" style="--c: var(--bio)">Летает</span>
           </div>
           <div class="species__body">
@@ -91,7 +230,7 @@
             </ul>
             <div class="species__links">
               <a class="btn btn--line" href="https://t.me/schedulebiobot" target="_blank" rel="noopener">Открыть в Telegram</a>
-              <span class="species__handle">@schedulebiobot</span>
+              <button class="species__handle species__copy" type="button" data-copy="@schedulebiobot" title="Скопировать ник бота">@schedulebiobot</button>
             </div>
           </div>
         </article>
@@ -99,7 +238,7 @@
         <article class="species" data-bird="flow">
           <div>
             <h3 class="species__name">Aves flow</h3>
-            <p class="species__habitat">Факультет социокультурных коммуникаций БГУ</p>
+            <p class="species__habitat">Факультет социокультурных коммуникаций БГУ · ул. Курчатова, 5</p>
             <span class="status status--live" style="--c: var(--flow)">Летает</span>
           </div>
           <div class="species__body">
@@ -111,7 +250,7 @@
             </ul>
             <div class="species__links">
               <a class="btn btn--line" href="https://t.me/schedulefskbot" target="_blank" rel="noopener">Открыть в Telegram</a>
-              <span class="species__handle">@schedulefskbot</span>
+              <button class="species__handle species__copy" type="button" data-copy="@schedulefskbot" title="Скопировать ник бота">@schedulefskbot</button>
             </div>
           </div>
         </article>
@@ -119,7 +258,7 @@
         <article class="species" data-bird="globe">
           <div>
             <h3 class="species__name">Aves globe</h3>
-            <p class="species__habitat">Факультет международных отношений БГУ</p>
+            <p class="species__habitat">Факультет международных отношений БГУ · ул. Ленинградская, 20</p>
             <span class="status status--live" style="--c: var(--focus)">Летает, свежая</span>
           </div>
           <div class="species__body">
@@ -134,7 +273,7 @@
             </ul>
             <div class="species__links" data-bot-links="fmo">
               <a class="btn btn--line" href="#" target="_blank" rel="noopener" data-bot-link>Открыть в Telegram</a>
-              <span class="species__handle" data-bot-handle></span>
+              <button class="species__handle species__copy" type="button" data-bot-handle data-copy="@schedulefirbot" title="Скопировать ник бота"></button>
             </div>
           </div>
         </article>
@@ -157,7 +296,7 @@
             <p class="species__handle">Уважайте чужой труд: указывайте автора, если конспект не ваш. Материалы с жалобами модерация скрывает.</p>
             <div class="species__links">
               <a class="btn btn--line" href="https://t.me/Aves_Studybot" target="_blank" rel="noopener">Открыть в Telegram</a>
-              <span class="species__handle">@Aves_Studybot</span>
+              <button class="species__handle species__copy" type="button" data-copy="@Aves_Studybot" title="Скопировать ник бота">@Aves_Studybot</button>
             </div>
           </div>
         </article>
@@ -172,6 +311,74 @@
             <p>Эта птица пока не вылупилась. Когда она полетит, первым об этом узнает канал проекта.</p>
           </div>
         </article>
+      </div>
+    </section>
+
+    <!-- ЖИВОЙ РАДАР ЗВОНКОВ: у каждого факультета своя сетка, время — из ботов -->
+    <section class="section" id="bsu-live">
+      <div class="wrap">
+        <div class="live-head">
+          <div>
+            <h2 class="section__title">Сейчас в БГУ</h2>
+            <p class="section__lead">Звонки по минскому времени: какая пара идёт, сколько осталось до звонка и когда большая перемена. У каждого факультета своя сетка — ровно та, по которой работает бот.</p>
+          </div>
+          <div class="seg" role="group" aria-label="Сетка звонков факультета">
+            <button type="button" data-bells-mode="bio" aria-pressed="true">Биофак</button>
+            <button type="button" data-bells-mode="fsk" aria-pressed="false">ФСК</button>
+            <button type="button" data-bells-mode="fmo" aria-pressed="false">ФМО</button>
+          </div>
+        </div>
+
+        <div class="bsu-radar">
+          <div class="bsu-radar__now">
+            <div class="bsu-radar__top">
+              <span class="status status--live" style="--c: var(--live)" id="minsk-clock">Минск · --:--</span>
+              <span class="bsu-radar__campus" id="bells-campus-label">Биофак · ул. Курчатова, 10</span>
+            </div>
+            <h3 class="bsu-radar__status" id="bells-status-title">Сверяем часы с главным корпусом…</h3>
+            <p class="bsu-radar__sub" id="bells-status-sub">Показываем текущую пару или перемену в реальном времени</p>
+            <div class="bsu-radar__bar" aria-hidden="true">
+              <i id="bells-progress" style="width: 0%"></i>
+            </div>
+          </div>
+          <div>
+            <div class="bsu-bells" id="bells-grid" aria-label="Расписание звонков"></div>
+            <p class="bsu-bells__note" id="bells-note"></p>
+            <a class="bsu-bells__more" href="/zvonki/">Все звонки и перемены трёх факультетов в одной таблице →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ДЕМО-ЧАТ: примеры запросов и ответы в том виде, в каком их присылают боты -->
+    <section class="section" id="try-bot">
+      <div class="wrap">
+        <h2 class="section__title">Попробуйте спросить птицу</h2>
+        <p class="section__lead">Боты понимают обычные фразы — в личке и в беседе группы. Выберите вопрос и посмотрите, как отвечает птица вашего факультета. Группы и преподаватели в примерах условные.</p>
+
+        <div class="chat-sim">
+          <div class="chat-sim__prompts" role="group" aria-label="Примеры запросов">
+            <button class="chip is-on" type="button" data-sim-q="0" data-bot="bio" aria-pressed="true">что у 1-41 в чт</button>
+            <button class="chip" type="button" data-sim-q="1" data-bot="bio" aria-pressed="false">свободные на 3 паре</button>
+            <button class="chip" type="button" data-sim-q="2" data-bot="bio" aria-pressed="false">где сейчас Иванов</button>
+            <button class="chip" type="button" data-sim-q="3" data-bot="bio" aria-pressed="false">халат 2 курс</button>
+            <button class="chip" type="button" data-sim-q="4" data-bot="fsk" aria-pressed="false">⚡ Какая пара сейчас?</button>
+            <button class="chip" type="button" data-sim-q="5" data-bot="fmo" aria-pressed="false">что в понедельник</button>
+          </div>
+          <p class="chat-sim__legend" aria-hidden="true">
+            <span data-bot="bio">AvesBio · биофак</span>
+            <span data-bot="fsk">AvesFlow · ФСК</span>
+            <span data-bot="fmo">AvesGlobe · ФМО</span>
+          </p>
+          <div class="chat-sim__window" aria-live="polite">
+            <div class="chat-sim__meta">
+              <b id="sim-bot-name">AvesBio</b>
+              <span id="sim-caption">Личка или беседа группы</span>
+            </div>
+            <div class="chat-msg chat-msg--user" id="sim-user">что у 1-41 в чт</div>
+            <div class="chat-msg chat-msg--bot" id="sim-bot"></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -246,6 +453,40 @@
       </div>
     </section>
 
+    <!-- НОВАЯ ФИШКА 3: СПРАВОЧНИК КОРПУСОВ И ЧАСТЫЕ ВОПРОСЫ СТУДЕНТОВ БГУ (SEO + UX) -->
+    <section class="section" id="faq">
+      <div class="wrap">
+        <h2 class="section__title">Частые вопросы студентов БГУ</h2>
+        <p class="section__lead">Коротко о том, как устроены расписание, поиск кабинетов и синхронизация с Telegram.</p>
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>Где посмотреть расписание биофака, ФСК и ФМО БГУ без скачивания таблиц Excel и PDF?</summary>
+            <p>Достаточно открыть бота своего факультета в Telegram (<a href="https://t.me/schedulebiobot" target="_blank" rel="noopener">@schedulebiobot</a>, <a href="https://t.me/schedulefskbot" target="_blank" rel="noopener">@schedulefskbot</a> или <a href="https://t.me/schedulefirbot" target="_blank" rel="noopener">@schedulefirbot</a>) либо войти в <a href="/app/">веб-приложение Aves</a>. Бот сам разбирает факультетские таблицы, фильтрует вашу подгруппу или языковые треки и присылает уведомление, если в расписании появилась замена.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Как быстро найти свободную аудиторию в корпусе на Курчатова или Ленинградской?</summary>
+            <p>Напишите боту фразу «Свободные аудитории сейчас» или откройте вкладку «Поиск» в приложении на сайте. Aves сверит расписание всех курсов и покажет список свободных кабинетов и поточных аудиторий на текущую пару или до конца дня.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Понимает ли бот сообщения в общей беседе учебной группы в Telegram?</summary>
+            <p>Да! Добавьте бота факультета в чат вашей группы и начните сообщение со слова «Бот» — например: «Бот что завтра» или «Бот где химия». Он ответит всей группе и не будет реагировать на обычную переписку.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Можно ли установить расписание Aves как иконку приложения на телефон или компьютер?</summary>
+            <p>Да, сайт поддерживает установку как веб-приложение (PWA): откройте страницу <a href="/app/">/app/</a> в Safari на iPhone («Поделиться → На экран Домой») или в Chrome на Android и компьютере («Установить приложение») — расписание будет открываться в один тап на весь экран.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Во сколько начинаются пары в БГУ?</summary>
+            <p>На биологическом факультете первая пара начинается в 9:00, на ФСК и ФМО — в 8:30. Полная сетка звонков всех трёх факультетов — на странице <a href="/zvonki/">«Звонки БГУ»</a>.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Сколько стоит Aves и есть ли реклама в ботах?</summary>
+            <p>Aves бесплатен для всех студентов БГУ. Это некоммерческий студенческий проект: внутри ботов нет рекламы и платных функций — приходят только сводки и уведомления об изменениях в расписании. Подробнее — на странице <a href="/o-proekte/">«О проекте»</a>.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="author">
       <div class="wrap author">
         <blockquote>
@@ -262,18 +503,23 @@
 
   <footer class="site-foot">
     <div class="wrap site-foot__row">
-      <span>Aves, 2026. Сделано на биофаке БГУ.</span>
+      <span>Aves, 2026. Сделано на биофаке БГУ (Минск).</span>
       <nav aria-label="Ссылки">
         <a href="/app/">Приложение</a>
+        <a href="/zvonki/">Звонки БГУ</a>
+        <a href="/o-proekte/">О проекте</a>
         <a data-channel href="#" target="_blank" rel="noopener">Канал проекта</a>
         <a href="/privacy/">Конфиденциальность</a>
       </nav>
     </div>
   </footer>
 
+  <div class="site-toast" id="site-toast" role="status" aria-live="polite"></div>
+
   <script src="/assets/js/config.js"></script>
   <script src="/assets/js/theme.js"></script>
   <script src="/assets/js/aves.js"></script>
+  <script src="/assets/js/bells.js"></script>
   <script>
     (function () {
       var logged = Aves.isLoggedIn();
@@ -302,11 +548,236 @@
           a.href = "https://t.me/" + bot;
           if (!a.textContent.trim()) a.textContent = "@" + bot;
         });
-        box.querySelectorAll("[data-bot-handle]").forEach(function (s) { s.textContent = "@" + bot; });
+        box.querySelectorAll("[data-bot-handle]").forEach(function (s) {
+          s.textContent = "@" + bot;
+          s.setAttribute("data-copy", "@" + bot);
+        });
       });
 
       var head = document.querySelector(".site-head");
       addEventListener("scroll", function () { head.classList.toggle("is-scrolled", scrollY > 8); }, { passive: true });
+
+      // Всплывающее уведомление и копирование @username бота в 1 клик
+      var toastTimer;
+      function showSiteToast(msg) {
+        var t = document.getElementById("site-toast");
+        if (!t) return;
+        t.textContent = msg;
+        t.classList.add("is-on");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { t.classList.remove("is-on"); }, 2400);
+      }
+
+      document.addEventListener("click", function (e) {
+        var copyBtn = e.target.closest("[data-copy]");
+        if (!copyBtn) return;
+        var val = copyBtn.getAttribute("data-copy");
+        if (!val) return;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(val).then(function () {
+            showSiteToast("Скопировано в буфер: " + val);
+          }).catch(function () {});
+        } else {
+          var ta = document.createElement("textarea");
+          ta.value = val;
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand("copy"); showSiteToast("Скопировано в буфер: " + val); } catch (_) {}
+          ta.remove();
+        }
+      });
+
+      /* ───────────── Время по Минску и сетки звонков — из общего assets/js/bells.js ───────────── */
+      var B = window.AvesBells;
+      var BELLS = B.data, minskNow = B.minskNow;
+      var DAY_NAMES = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
+      function addDays(d, n) { var x = new Date(d.getTime()); x.setUTCDate(x.getUTCDate() + n); return x; }
+      function ddmm(d) { return String(d.getUTCDate()).padStart(2, "0") + "." + String(d.getUTCMonth() + 1).padStart(2, "0"); }
+      function ddmmyyyy(d) { return ddmm(d) + "." + d.getUTCFullYear(); }
+
+      /* ───────────── Живой радар звонков ───────────── */
+      // Какую сетку показать: выбор посетителя → факультет, под которым он входил в приложение → биофак
+      var bellsMode = "bio";
+      try {
+        var savedMode = localStorage.getItem("aves.bells");
+        var appFaculty = Aves.store && Aves.K ? Aves.store.get(Aves.K.faculty) : null;
+        if (savedMode && BELLS[savedMode]) bellsMode = savedMode;
+        else if (appFaculty && BELLS[appFaculty]) bellsMode = appFaculty;
+      } catch (_) {}
+
+      function updateBellsRadar() {
+        var grid = document.getElementById("bells-grid");
+        if (!grid) return;
+        var now = minskNow();
+        var cfg = BELLS[bellsMode];
+        var st = B.status(bellsMode, now);
+
+        document.getElementById("minsk-clock").textContent = "Минск · " + now.hh + ":" + now.mm;
+        document.getElementById("bells-campus-label").textContent = cfg.campus;
+        document.getElementById("bells-note").textContent = cfg.note;
+        document.getElementById("bells-status-title").textContent = st.title;
+        document.getElementById("bells-status-sub").textContent = st.sub;
+        document.getElementById("bells-progress").style.width = st.pct + "%";
+
+        grid.innerHTML = cfg.slots.map(function (sl, idx) {
+          var isPast = !st.sunday && now.minutes >= B.toMin(sl[1]);
+          return '<div class="bell-card' + (idx === st.active ? " is-now" : "") + (isPast ? " is-past" : "") + '">' +
+            '<span class="bell-card__num">' + (idx + 1) + " пара" + (idx === st.active ? " · сейчас" : "") + "</span>" +
+            '<strong class="bell-card__time">' + sl[0] + "–" + sl[1] + "</strong>" +
+          "</div>";
+        }).join("");
+      }
+
+      function syncBellsButtons() {
+        document.querySelectorAll("[data-bells-mode]").forEach(function (b) {
+          b.setAttribute("aria-pressed", String(b.getAttribute("data-bells-mode") === bellsMode));
+        });
+      }
+      document.querySelectorAll("[data-bells-mode]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          bellsMode = btn.getAttribute("data-bells-mode");
+          try { localStorage.setItem("aves.bells", bellsMode); } catch (_) {}
+          syncBellsButtons();
+          updateBellsRadar();
+        });
+      });
+      syncBellsButtons();
+      updateBellsRadar();
+      setInterval(function () { if (!document.hidden) updateBellsRadar(); }, 30000);
+      document.addEventListener("visibilitychange", function () { if (!document.hidden) updateBellsRadar(); });
+
+      /* ───────────── Демо-чат ─────────────
+         Ответы собраны так же, как их присылают боты: заголовок карточки, таблица
+         «Пара · Ауд. · Предмет · Преподаватель», заметки под таблицей. Время пар — из BELLS,
+         даты считаются от сегодняшнего дня, поэтому пример не устаревает. */
+      var BOTS = {
+        bio: { name: "AvesBio", handle: "@schedulebiobot" },
+        fsk: { name: "AvesFlow", handle: "@schedulefskbot" },
+        fmo: { name: "AvesGlobe", handle: "@schedulefirbot" }
+      };
+      function slot(fac, n) { var s = BELLS[fac].slots[n - 1]; return { start: s[0], end: s[1], cell: n + " (" + s[0] + "–" + s[1] + ")" }; }
+      // Ближайший нужный день недели (сегодня или вперёд), как считает парсер ботов
+      function nextWeekday(target) { var n = minskNow(); return addDays(n.date, (target - n.weekday + 7) % 7); }
+      // Учебный день для примеров «сейчас»: сегодня, а в воскресенье — понедельник
+      function studyDay() { var n = minskNow(); return n.weekday === 6 ? addDays(n.date, 1) : n.date; }
+      function dayOf(d) { return DAY_NAMES[(d.getUTCDay() + 6) % 7]; }
+
+      function card(lines) { return '<p class="sim-head">' + lines.join("<br>") + "</p>"; }
+      function table(cols, rows) {
+        return '<div class="sim-table"><table><thead><tr>' + cols.map(function (c) { return "<th>" + c + "</th>"; }).join("") +
+          "</tr></thead><tbody>" + rows.map(function (r) {
+            return "<tr>" + r.map(function (c, i) { return "<td" + (i === 0 ? ' class="sim-time"' : "") + ">" + c + "</td>"; }).join("") + "</tr>";
+          }).join("") + "</tbody></table></div>";
+      }
+      function note(text) { return '<p class="sim-note">' + text + "</p>"; }
+      function line(text) { return '<p class="sim-line">' + text + "</p>"; }
+
+      var SIM = [
+        {
+          bot: "bio", q: "что у 1-41 в чт", caption: "Личка или беседа группы: «Бот что у 1-41 в чт»",
+          render: function () {
+            var d = nextWeekday(3);
+            return card(["📅 " + dayOf(d) + ", " + ddmmyyyy(d), "👥 1-41 • Вся группа"]) +
+              table(["Пара", "Ауд.", "Предмет", "Преподаватель"], [
+                [slot("bio", 1).cell, "<b>1 п.а.</b>", "Ботаника [Лек]", "<i>Белова Т.В.</i>"],
+                [slot("bio", 2).cell, "<b>218</b>", "Зоология беспозвоночных [ЛР] (п/г 1)", "<i>Ковалёв А.Н.</i>"],
+                [slot("bio", 2).cell, "<b>220</b>", "Общая химия [ЛР] (п/г 2)", "<i>Савчук О.И.</i>"],
+                [slot("bio", 3).cell, "<b>312</b>", "Высшая математика [ПЗ] ✏️", "<i>Иванов Д.И.</i>"]
+              ]) +
+              note("✏️ 3 пара: занятие перенесли в 314") +
+              line("Кнопками под карточкой листаются соседние дни и вся неделя.");
+          }
+        },
+        {
+          bot: "bio", q: "свободные на 3 паре", caption: "Свободные кабинеты и поточки на нужную пару",
+          render: function () {
+            var d = studyDay(), s = slot("bio", 3);
+            return card(["🟢 Свободные аудитории", "📅 " + dayOf(d) + ", " + ddmmyyyy(d) + " • 3 пара (" + s.start + " - " + s.end + ")"]) +
+              line("🏛 <b>Свободные поточки:</b><br>👉 2 п.а. • 3 п.а.") +
+              line("🚪 <b>Свободные кабинеты и лаборатории:</b><br>108 • 214 • 305 • 318 • 404 • 412<br>501 • 514") +
+              note("Можно спросить и на весь день: «свободные аудитории сегодня».");
+          }
+        },
+        {
+          bot: "bio", q: "где сейчас Иванов", caption: "Пример ответа во время 2-й пары",
+          render: function () {
+            var d = studyDay(), s = slot("bio", 2);
+            return card(["👨‍🏫 Иванов Д.И.", "📅 " + dayOf(d) + ", " + ddmmyyyy(d), "⚡ Сейчас: 2 пара (" + s.start + " - " + s.end + ")"]) +
+              table(["Пара", "Ауд.", "Группа", "Предмет"], [
+                [s.cell, "<b>312</b>", "1-41, 1-42", "Высшая математика [ПЗ]"]
+              ]) +
+              note("Если на этой паре занятий нет, бот покажет следующую. «Иванов на неделю» — всё расписание преподавателя.");
+          }
+        },
+        {
+          bot: "bio", q: "халат 2 курс", caption: "Пример ответа во время 2-й пары",
+          render: function () {
+            var d = studyDay(), s = slot("bio", 2);
+            return card(["🥼 Где одолжить халат • 2 курс", "📅 " + dayOf(d) + ", " + ddmm(d), "⏰ Сейчас идёт 2 пара (" + s.start + " - " + s.end + ")"]) +
+              note("У этих групп сегодня ЛР (халат с собой), но не на 2 и 3 паре — халат им сейчас не нужен") +
+              table(["Группа", "ЛР сегодня", "Где сейчас"], [
+                ["<b>2-43</b>", "5 пара: 412 • Биохимия", "📍 1 п.а. • Генетика [Лек]"],
+                ["<b>2-45</b><br>п/г 2", "1 пара: 305 • Микробиология", "🚶 только что с 1 пары:<br>305 • Микробиология [ЛР]"],
+                ["<b>2-47</b>", "4 пара: 218 • Физиология растений", "☕ окно, дальше 4 пара:<br>218 • Физиология растений [ЛР]"]
+              ]) +
+              note("Не показаны: ЛР на 2 и 3 паре (халат нужен самим): 3");
+          }
+        },
+        {
+          bot: "fsk", q: "⚡ Какая пара сейчас?", caption: "Кнопка в меню бота · пример во время 2-й пары",
+          render: function () {
+            var d = studyDay(), s = slot("fsk", 2);
+            return card(["⚡ Пара прямо сейчас", "📍 " + dayOf(d) + " (" + ddmm(d) + ") | 2 пара", "👥 Гр. 3 • Информационные ресурсы", "⏰ " + s.start + " - " + s.end + " ⏳ <i>(до конца: 35 мин)</i>"]) +
+              line("📍 🚪 <b>ауд. 409</b><br>📚 <b>Медиапланирование (сем.)</b><br>👤 <i>Петрова А.С.</i>") +
+              note("✏️ Примечание: с этой недели занятие в 415") +
+              line("Примечания к парам добавляют сами студенты — замены, отмены и переезды видит вся группа.");
+          }
+        },
+        {
+          bot: "fmo", q: "что в понедельник", caption: "Только ваши языковые подгруппы и ДВС",
+          render: function () {
+            var d = nextWeekday(0);
+            var p1 = slot("fmo", 1), p3 = slot("fmo", 3), p4 = slot("fmo", 4);
+            return card(["📅 " + dayOf(d) + ", " + ddmmyyyy(d), "👥 I курс · МО · 3 группа • Англ.3, Нем.2"]) +
+              table(["Пара", "Ауд.", "Предмет", "Преподаватель"], [
+                [p1.cell, "<b>1006</b>", "Теория международных отношений [лек]", "<i>Ковальчук Е.В.</i>"],
+                ["2 (09:30–10:50)", "<b>с/к</b>", "Физическая культура", "<i>—</i>"],
+                [p3.cell, "<b>💻</b>", "Иностранный язык первый · Англ.3 💻 ✏️", "<i>Мельник О.П.</i>"],
+                [p4.cell, "<b>1302</b>", "Второй иностранный язык · Нем.2", "<i>Зуева Н.А.</i>"]
+              ]) +
+              note("✏️ 3 пара: принести распечатку эссе") +
+              line('💻 Дистант, 3 пара (Англ.3): <span class="sim-link">Иностранный язык первый</span>') +
+              note("Пары остальных языковых подгрупп скрыты. Аудитория 1006 — 10 этаж, бот подскажет этаж в поиске.");
+          }
+        }
+      ];
+
+      var simIdx = 0;
+      function renderSim(idx) {
+        var item = SIM[idx] || SIM[0];
+        var bEl = document.getElementById("sim-bot");
+        if (!bEl) return;
+        simIdx = idx;
+        document.getElementById("sim-user").textContent = item.q;
+        document.getElementById("sim-bot-name").textContent = BOTS[item.bot].name + " · " + BOTS[item.bot].handle;
+        document.getElementById("sim-caption").textContent = item.caption;
+        document.querySelector(".chat-sim__window").setAttribute("data-bot", item.bot);
+        bEl.classList.remove("is-anim");
+        void bEl.offsetWidth;
+        bEl.innerHTML = item.render();
+        bEl.classList.add("is-anim");
+      }
+
+      document.querySelectorAll("[data-sim-q]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          document.querySelectorAll("[data-sim-q]").forEach(function (b) {
+            b.classList.toggle("is-on", b === btn);
+            b.setAttribute("aria-pressed", String(b === btn));
+          });
+          renderSim(+btn.getAttribute("data-sim-q"));
+        });
+      });
+      renderSim(0);
     })();
   </script>
 </body>

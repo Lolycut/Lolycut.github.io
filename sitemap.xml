@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://microcosmos-bio.me/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://microcosmos-bio.me/app/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://microcosmos-bio.me/privacy/</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://microcosmos-bio.me/</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://microcosmos-bio.me/assets/img/og.png</image:loc>
+      <image:title>Aves — расписание БГУ в Telegram и на сайте</image:title>
+      <image:caption>Стая Telegram-ботов для студентов БГУ в Минске: биофак, ФСК, ФМО и конспекты AvesStudy</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://microcosmos-bio.me/zvonki/</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://microcosmos-bio.me/assets/img/og-zvonki.png</image:loc>
+      <image:title>Звонки БГУ: биофак, ФСК и ФМО</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://microcosmos-bio.me/app/</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://microcosmos-bio.me/o-proekte/</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://microcosmos-bio.me/privacy/</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>

@@ -1,4 +1,12 @@
+# Aves — расписание и конспекты БГУ (Минск)
 User-agent: *
 Allow: /
 Disallow: /auth/
+
+# Яндекс: не плодить дубли из служебных параметров (?f=bio из Mini App, коды входа)
+User-agent: Yandex
+Allow: /
+Disallow: /auth/
+Clean-param: f&tab&shift&code&state /
+
 Sitemap: https://microcosmos-bio.me/sitemap.xml

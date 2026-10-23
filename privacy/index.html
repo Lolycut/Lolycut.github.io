@@ -3,16 +3,38 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <meta name="theme-color" content="#f4faf7">
+  <link rel="canonical" href="https://microcosmos-bio.me/privacy/">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <script>(function(){try{var t=localStorage.getItem("aves.theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Onest:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/site.css">
-  <title>Конфиденциальность — Aves</title>
-  <meta name="description" content="Какие данные хранят боты Aves и сайт microcosmos-bio.me и как их удалить.">
+  <title>Конфиденциальность — Aves БГУ</title>
+  <meta name="description" content="Политика конфиденциальности студенческого проекта Aves (БГУ, Минск): какие данные хранят Telegram-боты расписания и сайт microcosmos-bio.me и как их удалить.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Aves — экосистема для студентов БГУ">
+  <meta property="og:title" content="Конфиденциальность — Aves БГУ">
+  <meta property="og:description" content="Какие данные хранят боты Aves и сайт microcosmos-bio.me и как их удалить.">
+  <meta property="og:url" content="https://microcosmos-bio.me/privacy/">
+  <meta property="og:image" content="https://microcosmos-bio.me/assets/img/og.png">
+  <meta property="og:locale" content="ru_RU">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Aves", "item": "https://microcosmos-bio.me/" },
+      { "@type": "ListItem", "position": 2, "name": "Конфиденциальность", "item": "https://microcosmos-bio.me/privacy/" }
+    ]
+  }
+  </script>
 </head>
 <body>
   <div class="night-sky" aria-hidden="true"></div>
@@ -21,6 +43,7 @@
       <div class="brand">
         <button class="theme-bird" type="button" data-theme-toggle aria-label="Включить ночную тему"><span class="bird bird--dove"></span></button>
         <a class="brand__name" href="/">Aves</a>
+        <span class="brand__tag">БГУ · Минск</span>
       </div>
       <a class="btn btn--solid" href="/app/" style="margin-left:auto">Открыть расписание</a>
     </div>
@@ -28,7 +51,7 @@
   <main class="wrap prose">
     <h1>Конфиденциальность</h1>
     <p class="meta">Обновлено 6 октября 2026</p>
-    <p>Aves — некоммерческий студенческий проект. Данные нужны только для того, чтобы показывать вам расписание вашей группы и присылать уведомления.</p>
+    <p>Aves — <a href="/o-proekte/">некоммерческий студенческий проект</a>. Данные нужны только для того, чтобы показывать вам расписание вашей группы и присылать уведомления.</p>
     <h2>Что хранится</h2>
     <p>Telegram ID, имя пользователя в Telegram, имя для карточек расписания, выбранные факультет, группа, подгруппа и специализация, настройки уведомлений и дата регистрации.</p>
     <h2>Что не хранится</h2>
@@ -40,7 +63,17 @@
     <h2>Как удалить данные</h2>
     <p>Напишите в личные сообщения <a data-channel href="#" target="_blank" rel="noopener">канала проекта</a> — данные удалят. Отозвать доступ сайта можно в Telegram: Настройки → Конфиденциальность → Активные сеансы / Сайты.</p>
   </main>
-  <footer class="site-foot"><div class="wrap site-foot__row"><a href="/">На главную</a></div></footer>
+  <footer class="site-foot">
+    <div class="wrap site-foot__row">
+      <span>Aves, 2026. Некоммерческий студенческий проект.</span>
+      <nav aria-label="Ссылки">
+        <a href="/">Главная</a>
+        <a href="/app/">Приложение</a>
+        <a href="/zvonki/">Звонки БГУ</a>
+        <a href="/o-proekte/">О проекте</a>
+      </nav>
+    </div>
+  </footer>
   <script src="/assets/js/config.js"></script>
   <script src="/assets/js/theme.js"></script>
   <script>document.querySelectorAll("[data-channel]").forEach(function(a){a.href=AVES_CONFIG.channelUrl;});</script>

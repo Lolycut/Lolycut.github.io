@@ -3,8 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <meta name="theme-color" content="#f4faf7">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <script>(function(){try{var t=localStorage.getItem("aves.theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,11 +18,18 @@
   <title>Улетело — Aves</title>
 </head>
 <body>
+  <div class="night-sky" aria-hidden="true"></div>
   <main class="wrap prose" style="min-height:80vh;display:grid;align-content:center">
-    <span class="bird bird--dove" style="width:88px;height:88px;margin-bottom:1.5rem" aria-hidden="true"></span>
+    <button class="theme-bird" type="button" data-theme-toggle aria-label="Включить ночную тему" style="justify-self:start;margin-bottom:1.5rem">
+      <span class="bird bird--dove" style="width:88px;height:88px"></span>
+    </button>
     <h1>Эта страница улетела</h1>
     <p>Адрес неверный или страницу перенесли.</p>
-    <p><a class="btn btn--solid" href="/">На главную</a></p>
+    <p style="display:flex;flex-wrap:wrap;gap:.75rem">
+      <a class="btn btn--solid" href="/">На главную</a>
+      <a class="btn btn--line" href="/app/">Моё расписание</a>
+      <a class="btn btn--line" href="/zvonki/">Звонки БГУ</a>
+    </p>
   </main>
   <script src="/assets/js/theme.js"></script>
 </body>

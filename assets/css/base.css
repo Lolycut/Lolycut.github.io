@@ -1,35 +1,58 @@
-/* Aves — общие токены. День: белая бумага и чёрная тушь, как линии птиц.
-   Ночь: тёмно-синее небо, линии становятся светлыми. */
+/* Aves — современная дизайн-система (UI/UX 2.0) с динамическими темами факультетов.
+   День: воздушный светлый интерфейс с мягкими стеклянными карточками и оттенком выбранного факультета.
+   Ночь: глубокий космос с северным сиянием в цветах факультета, мерцающими звёздами и неоновыми акцентами. */
 
 :root {
-  --paper: #ffffff;
-  --paper-2: #f5f6f8;
-  --ink: #000000;
-  --text: #24272c;
-  --muted: #676d76;
-  --rule: #e3e5e9;
-  --focus: #2f5bd3;
+  --paper: #f6f8fc;
+  --paper-2: #eef2f9;
+  --surface: #ffffff;
+  --surface-hover: #f8faff;
+  --glass: rgba(255, 255, 255, 0.82);
+  --glass-strong: rgba(255, 255, 255, 0.92);
+  --ink: #0f172a;
+  --text: #334155;
+  --muted: #64748b;
+  --rule: rgba(15, 23, 42, 0.08);
+  --rule-strong: rgba(15, 23, 42, 0.15);
 
-  --bio: #2c7a4b;
-  --flow: #0b767c;
-  --study: #a86d12;
-  --work: #7d838c;
-  --live: #2c7a4b;
+  --bio: #10b981;
+  --flow: #06b6d4;
+  --globe: #3b82f6;
+  --study: #f59e0b;
+  --work: #8b5cf6;
+
+  /* Динамические токены текущего факультета / раздела (по умолчанию — мультифакультетный баланс) */
+  --fac-1: var(--bio);
+  --fac-2: var(--globe);
+  --fac-3: var(--flow);
+  --focus: #2563eb;
+  --live: #10b981;
 
   --ff-display: "Cormorant", "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --ff-body: "Onest", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
 
   --step--1: 0.875rem;
   --step-0: 1rem;
-  --step-1: 1.25rem;
-  --step-2: 1.625rem;
-  --step-3: 2.25rem;
-  --step-4: clamp(2.5rem, 6vw, 4.5rem);
-  --step-5: clamp(3rem, 8.5vw, 6.75rem);
+  --step-1: 1.2rem;
+  --step-2: 1.55rem;
+  --step-3: 2.15rem;
+  --step-4: clamp(2.35rem, 5.5vw, 4.1rem);
+  --step-5: clamp(2.85rem, 7.5vw, 5.8rem);
 
-  --radius-s: 6px;
-  --radius-m: 14px;
+  --radius-s: 10px;
+  --radius-m: 16px;
+  --radius-l: 22px;
+  --radius-xl: 28px;
   --radius-pill: 999px;
+
+  --shadow-xs: 0 2px 6px -1px rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.03);
+  --shadow-sm: 0 6px 16px -4px rgba(15, 23, 42, 0.06), 0 2px 6px -2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 14px 32px -8px rgba(15, 23, 42, 0.09), 0 4px 12px -3px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 24px 48px -12px rgba(15, 23, 42, 0.14), 0 8px 20px -6px rgba(15, 23, 42, 0.06);
+  --shadow-glow: 0 10px 28px -6px color-mix(in srgb, var(--focus) 28%, transparent);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   color-scheme: light;
   box-sizing: border-box;
@@ -38,43 +61,164 @@
 }
 
 :root[data-theme="dark"] {
-  --paper: #0b1022;
-  --paper-2: #121933;
-  --ink: #f3f5f9;
-  --text: #d6dbe5;
-  --muted: #8d97ab;
-  --rule: #222b47;
-  --focus: #8fb0ff;
+  --paper: #070b16;
+  --paper-2: #0f1629;
+  --surface: rgba(17, 25, 46, 0.78);
+  --surface-hover: rgba(24, 35, 64, 0.9);
+  --glass: rgba(13, 20, 38, 0.78);
+  --glass-strong: rgba(15, 23, 42, 0.92);
+  --ink: #f8fafc;
+  --text: #cbd5e1;
+  --muted: #8b9bb4;
+  --rule: rgba(148, 163, 184, 0.12);
+  --rule-strong: rgba(148, 163, 184, 0.24);
 
-  --bio: #63c48d;
-  --flow: #45c3c9;
-  --study: #e3ad4c;
-  --work: #98a0ae;
-  --live: #63c48d;
+  --bio: #34d399;
+  --flow: #22d3ee;
+  --globe: #60a5fa;
+  --study: #fbbf24;
+  --work: #a78bfa;
+
+  --fac-1: var(--bio);
+  --fac-2: var(--globe);
+  --fac-3: var(--flow);
+  --focus: #60a5fa;
+  --live: #34d399;
+
+  --shadow-xs: 0 2px 8px -1px rgba(0, 0, 0, 0.35);
+  --shadow-sm: 0 8px 20px -4px rgba(0, 0, 0, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  --shadow-md: 0 16px 36px -8px rgba(0, 0, 0, 0.55), inset 0 1px 0 0 rgba(255, 255, 255, 0.07);
+  --shadow-lg: 0 28px 60px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.09);
+  --shadow-glow: 0 10px 30px -6px color-mix(in srgb, var(--focus) 35%, transparent);
 
   color-scheme: dark;
 }
 
-html { scroll-padding-top: env(safe-area-inset-top, 0px); -webkit-text-size-adjust: 100%; }
+/* ───────────── Персональные цветовые гаммы факультетов ───────────── */
+/* 1. Биофак (AvesBio): изумрудно-лесная палитра */
+:root[data-faculty="bio"] {
+  --paper: #f4faf7;
+  --paper-2: #e8f5ee;
+  --fac-1: var(--bio);
+  --fac-2: #059669;
+  --fac-3: #34d399;
+  --focus: #059669;
+  --live: #10b981;
+}
+:root[data-theme="dark"][data-faculty="bio"] {
+  --paper: #05110d;
+  --paper-2: #0b1f18;
+  --surface: rgba(12, 31, 24, 0.78);
+  --glass: rgba(9, 24, 19, 0.8);
+  --glass-strong: rgba(11, 28, 22, 0.92);
+  --fac-1: #34d399;
+  --fac-2: #10b981;
+  --fac-3: #2dd4bf;
+  --focus: #34d399;
+  --live: #34d399;
+}
+
+/* 2. ФСК (AvesFlow): бирюзово-океаническая палитра */
+:root[data-faculty="fsk"] {
+  --paper: #f3fafc;
+  --paper-2: #e6f4f8;
+  --fac-1: var(--flow);
+  --fac-2: #0284c7;
+  --fac-3: #14b8a6;
+  --focus: #0891b2;
+  --live: #06b6d4;
+}
+:root[data-theme="dark"][data-faculty="fsk"] {
+  --paper: #051017;
+  --paper-2: #0a1d29;
+  --surface: rgba(12, 30, 44, 0.78);
+  --glass: rgba(9, 23, 34, 0.8);
+  --glass-strong: rgba(11, 27, 40, 0.92);
+  --fac-1: #22d3ee;
+  --fac-2: #38bdf8;
+  --fac-3: #2dd4bf;
+  --focus: #22d3ee;
+  --live: #22d3ee;
+}
+
+/* 3. ФМО (AvesGlobe): сапфирово-индиговая дипломатическая палитра */
+:root[data-faculty="fmo"] {
+  --paper: #f5f7fd;
+  --paper-2: #eaeff9;
+  --fac-1: var(--globe);
+  --fac-2: #4f46e5;
+  --fac-3: #0ea5e9;
+  --focus: #2563eb;
+  --live: #3b82f6;
+}
+:root[data-theme="dark"][data-faculty="fmo"] {
+  --paper: #060a18;
+  --paper-2: #0d1530;
+  --surface: rgba(15, 24, 52, 0.78);
+  --glass: rgba(11, 18, 40, 0.8);
+  --glass-strong: rgba(13, 21, 46, 0.92);
+  --fac-1: #60a5fa;
+  --fac-2: #818cf8;
+  --fac-3: #38bdf8;
+  --focus: #60a5fa;
+  --live: #60a5fa;
+}
+
+html {
+  scroll-padding-top: calc(76px + env(safe-area-inset-top, 0px));
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
 *, *::before, *::after { box-sizing: inherit; }
 
 body {
   margin: 0;
-  background: var(--paper);
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(circle at 12% 4%, color-mix(in srgb, var(--fac-1) 13%, transparent), transparent 45%),
+    radial-gradient(circle at 88% 14%, color-mix(in srgb, var(--fac-2) 11%, transparent), transparent 48%),
+    radial-gradient(circle at 50% 92%, color-mix(in srgb, var(--fac-3) 9%, transparent), transparent 52%);
+  background-attachment: fixed;
   color: var(--text);
   font-family: var(--ff-body);
   font-size: var(--step-0);
-  line-height: 1.55;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  transition: background-color .5s ease, color .5s ease;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.45s var(--ease-out), background-image 0.45s var(--ease-out), color 0.45s var(--ease-out);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--focus) 22%, transparent);
+  color: var(--ink);
 }
 
 img, svg { max-width: 100%; display: block; }
-a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-a:hover { text-decoration-thickness: 2px; }
-button { font: inherit; color: inherit; }
 
-:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+a {
+  color: inherit;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  transition: color 0.2s var(--ease-out), text-decoration-color 0.2s var(--ease-out);
+}
+a:hover {
+  color: var(--ink);
+  text-decoration-color: currentColor;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
 
 [hidden] { display: none !important; }
 
@@ -90,72 +234,182 @@ button { font: inherit; color: inherit; }
   -webkit-mask: var(--src) center / contain no-repeat;
   mask: var(--src) center / contain no-repeat;
   color: var(--ink);
+  transition: color 0.35s var(--ease-out), filter 0.35s var(--ease-out);
 }
 .bird--dove { --src: url("../img/dove.png"); }
 .bird--owl  { --src: url("../img/owl.png"); }
 
-/* Переключатель темы — сама птица */
+/* Переключатель темы — сама птица с мягким ореолом */
 .theme-bird {
   appearance: none; border: 0; background: none; padding: 0; cursor: pointer;
   display: inline-grid; place-items: center;
   border-radius: 50%;
+  position: relative;
+  transition: transform 0.35s var(--ease-spring), background-color 0.3s var(--ease-out);
 }
-.theme-bird .bird { transition: transform .45s cubic-bezier(.3, 1.4, .5, 1); }
-.theme-bird:hover .bird { transform: translateY(-2px) rotate(-6deg); }
-.theme-bird.is-flapping .bird { animation: flap .6s ease; }
+.theme-bird::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--focus) 22%, transparent) 0%, transparent 70%);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.35s var(--ease-out), transform 0.35s var(--ease-spring);
+  pointer-events: none;
+}
+.theme-bird:hover::before {
+  opacity: 1;
+  transform: scale(1.1);
+}
+.theme-bird .bird {
+  transition: transform 0.5s var(--ease-spring);
+  will-change: transform;
+}
+.theme-bird:hover .bird {
+  transform: translateY(-3px) rotate(-8deg) scale(1.05);
+}
+.theme-bird:active .bird {
+  transform: scale(0.92);
+}
+.theme-bird.is-flapping .bird {
+  animation: flap 0.65s var(--ease-spring);
+}
 
 @keyframes flap {
   0% { transform: none; }
-  35% { transform: translate(4px, -7px) rotate(-14deg) scaleY(.86); }
-  70% { transform: translate(1px, -3px) rotate(4deg); }
+  30% { transform: translate(5px, -10px) rotate(-16deg) scaleY(0.84) scaleX(1.06); }
+  65% { transform: translate(-2px, -4px) rotate(6deg) scale(1.04); }
   100% { transform: none; }
 }
 
-/* Кнопки */
+/* Современные кнопки с глубиной и микро-анимацией */
 .btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: .55em;
-  min-height: 48px; padding: 0 1.4em;
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6em;
+  min-height: 48px; padding: 0 1.5em;
   border-radius: var(--radius-pill);
-  border: 1.5px solid var(--ink);
-  font-weight: 500; font-size: var(--step-0);
+  border: 1.5px solid var(--rule-strong);
+  font-weight: 600; font-size: var(--step-0);
+  letter-spacing: -0.01em;
   text-decoration: none; cursor: pointer;
-  transition: background-color .2s, color .2s, transform .15s;
+  overflow: hidden;
+  transition:
+    background-color 0.25s var(--ease-out),
+    color 0.25s var(--ease-out),
+    border-color 0.25s var(--ease-out),
+    transform 0.25s var(--ease-spring),
+    box-shadow 0.25s var(--ease-out);
 }
-.btn:active { transform: scale(.98); }
-.btn--solid { background: var(--ink); color: var(--paper); }
-.btn--solid:hover { background: transparent; color: var(--ink); }
-.btn--line { background: transparent; color: var(--ink); }
-.btn--line:hover { background: var(--ink); color: var(--paper); }
-.btn[disabled] { opacity: .5; pointer-events: none; }
-.btn .tg-icon { width: 1.15em; height: 1.15em; }
+.btn:hover {
+  transform: translateY(-2px);
+}
+.btn:active {
+  transform: translateY(0) scale(0.97);
+}
+.btn--solid {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+  box-shadow: 0 8px 20px -6px color-mix(in srgb, var(--ink) 38%, transparent);
+}
+.btn--solid::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s var(--ease-out);
+  pointer-events: none;
+}
+.btn--solid:hover::after {
+  left: 140%;
+}
+.btn--solid:hover {
+  background: color-mix(in srgb, var(--ink) 85%, var(--focus));
+  border-color: color-mix(in srgb, var(--ink) 85%, var(--focus));
+  color: var(--paper);
+  box-shadow: 0 12px 26px -6px color-mix(in srgb, var(--focus) 38%, transparent);
+}
+.btn--line {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--rule-strong);
+  box-shadow: var(--shadow-xs);
+  backdrop-filter: blur(8px);
+}
+.btn--line:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+.btn[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+  transform: none;
+}
+.btn .tg-icon {
+  width: 1.2em; height: 1.2em;
+  transition: transform 0.3s var(--ease-spring);
+}
+.btn:hover .tg-icon {
+  transform: translate(2px, -1px) rotate(-6deg);
+}
 
-/* Ночное небо: редкие звёзды, видны только в тёмной теме */
+/* Ночное небо: звёзды + северное сияние в оттенках выбранного факультета */
 .night-sky {
   position: fixed; inset: 0; pointer-events: none; z-index: 0;
-  opacity: 0; transition: opacity .8s ease;
+  opacity: 0; transition: opacity 0.8s var(--ease-out);
   background-image:
-    radial-gradient(1px 1px at 12% 18%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 12% 18%, #fff 50%, transparent 51%),
     radial-gradient(1px 1px at 78% 9%, #fff 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 64% 32%, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 64% 32%, #bae6fd 50%, transparent 51%),
     radial-gradient(1px 1px at 33% 41%, #fff 50%, transparent 51%),
-    radial-gradient(1px 1px at 89% 54%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 89% 54%, #a7f3d0 50%, transparent 51%),
     radial-gradient(1.5px 1.5px at 7% 72%, #fff 50%, transparent 51%),
     radial-gradient(1px 1px at 52% 83%, #fff 50%, transparent 51%),
-    radial-gradient(1px 1px at 23% 93%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 23% 93%, #ddd6fe 50%, transparent 51%),
     radial-gradient(1px 1px at 95% 88%, #fff 50%, transparent 51%),
-    radial-gradient(1px 1px at 44% 6%, #fff 50%, transparent 51%);
+    radial-gradient(1.5px 1.5px at 44% 6%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 19% 58%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 73% 71%, #bae6fd 50%, transparent 51%),
+    radial-gradient(circle at 20% 15%, color-mix(in srgb, var(--fac-1) 16%, transparent), transparent 48%),
+    radial-gradient(circle at 82% 22%, color-mix(in srgb, var(--fac-2) 15%, transparent), transparent 52%),
+    radial-gradient(circle at 50% 82%, color-mix(in srgb, var(--fac-3) 12%, transparent), transparent 52%);
 }
-:root[data-theme="dark"] .night-sky { opacity: .55; }
+:root[data-theme="dark"] .night-sky {
+  opacity: 0.9;
+  animation: sky-breathe 8s ease-in-out infinite alternate;
+}
+
+@keyframes sky-breathe {
+  0% { opacity: 0.72; transform: scale(1); }
+  100% { opacity: 0.98; transform: scale(1.015); }
+}
 
 /* Плавная смена темы кругом от птицы (View Transitions) */
 ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
-::view-transition-new(root) { animation: night-reveal .7s cubic-bezier(.6, 0, .3, 1); }
+::view-transition-new(root) { animation: night-reveal 0.75s cubic-bezier(0.6, 0, 0.3, 1); }
 @keyframes night-reveal {
   from { clip-path: circle(0 at var(--vt-x, 50%) var(--vt-y, 0%)); }
   to   { clip-path: circle(var(--vt-r, 150%) at var(--vt-x, 50%) var(--vt-y, 0%)); }
 }
 
+/* Плавное появление элементов при скролле */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
+  transition-delay: var(--delay, 0ms);
+}
+.reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   ::view-transition-new(root) { animation: none; }
+  .reveal-item { opacity: 1; transform: none; }
 }
